@@ -8,6 +8,7 @@ import ForgetPassword from './Component/ForgetPassword'
 
 import Dashboard from './Component/Dashboard'
 import Stock from './Component/Stock'
+import Home from './Component/Home'
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Stock} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/forgetPassword" component={ForgetPassword} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/stock" component={Stock} />

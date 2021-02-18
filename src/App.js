@@ -17,6 +17,8 @@ import Picking from './Component/Picking'
 import MemberManage from './Component/MemberManage'
 import AddMember from './Component/AddMember'
 import OrderConfirm from './Component/OrderConfirm'
+import History from './Component/History'
+import ShippingConfirm from './Component/ShippingConfirm'
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={History} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/forgetPassword" component={ForgetPassword} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
@@ -41,6 +43,8 @@ class App extends Component {
           <Route exact path="/picking" component={Picking} />
           <Route exact path="/memberManage" component={MemberManage} />
           <Route exact path="/memberManage/addMember" component={AddMember} />
+          <Route exact path="/history" component={History} />
+          <Route exact path="/shippingConfirm" component={ShippingConfirm} />
           <Route exact path="/orderConfirm" component={OrderConfirm} />
         </Switch>
       </Router>

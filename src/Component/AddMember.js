@@ -71,7 +71,7 @@ class AddMember extends Component {
                 <button>
                     Add
                 </button>
-                <button>
+                <button onClick={() => history.push('/memberManage')}>
                     cancel
                 </button>
             </div>

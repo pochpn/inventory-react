@@ -10,6 +10,9 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <h1>Home</h1>
+                </div>
                 <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
                     <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
                         <button onClick={() => history.push('/dashboard')}>
@@ -36,12 +39,15 @@ class Home extends Component {
                     <button onClick={() => history.push('/orderConfirm')}>
                         order confirmation
                     </button>
-                    <button>
+                    <button onClick={() => history.push('/shippingConfirm')}>
                         confirming shipping
                     </button>
-                    <button>
+                    <button onClick={() => history.push('/history')}>
                         history
-                    </button>   
+                    </button>
+                    <button onClick={() => history.push('/memberManage')}>
+                        Member
+                    </button>
                 </div>
             </div>
         )

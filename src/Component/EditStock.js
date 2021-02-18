@@ -11,6 +11,9 @@ class EditStock extends Component {
   render() {
     return (
         <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1>Edit Stock</h1>
+            </div>
             <div>
                 <button>
                     Edit Shelf

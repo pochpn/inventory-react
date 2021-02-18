@@ -11,6 +11,9 @@ class CountingStock extends Component {
   render() {
     return (
         <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1>Counting Stock</h1>
+            </div>
             <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
                 <div>
                     <a1>Shelf ID</a1>

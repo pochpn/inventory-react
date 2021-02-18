@@ -40,7 +40,7 @@ class MemberManage extends Component {
                 </div>
             </div>
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}> 
-                <button>
+                <button onClick={() => history.push('/memberManage/addMember')}>
                     Add Menber
                 </button>
             </div>

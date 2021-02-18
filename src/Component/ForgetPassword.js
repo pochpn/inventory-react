@@ -16,6 +16,9 @@ class ForgetPassword extends Component {
   render() {
     return (
         <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1>Forget Password</h1>
+            </div>
             <div>
                 <h1>Account Recover</h1>
             </div>

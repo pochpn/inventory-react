@@ -10,7 +10,10 @@ class Dashboard extends Component {
 
   render() {
     return (
-        <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center'}}>
+                <h1>Stock</h1>
+            </div>
             <button onClick={() => history.push('/stock/viewStock')}>
                 View Stock
             </button>

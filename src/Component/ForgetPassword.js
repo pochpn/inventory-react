@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../history'
 
 class ForgetPassword extends Component {
   constructor(props) {
@@ -8,13 +9,13 @@ class ForgetPassword extends Component {
     };
   }
 
-  Pop() {
+  pop = () => {
     alert("Email has been send please check your mail box!");
   }
 
   render() {
     return (
-        <div>
+        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
             <div>
                 <h1>Account Recover</h1>
             </div>
@@ -25,8 +26,12 @@ class ForgetPassword extends Component {
                 <input type="text"/>
             </div>
             <div>
-                <button>Cancel</button>
-                <button onClick={this.Pop}>Send</button>
+                <button onClick={() => history.push('/')}>
+                  Cancel
+                </button>
+                <button onClick={this.pop}>
+                  Send
+                </button>
             </div>
       </div>
     )

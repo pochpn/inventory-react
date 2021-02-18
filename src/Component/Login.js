@@ -33,8 +33,8 @@ class Login extends Component {
                 </button>
             </div>
             <div>
-                <button onClick={() => history.push('/registration')}>
-                    Registration
+                <button onClick={() => history.push('/forgetPassword')}>
+                    Forget password ?
                 </button>
             </div>
 

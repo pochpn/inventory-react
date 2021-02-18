@@ -7,6 +7,7 @@ import Registration from './Component/Registration'
 import ForgetPassword from './Component/ForgetPassword'
 import Home from './Component/Home'
 import Dashboard from './Component/Dashboard'
+import InvenCost from './Component/InvenCost'
 import Stock from './Component/Stock'
 import ViewStock from './Component/ViewStock'
 import CountingStock from './Component/CountingStock'
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/forgetPassword" component={ForgetPassword} />
           <Route exact path="/Home" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/inventoryCost" component={InvenCost} />
           <Route exact path="/stock" component={Stock} />
           <Route exact path="/stock/viewStock" component={ViewStock} />
           <Route exact path="/stock/countingStock" component={CountingStock} />

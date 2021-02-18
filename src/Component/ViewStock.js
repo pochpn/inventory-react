@@ -33,9 +33,6 @@ class ViewStock extends Component {
                 <button>
                     S1-02
                 </button>
-                <button>
-                    ADD
-                </button>
             </div>
       </div>
     )

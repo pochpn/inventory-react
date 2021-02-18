@@ -28,7 +28,7 @@ class Login extends Component {
                 <input type="text" name="pass" />
             </div>
             <div>
-                <button onClick={() => history.push('/stock')}>
+                <button onClick={() => history.push('/home')}>
                     Login
                 </button>
             </div>

@@ -53,7 +53,7 @@ class Login extends Component {
                         <input type="text" name="lastnameen" />
                     </div>
                     <div>
-                        <a1>Date od birth</a1>
+                        <a1>Date of birth</a1>
                         <input type="text" name="birthday" />
                     </div>
                     <div>

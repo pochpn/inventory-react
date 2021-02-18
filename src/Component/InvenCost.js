@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../history'
 
 class InvenCost extends Component {
   constructor(props) {

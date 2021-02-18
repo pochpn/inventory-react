@@ -17,7 +17,7 @@ class Dashboard extends Component {
             <button onClick={() => history.push('/stock/countingStock')}>
                 Counting Stock
             </button>
-            <button>
+            <button onClick={() => history.push('/stock/editStock')}>
                 Edit Stock
             </button>
       </div>

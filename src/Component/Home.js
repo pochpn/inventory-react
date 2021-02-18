@@ -23,17 +23,17 @@ class Home extends Component {
                         <button onClick={() => history.push('/stock')}>
                             Stock Counting
                         </button>
-                        <button>
+                        <button onClick={() => history.push('/ordering')}>
                             ordering
                         </button>
-                        <button>
+                        <button onClick={() => history.push('/picking')}>
                             picking
                         </button>
                     </div>
                     
                 </div>
                 <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
-                    <button>
+                    <button onClick={() => history.push('/orderConfirm')}>
                         order confirmation
                     </button>
                     <button>

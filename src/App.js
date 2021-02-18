@@ -16,6 +16,7 @@ import EditShelf from './Component/EditShelf'
 import Ordering from './Component/Ordering'
 import Picking from './Component/Picking'
 import MemberManage from './Component/MemberManage'
+import History from './Component/History'
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={History} />
           <Route exact path="/forgetPassword" component={ForgetPassword} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/inventoryCost" component={InvenCost} />

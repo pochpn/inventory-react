@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../history'
 
 class Registration extends Component {
   constructor(props) {
@@ -10,8 +11,11 @@ class Registration extends Component {
   }
 
   render() {
+
+    
+
     return (
-        <div>
+        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
             <div>
                 <h1>Registration</h1>
             </div>
@@ -24,7 +28,7 @@ class Registration extends Component {
                 <input type="text" name="name" />
             </div>
             <div>
-                <button>
+                <button onClick={() => history.push('/')}>
                     Registration
                 </button>
             </div>

@@ -1,7 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import React, { Component } from 'react'
+import history from './history'
 
 import Login from './Component/Login'
 import Registration from './Component/Registration'
@@ -14,9 +13,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Route exact path="/" component={Registration} />
-      </div>
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/registration" component={Registration} />
+        </Switch>
+      </Router>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import history from '../history'
 
 class Login extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Login extends Component {
 
   render() {
     return (
-        <div>
+        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
             <div>
                 <h1>Login</h1>
             </div>
@@ -20,11 +21,11 @@ class Login extends Component {
             </div>
             <div>
                 <a1>Email </a1>
-                <input type="text" name="name" />
+                <input type="text" name="email" />
             </div>
             <div>
                 <a1>Password </a1>
-                <input type="text" name="name" />
+                <input type="text" name="pass" />
             </div>
             <div>
                 <button>
@@ -32,7 +33,7 @@ class Login extends Component {
                 </button>
             </div>
             <div>
-                <button>
+                <button onClick={() => history.push('/registration')}>
                     Registration
                 </button>
             </div>

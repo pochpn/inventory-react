@@ -12,35 +12,22 @@ class Home extends Component {
                 <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
                     <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
                         <button>
-                            Dashboard
+                            Economic Order Quantity
                         </button>
                         <button>
-                            Inventory cost
+                            Ordering Cost
                         </button>
                     </div>
                     <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
                         <button>
-                            Stock Counting
+                            Carring Cost
                         </button>
                         <button>
-                            ordering
+                            Total cost
                         </button>
-                        <button>
-                            picking
-                        </button>
+                        
                     </div>
                     
-                </div>
-                <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
-                    <button>
-                        order confirmation
-                    </button>
-                    <button>
-                        confirming shipping
-                    </button>
-                    <button>
-                        history
-                    </button>   
                 </div>
             </div>
         )

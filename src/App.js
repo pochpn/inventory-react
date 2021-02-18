@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 
 import Login from './Component/Login'
 import Registration from './Component/Registration'
+import ForgetPassword from './Component/ForgetPassword'
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={Registration} />
+        <Route exact path="/" component={ForgetPassword} />
       </div>
     )
   }

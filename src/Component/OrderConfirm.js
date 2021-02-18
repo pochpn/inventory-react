@@ -1,0 +1,34 @@
+import React, { Component } from 'react'
+import history from '../history'
+
+class OrderConfirm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  render() {
+    return (
+        <div>
+            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <h1>Order Confirmation</h1>
+            </div>
+            <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
+                <button>
+                    Receiving Order
+                </button>
+                <button>
+                    Picking Order
+                </button>
+                <button>
+                    Returned Order
+                </button>
+        </div>
+        </div>
+        
+    )
+  }
+}
+
+export default OrderConfirm;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 
-class Login extends Component {
+class AddMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,4 +80,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default AddMember;

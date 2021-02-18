@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import React, { Component } from 'react'
 
 import Login from './Component/Login'
-import Login2 from './Component/Login2'
+import Registration from './Component/Registration'
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={Login2} />
+        <Route exact path="/" component={Registration} />
       </div>
     )
   }

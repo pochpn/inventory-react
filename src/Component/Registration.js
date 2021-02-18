@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Login extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +13,7 @@ class Login extends Component {
     return (
         <div>
             <div>
-                <h1>Login</h1>
-            </div>
-            <div>
-                <a1>Sign in your account</a1>
+                <h1>Registration</h1>
             </div>
             <div>
                 <a1>Email </a1>
@@ -28,18 +25,12 @@ class Login extends Component {
             </div>
             <div>
                 <button>
-                    Login
-                </button>
-            </div>
-            <div>
-                <button>
                     Registration
                 </button>
             </div>
-
       </div>
     )
   }
 }
 
-export default Login;
+export default Registration;

@@ -10,9 +10,10 @@ import Dashboard from './Component/Dashboard'
 import InvenCost from './Component/InvenCost'
 import Stock from './Component/Stock'
 import Home from './Component/Home'
-import InvenCost from './Component/InvenCost'
 import Ordering from './Component/Ordering'
 import Picking from './Component/Picking'
+import OrderConfirm from './Component/OrderConfirm'
+import ShippingConfirm from './Component/ShippingConfirm'
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/" component={Ordering} />
+          <Route exact path="/" component={ShippingConfirm} />
           <Route exact path="/forgetPassword" component={ForgetPassword} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/inventoryCost" component={InvenCost} />

@@ -19,19 +19,19 @@ class Login extends Component {
             <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
                 <div>
                     <a1>Employee id </a1>
-                    <input type="text" name="email" />
+                    <input type="text" name="employeeid" />
                 </div>
                 <div>
                     <a1>ID card number</a1>
-                    <input type="text" name="email" />
+                    <input type="text" name="idcard" />
                 </div>
                 <div>
                     <a1>Firstname</a1>
-                    <input type="text" name="email" />
+                    <input type="text" name="fristname" />
                 </div>
                 <div>
                     <a1>Lastname</a1>
-                    <input type="text" name="email" />
+                    <input type="text" name="lastname" />
                 </div>
                 <div>
                     <button>

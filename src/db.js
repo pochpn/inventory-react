@@ -1,8 +1,23 @@
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://SeAdmin:admin@se-helloworld.2m4ar.mongodb.net/SE-HelloWorld?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+const mongo = require("./mongo")
+const userSchema = require('./schema/user_Schema')
+
+const connectToMongoDB = async() => {
+    await mongo().then(async(mongoose) => {
+        try
+        {
+            console.log('Connect to mogoDB!')
+
+            const users ={
+                username: 'admin',
+                password: 'admin'
+            }
+            await new userSchema(users).save()
+        }
+        finally
+        {
+            mongoose.connection.close()
+        }
+    })
+}
+
+connectToMongoDB()

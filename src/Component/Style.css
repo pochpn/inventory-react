@@ -1,0 +1,19 @@
+.topbar {
+    background-color: #6E0D0D;
+}
+
+.bgColor {
+    background-color: #ffb9af;
+}
+
+body, html {
+    height: 100%;
+    }
+
+.bg {
+background-image: url("https://scontent.fbkk11-1.fna.fbcdn.net/v/t1.15752-9/140660601_864921811005605_4370455273363644108_n.png?_nc_cat=104&ccb=3&_nc_sid=ae9488&_nc_ohc=r6D-dmsvkEwAX-yLgCV&_nc_ht=scontent.fbkk11-1.fna&oh=7acb7fb83ff8d4ba2ac3d2d51afe8de3&oe=60547837");
+height: 100vh;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}

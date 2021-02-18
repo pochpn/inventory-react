@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
+import './Style.css'
 
 class Home extends Component {
   constructor(props) {
@@ -9,7 +11,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bg">
+                <Topbar/>
                 <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                   <h1>Home</h1>
                 </div>

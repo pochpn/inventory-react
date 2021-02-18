@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import history from '../history'
 
-class Home extends Component {
+class InvenCost extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -34,4 +35,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default InvenCost;

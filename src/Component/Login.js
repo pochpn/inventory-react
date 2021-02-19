@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import './Style.css'
-
+import firestore from "../firebase/firestore"
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +11,20 @@ class Login extends Component {
         };
     }
 
+
+    onAdd =() =>{
+        const user ={
+            email:this.state.email,
+            pass:this.state.pass
+        }
+        firestore.addUser(user,this.success,this.reject)
+    }
+    success = (docRef) =>{
+        console.log("Success " + docRef.id)
+    }
+    reject =(err) =>{
+        console.log(err)
+    }
     render() {
         return (
             <div className="bgLogin">
@@ -30,8 +44,9 @@ class Login extends Component {
                         <input type="text" name="pass" />
                     </div>
                     <div>
-                        <button onClick={() => history.push('/home')}>
-                            Login
+                        <button onClick={() => history.push('/home')}
+                        /*onClick={this.onAdd}*/>                            
+                        Login
                 </button>
                     </div>
                     <div>

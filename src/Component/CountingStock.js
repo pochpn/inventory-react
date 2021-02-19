@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class CountingStock extends Component {
   constructor(props) {
@@ -10,6 +11,8 @@ class CountingStock extends Component {
 
   render() {
     return (
+      <div className="bg">
+        <Topbar/>
         <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1>Counting Stock</h1>
@@ -30,6 +33,8 @@ class CountingStock extends Component {
                 </button>
             </div>
       </div>
+      </div>
+        
     )
   }
 }

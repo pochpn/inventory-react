@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class ShippingConfirm extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class ShippingConfirm extends Component {
 
   render() {
     return (
-        <div>
+        <div className="bg">
+            <Topbar/>
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1>Confirming Shipping </h1>
             </div>

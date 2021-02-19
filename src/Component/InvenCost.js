@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class InvenCost extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class InvenCost extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bg">
+                <Topbar/>
                 <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <h1>Inventory Cost</h1>
                 </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class EditStock extends Component {
   constructor(props) {
@@ -10,18 +11,21 @@ class EditStock extends Component {
 
   render() {
     return (
-        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
-            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <h1>Edit Stock</h1>
-            </div>
-            <div>
-                <button>
-                    Edit Shelf
+      <div className="bg">
+        <Topbar/>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <h1>Edit Stock</h1>
+          </div>
+          <div>
+            <button>
+              Edit Shelf
                 </button>
-                <button>
-                    Edit Products
+            <button>
+              Edit Products
                 </button>
-            </div>
+          </div>
+        </div>
       </div>
     )
   }

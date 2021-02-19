@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -10,20 +11,24 @@ class Dashboard extends Component {
 
   render() {
     return (
-        <div style={{display:'flex', flexDirection:'column' ,justifyContent: 'center', alignItems: 'center'}}>
-            <div style={{display:'flex', flexDirection:'column', justifyContent: 'center', alignItems: 'center'}}>
-                <h1>Stock</h1>
-            </div>
-            <button onClick={() => history.push('/stock/viewStock')}>
-                View Stock
+      <div className="bg">
+        <Topbar/>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <h1>Stock</h1>
+          </div>
+          <button onClick={() => history.push('/stock/viewStock')}>
+            View Stock
             </button>
-            <button onClick={() => history.push('/stock/countingStock')}>
-                Counting Stock
+          <button onClick={() => history.push('/stock/countingStock')}>
+            Counting Stock
             </button>
-            <button onClick={() => history.push('/stock/editStock')}>
-                Edit Stock
+          <button onClick={() => history.push('/stock/editStock')}>
+            Edit Stock
             </button>
+        </div>
       </div>
+
     )
   }
 }

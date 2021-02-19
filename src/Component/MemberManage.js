@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class MemberManage extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class MemberManage extends Component {
 
   render() {
     return (
-        <div>
+        <div className="bg">
+            <Topbar/>
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1>Member Management</h1>
             </div>

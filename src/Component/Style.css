@@ -17,3 +17,11 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 }
+
+.bgLogin {
+    background-image: url("https://scontent.fbkk11-1.fna.fbcdn.net/v/t1.15752-9/150422671_463886824640459_307413304488173951_n.png?_nc_cat=103&ccb=3&_nc_sid=ae9488&_nc_ohc=5FsbQuqq-lMAX-rILzl&_nc_ht=scontent.fbkk11-1.fna&oh=4b87b66c761013972fe9df06ca137189&oe=60537E5C");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }

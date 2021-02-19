@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
+import Topbar from './Topbar'
 
 class OrderConfirm extends Component {
   constructor(props) {
@@ -10,23 +11,24 @@ class OrderConfirm extends Component {
 
   render() {
     return (
-        <div>
-            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <h1>Order Confirmation</h1>
-            </div>
-            <div style={{display:'flex', flexDirection:'row' ,justifyContent: 'center', alignItems: 'center'}}>
-                <button>
-                    Receiving Order
+      <div className="bg">
+        <Topbar/>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <h1>Order Confirmation</h1>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+          <button>
+            Receiving Order
                 </button>
-                <button>
-                    Picking Order
+          <button>
+            Picking Order
                 </button>
-                <button>
-                    Returned Order
+          <button>
+            Returned Order
                 </button>
         </div>
-        </div>
-        
+      </div>
+
     )
   }
 }

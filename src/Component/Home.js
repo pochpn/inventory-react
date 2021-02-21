@@ -53,7 +53,8 @@ class Home extends Component {
                         Member
                     </button>
                 </div> */}
-                <MDBRow >
+                
+                <MDBRow>
                     
                         <MDBCard style={{ width: "22rem" }} onClick={() => history.push('/dashboard')}>
                             <MDBCardImage

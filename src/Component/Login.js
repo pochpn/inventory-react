@@ -2,27 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import './Style.css'
 import firestore from "../firebase/firestore"
-import {
-    MDBNavbar,
-    MDBNavbarBrand,
-    MDBNavbarNav,
-    MDBNavItem,
-    MDBNavLink,
-    MDBNavbarToggler,
-    MDBCollapse,
-    MDBMask,
-    MDBRow,
-    MDBCol,
-    MDBIcon,
-    MDBBtn,
-    MDBView,
-    MDBContainer,
-    MDBCard,
-    MDBCardBody,
-    MDBInput,
-    MDBFormInline,
-    MDBAnimation
-  } from "mdbreact";
+
 class Login extends Component {
     constructor(props) {
         super(props);

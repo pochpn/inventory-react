@@ -17,7 +17,7 @@ class Login extends Component {
         auth.listeningCurrentUser(this.listeningUser);
     }
     
-      listeningUser = (user) => {
+    listeningUser = (user) => {
         console.log(user);
         if(user!==null){
             firestore.getUser(user.email,this.getSuccess,this.getReject)

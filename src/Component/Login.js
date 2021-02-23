@@ -30,8 +30,11 @@ class Login extends Component {
             console.log("PASS")
             history.push('/home')
         }
+        else{
+            this.getReject()
+        }
     }
-    getReject = () => {
+    getReject = (error) => {
         alert("Email or password is incorrect")
     }
     onAdd =() =>{

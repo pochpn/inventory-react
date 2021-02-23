@@ -9,10 +9,30 @@ class Login extends Component {
         this.state = {
             email: null,
             pass: null,
+            account: null,
+
         };
     }
 
+    onGetUser =() =>{
+        const user ={
+            email:this.state.email,
+            pass:this.state.pass
+        }
+        firestore.getUser(user.email,this.getSuccess,this.reject)
+    }
+    getSuccess= (querySnapshot) =>{
+        querySnapshot.forEach(doc => {
+            this.setState({account:doc.data()})
 
+        });
+        console.log(this.state.account)
+        if(this.state.pass===this.state.account.pass)
+        {
+            console.log("PASS")
+            history.push('/home')
+        }
+    }
     onAdd =() =>{
         const user ={
             email:this.state.email,
@@ -26,6 +46,7 @@ class Login extends Component {
     reject =(err) =>{
         console.log(err)
     }
+    
     render() {
         return (
             <div className="bgLogin">
@@ -38,17 +59,16 @@ class Login extends Component {
                     </div>
                     <div>
                         <a1>Email </a1>
-                        <input type="text" name="email" />
+                        <input type="text" name="email" onChange={txt=>this.setState({email:txt.target.value})}/>
                     </div>
                     <div>
                         <a1>Password </a1>
-                        <input type="text" name="pass" />
+                        <input type="text" name="pass" onChange={txt=>this.setState({pass:txt.target.value})} />
                     </div>
                     <div>
-                        <button onClick={() => history.push('/home')}
-                        /*onClick={this.onAdd}*/>                            
+                        <button onClick={this.onGetUser}>                       
                         Login
-                </button>
+0                </button>
                     </div>
                     <div>
                         <button onClick={() => history.push('/forgetPassword')}>

@@ -24,7 +24,6 @@ class Login extends Component {
     getSuccess= (querySnapshot) =>{
         querySnapshot.forEach(doc => {
             this.setState({account:doc.data()})
-
         });
         console.log(this.state.account)
         if(this.state.pass===this.state.account.pass)
@@ -68,7 +67,7 @@ class Login extends Component {
                     <div>
                         <button onClick={this.onGetUser}>                       
                         Login
-0                </button>
+                        </button>
                     </div>
                     <div>
                         <button onClick={() => history.push('/forgetPassword')}>

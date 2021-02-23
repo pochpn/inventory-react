@@ -3,13 +3,21 @@ import history from '../history'
 import Topbar from './Topbar'
 import './Style.css'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol , MDBRow } from 'mdbreact';
+import auth from "../firebase/Auth"
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
-
+    signOutSuccess =() =>
+    {
+        console.log("Signout")
+        history.push("/")
+    }
+    signOutReject=(err)=>{
+        console.log(err)
+    }
     render() {
         return (
             <div className="bg">
@@ -135,7 +143,7 @@ class Home extends Component {
                                 <MDBCardTitle>MEMBER</MDBCardTitle>
                             </MDBCardBody>
                         </MDBCard>
-                        <MDBCard style={{ width: "22rem" }} onClick={() => history.push('/')}>
+                        <MDBCard style={{ width: "22rem" }} onClick={()=>auth.signOut(this.signOutSuccess,this.signOutReject)}>
                             <MDBCardImage
                                 className="img-fluid"
                                 src="https://scontent.fbkk11-1.fna.fbcdn.net/v/t1.15752-9/152204104_915684012540211_2220597254380171314_n.png?_nc_cat=111&ccb=3&_nc_sid=ae9488&_nc_ohc=nR7BMf4X9zoAX9tJMoT&_nc_ht=scontent.fbkk11-1.fna&oh=938f00560a084f5f6eac48851a8a6ca3&oe=6057C57A" waves />

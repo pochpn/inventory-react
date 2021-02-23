@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import './Style.css'
 import firestore from "../firebase/firestore"
+import auth from "../firebase/Auth"
 
 class Login extends Component {
     constructor(props) {
@@ -12,7 +13,33 @@ class Login extends Component {
             account: null,
         };
     }
-
+    componentDidMount() {
+        auth.listeningCurrentUser(this.listeningUser);
+    }
+    
+      listeningUser = (user) => {
+        console.log(user);
+        if(user!==null){
+            firestore.getUser(user.email,this.getSuccess,this.getReject)
+            history.push("/home")
+        }
+    };
+    
+      onReject = (error) => {
+        console.log(error);
+    };
+    
+      onLogin = () => {
+        auth.signIn(this.state.email, this.state.pass, this.onReject);
+    };
+    
+      onSignOutSuccess = () => {
+        console.log('Sign Out Success');
+    };
+    
+      onLogout = () => {
+        auth.signOut(this.onSignOutSuccess, this.onReject);
+    };
     onGetUser =() =>{
         const user ={
             email:this.state.email,
@@ -23,16 +50,9 @@ class Login extends Component {
     getSuccess= (querySnapshot) =>{
         querySnapshot.forEach(doc => {
             this.setState({account:doc.data()})
+            console.log(doc.data())
         });
         console.log(this.state.account)
-        if(this.state.pass===this.state.account.pass)
-        {
-            console.log("PASS")
-            history.push('/home')
-        }
-        else{
-            this.getReject()
-        }
     }
     getReject = (error) => {
         alert("Email or password is incorrect")
@@ -70,7 +90,7 @@ class Login extends Component {
                         <input type="password" name="pass" onChange={txt=>this.setState({pass:txt.target.value})} />
                     </div>
                     <div>
-                        <button onClick={this.onGetUser}>                       
+                        <button onClick={this.onLogin}>                       
                         Login
                         </button>
                     </div>

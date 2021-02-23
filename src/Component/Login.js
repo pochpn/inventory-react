@@ -19,7 +19,7 @@ class Login extends Component {
             email:this.state.email,
             pass:this.state.pass
         }
-        firestore.getUser(user.email,this.getSuccess,this.reject)
+        firestore.getUser(user.email,this.getSuccess,this.getReject)
     }
     getSuccess= (querySnapshot) =>{
         querySnapshot.forEach(doc => {
@@ -31,6 +31,12 @@ class Login extends Component {
             console.log("PASS")
             history.push('/home')
         }
+        else{
+            this.pop()
+        }
+    }
+    getReject = () => {
+        alert("Email or password is incorrect")
     }
     onAdd =() =>{
         const user ={

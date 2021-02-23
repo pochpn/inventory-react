@@ -5,8 +5,12 @@ class AddMember extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        email: null,
-        pass: null,
+        employeeID: null,
+        department: null,
+        firstnameTH: null,
+        lastnameTH: null,
+        firstnameEN: null,
+        lastnameEN: null,
     };
   }
 

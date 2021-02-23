@@ -10,7 +10,6 @@ class Login extends Component {
             email: null,
             pass: null,
             account: null,
-
         };
     }
 
@@ -30,9 +29,6 @@ class Login extends Component {
         {
             console.log("PASS")
             history.push('/home')
-        }
-        else{
-            this.pop()
         }
     }
     getReject = () => {
@@ -68,7 +64,7 @@ class Login extends Component {
                     </div>
                     <div>
                         <a1>Password </a1>
-                        <input type="text" name="pass" onChange={txt=>this.setState({pass:txt.target.value})} />
+                        <input type="password" name="pass" onChange={txt=>this.setState({pass:txt.target.value})} />
                     </div>
                     <div>
                         <button onClick={this.onGetUser}>                       

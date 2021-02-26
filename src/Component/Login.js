@@ -4,6 +4,9 @@ import './Style.css'
 import firestore from "../firebase/firestore"
 import auth from "../firebase/Auth"
 
+import { connect } from 'react-redux';
+import { addUser } from '../actions/userAction';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -13,68 +16,65 @@ class Login extends Component {
             account: null,
         };
     }
-    componentDidMount() {
+
+    /*componentDidMount() {
         auth.listeningCurrentUser(this.listeningUser);
-    }
-    
-    listeningUser = (user) => {
+    }*/
+
+    /*listeningUser = (user) => {
         console.log(user);
-        if(user!==null){
-            firestore.getUser(user.email,this.getSuccess,this.getReject)
+        if (user !== null) {
+            firestore.getUser(user.email, this.getSuccess, this.getReject)
             history.push("/home")
         }
-    };
-    
-      onReject = (error) => {
+    };*/
+
+    /*onReject = (error) => {
         console.log(error);
-    };
-    
-      onLogin = () => {
-        auth.signIn(this.state.email, this.state.pass, this.onReject);
-    };
-    
-      onSignOutSuccess = () => {
+    };*/
+
+    /*onSignOutSuccess = () => {
         console.log('Sign Out Success');
-    };
-    
-      onLogout = () => {
+    };*/
+
+    /*onLogout = () => {
         auth.signOut(this.onSignOutSuccess, this.onReject);
+    };*/
+
+    onLogin = () => {
+        /*auth.signIn(this.state.email, this.state.pass, this.onReject);*/
+        
+        firestore.getUser(this.state.email, this.getSuccess, this.getReject)
     };
-    onGetUser =() =>{
-        const user ={
-            email:this.state.email,
-            pass:this.state.pass
-        }
-        firestore.getUser(user.email,this.getSuccess,this.getReject)
-    }
-    getSuccess= (querySnapshot) =>{
+
+    getSuccess = (querySnapshot) => {
+        let user;
         querySnapshot.forEach(doc => {
-            this.setState({account:doc.data()})
-            console.log(doc.data())
+            user = doc.data()
+            user.id = doc.id
+            this.setState({user: user})
         });
-        console.log(this.state.account)
-    }
-    getReject = (error) => {
-        alert("Email or password is incorrect")
-    }
-    onAdd =() =>{
-        const user ={
-            email:this.state.email,
-            pass:this.state.pass
+        /*console.log(user.pass)
+        console.log(this.state.user.pass)*/
+        if(user.pass === this.state.user.pass){
+            this.props.addUser(user)
+            console.log(this.props.userList)
+            history.push("/home")
+        } else {
+            alert("Email or Password is incorrect")
         }
-        firestore.addUser(user,this.success,this.reject)
+        /*console.log(this.state.account)*/
     }
-    success = (docRef) =>{
-        console.log("Success " + docRef.id)
+
+    getReject = (error) => {
+        console.log(error)
+        alert("Email or Password is incorrect")
     }
-    reject =(err) =>{
-        console.log(err)
-    }
-    
+
     render() {
         return (
             <div className="bgLogin">
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end',paddingRight:50,paddingTop:300 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end', paddingRight: 50, paddingTop: 300 }}>
                     <div>
                         <h1>Login</h1>
                     </div>
@@ -83,15 +83,15 @@ class Login extends Component {
                     </div>
                     <div>
                         <a1>Email </a1>
-                        <input type="text" name="email" onChange={txt=>this.setState({email:txt.target.value})}/>
+                        <input type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
                     </div>
                     <div>
                         <a1>Password </a1>
-                        <input type="password" name="pass" onChange={txt=>this.setState({pass:txt.target.value})} />
+                        <input type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
                     </div>
                     <div>
-                        <button onClick={this.onLogin}>                       
-                        Login
+                        <button onClick={this.onLogin}>
+                            Login
                         </button>
                     </div>
                     <div>
@@ -107,4 +107,16 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addUser: (user) => dispatch(addUser(user)),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

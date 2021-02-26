@@ -5,6 +5,9 @@ import './Style.css'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol , MDBRow } from 'mdbreact';
 import auth from "../firebase/Auth"
 
+import { connect } from 'react-redux';
+import { addUser } from '../actions/userAction';
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -61,6 +64,9 @@ class Home extends Component {
                         Member
                     </button>
                 </div> */}
+                <div>
+                    <a1>{this.props.userList[this.props.userList.length-1].email}</a1>
+                </div>
                 
                 <MDBRow>
                     
@@ -159,4 +165,16 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addUser: (user) => dispatch(addUser(user)),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

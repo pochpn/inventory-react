@@ -10,6 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import { BsPeopleFill } from "react-icons/bs";
 import { FaKey } from "react-icons/fa";
 
+import { connect } from 'react-redux';
+import { addUser } from '../actions/userAction';
+import { addAccount } from '../actions/accountAction'
+
 const ButtonLogin = styled.button`
   background: #ef3f3e;
   border-radius: 10px;
@@ -31,9 +35,6 @@ const Font = styled.div`
     font-weight: semibold;
   }
 `
-import { connect } from 'react-redux';
-import { addUser } from '../actions/userAction';
-import { addAccount } from '../actions/accountAction'
 
 class Login extends Component {
     constructor(props) {

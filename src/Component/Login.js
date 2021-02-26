@@ -31,6 +31,9 @@ const Font = styled.div`
     font-weight: semibold;
   }
 `
+import { connect } from 'react-redux';
+import { addUser } from '../actions/userAction';
+import { addAccount } from '../actions/accountAction'
 
 class Login extends Component {
     constructor(props) {
@@ -41,62 +44,48 @@ class Login extends Component {
             account: null,
         };
     }
-    componentDidMount() {
-        auth.listeningCurrentUser(this.listeningUser);
-    }
-
-    listeningUser = (user) => {
-        console.log(user);
-        if (user !== null) {
-            firestore.getUser(user.email, this.getSuccess, this.getReject)
-            history.push("/home")
-        }
-    };
-
-    onReject = (error) => {
-        console.log(error);
-    };
 
     onLogin = () => {
-        auth.signIn(this.state.email, this.state.pass, this.onReject);
+        firestore.getUser(this.state.email, this.getSuccess, this.getReject)
     };
 
-    onSignOutSuccess = () => {
-        console.log('Sign Out Success');
-    };
-
-    onLogout = () => {
-        auth.signOut(this.onSignOutSuccess, this.onReject);
-    };
-    onGetUser = () => {
-        const user = {
-            email: this.state.email,
-            pass: this.state.pass
-        }
-        firestore.getUser(user.email, this.getSuccess, this.getReject)
-    }
-    getSuccess = (querySnapshot) => {
+    getAllSuccess = (querySnapshot) => {
         querySnapshot.forEach(doc => {
-            this.setState({ account: doc.data() })
-            console.log(doc.data())
+            let account = doc.data()
+            account.id = doc.id
+            console.log(account)
+            this.props.addAccount(account)
         });
-        console.log(this.state.account)
+        console.log(this.props.accountList)
     }
-    getReject = (error) => {
-        alert("Email or password is incorrect")
+
+    getAllReject = (error) => {
+        console.log(error)
     }
-    onAdd = () => {
-        const user = {
-            email: this.state.email,
-            pass: this.state.pass
+
+    getSuccess = (querySnapshot) => {
+        let user;
+        querySnapshot.forEach(doc => {
+            user = doc.data()
+            user.id = doc.id
+            this.setState({user: user})
+        });
+        /*console.log(user.pass)
+        console.log(this.state.user.pass)*/
+        if(user.pass === this.state.pass){
+            this.props.addUser(user)
+            console.log(this.props.userList)
+            firestore.getAllUser(this.getAllSuccess, this.getAllReject)
+            history.push("/home")
+        } else {
+            alert("Email or Password is incorrect")
         }
-        firestore.addUser(user, this.success, this.reject)
+        /*console.log(this.state.account)*/
     }
-    success = (docRef) => {
-        console.log("Success " + docRef.id)
-    }
-    reject = (err) => {
-        console.log(err)
+
+    getReject = (error) => {
+        console.log(error)
+        alert("Email or Password is incorrect")
     }
 
     render() {
@@ -136,11 +125,23 @@ class Login extends Component {
                         </div>
                     </Paper>
                 </div>
-
             </div>
-
         )
     }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addUser: (user) => dispatch(addUser(user)),
+        addAccount: (account) => dispatch(addAccount(account)),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,7 +1,21 @@
 import { ADD_USER, DELETE_USER } from '../actions/types'
 
 const initialState = {
-    userList: [],
+    userList: [{
+        address: "N/A",
+        birthDate: "N/A",
+        department: "N/A",
+        email: "N/A",
+        employeeID: "N/A",
+        firstnameEN: "N/A",
+        firstnameTH: "N/A",
+        id: "N/A",
+        idCard: "N/A",
+        lastnameEN: "N/A",
+        lastnameTH: "N/A",
+        pass: "N/A",
+        tel: "N/A",
+    }],
 };
 
 const userReducer = (state = initialState, action) => {

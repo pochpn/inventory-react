@@ -65,7 +65,7 @@ class Home extends Component {
                     </button>
                 </div> */}
                 <div>
-                    <a1>{this.props.userList[this.props.userList.length-1].email}</a1>
+                    <a1>{this.props.userList[this.props.userList.length-1].firstnameEN}</a1>
                 </div>
                 
                 <MDBRow>

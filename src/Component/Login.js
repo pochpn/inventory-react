@@ -4,6 +4,33 @@ import './Style.css'
 import firestore from "../firebase/firestore"
 import auth from "../firebase/Auth"
 
+import Button from 'react-bootstrap/Button';
+import styled, { css } from 'styled-components'
+import Paper from '@material-ui/core/Paper';
+import { BsPeopleFill } from "react-icons/bs";
+import { FaKey } from "react-icons/fa";
+
+const ButtonLogin = styled.button`
+  background: #ef3f3e;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 3em;
+`
+const FontLogin = styled.div`
+  && {
+    color: #EF3F3E;
+    font-size: 3em;
+  }
+`
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 1em;
+    font-weight: semibold;
+  }
+`
 import { connect } from 'react-redux';
 import { addUser } from '../actions/userAction';
 import { addAccount } from '../actions/accountAction'
@@ -61,40 +88,44 @@ class Login extends Component {
         alert("Email or Password is incorrect")
     }
 
-
-
     render() {
         return (
             <div className="bgLogin">
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end', paddingRight: 50, paddingTop: 300 }}>
-                    <div>
-                        <h1>Login</h1>
-                    </div>
-                    <div>
-                        <a1>Sign in your account</a1>
-                    </div>
-                    <div>
-                        <a1>Email </a1>
-                        <input type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
-                    </div>
-                    <div>
-                        <a1>Password </a1>
-                        <input type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
-                    </div>
-                    <div>
-                        <button onClick={this.onLogin}>
-                            Login
-                        </button>
-                    </div>
-                    <div>
-                        <button onClick={() => history.push('/forgetPassword')}>
-                            Forget password ?
-                </button>
-                    </div>
-
+                <div style={{paddingLeft:1065,paddingTop:160}}>
+                    <Paper className="paper" style={{ backgroundColor:'white', width: 316, height: 398 , borderRadius: 20}}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div style = {{paddingLeft: 105}}>
+                                <FontLogin>Login</FontLogin>
+                            </div>
+                            <div style = {{paddingLeft: 85}}>
+                                <Font>Sign in your account</Font>
+                            </div>
+                            <div style = {{paddingLeft: 35, paddingTop: 20}}>
+                                <Font><BsPeopleFill /> Email </Font>
+                            </div>
+                            <div style = {{paddingLeft: 35, paddingTop: 5}}>
+                                <input style = {{width: 250}} type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
+                            </div>
+                            <div style = {{paddingLeft: 35, paddingTop: 10}}>
+                                <Font><FaKey /> Password </Font>
+                            </div>
+                            <div style = {{paddingLeft: 35, paddingTop: 5}}>
+                                <input style = {{width: 250}} type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
+                            </div>
+                            <div style={{ paddingLeft: 20, paddingTop: 25 }}>
+                                <ButtonLogin style = {{width: 250}} onClick={this.onLogin}>
+                                    Login
+                                </ButtonLogin>
+                            </div>
+                            <div style={{ paddingLeft: 82, paddingTop: 10 }}>
+                                <Button variant="link" onClick={() => history.push('/forgetPassword')}>
+                                    Forget password ?
+                                </Button>
+                            </div>
+                        </div>
+                    </Paper>
                 </div>
             </div>
-
         )
     }
 }

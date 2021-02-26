@@ -28,6 +28,7 @@ const accountReducer = (state = initialState, action) => {
                             address: action.account.address,
                             birthDate: action.account.birthDate,
                             department: action.account.department,
+                            departmentID: action.account.departmentID,
                             email: action.account.email,
                             employeeID: action.account.employeeID,
                             firstnameEN: action.account.firstnameEN,

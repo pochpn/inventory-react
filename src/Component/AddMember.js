@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import history from '../history'
 
 import firestore from "../firebase/firestore"
-import auth from "../firebase/Auth"
 
 class AddMember extends Component {
     constructor(props) {
@@ -38,19 +37,6 @@ class AddMember extends Component {
             pass: this.state.email,
         }
         firestore.addUser(user, this.addSuccess, this.addReject)
-        auth.createUser(this.state.email, this.state.email, this.createReject)
-    }
-
-    createSuccess = () => {
-        console.log('success')
-    }
-
-    signReject = (error) => {
-        console.log(error)
-    }
-
-    createReject = (error) => {
-        console.log(error)
     }
 
     addSuccess = (doc) => {

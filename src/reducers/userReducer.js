@@ -1,4 +1,4 @@
-import { ADD_USER, DELETE_USER } from '../actions/types'
+import { ADD_USER, CLEAR_USER } from '../actions/types'
 
 const initialState = {
     userList: [{
@@ -26,11 +26,11 @@ const userReducer = (state = initialState, action) => {
                 userList: state.userList.concat(action.user)
             };
 
-        case DELETE_USER:
+        case CLEAR_USER:
             return {
                 ...state,
-                userList: state.userList.filter((item) => item.id !== action.id)
-            }
+                userList: []
+            };
 
         default:
             return state;

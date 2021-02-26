@@ -6,6 +6,7 @@ import auth from "../firebase/Auth"
 
 import { connect } from 'react-redux';
 import { addUser } from '../actions/userAction';
+import { addAccount } from '../actions/accountAction'
 
 class Login extends Component {
     constructor(props) {
@@ -17,35 +18,23 @@ class Login extends Component {
         };
     }
 
-    /*componentDidMount() {
-        auth.listeningCurrentUser(this.listeningUser);
-    }*/
-
-    /*listeningUser = (user) => {
-        console.log(user);
-        if (user !== null) {
-            firestore.getUser(user.email, this.getSuccess, this.getReject)
-            history.push("/home")
-        }
-    };*/
-
-    /*onReject = (error) => {
-        console.log(error);
-    };*/
-
-    /*onSignOutSuccess = () => {
-        console.log('Sign Out Success');
-    };*/
-
-    /*onLogout = () => {
-        auth.signOut(this.onSignOutSuccess, this.onReject);
-    };*/
-
     onLogin = () => {
-        /*auth.signIn(this.state.email, this.state.pass, this.onReject);*/
-        
         firestore.getUser(this.state.email, this.getSuccess, this.getReject)
     };
+
+    getAllSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let account = doc.data()
+            account.id = doc.id
+            console.log(account)
+            this.props.addAccount(account)
+        });
+        console.log(this.props.accountList)
+    }
+
+    getAllReject = (error) => {
+        console.log(error)
+    }
 
     getSuccess = (querySnapshot) => {
         let user;
@@ -56,9 +45,10 @@ class Login extends Component {
         });
         /*console.log(user.pass)
         console.log(this.state.user.pass)*/
-        if(user.pass === this.state.user.pass){
+        if(user.pass === this.state.pass){
             this.props.addUser(user)
             console.log(this.props.userList)
+            firestore.getAllUser(this.getAllSuccess, this.getAllReject)
             history.push("/home")
         } else {
             alert("Email or Password is incorrect")
@@ -70,6 +60,8 @@ class Login extends Component {
         console.log(error)
         alert("Email or Password is incorrect")
     }
+
+
 
     render() {
         return (
@@ -110,12 +102,14 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         addUser: (user) => dispatch(addUser(user)),
+        addAccount: (account) => dispatch(addAccount(account)),
     };
 };
 
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList,
     };
 };
 

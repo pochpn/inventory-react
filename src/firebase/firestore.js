@@ -69,6 +69,7 @@ class Firestore
             reject(err);
         });
     }
+    
     getProduct=(id,success,reject)=>{
         firebase
         .firestore()

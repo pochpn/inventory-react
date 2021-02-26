@@ -39,7 +39,10 @@ class AddMember extends Component {
         }
         firestore.addUser(user, this.addSuccess, this.addReject)
         auth.createUser(this.state.email, this.state.email, this.createReject)
-        auth.signIn("admin@admin.com", "admin1", this.signReject)
+    }
+
+    createSuccess = () => {
+        console.log('success')
     }
 
     signReject = (error) => {

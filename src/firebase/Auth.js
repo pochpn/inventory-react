@@ -42,6 +42,9 @@ class Auth {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(function () {
+        firebase.auth().signOut()
+      })
       .catch(function (error) {
         reject(error);
       });

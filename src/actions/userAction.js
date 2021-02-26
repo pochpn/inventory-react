@@ -1,11 +1,10 @@
-import { ADD_USER, DELETE_USER } from './types'
+import { ADD_USER, CLEAR_USER } from './types'
 
 export const addUser = (user) => ({
     type: ADD_USER,
     user: user,
 });
 
-export const deleteUser = (id) => ({
-    type: DELETE_USER,
-    id: id,
-})
+export const clearUser = () => ({
+    type: CLEAR_USER,
+});

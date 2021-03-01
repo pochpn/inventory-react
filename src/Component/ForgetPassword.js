@@ -16,41 +16,31 @@ class ForgetPassword extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleChange = (e) =>{
-    this.setState({[e.target.name]: e.target.value})
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
   };
-  handleSubmit = (e)=>{
-    e.preventDefault()
-    emailjs
-      .sendForm(
-        "service_ijbj6ng",
-        "template_uq9rv7i",
-        "bg",
-        "user_GNYzCs6qX14Dws420mU9Z"
-      )
-      .then()
-      .catch()
-      this.setState({ 
-      email : ""
-    })
-  }
 
   success = (querySnapshot) => {
     let user;
-    console.log('sdge')
     querySnapshot.forEach(doc => {
       user = doc.data()
       user.id = doc.id
       this.setState({
         firstnameEN: user.firstnameEN,
         pass: user.pass,
+        email :user.email,
       })
     });
-    this.handleSubmit()
+    if (user.email != this.state.email) {
+        console.log("error")
+    } else {
+      this.handleSubmit()
+    }
   }
 
   reject = (error) => {
     console.log(error)
+    alert("Email is incorrect!!");
   }
 
   onSend = (e) => {
@@ -72,7 +62,14 @@ class ForgetPassword extends Component {
       .catch(function (error) {
         console.log(error)
       });
-    this.setState({ email: "", });
+    this.setState({
+      email: "",
+      email: "",
+      user: "",
+      firstnameEN: "",
+      pass: "",
+
+    });
     alert("Email has been send please check your mail box!");
   }
 

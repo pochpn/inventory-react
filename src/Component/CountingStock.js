@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 
+import Hamburger from './Hamburger'
 import { connect } from 'react-redux';
 
 class CountingStock extends Component {
@@ -15,7 +16,7 @@ class CountingStock extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar page='COUNTING STOCK' />
+        <Hamburger page='COUNTING STOCK' />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1>Counting Stock</h1>

@@ -3,6 +3,8 @@ import history from '../history'
 import Topbar from './Topbar'
 import './Style.css'
 
+import Hamburger from './Hamburger'
+
 import { connect } from 'react-redux';
 
 class Dashboard extends Component {
@@ -16,7 +18,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar page='DASHBOARD' />
+        <Hamburger page='DASHBOARD' />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div>
             <h1>Dashboard</h1>

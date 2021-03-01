@@ -21,6 +21,7 @@ import History from './Component/History'
 import ShippingConfirm from './Component/ShippingConfirm'
 
 import Topbar from './Component/Topbar';
+import Hamburger from './Component/Hamburger';
 
 import { Provider } from 'react-redux';
 import configureStore from './Store';

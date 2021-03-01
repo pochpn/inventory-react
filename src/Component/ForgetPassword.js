@@ -13,6 +13,26 @@ class ForgetPassword extends Component {
       firstnameEN: null,
       pass: null,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange = (e) =>{
+    this.setState({[e.target.name]: e.target.value})
+  };
+  handleSubmit = (e)=>{
+    e.preventDefault()
+    emailjs
+      .sendForm(
+        "service_ijbj6ng",
+        "template_uq9rv7i",
+        "bg",
+        "user_GNYzCs6qX14Dws420mU9Z"
+      )
+      .then()
+      .catch()
+      this.setState({ 
+      email : ""
+    })
   }
 
   success = (querySnapshot) => {

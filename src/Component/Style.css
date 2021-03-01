@@ -1,3 +1,4 @@
+
 .topbar {
     background-color: #6E0D0D;
 }
@@ -42,19 +43,16 @@ html {
     align-self: center;
     align-items: center;
     justify-content: center;
+    justify-content: flex-end;
+}
+
+.fontt{
+    font-size: 60px;
+}
+.picst{
     
-}
-
-
-.paper2 {
-    background-color: rgba(245, 245, 245, 0.4) !important;
-    border-radius: 50rem;
-}
-
-.im1 {
-    align-self: center;
     align-items: center;
     justify-content: center;
-    background-position: center;
+
 }
 

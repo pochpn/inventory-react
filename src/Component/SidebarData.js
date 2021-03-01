@@ -8,6 +8,7 @@ import { ImTruck } from "react-icons/im";
 import { RiInboxArchiveLine, RiInboxUnarchiveLine,RiHistoryLine } from "react-icons/ri";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
 import{ BsFillPieChartFill } from "react-icons/bs";
+import { IoLogOutOutline } from "react-icons/io5";
 
 export const SidebarData = [
   {
@@ -68,6 +69,12 @@ export const SidebarData = [
     title: 'MEMBER MANAGEMENT',
     path: '/memberManage',
     icon: <FaUserCog color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'LOGOUT',
+    path: '/',
+    icon: <IoLogOutOutline color = 'black' />,
     cName: 'nav-text'
   },
 ];

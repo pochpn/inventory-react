@@ -30,3 +30,5 @@ export const Error = ''
 export const Success = ''
 export const Wait = ''
 /*----------invencost---------*/
+
+export const xxx ='https://image.flaticon.com/icons/png/512/1534/1534923.png'

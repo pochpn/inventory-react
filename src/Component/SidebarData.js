@@ -3,11 +3,11 @@ import React from 'react';
 import './Navbar.css';
 import { FaHistory, FaUserCog, FaClipboardCheck } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
-import { GiCash } from "react-icons/gi";
+import { GiCash ,GiCardboardBox} from "react-icons/gi";
 import { ImTruck } from "react-icons/im";
 import { RiInboxArchiveLine, RiInboxUnarchiveLine,RiHistoryLine } from "react-icons/ri";
 import { HiOutlineClipboardCheck } from "react-icons/hi";
-
+import{ BsFillPieChartFill } from "react-icons/bs";
 
 export const SidebarData = [
   {
@@ -19,7 +19,7 @@ export const SidebarData = [
   {
     title: 'DASHBOARD',
     path: '/dashboard',
-    icon: <AiFillHome color = 'black' />,
+    icon: <BsFillPieChartFill color = 'black' />,
     cName: 'nav-text'
   },
   {
@@ -31,7 +31,7 @@ export const SidebarData = [
   {
     title: 'STOCK & COUNTING',
     path: '/stock',
-    icon: <AiFillHome color = 'black' />,
+    icon: <GiCardboardBox color = 'black' />,
     cName: 'nav-text'
   },
   {

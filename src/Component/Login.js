@@ -43,6 +43,7 @@ class Login extends Component {
             email: null,
             pass: null,
             account: null,
+            user: this.props.userList[this.props.userList.length - 1],
         };
     }
 
@@ -69,11 +70,11 @@ class Login extends Component {
         querySnapshot.forEach(doc => {
             user = doc.data()
             user.id = doc.id
-            this.setState({user: user})
+            this.setState({ user: user })
         });
         /*console.log(user.pass)
         console.log(this.state.user.pass)*/
-        if(user.pass === this.state.pass){
+        if (user.pass === this.state.pass) {
             this.props.addUser(user)
             console.log(this.props.userList)
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)
@@ -93,29 +94,29 @@ class Login extends Component {
     render() {
         return (
             <div className="bgLogin">
-                <div style={{paddingLeft:1065,paddingTop:160}}>
-                    <Paper className="paper" style={{ backgroundColor:'white', width: 316, height: 398 , borderRadius: 20}}>
+                <div style={{ paddingLeft: 1065, paddingTop: 160 }}>
+                    <Paper className="paper" style={{ backgroundColor: 'white', width: 316, height: 398, borderRadius: 20 }}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div style = {{paddingLeft: 105}}>
+                            <div style={{ paddingLeft: 105 }}>
                                 <FontLogin>Login</FontLogin>
                             </div>
-                            <div style = {{paddingLeft: 85}}>
+                            <div style={{ paddingLeft: 85 }}>
                                 <Font>Sign in your account</Font>
                             </div>
-                            <div style = {{paddingLeft: 35, paddingTop: 20}}>
+                            <div style={{ paddingLeft: 35, paddingTop: 20 }}>
                                 <Font><BsPeopleFill /> Email </Font>
                             </div>
-                            <div style = {{paddingLeft: 35, paddingTop: 5}}>
-                                <input style = {{width: 250}} type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
+                            <div style={{ paddingLeft: 35, paddingTop: 5 }}>
+                                <input style={{ width: 250 }} type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
                             </div>
-                            <div style = {{paddingLeft: 35, paddingTop: 10}}>
+                            <div style={{ paddingLeft: 35, paddingTop: 10 }}>
                                 <Font><FaKey /> Password </Font>
                             </div>
-                            <div style = {{paddingLeft: 35, paddingTop: 5}}>
-                                <input style = {{width: 250}} type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
+                            <div style={{ paddingLeft: 35, paddingTop: 5 }}>
+                                <input style={{ width: 250 }} type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
                             </div>
                             <div style={{ paddingLeft: 20, paddingTop: 25 }}>
-                                <ButtonLogin style = {{width: 250}} onClick={this.onLogin}>
+                                <ButtonLogin style={{ width: 250 }} onClick={this.onLogin}>
                                     Login
                                 </ButtonLogin>
                             </div>

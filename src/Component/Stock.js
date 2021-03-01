@@ -3,17 +3,20 @@ import history from '../history'
 import Topbar from './Topbar'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow } from 'mdbreact';
 
-class Dashboard extends Component {
+import { connect } from 'react-redux';
+
+class Stock extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: this.props.userList[this.props.userList.length - 1],
     };
   }
 
   render() {
     return (
       <div className="bg">
-        <Topbar page='STOCK'/>
+        <Topbar page='STOCK' />
 
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: "11%" }}>
@@ -54,4 +57,17 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    userList: state.userReducer.userList,
+    accountList: state.accountReducer.accountList
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stock);

@@ -94,8 +94,8 @@ class Login extends Component {
     render() {
         return (
             <div className="bgLogin">
-                <div style={{ paddingLeft: 1065, paddingTop: 160 }}>
-                    <Paper className="paper" style={{ backgroundColor: 'white', width: 316, height: 398, borderRadius: 20 }}>
+                <div style={{ paddingLeft: 1390, paddingTop: 320 }}>
+                    <Paper className="paper" style={{ backgroundColor: 'white', width: 316, height: 398, borderRadius: 20}}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <div style={{ paddingLeft: 105 }}>
                                 <FontLogin>Login</FontLogin>

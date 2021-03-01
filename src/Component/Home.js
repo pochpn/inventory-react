@@ -39,45 +39,59 @@ class Home extends Component {
                 <Paper className="paperDash" onClick={() => history.push('/dashboard')}>
                     <div>
                         <img className="imDash" src={dashboard} />
+                        <p className="textDb">DASHBOARD</p>
                     </div>
 
                 </Paper>
                 <Paper className="paperSt" onClick={() => history.push('/stock')}>
                     <div>
                         <img className="imSt" src={standcount} />
+                        <p className="textSt" >STOCK &
+                        COUNTING
+                        </p>
                     </div>
                 </Paper>
                 <Paper className="paperIv" onClick={() => history.push('/inventoryCost')} >
                     <div>
                         <img className="imIc" src={cost} />
+                        <p className="textIc">INVENTORY
+                        COST</p>
                     </div>
                 </Paper>
                 <Paper className="paperOd" onClick={() => history.push('/ordering')} >
                     <div>
                         <img className="imOd" src={ordering} />
+                        <p className="textOd">ORDERING</p>
                     </div>
                 </Paper>
                 <Paper className="paperPk" onClick={() => history.push('/picking')} >
                     <div>
                         <img className="imPk" src={packing} />
+                        <p className="textOd">PICKING</p>
                     </div>
                 </Paper>
                 <Paper className="paperOc" onClick={() => history.push('/orderConfirm')} >
                     <div>
                         <img className="imOc" src={orderconfirm} />
+                        <p className="textO">ORDER</p>
+                        <p className="textS">CONFIRMATION</p>
                     </div>
                 </Paper>
                 <Paper className="paperCs" onClick={() => history.push('/shippingConfirm')} >
                     <div>
                         <img className="imCs" src={confirmship} />
+                        <p className="textCf">CONFIRMING</p>
+                        <p className="textSh">SHIPPING</p>
                     </div>
                 </Paper>
                 <Paper className="paperHs" onClick={() => history.push('/history')} >
                     <div>
                         <img className="imHs" src={historyPic} />
+                        <p className="textHs">HISTORY</p>
+
                     </div>
                 </Paper>
-                <Hamburger page='HOME'/>
+                <Hamburger page='HOME' />
             </div >
 
         )

@@ -155,7 +155,7 @@ body, html {
     width: 126px;
     height: 123px;
     left: 35%;
-    top:10%;
+    top: 10%;
 }
 
 .imCs {
@@ -163,7 +163,7 @@ body, html {
     width: 156px;
     height: 145px;
     left: 32%;
-    top:7%;
+    top: 7%;
 }
 
 .imHs {
@@ -171,7 +171,7 @@ body, html {
     width: 128px;
     height: 125.41px;
     left: 32%;
-    top:10%;
+    top: 10%;
 }
 
 .paper2 {
@@ -193,4 +193,137 @@ body, html {
 .picst {
     align-items: center;
     justify-content: center;
+}
+
+.textDb {
+    position: absolute;
+    width: 291px;
+    height: 73px;
+    left: 25%;
+    top: 75%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.textSt {
+    position: absolute;
+    width: 215px;
+    height: 135px;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.textOd {
+    position: absolute;
+    width: 239px;
+    height: 73px;
+    left: 12%;
+    top: 70%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.textIc {
+    position: absolute;
+    width: 266px;
+    height: 146px;
+    left: 5%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    text-align: right;
+    color: #6E0D0D;
+}
+
+.textHs {
+    position: absolute;
+    width: 239px;
+    height: 73px;
+    left: 18%;
+    top: 70%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.textO {
+    position: absolute;
+    width: 161px;
+    height: 73px;
+    left: 30%;
+    top: 55%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.textS {
+    position: absolute;
+    width: 266px;
+    height: 54px;
+    left: 18%;
+    top: 75%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 54px;
+    color: #6E0D0D;
+}
+
+.textCf {
+    position: absolute;
+    width: 220px;
+    height: 72px;
+    left: 23%;
+    top: 60%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 54px;
+    color: #6E0D0D;
+}
+
+.textSh {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 25%;
+    top: 75%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
 }

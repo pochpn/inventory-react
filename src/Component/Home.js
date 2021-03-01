@@ -49,18 +49,34 @@ class Home extends Component {
                 </Paper>
                 <Paper className="paperIv" onClick={() => history.push('/inventoryCost')} >
                     <div>
-                        <img className="imCs" src={cost} />
+                        <img className="imIc" src={cost} />
                     </div>
                 </Paper>
                 <Paper className="paperOd" onClick={() => history.push('/ordering')} >
-                    
+                    <div>
+                        <img className="imOd" src={ordering} />
+                    </div>
                 </Paper>
-                <Paper className="paperPk" onClick={() => history.push('/picking')} />
-                <Paper className="paperOc" onClick={() => history.push('/orderConfirm')} />
+                <Paper className="paperPk" onClick={() => history.push('/picking')} >
+                    <div>
+                        <img className="imPk" src={packing} />
+                    </div>
+                </Paper>
+                <Paper className="paperOc" onClick={() => history.push('/orderConfirm')} >
+                    <div>
+                        <img className="imOc" src={orderconfirm} />
+                    </div>
+                </Paper>
                 <Paper className="paperCs" onClick={() => history.push('/shippingConfirm')} >
-
+                    <div>
+                        <img className="imCs" src={confirmship} />
+                    </div>
                 </Paper>
-                <Paper className="paperHs" onClick={() => history.push('/history')} />
+                <Paper className="paperHs" onClick={() => history.push('/history')} >
+                    <div>
+                        <img className="imHs" src={historyPic} />
+                    </div>
+                </Paper>
                 <Hamburger />
 
 

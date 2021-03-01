@@ -1,12 +1,12 @@
 /*----------Home---------*/
 export const cost = 'https://sv1.picz.in.th/images/2021/03/02/ovNg7E.png'
 export const dashboard = 'https://uppic.cc/d/4iKZiMRIGhepGwsBkoZ_r'
-export const historyPic = 'https://uppic.cc/d/4IXpCxbVdIeksKo6fh00w'
-export const orderconfirm = 'https://uppic.cc/d/I5kPt2KHKmwVPBSAhXeBd'
-export const ordering = 'https://uppic.cc/d/anviKy76wI9oNqvIxF2aG'
-export const packing = 'https://uppic.cc/d/RUCQtqnSPe1LBF4mh40qS'
+export const historyPic = 'https://sv1.picz.in.th/images/2021/03/02/ovNjH1.png'
+export const orderconfirm = 'https://sv1.picz.in.th/images/2021/03/02/ovNbq2.png'
+export const ordering = 'https://sv1.picz.in.th/images/2021/03/02/ovNUtS.png'
+export const packing = 'https://sv1.picz.in.th/images/2021/03/02/ovNqln.png'
 export const standcount = 'https://uppic.cc/d/plhyz-08rDueCwk4rnFWZ'
-export const confirmship = 'https://uppic.cc/d/gAxuBVOTmsFeZjx0eq1ym'
+export const confirmship = 'https://sv1.picz.in.th/images/2021/03/02/ovNOfW.png'
 /*------stockcount-------*/
 export const counting = 'https://uppic.cc/d/TwlG2cr0SGt4d7i2CFirH'
 export const viewstock = 'https://uppic.cc/d/hQKChem6SpIiFFxAn439Y'

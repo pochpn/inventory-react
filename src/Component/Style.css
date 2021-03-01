@@ -127,7 +127,7 @@ body, html {
     left: 24%;
 }
 
-.imCs {
+.imIc {
     position: absolute;
     width: 140px;
     height: 140px;
@@ -138,6 +138,40 @@ body, html {
     position: absolute;
     width: 128px;
     height: 128px;
+    left: 28%;
+    top: 10%;
+}
+
+.imPk {
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    left: 28%;
+    top: 8%;
+}
+
+.imOc {
+    position: absolute;
+    width: 126px;
+    height: 123px;
+    left: 35%;
+    top:10%;
+}
+
+.imCs {
+    position: absolute;
+    width: 156px;
+    height: 145px;
+    left: 32%;
+    top:7%;
+}
+
+.imHs {
+    position: absolute;
+    width: 128px;
+    height: 125.41px;
+    left: 32%;
+    top:10%;
 }
 
 .paper2 {

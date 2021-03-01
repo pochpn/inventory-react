@@ -11,7 +11,7 @@ class InvenCost extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar/>
+                <Topbar page='INVENTORY COST'/>
                 <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <h1>Inventory Cost</h1>
                 </div>

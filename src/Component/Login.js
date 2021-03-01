@@ -78,6 +78,7 @@ class Login extends Component {
             console.log(this.props.userList)
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)
             history.push("/home")
+            /*window.location.href="/home"*/
         } else {
             alert("Email or Password is incorrect")
         }

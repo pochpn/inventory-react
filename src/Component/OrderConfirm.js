@@ -12,7 +12,7 @@ class OrderConfirm extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar/>
+        <Topbar page='ORDER CONFIRMATION'/>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h1>Order Confirmation</h1>
         </div>

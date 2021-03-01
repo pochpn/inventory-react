@@ -13,7 +13,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar />
+        <Topbar page='DASHBOARD'/>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div>
           <h1>Dashboard</h1>

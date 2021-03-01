@@ -44,7 +44,7 @@ class Ordering extends Component {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                             <div>
-                                <button onClick={() => history.push('/')}>
+                                <button onClick={() => history.push('/home')}>
                                     Cancel
                         </button>
                                 <button >

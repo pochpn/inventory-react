@@ -47,5 +47,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardEditStock);
+export default connect(mapStateToProps, mapDispatchToProps)(EditStock);
 

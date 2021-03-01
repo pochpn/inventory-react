@@ -121,7 +121,9 @@ class Login extends Component {
                                 </ButtonLogin>
                             </div>
                             <div style={{ paddingLeft: 82, paddingTop: 10 }}>
-                                <Button variant="link" onClick={() => history.push('/forgetPassword')}>
+                                <Button variant="link" onClick={() => history.push({
+                                    pathname: '/forgetPassword',
+                                })}>
                                     Forget password ?
                                 </Button>
                             </div>

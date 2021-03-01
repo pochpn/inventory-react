@@ -16,36 +16,36 @@ class Dashboard extends Component {
         <Topbar />
 
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',paddingTop:"11%" }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: "11%" }}>
           <MDBRow>
-            <MDBCard style={{width: "18rem" ,margin:"1rem"}} onClick={() => history.push('/stock/viewStock')}>
+            <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem",borderRadius: "8%",alignItems:'center' }} onClick={() => history.push('/stock/viewStock')}>
               <MDBCardImage
-                className="img-fluid"
-                src="https://uppic.cc/d/hQKChem6SpIiFFxAn439Y"/>
-                <div class="d-flex justify-content-center">
-                  <MDBCardTitle >View Stock</MDBCardTitle>
-                </div> 
+                className="img-fluid d-flex justify-content-center"
+                src="https://uppic.cc/d/hQKChem6SpIiFFxAn439Y" />
+              <div class="d-flex justify-content-center">
+                <MDBCardTitle >View Stock</MDBCardTitle>
+              </div>
             </MDBCard>
 
-            <MDBCard style={{ width: "18rem" ,margin:"1rem"}} onClick={() => history.push('/stock/countingStock')}>
+            <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/countingStock')}>
               <MDBCardImage
-                style={{width: "100%",resizeMode: 'contain'}}
-                className="img-fluid"
-                src="https://uppic.cc/d/9vOtr_EuhpJRMurA4UXvp"/>
+                style={{ width: "80%", alignItems:"center" }}
+                className="img-fluid d-flex justify-content-center align-items-center"
+                src="https://uppic.cc/d/9vOtr_EuhpJRMurA4UXvp" />
               <div class="d-flex justify-content-center">
                 <MDBCardTitle>Counting Stock</MDBCardTitle>
-              </div> 
-              
+              </div>
+
             </MDBCard>
 
-            <MDBCard style={{ width: "18rem",margin:"1rem" }} onClick={() => history.push('/stock/editStock')}>
+            <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/editStock')}>
               <MDBCardImage
-                className="img-fluid"
-                src="https://uppic.cc/d/0W3RIXMsbwLZibPPoOvcF"/>
+                className="img-fluid d-flex justify-content-center"
+                src="https://uppic.cc/d/0W3RIXMsbwLZibPPoOvcF" />
               <div class="d-flex justify-content-center">
                 <MDBCardTitle>Edit Stock</MDBCardTitle>
-              </div> 
-              
+              </div>
+
             </MDBCard>
           </MDBRow>
         </div>

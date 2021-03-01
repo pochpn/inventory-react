@@ -1,0 +1,32 @@
+---------Home---------
+cost = https://uppic.cc/d/nfANDyt3ZxssQdbqw6qQF
+dashboard = https://uppic.cc/d/4iKZiMRIGhepGwsBkoZ_r
+history = https://uppic.cc/d/4IXpCxbVdIeksKo6fh00w
+orderconfirm = https://uppic.cc/d/I5kPt2KHKmwVPBSAhXeBd
+ordering = https://uppic.cc/d/anviKy76wI9oNqvIxF2aG
+packing = https://uppic.cc/d/RUCQtqnSPe1LBF4mh40qS
+standcount = https://uppic.cc/d/plhyz-08rDueCwk4rnFWZ
+confirmship = https://uppic.cc/d/gAxuBVOTmsFeZjx0eq1ym
+------stockcount-------
+counting = https://uppic.cc/d/TwlG2cr0SGt4d7i2CFirH
+viewstock = https://uppic.cc/d/hQKChem6SpIiFFxAn439Y
+editstock = https://uppic.cc/d/0W3RIXMsbwLZibPPoOvcF
+editpro = https://uppic.cc/d/sBhdQrgDze4yO86niNZvZ
+editshelf = https://uppic.cc/d/6-kJ3_gLu-XGJyMtJEFdD
+search = https://uppic.cc/d/s5ASX7gEVKHDeKH_612-x
+shelf = https://uppic.cc/d/MUwQdh7TVFruW8TqDxQob
+stock = https://uppic.cc/d/xbADfspKDL0S-CkhTiPKz
+--------order con-------------
+packor = 
+recvOr = 
+returnor = 
+---------logo---------
+login = https://uppic.cc/d/9rF5ESghexi65uteRe4yu
+--------alert-------------
+chooseim = 
+chooseim2 = 
+DG = 
+Error = 
+Success = 
+Wait = 
+----------invencost---------

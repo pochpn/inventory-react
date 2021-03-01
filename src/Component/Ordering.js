@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 
+import { connect } from 'react-redux';
 
 class Ordering extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: this.props.userList[this.props.userList.length - 1],
         };
     }
 
     render() {
         return (
             <div className="bg">
-                <Topbar page='ORDERING'/>
+                <Topbar page='ORDERING' />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>
@@ -61,4 +63,17 @@ class Ordering extends Component {
     }
 }
 
-export default Ordering;
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ordering);

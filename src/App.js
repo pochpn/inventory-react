@@ -26,6 +26,8 @@ import Hamburger from './Component/Hamburger';
 import { Provider } from 'react-redux';
 import configureStore from './Store';
 
+import { PersistGate } from 'redux-persist/integration/react'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -33,11 +35,13 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <Provider store={configureStore}>
+
         <Router history={history}>
           <Switch>
-            <Route exact path="/" component={Hamburger} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/forgetPassword" component={ForgetPassword} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />
@@ -55,6 +59,7 @@ class App extends Component {
             <Route exact path="/orderConfirm" component={OrderConfirm} />
           </Switch>
         </Router>
+
       </Provider>
     )
   }

@@ -8,6 +8,26 @@ class ForgetPassword extends Component {
     this.state = {
       email: null,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange = (e) =>{
+    this.setState({[e.target.name]: e.target.value})
+  };
+  handleSubmit = (e)=>{
+    e.preventDefault()
+    emailjs
+      .sendForm(
+        "service_ijbj6ng",
+        "template_uq9rv7i",
+        "bg",
+        "user_GNYzCs6qX14Dws420mU9Z"
+      )
+      .then()
+      .catch()
+      this.setState({ 
+      email : ""
+    })
   }
 
   handleSubmit = (e) => {
@@ -24,14 +44,6 @@ class ForgetPassword extends Component {
     this.setState({ email: "", });
 
     alert("Email has been send please check your mail box!");
-  }
-
-  pop = () => {
-
-    require('../TestSendEmail')
-
-    alert("Email has been send please check your mail box!");
-
   }
 
   render() {
@@ -60,7 +72,7 @@ class ForgetPassword extends Component {
               <button onClick={() => history.push('/')}>
                 Cancel
                 </button>
-              <input type="submit">
+              <input type="Submit">
               </input>
             </div>
           </div>

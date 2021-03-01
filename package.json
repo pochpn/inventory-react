@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "bootstrap": "^4.6.0",
+    "emailjs-com": "^2.6.4",
     "firebase": "^8.2.8",
     "firebase-auth": "^0.1.2",
     "mdbreact": "^5.0.1",

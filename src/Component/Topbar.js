@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style.css'
 import { Nav, Navbar, Button, Form, FormControl, NavDropdown } from 'react-bootstrap'
@@ -24,8 +24,6 @@ class Topbar extends Component {
     }
 
     render() {
-        const [sidebar, setSidebar] = useState(false);
-        const showSidebar = () => setSidebar(!sidebar);
         return (
             <div class="topbar">
                 <Navbar >

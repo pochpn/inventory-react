@@ -21,6 +21,7 @@ import History from './Component/History'
 import ShippingConfirm from './Component/ShippingConfirm'
 
 import Topbar from './Component/Topbar';
+import Hamburger from './Component/Hamburger';
 
 import { Provider } from 'react-redux';
 import configureStore from './Store';
@@ -36,7 +37,7 @@ class App extends Component {
       <Provider store={configureStore}>
         <Router history={history}>
           <Switch>
-            <Route exact path="/" component={Topbar} />
+            <Route exact path="/" component={Hamburger} />
             <Route exact path="/forgetPassword" component={ForgetPassword} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />

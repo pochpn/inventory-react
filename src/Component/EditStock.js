@@ -4,6 +4,9 @@ import Topbar from './Topbar'
 
 import { connect } from 'react-redux';
 
+import Hamburger from './Hamburger'
+
+
 class EditStock extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,7 @@ class EditStock extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar page='EDIT STOCK' />
+        <Hamburger page='EDIT STOCK' />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1>Edit Stock</h1>

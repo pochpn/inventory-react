@@ -10,28 +10,27 @@ import { clearAccount } from '../actions/accountAction'
 
 import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, } from '../pic'
 
+
 class Home extends Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                user: this.props.userList[this.props.userList.length - 1],
-            };
-        }
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: this.props.userList[this.props.userList.length - 1],
+        };
+    }
 
-        onLogout = () => {
-            this.props.clearAccount()
-            this.props.clearUser()
-            console.log(this.state.user)
-            history.push('/')
-        }
+    onLogout = () => {
+        this.props.clearAccount()
+        this.props.clearUser()
+        console.log(this.state.user)
+        history.push('/')
+    }
 
-        render() {
-            return (
-                <div className="bg">
-                    <Topbar page='HOME' user={this.state.user.firstnameEN} />
-
+    render() {
+        return (
+            <div className="bg">
+                <Topbar page='HOME' user={this.state.user.firstnameEN} />
                     <MDBRow >
-
                         <MDBCard className="paper" style={{ width: "22rem" }} onClick={() => {
                             if (this.state.user.departmentID === 7) {
                                 history.push('/dashboard')
@@ -125,11 +124,10 @@ class Home extends Component {
                         </MDBCard>
 
                     </MDBRow>
-
-                </div>
-            )
-        }
+            </div>
+        )
     }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {

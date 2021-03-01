@@ -1,48 +1,73 @@
-  
+
 import React from 'react';
 import './Navbar.css';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
+import { FaHistory, FaUserCog, FaClipboardCheck } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
+import { GiCash } from "react-icons/gi";
+import { ImTruck } from "react-icons/im";
+import { RiInboxArchiveLine, RiInboxUnarchiveLine,RiHistoryLine } from "react-icons/ri";
+import { HiOutlineClipboardCheck } from "react-icons/hi";
 
 
 export const SidebarData = [
-    {
-        title: 'Home',
-        path: '/',
-        icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
-      },
-      {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'nav-text'
-      },
-      {
-        title: 'Products',
-        path: '/products',
-        icon: <FaIcons.FaCartPlus />,
-        cName: 'nav-text'
-      },
-      {
-        title: 'Team',
-        path: '/team',
-        icon: <IoIcons.IoMdPeople />,
-        cName: 'nav-text'
-      },
-      {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
-        cName: 'nav-text'
-      },
-      {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />,
-        cName: 'nav-text'
-      }
-
-
+  {
+    title: 'HOME',
+    path: '/home',
+    icon: <AiFillHome color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'DASHBOARD',
+    path: '/dashboard',
+    icon: <AiFillHome color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'INVENTORY COST',
+    path: '/inventoryCost',
+    icon: <GiCash color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'STOCK & COUNTING',
+    path: '/stock',
+    icon: <AiFillHome color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'ORDERING',
+    path: '/ordering',
+    icon: <RiInboxArchiveLine color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'PICKING',
+    path: '/picking',
+    icon: <RiInboxUnarchiveLine color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'ORDER CONFIRMATION',
+    path: '/orderConfirm',
+    icon: <HiOutlineClipboardCheck color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'CONFIRMATION SHIPPING',
+    path: '/shippingConfirm',
+    icon: <ImTruck color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'HISTORY',
+    path: '/history',
+    icon: <RiHistoryLine color = 'black' />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'MEMBER MANAGEMENT',
+    path: '/memberManage',
+    icon: <FaUserCog color = 'black' />,
+    cName: 'nav-text'
+  },
 ];

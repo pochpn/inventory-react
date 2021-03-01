@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Style.css'
 import { Nav, Navbar, Button, Form, FormControl, NavDropdown } from 'react-bootstrap'
 import history from '../history'
-import './Navbar.css';
 
 import Hamburger from './Hamburger';
 

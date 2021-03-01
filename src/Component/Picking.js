@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
+import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
 
@@ -15,7 +16,7 @@ class Picking extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar page='PICKING' />
+                <Hamburger page='PICKING' />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>

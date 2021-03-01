@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
+import Hamburger from './Hamburger'
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
@@ -18,7 +19,7 @@ class MemberManage extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar page='MEMBER MANAGEMENT' />
+                <Hamburger page='MEMBER MANAGEMENT' />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1>Member Management</h1>
                 </div>

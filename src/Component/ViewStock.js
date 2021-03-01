@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
+import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
 import { purple } from '@material-ui/core/colors';
@@ -18,7 +19,7 @@ class ViewStock extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar page='VIEW STOCK' />
+                <Hamburger page='VIEW STOCK' />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>

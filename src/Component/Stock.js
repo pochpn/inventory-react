@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
+import Hamburger from './Hamburger'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow } from 'mdbreact';
 
 import { connect } from 'react-redux';
@@ -16,7 +17,7 @@ class Stock extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar page='STOCK' />
+        <Hamburger page='STOCK' />
 
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: "11%" }}>

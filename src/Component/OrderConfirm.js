@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
+import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
 
@@ -15,7 +16,7 @@ class OrderConfirm extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar page='ORDER CONFIRMATION' />
+        <Hamburger page='ORDER CONFIRMATION' />
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h1>Order Confirmation</h1>
         </div>

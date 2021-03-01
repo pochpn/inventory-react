@@ -29,8 +29,7 @@ class Dashboard extends Component {
 
             <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/countingStock')}>
               <MDBCardImage
-                style={{ width: "80%", alignItems:"center" }}
-                className="img-fluid d-flex justify-content-center align-items-center"
+                className="img-fluid d-flex justify-content-center"
                 src="https://uppic.cc/d/9vOtr_EuhpJRMurA4UXvp" />
               <div class="d-flex justify-content-center">
                 <MDBCardTitle>Counting Stock</MDBCardTitle>

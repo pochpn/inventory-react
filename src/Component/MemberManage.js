@@ -65,6 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         accountList: state.accountReducer.accountList,
+        userList: state.userReducer.userList,
     };
 };
 

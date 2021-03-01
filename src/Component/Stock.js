@@ -13,7 +13,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="bg">
-        <Topbar />
+        <Topbar page='STOCK'/>
 
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',paddingTop:"11%" }}>

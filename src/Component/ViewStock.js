@@ -13,7 +13,7 @@ class ViewStock extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar/>
+                <Topbar page='VIEW STOCK'/>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <h1>View Stock</h1>

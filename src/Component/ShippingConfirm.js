@@ -14,7 +14,7 @@ class ShippingConfirm extends Component {
   render() {
     return (
         <div className="bg">
-            <Topbar/>
+            <Topbar page='CONFIRMING SHIPPING'/>
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <h1>Confirming Shipping </h1>
             </div>

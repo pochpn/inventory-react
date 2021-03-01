@@ -12,7 +12,7 @@ class Picking extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar/>
+                <Topbar page='PICKING'/>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>

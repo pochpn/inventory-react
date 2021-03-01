@@ -26,11 +26,7 @@ class Home extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar />
-                
-                <div>
-                    <a1>{this.state.user.firstnameEN}</a1>
-                </div>
+                <Topbar page='HOME' user={this.state.user.firstnameEN}/>
 
                 <MDBRow >
 

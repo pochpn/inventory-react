@@ -13,7 +13,7 @@ class Ordering extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar/>
+                <Topbar page='ORDERING'/>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>

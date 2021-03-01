@@ -17,7 +17,7 @@ class MemberManage extends Component {
     render() {
         return (
             <div className="bg">
-                <Topbar />
+                <Topbar page='MEMBER MANAGEMENT'/>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1>Member Management</h1>
                 </div>

@@ -36,7 +36,7 @@ class App extends Component {
       <Provider store={configureStore}>
         <Router history={history}>
           <Switch>
-            <Route exact path="/" component={Topbar} />
+            <Route exact path="/" component={Login} />
             <Route exact path="/forgetPassword" component={ForgetPassword} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/dashboard" component={Dashboard} />

@@ -11,13 +11,14 @@ class MemberManage extends Component {
         this.state = {
             email: null,
             pass: null,
+            user: this.props.userList[this.props.userList.length - 1],
         };
     }
 
     render() {
         return (
             <div className="bg">
-                <Topbar />
+                <Topbar page='MEMBER MANAGEMENT' />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1>Member Management</h1>
                 </div>

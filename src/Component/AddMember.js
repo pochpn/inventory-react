@@ -5,6 +5,8 @@ import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from
 
 import firestore from "../firebase/firestore"
 
+import { connect } from 'react-redux';
+
 class AddMember extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +23,7 @@ class AddMember extends Component {
             tel: null,
             email: null,
             address: null,
+            user: this.props.userList[this.props.userList.length - 1],
         };
     }
 
@@ -155,4 +158,17 @@ class AddMember extends Component {
     }
 }
 
-export default AddMember;
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddMember);

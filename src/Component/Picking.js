@@ -2,17 +2,20 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 
+import { connect } from 'react-redux';
+
 class Picking extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            user: this.props.userList[this.props.userList.length - 1],
         };
     }
 
     render() {
         return (
             <div className="bg">
-                <Topbar/>
+                <Topbar page='PICKING' />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>
@@ -43,7 +46,7 @@ class Picking extends Component {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                             <div>
-                                <button onClick={() => history.push('/')}>
+                                <button onClick={() => history.push('/home')}>
                                     Cancel
                         </button>
                                 <button >
@@ -60,4 +63,18 @@ class Picking extends Component {
     }
 }
 
-export default Picking;
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Picking);
+

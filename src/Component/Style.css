@@ -33,8 +33,6 @@ html {
     background-color: rgba(245, 245, 245, 0.4) !important;
 }
 
-<<<<<<< HEAD
-=======
 .paper2 {
     background-color: rgba(245, 245, 245, 0.4) !important;
     border-radius: 50rem;
@@ -46,4 +44,17 @@ html {
     justify-content: center;
     
 }
->>>>>>> 0c7e3ad5c36ea03e5e37f4b0b23616300b37c596
+
+
+.paper2 {
+    background-color: rgba(245, 245, 245, 0.4) !important;
+    border-radius: 50rem;
+}
+
+.im1 {
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+}
+

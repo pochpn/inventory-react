@@ -40,22 +40,43 @@ class Picking extends Component {
                     <div>
 
                         <div>
-                            <p>Address</p>
-                            <input type="text" />
+                            <div>
+                                <p>Date</p>
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <p>Request Name</p>
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <p>Tel.</p>
+                                <input type="text" />
+                            </div>
                         </div>
                         <div>
-                            <p>Customer Tel.</p>
-                            <input type="text" />
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                             <div>
-                                <button onClick={() => history.push('/home')}>
-                                    Cancel
-                        </button>
-                                <button >
-                                    Next
-                        </button>
+                                <p>Contact Name</p>
+                                <input type="text" />
                             </div>
+                            <div>
+                                <p>Address</p>
+                                <input type="text" />
+                            </div>
+                            <div>
+                                <p>Customer Tel.</p>
+                                <input type="text" />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                                <div>
+                                    <button onClick={() => history.push('/home')}>
+                                        Cancel
+                        </button>
+                                    <button >
+                                        Next
+                        </button>
+                                </div>
+                            </div>
+
                         </div>
 
 

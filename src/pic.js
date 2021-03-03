@@ -1,6 +1,6 @@
 /*----------Home---------*/
 export const cost = 'https://sv1.picz.in.th/images/2021/03/02/ovNg7E.png'
-export const dashboard = 'https://uppic.cc/d/4iKZiMRIGhepGwsBkoZ_r'
+export const dashboard = 'https://sv1.picz.in.th/images/2021/03/03/oe9dfN.png'
 export const historyPic = 'https://sv1.picz.in.th/images/2021/03/02/ovNjH1.png'
 export const orderconfirm = 'https://sv1.picz.in.th/images/2021/03/02/ovNbq2.png'
 export const ordering = 'https://sv1.picz.in.th/images/2021/03/02/ovNUtS.png'

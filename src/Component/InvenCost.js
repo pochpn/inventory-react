@@ -18,9 +18,6 @@ class InvenCost extends Component {
         return (
             <div className="bg">
                 <Hamburger page='INVENTORY COST' user={this.state.user} />
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <h1>Inventory Cost</h1>
-                </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <button>

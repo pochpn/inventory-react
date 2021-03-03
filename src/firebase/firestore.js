@@ -38,7 +38,7 @@ class Firestore {
     addProduct = (product, success, reject) => {
         firebase
             .firestore()
-            .collection('Product')
+            .collection('Products')
             .add(product)
             .then(function (docRef) {
                 success(docRef);
@@ -62,11 +62,25 @@ class Firestore {
             });
     }
 
-    getProduct = (id, success, reject) => {
+    getProductByShelf = (shelf, success, reject) => {
         firebase
             .firestore()
-            .collection('Product')
-            .where('id', '==', id)
+            .collection('Products')
+            .where('shelf', '==', shelf)
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    }
+
+    getProductByType = (type, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Products')
+            .where('type', '==', type)
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);
@@ -92,7 +106,7 @@ class Firestore {
     getAllProduct(success, reject) {
         firebase
             .firestore()
-            .collection('Product')
+            .collection('Products')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);

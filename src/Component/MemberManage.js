@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import history from '../history'
-import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
+
+import { SidebarData } from './SidebarData';
+import { ToastHeader } from 'react-bootstrap';
 
 class MemberManage extends Component {
     constructor(props) {
@@ -13,16 +15,18 @@ class MemberManage extends Component {
             email: null,
             pass: null,
             user: this.props.userList[this.props.userList.length - 1],
+            accounts: this.props.accountList,
         };
+    }
+
+    showMembers = () => {
+
     }
 
     render() {
         return (
             <div className="bg">
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <h1>Member Management</h1>
-                </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div>
                         <a1>Employee id </a1>
@@ -49,8 +53,15 @@ class MemberManage extends Component {
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <button onClick={() => history.push('/memberManage/addMember')}>
                         Add Menber
-                </button>
+                    </button>
                 </div>
+                {this.props.accountList.map((item) => {
+                    return (
+                        <ul>
+                            <li><span>{item.email}</span></li>
+                        </ul>
+                    );
+                })}
             </div>
         )
     }

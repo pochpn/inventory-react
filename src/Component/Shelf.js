@@ -10,6 +10,7 @@ class Shelf extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            shelf: this.props.location.state.shelf,
         };
     }
 
@@ -20,7 +21,7 @@ class Shelf extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page={this.props.location.state.shelf} user={this.state.user} />
+                <Hamburger page={this.state.shelf} user={this.state.user} />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div>
                         <a1>Employee id </a1>
@@ -46,7 +47,7 @@ class Shelf extends Component {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <button onClick={() => history.push('/memberManage/addMember')}>
-                        Add Menber
+                        Add Member
                     </button>
                 </div>
                 {this.props.accountList.map((item) => {

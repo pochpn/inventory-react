@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 import Hamburger from './Hamburger'
-
+import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 
 class Picking extends Component {
@@ -16,6 +16,8 @@ class Picking extends Component {
     render() {
         return (
             <div className="bg">
+                <Paper className="paperPicking">
+                </Paper>
                 <Hamburger page='PICKING' />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
@@ -57,6 +59,7 @@ class Picking extends Component {
                         </div>
 
                     </div>
+                    
                 </div>
             </div>
 

@@ -20,9 +20,6 @@ class MemberManage extends Component {
         return (
             <div className="bg">
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <h1>Member Management</h1>
-                </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div>
                         <a1>Employee id </a1>

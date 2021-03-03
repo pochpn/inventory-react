@@ -330,3 +330,13 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
+.paperPicking {
+    position: absolute;
+    width: 1886px; /*1404*/
+    height: 750px;/*561*/
+    left: 18px;
+    top: 234px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}

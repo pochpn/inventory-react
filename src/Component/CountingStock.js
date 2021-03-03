@@ -18,9 +18,6 @@ class CountingStock extends Component {
       <div className="bg">
         <Hamburger page='COUNTING STOCK' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <h1>Counting Stock</h1>
-          </div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <div>
               <a1>Shelf ID</a1>

@@ -43,6 +43,7 @@ class Login extends Component {
             pass: null,
             account: null,
             user: this.props.userList[this.props.userList.length - 1],
+            accounts: null,
         };
     }
 

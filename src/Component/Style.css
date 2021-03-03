@@ -330,7 +330,34 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
-
+.textPickD {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 10%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickCT {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
 .paperPicking {
     position: absolute;
     width: 1886px; /*1404*/

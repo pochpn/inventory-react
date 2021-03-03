@@ -18,7 +18,7 @@ class EditStock extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='EDIT STOCK' />
+        <Hamburger page='EDIT STOCK' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1>Edit Stock</h1>

@@ -16,7 +16,7 @@ class CountingStock extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='COUNTING STOCK' />
+        <Hamburger page='COUNTING STOCK' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1>Counting Stock</h1>

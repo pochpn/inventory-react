@@ -30,12 +30,7 @@ class Home extends Component {
 
     render() {
         return (
-
-
             <div className="bg" >
-
-
-
                 <Paper className="paperDash" onClick={() => history.push('/dashboard')}>
                     <div>
                         <img className="imDash" src={dashboard} />
@@ -46,8 +41,8 @@ class Home extends Component {
                 <Paper className="paperSt" onClick={() => history.push('/stock')}>
                     <div>
                         <img className="imSt" src={standcount} />
-                        <p className="textSt" >STOCK &
-                        COUNTING
+                        <p className="textSt" >
+                            STOCK & COUNTING
                         </p>
                     </div>
                 </Paper>
@@ -91,7 +86,7 @@ class Home extends Component {
 
                     </div>
                 </Paper>
-                <Hamburger page='HOME' />
+                <Hamburger page='HOME' user={this.state.user} />
             </div >
 
         )

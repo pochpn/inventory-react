@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import history from '../history'
 import './Style.css'
 import firestore from "../firebase/firestore"
-import auth from "../firebase/Auth"
 
 import Button from 'react-bootstrap/Button';
 import styled, { css } from 'styled-components'

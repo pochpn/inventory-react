@@ -18,7 +18,7 @@ class ShippingConfirm extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page='CONFIRMING SHIPPING' />
+                <Hamburger page='CONFIRMING SHIPPING' user={this.state.user} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1>Confirming Shipping </h1>
                 </div>

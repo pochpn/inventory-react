@@ -16,7 +16,7 @@ class OrderConfirm extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='ORDER CONFIRMATION' />
+        <Hamburger page='ORDER CONFIRMATION' user={this.state.user} />
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h1>Order Confirmation</h1>
         </div>

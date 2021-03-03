@@ -195,13 +195,16 @@ body, html {
     justify-content: center;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+
 .textDb {
     position: absolute;
     width: 291px;
     height: 73px;
     left: 25%;
     top: 75%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -215,7 +218,7 @@ body, html {
     position: absolute;
     width: 215px;
     height: 135px;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -230,7 +233,7 @@ body, html {
     height: 73px;
     left: 12%;
     top: 70%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -245,7 +248,7 @@ body, html {
     width: 266px;
     height: 146px;
     left: 5%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -260,7 +263,7 @@ body, html {
     height: 73px;
     left: 18%;
     top: 70%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -276,7 +279,7 @@ body, html {
     height: 73px;
     left: 30%;
     top: 55%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -291,7 +294,7 @@ body, html {
     height: 54px;
     left: 18%;
     top: 75%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
@@ -305,7 +308,7 @@ body, html {
     height: 72px;
     left: 23%;
     top: 60%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
@@ -319,7 +322,7 @@ body, html {
     height: 73px;
     left: 25%;
     top: 75%;
-    font-family: Prompt;
+    font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;

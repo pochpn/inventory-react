@@ -1,9 +1,26 @@
 import React, { Component } from 'react'
 import history from '../history'
 import emailjs from 'emailjs-com';
-
+import Paper from '@material-ui/core/Paper';
 import firebase from '../firebase/firestore'
+import styled, { css } from 'styled-components'
 
+const ButtonSend = styled.button`
+  background: #ef3f3e;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+  `
+const ButtonCancel = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
 class ForgetPassword extends Component {
   constructor(props) {
     super(props);
@@ -28,11 +45,11 @@ class ForgetPassword extends Component {
       this.setState({
         firstnameEN: user.firstnameEN,
         pass: user.pass,
-        email :user.email,
+        email: user.email,
       })
     });
     if (user.email != this.state.email) {
-        console.log("error")
+      console.log("error")
     } else {
       this.handleSubmit()
     }
@@ -76,42 +93,48 @@ class ForgetPassword extends Component {
   render() {
     return (
       <div className="bg">
-        <form className="forget_Pass">
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <h1>Forget Password</h1>
+        <Paper className="paperForget">
+          <form className="forget_Pass">
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <h1>Forget Password</h1>
+              </div>
+              <div>
+                <h1>Account Recover</h1>
+              </div>
+              <div>
+                <p>Please enter your email for receive password</p>
+              </div>
+              <div>
+                <input type="text"
+                  id="email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={txt => this.setState({ email: txt.target.value })} />
+                <input type="hidden"
+                  id="name"
+                  name="name"
+                  value={this.state.firstnameEN} />
+                <input type="hidden"
+                  id="pass"
+                  name="pass"
+                  value={this.state.pass} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div style={{ paddingLeft: 20, paddingTop: 25 }}>
+                  <ButtonCancel style={{ width: 100 }} onClick={this.onLogin}>
+                    Cancel
+                </ButtonCancel>
+                </div>
+                <div style={{ paddingLeft: 20, paddingTop: 25 }}>
+                  <ButtonSend style={{ width: 100 }} onClick={this.onLogin}>
+                    Send
+                </ButtonSend>
+                </div>
+              </div>
             </div>
-            <div>
-              <h1>Account Recover</h1>
-            </div>
-            <div>
-              <p>Please enter your email for receive password</p>
-            </div>
-            <div>
-              <input type="text"
-                id="email"
-                name="email"
-                value={this.state.email}
-                onChange={txt => this.setState({ email: txt.target.value })} />
-              <input type="hidden"
-                id="name"
-                name="name"
-                value={this.state.firstnameEN} />
-              <input type="hidden"
-                id="pass"
-                name="pass"
-                value={this.state.pass} />
-            </div>
-            <div>
-              <button onClick={() => history.push('/')}>
-                Cancel
-              </button>
-              <button onClick={this.onSend}>
-                Send
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </Paper>
       </div>
 
     )

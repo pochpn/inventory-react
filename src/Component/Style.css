@@ -196,8 +196,6 @@ body, html {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
-
-
 .textDb {
     position: absolute;
     width: 291px;
@@ -218,7 +216,7 @@ body, html {
     position: absolute;
     width: 219px;
     height: 135px;
-    margin-left: 25px ;
+    margin-left: 25px;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -226,7 +224,7 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    padding-left:0.7%;
+    padding-left: 0.7%;
 }
 
 .textOd {
@@ -332,6 +330,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickD {
     position: absolute;
     width: 208px;
@@ -346,6 +345,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickCT {
     position: absolute;
     width: 208px;
@@ -360,6 +360,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickRN {
     position: absolute;
     width: 208px;
@@ -374,6 +375,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickTel {
     position: absolute;
     width: 208px;
@@ -388,6 +390,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickAdr {
     position: absolute;
     width: 208px;
@@ -402,6 +405,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textPickCC {
     position: absolute;
     width: 208px;
@@ -416,19 +420,25 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .paperPicking {
     position: absolute;
-    width: 1886px; /*1404*/
-    height: 600px;/*561*/
+    width: 1886px;
+    /*1404*/
+    height: 600px;
+    /*561*/
     left: 18px;
     top: 234px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
 }
+
 .paperOrdering {
     position: absolute;
-    width: 1886px; /*1404*/
-    height: 600px;/*561*/
+    width: 1886px;
+    /*1404*/
+    height: 600px;
+    /*561*/
     left: 18px;
     top: 234px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -436,6 +446,7 @@ body, html {
 }
 
 /*Stock*/
+
 .paperVs {
     justify-items: center;
     align-items: center;
@@ -445,6 +456,18 @@ body, html {
     margin-left: 2%;
     margin-right: 2%;
 }
+
+.paperForget {
+    /* Forgot Password */
+    position: absolute;
+    width: 608px;
+    height: 630px;
+    left: 661px;
+    top: 197px;
+    background: rgba(244, 244, 244, 0.4)!important;
+    border-radius: 20px;
+}
+
 .imVs {
     justify-self: center;
     margin-left: 10%;
@@ -452,7 +475,10 @@ body, html {
     width: 80%;
     height: 80%;
 
+    width: 100%;
+    height: 100%;
 }
+
 .textSto {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -471,6 +497,7 @@ body, html {
 }
 
 /* Text Ordering */
+
 .textOrSup {
     position: absolute;
     width: 208px;
@@ -485,6 +512,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textOrDate {
     position: absolute;
     width: 208px;
@@ -499,6 +527,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textOrAddr {
     position: absolute;
     width: 208px;
@@ -513,6 +542,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textOrTelAd {
     position: absolute;
     width: 208px;
@@ -527,6 +557,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textOrConN {
     position: absolute;
     width: 208px;
@@ -541,6 +572,7 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
 .textOrTelCn {
     position: absolute;
     width: 208px;
@@ -555,3 +587,4 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+

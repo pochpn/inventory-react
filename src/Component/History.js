@@ -18,7 +18,7 @@ class History extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='HISTORY' />
+        <Hamburger page='HISTORY' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1>History</h1>

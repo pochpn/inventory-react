@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import history from './history'
 
 import Login from './Component/Login'
-import Registration from './Component/Registration'
 import ForgetPassword from './Component/ForgetPassword'
 import Home from './Component/Home'
 import Dashboard from './Component/Dashboard'
@@ -20,13 +19,8 @@ import OrderConfirm from './Component/OrderConfirm'
 import History from './Component/History'
 import ShippingConfirm from './Component/ShippingConfirm'
 
-import Topbar from './Component/Topbar';
-import Hamburger from './Component/Hamburger';
-
 import { Provider } from 'react-redux';
 import configureStore from './Store';
-
-import { PersistGate } from 'redux-persist/integration/react'
 
 class App extends Component {
   constructor(props) {

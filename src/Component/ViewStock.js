@@ -19,7 +19,7 @@ class ViewStock extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page='VIEW STOCK' />
+                <Hamburger page='VIEW STOCK' user={this.state.user} />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>

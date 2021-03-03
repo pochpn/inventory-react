@@ -17,7 +17,7 @@ class InvenCost extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page='INVENTORY COST' />
+                <Hamburger page='INVENTORY COST' user={this.state.user} />
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h1>Inventory Cost</h1>
                 </div>

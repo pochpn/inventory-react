@@ -16,7 +16,7 @@ class Ordering extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page='ORDERING' />
+                <Hamburger page='ORDERING' user={this.state.user} />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>

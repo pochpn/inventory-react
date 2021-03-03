@@ -20,7 +20,7 @@ class Stock extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='STOCK' />
+        <Hamburger page='STOCK' user={this.state.user} />
 
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: "14%" }}>

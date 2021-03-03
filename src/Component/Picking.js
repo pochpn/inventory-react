@@ -18,7 +18,7 @@ class Picking extends Component {
             <div className="bg">
                 <Paper className="paperPicking">
                 </Paper>
-                <Hamburger page='PICKING' />
+                <Hamburger page='PICKING' user={this.state.user} />
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'Right' }}>
                     <div>
                         <div>
@@ -59,7 +59,7 @@ class Picking extends Component {
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
 

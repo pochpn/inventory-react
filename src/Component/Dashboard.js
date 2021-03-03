@@ -18,7 +18,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='DASHBOARD' />
+        <Hamburger page='DASHBOARD' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div>
             <h1>Dashboard</h1>

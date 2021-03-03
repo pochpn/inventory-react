@@ -213,7 +213,7 @@ body, html {
 
 .textSt {
     position: absolute;
-    width: 215px;
+    width: 219px;
     height: 135px;
     font-family: Prompt;
     font-style: normal;
@@ -222,6 +222,7 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
+    padding-left:0.7%;
 }
 
 .textOd {
@@ -336,4 +337,17 @@ body, html {
     top: 234px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+}
+
+/*Stock*/
+.paper1 {
+    width: "18rem";
+    margin: "1.2rem";
+    border-radius: "8%";
+    align-items: center;
+}
+
+.im1 {
+    display: flex;
+    justify-content: center;
 }

@@ -41,7 +41,7 @@ class ViewStock extends Component {
                         <input type="text" style={{ fontSize: 24 }}></input>
                     </div>
                     <img
-                        style={{justifyContent:'flex-end',width:"10%"}}
+                        style={{ justifyContent: 'flex-end', width: "10%" }}
                         src="https://uppic.cc/d/s5ASX7gEVKHDeKH_612-x" />
 
                 </div>
@@ -52,9 +52,13 @@ class ViewStock extends Component {
 
                     <div>
                         <MDBRow>
-                            <MDBCard className="paper" style={{ width: "18rem", height: "18rem", margin: "1.2rem", borderRadius: "8%", alignItems: 'center' }} onClick={() => history.push('/stock/')}>
+                            <MDBCard className="paper" style={{ width: "18rem", height: "18rem", margin: "1.2rem", borderRadius: "8%", alignItems: 'center' }}
+                                onClick={() => history.push({
+                                    pathname: '/stock/viewStock/shelf',
+                                    state: {shelf: 'S1-01'},
+                                })}>
                                 <img
-                                    
+
                                     style={{ width: '70%', alignSelf: 'center' }}
                                     src="https://sv1.picz.in.th/images/2021/03/02/opFg5Q.png" />
                                 <div class="d-flex justify-content-center">
@@ -64,7 +68,11 @@ class ViewStock extends Component {
                                 </div>
                             </MDBCard>
 
-                            <MDBCard className="paper" style={{ width: "18rem", height: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/countingStock')}>
+                            <MDBCard className="paper" style={{ width: "18rem", height: "18rem", margin: "1.2rem", borderRadius: "8%" }}
+                                onClick={() => history.push({
+                                    pathname: '/stock/viewStock/shelf',
+                                    state: {shelf: 'S1-02'},
+                                })}>
                                 <img
                                     style={{ width: '70%', alignSelf: 'center' }}
                                     alt="Responsive image"

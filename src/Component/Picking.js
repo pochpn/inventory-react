@@ -5,6 +5,24 @@ import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import './Style.css'
+
+import styled, { css } from 'styled-components'
+
+
+const ButtonCancel = styled.button`
+  background: #A09797;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+
+const ButtonNext = styled.button`
+  background: #EF3F3E;
+  border-radius: 10px;
+  border: 2px;
+  color: #000000;
+`
+
 class Picking extends Component {
     constructor(props) {
         super(props);
@@ -54,12 +72,14 @@ class Picking extends Component {
 
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                         <div>
-                            <button onClick={() => history.push('/home')}>
-                                Cancel
-                            </button>
-                            <button >
-                                Next
-                            </button>
+                            <div style={{paddingLeft: 20, paddingTop: 25 }}>
+                                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
+                                    Cancel
+                                </ButtonCancel>
+                                <ButtonNext style={{fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking')}>
+                                    Next
+                                </ButtonNext>
+                            </div>
                         </div>
                     </div>
                 </Paper>

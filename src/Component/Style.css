@@ -442,15 +442,16 @@ body, html {
     width: 315px;
     height: 270px;
     background: rgba(255, 255, 255, 0.4)!important;
-    border-radius: 20%;
     margin-left: 2%;
     margin-right: 2%;
 }
 .imVs {
     justify-self: center;
-    width: 100%;
-    height: 100%;
-    
+    margin-left: 10%;
+    padding-top: 4.5%;
+    width: 80%;
+    height: 80%;
+    /*background-color: #6E0D0D;*/
 }
 .textSto {
     font-family: 'Prompt', sans-serif;

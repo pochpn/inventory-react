@@ -21,22 +21,22 @@ class Stock extends Component {
     return (
       <div className="bg">
         <Hamburger page='STOCK & COUNTING' user={this.state.user} />
-        <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'17%',justifyContent:'center'}}>
-          <Paper className="paperVs" onClick={() => history.push('/stock/viewStock')}>
+        <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'19%',justifyContent:'center'}}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/viewStock')}>
             <div>
               <img className="imVs" src={viewstock} />
               <p className="textSto">View Stock</p>
             </div>
           </Paper>
 
-          <Paper className="paperVs" onClick={() => history.push('/stock/countingStock')}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/countingStock')}>
             <div>
               <img className="imVs" src={counting} />
               <p className="textSto">Counting Stock</p>
             </div>
           </Paper>
 
-          <Paper className="paperVs" onClick={() => history.push('/stock/editStock')}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock')}>
             <div>
               <img className="imVs" src={editstock} />
               <p className="textSto">Edit Stock</p>

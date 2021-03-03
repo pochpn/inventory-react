@@ -7,6 +7,8 @@ import firestore from "../firebase/firestore"
 
 import { connect } from 'react-redux';
 
+import { addAccount } from '../actions/accountAction'
+
 class AddMember extends Component {
     constructor(props) {
         super(props);
@@ -44,9 +46,11 @@ class AddMember extends Component {
             pass: this.state.email,
         }
         firestore.addUser(user, this.addSuccess, this.addReject)
+        this.props.addAccount(user)
     }
 
     addSuccess = (doc) => {
+        
         console.log(doc.id)
     }
 
@@ -157,7 +161,7 @@ class AddMember extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        addAccount: (account) => dispatch(addAccount(account)),
     };
 };
 

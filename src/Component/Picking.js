@@ -82,7 +82,7 @@ class Picking extends Component {
 
                     </div>
                 </Paper>
-                <Hamburger page='PICKING' />
+                <Hamburger page='PICKING' user={this.state.user} />
 
             </div>
 

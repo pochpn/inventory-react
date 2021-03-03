@@ -448,10 +448,10 @@ body, html {
 .imVs {
     justify-self: center;
     margin-left: 10%;
-    padding-top: 4.5%;
+    padding-top: 1%;
     width: 80%;
     height: 80%;
-    /*background-color: #6E0D0D;*/
+
 }
 .textSto {
     font-family: 'Prompt', sans-serif;
@@ -461,6 +461,8 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
+    align-self: start;
+    
 }
 
 .im1 {

@@ -20,9 +20,6 @@ class Dashboard extends Component {
       <div className="bg">
         <Hamburger page='DASHBOARD' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <div>
-            <h1>Dashboard</h1>
-          </div>
         </div>
       </div>
 

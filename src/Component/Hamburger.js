@@ -25,8 +25,8 @@ class Hamburger extends Component {
           <Link to='#' className='menu-bars'>
             <RiMenuUnfoldLine size={40} onClick={this.showSidebar} />
           </Link>
-          <span style={{color: '#fff'}}>{this.props.page}</span>
-          <span style={{color: '#fff'}}>{this.state.user.firstnameEN}</span>
+          <span className='title'>{this.props.page}</span>
+          <span clastyle={{color: '#fff'}}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={this.showSidebar}>

@@ -17,73 +17,53 @@ class Picking extends Component {
         return (
             <div className="bg">
                 <Paper className="paperPicking">
-
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 128, paddingLeft: 350 }}>
+                        <div style={{ paddingTop: 110, paddingLeft: 400 }}>
                             <p className="textPickD">Date</p>
                             <input type="text" style={{ fontSize: 24, }}></input>
                         </div>
-                        <div style={{ paddingTop: 128, paddingLeft: 600 }}>
+                        <div style={{ paddingTop: 110, paddingLeft: 600 }}>
                             <p className="textPickCT">Contact Name</p>
                             <input type="text" style={{ fontSize: 24, }} />
                         </div>
                     </div>
-                    <div>
-                        <p>Request Name</p>
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <p>Tel.</p>
-                        <input type="text" />
-                    </div>
-
-                    <div>
-
-                        <div>
-                            <div>
-                                <p>Date</p>
-                                <input type="text" />
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div style={{ paddingTop: 48, paddingLeft: 400 }}>
+                                <p className="textPickRN">Request Name</p>
+                                <input type="text" style={{ fontSize: 24, }} />
                             </div>
-                            <div>
-                                <p>Request Name</p>
-                                <input type="text" />
-                            </div>
-                            <div>
-                                <p>Tel.</p>
-                                <input type="text" />
+                            <div style={{ paddingTop: 48, paddingLeft: 400 }}>
+                                <p className="textPickTel">Tel.</p>
+                                <input type="text" style={{ fontSize: 24, }} />
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                <p>Contact Name</p>
-                                <input type="text" />
-                            </div>
-                            <div>
-                                <p>Address</p>
-                                <input type="text" />
-                            </div>
-                            <div>
-                                <p>Customer Tel.</p>
-                                <input type="text" />
-                            </div>
-                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                <div>
-                                    <button onClick={() => history.push('/home')}>
-                                        Cancel
-                        </button>
-                                    <button >
-                                        Next
-                        </button>
-                                </div>
-                            </div>
-
+                        <div style={{ paddingTop: 48, paddingLeft: 600 }}>
+                            <p className="textPickAdr">Address</p>
+                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 }} />
                         </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{
+                            paddingTop: 48, paddingLeft: 1334
+                        }}>
+                            <p className="textPickCC">Customer Tel.</p>
+                            <input type="text" style={{ fontSize: 24, }} />
+                        </div>
+                    </div>
 
-
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                        <div>
+                            <button onClick={() => history.push('/home')}>
+                                Cancel
+                            </button>
+                            <button >
+                                Next
+                            </button>
+                        </div>
                     </div>
                 </Paper>
                 <Hamburger page='PICKING' user={this.state.user} />
-
             </div>
 
         )

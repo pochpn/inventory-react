@@ -341,7 +341,7 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 73px;
     /* identical to box height */
     color: #6E0D0D;
@@ -355,7 +355,63 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 28px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickRN {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 10%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickTel {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 10%;
+    top: 45%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickAdr {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickCC {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 70%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
     line-height: 73px;
     /* identical to box height */
     color: #6E0D0D;

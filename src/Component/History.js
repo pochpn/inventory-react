@@ -20,9 +20,6 @@ class History extends Component {
       <div className="bg">
         <Hamburger page='HISTORY' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <h1>History</h1>
-          </div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             <div>
               <a1>Types</a1>

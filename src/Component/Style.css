@@ -332,11 +332,47 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
-
+.textPickD {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 10%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textPickCT {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
 .paperPicking {
     position: absolute;
     width: 1886px; /*1404*/
-    height: 750px;/*561*/
+    height: 600px;/*561*/
+    left: 18px;
+    top: 234px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+.paperOrdering {
+    position: absolute;
+    width: 1886px; /*1404*/
+    height: 600px;/*561*/
     left: 18px;
     top: 234px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -367,5 +403,96 @@ body, html {
     font-size: 26px;
     line-height: 73px;
     text-align: center;
+    color: #6E0D0D;
+}
+
+.im1 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Text Ordering */
+.textOrSup {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 12.5%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textOrDate {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textOrAddr {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 12.5%;
+    top: 29%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textOrTelAd {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 12.5%;
+    top: 68%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textOrConN {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 29%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+.textOrTelCn {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 55%;
+    top: 42%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 73px;
+    /* identical to box height */
     color: #6E0D0D;
 }

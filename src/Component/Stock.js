@@ -20,7 +20,7 @@ class Stock extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='STOCK' user={this.state.user} />
+        <Hamburger page='STOCK & COUNTING' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'17%',justifyContent:'center'}}>
           <Paper className="paperVs" onClick={() => history.push('/stock/viewStock')}>
             <div>

@@ -344,14 +344,28 @@ body, html {
 }
 
 /*Stock*/
-.paper1 {
-    width: "18rem";
-    margin: "1.2rem";
-    border-radius: "8%";
+.paperVs {
+    justify-items: center;
     align-items: center;
+    width: 315px;
+    height: 270px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
-
-.im1 {
-    display: flex;
-    justify-content: center;
+.imVs {
+    justify-self: center;
+    width: 100%;
+    height: 100%;
+    
+}
+.textSto {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
 }

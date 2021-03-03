@@ -21,50 +21,35 @@ class Stock extends Component {
     return (
       <div className="bg">
         <Hamburger page='STOCK & COUNTING' user={this.state.user} />
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: "14%" }}>
-          <Paper className="paper1" onClick={() => history.push('/stock/viewStock')}>
+        <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'17%',justifyContent:'center'}}>
+          <Paper className="paperVs" onClick={() => history.push('/stock/viewStock')}>
             <div>
-              <img className="im1" src={viewstock} />
-              <p className="textDb">View Stock</p>
+              <img className="imVs" src={viewstock} />
+              <p className="textSto">View Stock</p>
             </div>
           </Paper>
 
-          <MDBRow>
-            <MDBCard className="paper" style={{  }} onClick={() => history.push('/stock/viewStock')}>
-              <MDBCardImage
-                className="img-fluid d-flex justify-content-center"
-                src={viewstock} />
-              <div class="d-flex justify-content-center">
-                <MDBCardTitle >View Stock</MDBCardTitle>
-              </div>
-            </MDBCard>
+          <Paper className="paperVs" onClick={() => history.push('/stock/countingStock')}>
+            <div>
+              <img className="imVs" src={counting} />
+              <p className="textSto">Counting Stock</p>
+            </div>
+          </Paper>
 
-            <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/countingStock')}>
-              <MDBCardImage
-                className="img-fluid d-flex justify-content-center"
-                src={counting} />
-              <div class="d-flex justify-content-center">
-                <MDBCardTitle>Counting Stock</MDBCardTitle>
-              </div>
+          <Paper className="paperVs" onClick={() => history.push('/stock/editStock')}>
+            <div>
+              <img className="imVs" src={editstock} />
+              <p className="textSto">Edit Stock</p>
+            </div>
+          </Paper>
 
-            </MDBCard>
-
-            <MDBCard className="paper" style={{ width: "18rem", margin: "1.2rem", borderRadius: "8%" }} onClick={() => history.push('/stock/editStock')}>
-              <MDBCardImage
-                className="img-fluid d-flex justify-content-center"
-                src={editstock} />
-              <div class="d-flex justify-content-center">
-                <MDBCardTitle>Edit Stock</MDBCardTitle>
-              </div>
-
-            </MDBCard>
-          </MDBRow>
         </div>
       </div>
 
     )
   }
-}
+};
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

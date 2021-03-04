@@ -14,7 +14,7 @@ export const editstock = 'https://sv1.picz.in.th/images/2021/03/04/oe5Lab.png'
 export const editpro = 'https://uppic.cc/d/sBhdQrgDze4yO86niNZvZ'
 export const editshelf = 'https://uppic.cc/d/6-kJ3_gLu-XGJyMtJEFdD'
 export const search = 'https://sv1.picz.in.th/images/2021/03/04/oyVhgW.png'
-export const shelf = 'https://uppic.cc/d/MUwQdh7TVFruW8TqDxQob'
+export const shelf = 'https://sv1.picz.in.th/images/2021/03/04/oyaF7f.png'
 export const stock = 'https://uppic.cc/d/xbADfspKDL0S-CkhTiPKz'
 /*--------order con-------------*/
 export const packor = ''

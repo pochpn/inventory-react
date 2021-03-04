@@ -62,6 +62,20 @@ class Firestore {
             });
     }
 
+    getUserBySearch = (searchObject, object, success, reject) => {
+        firebase
+            .firestore()
+            .collection('User')
+            .where(searchObject, '==', object)
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    }
+
     getProductByShelf = (shelf, success, reject) => {
         firebase
             .firestore()

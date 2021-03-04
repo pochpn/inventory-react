@@ -103,12 +103,12 @@ class ForgetPassword extends Component {
                 <p>Please enter your email for </p>
                 <p>receive password</p>
               </div>
-              <div style={{ paddingTop: 130 }}>
+              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 130 , }}>
                 <input type="text"
                   id="email"
                   name="email"
                   value={this.state.email}
-                  onChange={txt => this.setState({ email: txt.target.value })} style={{ fontSize: 24, paddingLeft: 90 }} />
+                  onChange={txt => this.setState({ email: txt.target.value })} style={{ fontSize: 24,}} />
                 <input type="hidden"
                   id="name"
                   name="name"

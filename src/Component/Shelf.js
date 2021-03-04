@@ -13,12 +13,15 @@ class Shelf extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
-            productsList: []
+            productList: null,
         };
     }
 
     componentDidMount() {
-        firestore.getProductByShelf(this.state.shelf, this.getSuccess, this.getReject)
+        /*firestore.getProductByShelf(this.state.shelf, this.getSuccess, this.getReject)*/
+        /*let products = []
+        products = this.props.productsList.filter((item) => item.shelf === this.state.shelf)
+        this.setState({productList: products})*/
     }
 
     getSuccess = (querySnapshot) => {
@@ -30,8 +33,8 @@ class Shelf extends Component {
             products = products.concat(product)
         });
         console.log(products)
-        this.setState({productsList: products})
-        console.log(this.state.productsList)
+        this.setState({ productList: products })
+        console.log(this.state.producsList)
     }
 
     getReject = (error) => {
@@ -70,16 +73,19 @@ class Shelf extends Component {
                         Add Member
                     </button>
                 </div>
-                {this.state.productsList.map((item) => {
-                    return (
-                        <ul>
-                            <li><span>{item.pic}</span></li>
-                            <li><span>{item.productID}</span></li>
-                            <li><span>{item.productName}</span></li>
-                            <li><span>{item.shelf}</span></li>
-                            <li><span>------------------------</span></li>
-                        </ul>
-                    );
+                {this.props.productList.map((item) => {
+                    if (item.shelf === this.state.shelf) {
+                        return (
+                            <ul>
+                                <li><span>{item.pic}</span></li>
+                                <li><span>{item.productID}</span></li>
+                                <li><span>{item.productName}</span></li>
+                                <li><span>{item.shelf}</span></li>
+                                <li><span>------------------------</span></li>
+                            </ul>
+                        );
+                    }
+
                 })}
             </div>
         )
@@ -97,6 +103,7 @@ const mapStateToProps = (state) => {
     return {
         accountList: state.accountReducer.accountList,
         userList: state.userReducer.userList,
+        productList: state.productReducer.productList,
     };
 };
 

@@ -690,3 +690,74 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
+
+.paperABC {
+    position: absolute;
+    width: 365px;
+    height: 319px;
+    left: 383px;
+    top: 158px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.paperTT {
+    position: absolute;
+    width: 765px;
+    height: 319px;
+    left: 783px;
+    top: 158px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperTI {
+    position: absolute;
+    width: 365px;
+    height: 477px;
+    left: 383px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperIL {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 777px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperOTW {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 1183px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperDam {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 777px;
+    top: 747px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperTO {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 1183px;
+    top: 747px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}

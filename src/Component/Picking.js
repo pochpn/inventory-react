@@ -78,7 +78,7 @@ class Picking extends Component {
                                 </ButtonCancel>
                         </div>
                         <div style={{ paddingLeft: 50, paddingTop: 25 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking')}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking/pickingChart')}>
                                 Next
                                 </ButtonNext>
                         </div>

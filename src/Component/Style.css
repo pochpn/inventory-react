@@ -23,6 +23,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .bgLogin {
@@ -172,7 +173,7 @@ body, html {
 .dataLeft {
     position: absolute;
     width: 616px;
-    height: 764px;
+    height: 820px;
     left: 8px;
     top: 248px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -182,11 +183,37 @@ body, html {
 .dataRight {
     position: absolute;
     width: 1280px;
-    height: 705px;
+    height: 745px;
     left: 630px;
     top: 248px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+}
+
+.buttonOrder {
+    position: absolute;
+    width: 1283px;
+    height: 100px;
+    left: 627px;
+    top: 892px;
+    /* 970 */
+    background: rgba(0, 0, 0, 0)!important;
+    border-radius: 0px;
+    box-shadow: none;
+    border-bottom-width: 0px;
+}
+
+.buttonPickk {
+    position: absolute;
+    width: 1283px;
+    height: 100px;
+    left: 627px;
+    top: 892px;
+    /* 970 */
+    background: rgba(0, 0, 0, 0)!important;
+    border-radius: 0px;
+    box-shadow: none;
+    border-bottom-width: 0px;
 }
 
 /* im */
@@ -708,6 +735,37 @@ body, html {
 }
 
 /* DASHBOARD */
+.paperShelf {
+    justify-items: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.imViewStock {
+    justify-self: center;
+    margin-left: 15%;
+    margin-top: 3%;
+    width: 70%;
+    height: 70%;
+    /*background-color: #6E0D0D;*/
+    /* background-color: aquamarine; */
+}
+
+.textViewStock {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+    align-self: start;
+    /* background-color: aqua; */
+}
 
 .paperABC {
     position: absolute;
@@ -920,4 +978,223 @@ body, html {
     line-height: 39px;
     text-align: center;
     color: #000000;
+}
+/* txt Ordering Chat */
+
+.txtProID {
+    position: absolute;
+    width: 208px;
+    height: 50px;
+    left: 5%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtProNm {
+    position: absolute;
+    width: 208px;
+    height: 50px;
+    left: 45%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtProOr {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 37%;
+    top: 50%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopL1 {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 3%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopL2 {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 30%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopL3 {
+    position: absolute;
+    width: 170px;
+    height: 50px;
+    left: 60%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR1 {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 3%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR2 {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 18%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 30%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR4 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 45%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR5 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 60%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR6 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 78%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTopR7 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    top: 10%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtTop {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    left: 37%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 50px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.imsch {
+    position: absolute;
+    width: 125px;
+    height: 90px;
+    left: 73%;
+    top: 30%;
 }

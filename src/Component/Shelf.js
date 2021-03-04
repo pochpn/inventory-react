@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import history from '../history'
 import Hamburger from './Hamburger'
 
+import firestore from '../firebase/firestore'
+
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
 
@@ -11,11 +13,29 @@ class Shelf extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
+            productsList: []
         };
     }
 
-    showMembers = () => {
+    componentDidMount() {
+        firestore.getProductByShelf(this.state.shelf, this.getSuccess, this.getReject)
+    }
 
+    getSuccess = (querySnapshot) => {
+        let products = []
+        querySnapshot.forEach(doc => {
+            let product = doc.data()
+            product.id = doc.id
+            console.log(product)
+            products = products.concat(product)
+        });
+        console.log(products)
+        this.setState({productsList: products})
+        console.log(this.state.productsList)
+    }
+
+    getReject = (error) => {
+        console.log(error)
     }
 
     render() {
@@ -40,20 +60,24 @@ class Shelf extends Component {
                         <input type="text" name="lastname" />
                     </div>
                     <div>
-                        <button onClick={() => console.log(this.props.accountList)}>
+                        <button >
                             search
                         </button>
                     </div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <button onClick={() => history.push('/memberManage/addMember')}>
+                    <button >
                         Add Member
                     </button>
                 </div>
-                {this.props.accountList.map((item) => {
+                {this.state.productsList.map((item) => {
                     return (
                         <ul>
-                            <li><span>{item.email}</span></li>
+                            <li><span>{item.pic}</span></li>
+                            <li><span>{item.productID}</span></li>
+                            <li><span>{item.productName}</span></li>
+                            <li><span>{item.shelf}</span></li>
+                            <li><span>------------------------</span></li>
                         </ul>
                     );
                 })}

@@ -20,6 +20,29 @@
   color: #FFFFFF;
 }
 
+.iconKCN {
+  position: absolute;
+  width: 57px;
+  height: 56.51px;
+  left: 100px;
+  top: -4px;
+}
+
+.tectKCN {
+  position: absolute;
+  width: 189px;
+  height: 39px;
+  left: 140px;
+  top: 10px;
+  font-family: Prompt;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 39px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 .navbar {
   background-color: #6E0D0D;
   height: 55px;

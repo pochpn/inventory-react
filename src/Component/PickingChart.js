@@ -94,7 +94,7 @@ class Picking extends Component {
                 <Paper className="buttonPickk">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} >
+                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking')}>
                                 Cancel
                             </ButtonCancel>
                         </div>

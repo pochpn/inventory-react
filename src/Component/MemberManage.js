@@ -19,8 +19,33 @@ class MemberManage extends Component {
         };
     }
 
-    showMembers = () => {
+    onSearch = () => {
+        if (this.state.employeeID === '' && this.state.idCard === '' && this.state.firstnameEN === '' && this.state.lastnameEN === '') {
+            this.setState({ accounts: this.props.accountList })
+        } else {
+            this.setState({
+                accounts: this.state.accounts.filter(
+                    (item) => ((item.employeeID === this.state.employeeID) || (item.firstnameEN === this.state.firstnameEN))
+                )
+            })
+        }
+        this.setState({
+            employeeID: '',
+            idCard: '',
+            firstnameEN: '',
+            lastnameEN: '',
+        })
+    }
 
+    getSuccess = (querySnapshot) => {
+        let accounts = []
+        querySnapshot.forEach(doc => {
+            let account = doc.data()
+            account.id = doc.id
+            accounts = accounts.concat(account)
+        });
+        this.setState({ accounts: accounts })
+        console.log(this.state.accounts)
     }
 
     render() {
@@ -58,7 +83,7 @@ class MemberManage extends Component {
                 {this.props.accountList.map((item) => {
                     return (
                         <ul>
-                            <li><span>{item.email}</span></li>
+                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email}</li>
                         </ul>
                     );
                 })}

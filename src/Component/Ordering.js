@@ -5,7 +5,22 @@ import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
 
+import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
+
+const ButtonCancel = styled.button`
+  background: #A09797;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+
+const ButtonNext = styled.button`
+  background: #EF3F3E;
+  border-radius: 10px;
+  border: 2px;
+  color: #000000;
+`
 
 class Ordering extends Component {
     constructor(props) {
@@ -32,14 +47,14 @@ class Ordering extends Component {
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 40, paddingLeft: 400 }}>
                             <p className="textOrAddr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 }}></textarea>
+                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 , paddingLeft : 15}}></textarea>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column' }} >
-                            <div style={{ paddingTop: 40, paddingLeft: 615 }}>
+                            <div style={{ paddingTop: 40, paddingLeft: 600 }}>
                                 <p className="textOrConN">Contact Name</p>
                                 <input type="text" style={{ fontSize: 24, }} />
                             </div>
-                            <div style={{ paddingTop: 40, paddingLeft: 615 }}>
+                            <div style={{ paddingTop: 40, paddingLeft: 600 }}>
                                 <p className="textOrTelAd">Tel.</p>
                                 <input type="text" style={{ fontSize: 24, }} />
                             </div>
@@ -53,21 +68,19 @@ class Ordering extends Component {
                         </div>
 
                     </div>
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
 
-
-
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                            <div>
-                                <button onClick={() => history.push('/home')}>
-                                    Cancel
-                        </button>
-                                <button >
-                                    Next
-                        </button>
-                            </div>
+                        <div style={{ paddingLeft: 730, paddingTop: 50 }}>
+                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
+                                Cancel
+                            </ButtonCancel>
                         </div>
+                        <div style={{ paddingLeft: 50, paddingTop: 50 }}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/ordering')}>
+                                Next
+                            </ButtonNext>
 
+                        </div>
                     </div>
 
                 </Paper>

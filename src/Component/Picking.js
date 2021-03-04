@@ -58,7 +58,7 @@ class Picking extends Component {
                         </div>
                         <div style={{ paddingTop: 48, paddingLeft: 600 }}>
                             <p className="textPickAdr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 }} />
+                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 ,paddingLeft: 15}} />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -70,16 +70,18 @@ class Picking extends Component {
                         </div>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        <div>
-                            <div style={{paddingLeft: 20, paddingTop: 25 }}>
-                                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
-                                    Cancel
-                                </ButtonCancel>
-                                <ButtonNext style={{fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking')}>
-                                    Next
-                                </ButtonNext>
-                            </div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+
+                        <div style={{ paddingLeft: 730, paddingTop: 50 }}>
+                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
+                                Cancel
+                            </ButtonCancel>
+                        </div>
+                        <div style={{ paddingLeft: 50, paddingTop: 50 }}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking')}>
+                                Next
+                            </ButtonNext>
+
                         </div>
                     </div>
                 </Paper>

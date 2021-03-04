@@ -122,7 +122,7 @@ class ForgetPassword extends Component {
               </div>
               <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <div style={{ paddingLeft: 20, paddingTop: 25 }}>
-                  <ButtonCancel style={{ width: 100 }} onClick={this.onLogin}>
+                  <ButtonCancel style={{ width: 100 }} onClick={() => history.push('/')}>
                     Cancel
                 </ButtonCancel>
                 </div>

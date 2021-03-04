@@ -33,7 +33,7 @@ class Home extends Component {
             <div className="bg" >
                 <Paper className="paperDash" onClick={() => history.push('/dashboard')}>
                     <div>
-                        <img className="imDash" src={dashboard}/>
+                        <img className="imDash" src={dashboard} />
                         <p className="textDb">DASHBOARD</p>
                     </div>
 

@@ -4,7 +4,9 @@ import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
+
 import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, xxx, search } from '../pic'
+
 
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
@@ -29,13 +31,13 @@ const ButtonNext = styled.button`
   border: 2px;
   color: #000000;
 `
-
 const ButtonAdd = styled.button`
   background: #EF3F3E;
-  border-radius: 100px;
-  border: 2px;
-  color: #ffffff;
+  border-radius: 10px;
+  border: 100px;
+  color: #000000;
 `
+
 
 class Ordering extends Component {
     constructor(props) {
@@ -56,20 +58,13 @@ class Ordering extends Component {
                     <p className="txtTopL2">Product ID</p>
                     <p className="txtTopL3">Product Name</p>
                 </Paper>
-                <Paper className='topicRight'>
-                    <p className="txtTopR1">Product</p>
-                    <p className="txtTopR2">Exp.</p>
-                    <p className="txtTopR3">Shelf</p>
-                    <p className="txtTopR4">Level</p>
-                    <p className="txtTopR5">Cost/Unit</p>
-                    <p className="txtTopR6">QTY</p>
-                    <p className="txtTopR7">Amount</p>
+                <Paper className ='topicLeft'>
 
                 </Paper>
-                <Paper className='dataLeft'>
+                <Paper className ='topicRight'>
 
                 </Paper>
-                <Paper className='dataRight'>
+                <Paper className ='dataLeft'>
 
                 </Paper>
                 <Paper className="buttonOrder">

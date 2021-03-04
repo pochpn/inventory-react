@@ -45,33 +45,24 @@ class Shelf extends Component {
         return (
             <div className="bg">
                 <Hamburger page={this.state.shelf} user={this.state.user} />
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <div>
-                        <a1>Employee id </a1>
+                
+                <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '13%' }}>
+                    <div className="paperShelf1">
+                        <p className="txtShelf" >Product ID</p>
                         <input type="text" name="employeeid" />
                     </div>
-                    <div>
-                        <a1>ID card number</a1>
+                    <div className="paperShelf1">
+                        <p className="txtShelf2" >or</p>
+                    </div>
+                    <div className="paperShelf1">
+                        <p className="txtShelf" >Product Name</p>
                         <input type="text" name="idcard" />
                     </div>
-                    <div>
-                        <a1>Firstname</a1>
-                        <input type="text" name="fristname" />
-                    </div>
-                    <div>
-                        <a1>Lastname</a1>
-                        <input type="text" name="lastname" />
-                    </div>
-                    <div>
-                        <button >
+                    <div className="paperShelf1">
+                        <button className="txtShelf">
                             search
                         </button>
                     </div>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <button >
-                        Add Member
-                    </button>
                 </div>
                 {this.props.productList.map((item) => {
                     if (item.shelf === this.state.shelf) {

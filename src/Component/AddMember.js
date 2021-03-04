@@ -50,7 +50,7 @@ class AddMember extends Component {
     }
 
     addSuccess = (doc) => {
-        history.push('/memberManage')
+        
         console.log(doc.id)
     }
 

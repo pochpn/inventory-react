@@ -8,6 +8,7 @@ import history from '../history'
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction'
+import { clearProduct } from '../actions/productAction'
 import { logoTopBar } from '../pic'
 
 class Hamburger extends Component {
@@ -52,6 +53,7 @@ class Hamburger extends Component {
                       console.log('logout')
                       this.props.clearAccount()
                       this.props.clearUser()
+                      this.props.clearProduct()
                     }
                   }}>
                     {item.icon}
@@ -69,8 +71,9 @@ class Hamburger extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    clearAccount: () => dispatch(clearAccount()),
-    clearUser: () => dispatch(clearUser()),
+      clearAccount: () => dispatch(clearAccount()),
+      clearUser: () => dispatch(clearUser()),
+      clearProduct: () => dispatch(clearProduct()),
   };
 };
 

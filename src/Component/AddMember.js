@@ -74,12 +74,12 @@ class AddMember extends Component {
                 </Paper>
                 <Paper className="paperAddMB" >
                     <div >
-                        <p className="textAddMB">Add</p>
+                        <p className="textAddMB" onClick={this.onAdd}>Add</p>
                     </div>
                 </Paper>
                 <Paper className="paperCancelMB" >
                     <div>
-                        <p className="textCancelMB">Cancel</p>
+                        <p className="textCancelMB" onClick={() => history.push('/memberManage')}>Cancel</p>
                     </div>
                 </Paper>
                 <Paper className="paperDetail" >
@@ -142,105 +142,11 @@ class AddMember extends Component {
                 </Paper>
                 
 
-                <Hamburger page='EDIT PROFILE' user={this.state.user} />
+                <Hamburger page='ADD MEMBER' user={this.state.user} />
 
             </div>
 
-            // <div>
-            //     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-            //         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            //             <div>
-            //                 <a1>Employee id </a1>
-            //                 <input type="text" name="employeeid" onChange={txt => this.setState({ employeeID: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Firstname (TH)</a1>
-            //                 <input type="text" name="fristnameth" onChange={txt => this.setState({ firstnameTH: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Firstname (EN)</a1>
-            //                 <input type="text" name="firstnameen" onChange={txt => this.setState({ firstnameEN: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>ID Card no.</a1>
-            //                 <input type="text" name="idcardard" onChange={txt => this.setState({ idCard: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Tel</a1>
-            //                 <input type="text" name="tel" onChange={txt => this.setState({ tel: txt.target.value })} />
-            //             </div>
-            //         </div>
-            //         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            //             <div>
-            //                 <a1>Department</a1>
-            //                 <MDBDropdown dropright>
-            //                     <MDBDropdownToggle caret color="primary">
-            //                         {this.state.department}
-            //                     </MDBDropdownToggle>
-            //                     <MDBDropdownMenu basic>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'Admin',
-            //                             departmentID: 7
-            //                         })}>Admin</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'Manager',
-            //                             departmentID: 6
-            //                         })}>Manager</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'StockChecker',
-            //                             departmentID: 5
-            //                         })}>StockChecker</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'Orderer',
-            //                             departmentID: 4
-            //                         })}>Orderer</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'Picker',
-            //                             departmentID: 3
-            //                         })}>Picker</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'OrderConfirm',
-            //                             departmentID: 2
-            //                         })}>OrderConfirm</MDBDropdownItem>
-            //                         <MDBDropdownItem onClick={() => this.setState({
-            //                             department: 'ConfirmShipping',
-            //                             departmentID: 1
-            //                         })}>ConfirmShipping</MDBDropdownItem>
-            //                     </MDBDropdownMenu>
-            //                 </MDBDropdown>
-            //             </div>
-            //             <div>
-            //                 <a1>Lastname (TH)</a1>
-            //                 <input type="text" name="lastnameth" onChange={txt => this.setState({ lastnameTH: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Lastname (EN)</a1>
-            //                 <input type="text" name="lastnameen" onChange={txt => this.setState({ lastnameEN: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Date of birth</a1>
-            //                 <input type="text" name="birthday" onChange={txt => this.setState({ birthDate: txt.target.value })} />
-            //             </div>
-            //             <div>
-            //                 <a1>Email</a1>
-            //                 <input type="text" name="email" onChange={txt => this.setState({ email: txt.target.value })} />
-            //             </div>
-            //         </div>
-
-            //     </div>
-            //     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            //         <a1>Current Address</a1>
-            //         <input type="text" name="address" onChange={txt => this.setState({ address: txt.target.value })} />
-            //     </div>
-            //     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            //         <button onClick={this.onAdd}>
-            //             Add
-            //         </button>
-            //         <button onClick={() => history.push('/memberManage')}>
-            //             cancel
-            //         </button>
-            //     </div>
-            // </div>
+           
         )
     }
 }

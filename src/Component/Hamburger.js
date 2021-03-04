@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
-
+import history from '../history'
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction'
+import { logoTopBar } from '../pic'
 
 class Hamburger extends Component {
   constructor(props) {
@@ -29,6 +30,10 @@ class Hamburger extends Component {
           <Link to='#' className='menu-bars'>
             <RiMenuUnfoldLine size={40} onClick={this.showSidebar} />
           </Link>
+          <div onClick={() => history.push('/home')}>
+            <img className="iconKCN" src={logoTopBar} />
+            <p className="tectKCN">KLUNG CHANA</p>
+          </div>
           <span className='title'>{this.props.page}</span>
           <span clastyle={{ color: '#fff' }}>{this.state.user.firstnameEN}</span>
         </div>
@@ -43,7 +48,7 @@ class Hamburger extends Component {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path} onClick={() => {
-                    if(item.path==='/'){
+                    if (item.path === '/') {
                       console.log('logout')
                       this.props.clearAccount()
                       this.props.clearUser()
@@ -64,15 +69,15 @@ class Hamburger extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      clearAccount: () => dispatch(clearAccount()),
-      clearUser: () => dispatch(clearUser()),
+    clearAccount: () => dispatch(clearAccount()),
+    clearUser: () => dispatch(clearUser()),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-      userList: state.userReducer.userList,
-      accountList: state.accountReducer.accountList
+    userList: state.userReducer.userList,
+    accountList: state.accountReducer.accountList
   };
 };
 

@@ -179,10 +179,24 @@ body, html {
 
 .buttonOrder {
     position: absolute;
-    width: 1440px;
+    width: 1283px;
     height: 100px;
-    left: 470px;
-    top: 970px;
+    left: 627px;
+    top: 892px;
+    /* 970 */
+    background: rgba(0, 0, 0, 0)!important;
+    border-radius: 0px;
+    box-shadow: none;
+    border-bottom-width: 0px;
+}
+
+.buttonPickk {
+    position: absolute;
+    width: 1283px;
+    height: 100px;
+    left: 627px;
+    top: 892px;
+    /* 970 */
     background: rgba(0, 0, 0, 0)!important;
     border-radius: 0px;
     box-shadow: none;
@@ -705,7 +719,6 @@ body, html {
     color: #6E0D0D;
 }
 
-
 .paperShelf {
     justify-items: center;
     align-items: center;
@@ -715,6 +728,7 @@ body, html {
     margin-left: 2%;
     margin-right: 2%;
 }
+
 .imViewStock {
     justify-self: center;
     margin-left: 15%;
@@ -734,11 +748,9 @@ body, html {
     text-align: center;
     color: #6E0D0D;
     align-self: start;
-    
     /* background-color: aqua; */
-    
-    
 }
+
 .paperABC {
     position: absolute;
     width: 365px;

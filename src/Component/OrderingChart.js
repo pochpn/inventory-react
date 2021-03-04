@@ -48,32 +48,6 @@ class Ordering extends Component {
     render() {
         return (
             <div className="bg">
-                <Paper className='schOrder'>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 70, paddingLeft: 30 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
-                        </div>
-                        <div style={{ paddingTop: 70, paddingLeft: 68 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
-                        </div>
-                        <div>
-                            <img img className="imsch" src={search} />
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div >
-                            <p className="txtProID">Product ID</p>
-                        </div>
-                        <div>
-                            <p className="txtProOr">Or</p>
-                        </div>
-                        <div>
-                            <p className="txtProNm">Product Name</p>
-                        </div>
-
-                    </div>
-
-                </Paper>
                 <Paper className='topOrdering'>
                     <p className="txtTop">Ordering Product</p>
                 </Paper>
@@ -100,28 +74,55 @@ class Ordering extends Component {
                 </Paper>
                 <Paper className="buttonOrder">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingLeft: 50, paddingTop: 10}}>
-                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }} >
-                                +
-                            </ButtonAdd>
-                        </div>
-                        <div style={{ paddingLeft: 60, paddingTop: 35 }}>
+
+                        <div style={{ paddingLeft: 10, paddingTop: 122 }}>
                             <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} >
                                 Cancel
                             </ButtonCancel>
                         </div>
-                        <div style={{ paddingLeft: 690, paddingTop: 35 }}>
+                        <div style={{ paddingLeft: 690, paddingTop: 122 }}>
                             <ButtonClear style={{ fontSize: 25, width: 184, height: 52 }} >
                                 Clear
                             </ButtonClear>
                         </div>
-                        <div style={{ paddingLeft: 10, paddingTop: 35 }}>
+                        <div style={{ paddingLeft: 10, paddingTop: 122 }}>
                             <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }}>
                                 Next
                             </ButtonNext>
                         </div>
 
                     </div>
+                </Paper>
+                <Paper className='schOrder'>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div style={{ paddingTop: 70, paddingLeft: 30 }}>
+                            <input type="text" style={{ fontSize: 13 }}></input>
+                        </div>
+                        <div style={{ paddingTop: 70, paddingLeft: 68 }}>
+                            <input type="text" style={{ fontSize: 13 }}></input>
+                        </div>
+                        <div>
+                            <img img className="imsch" src={search} />
+                        </div>
+                        <div style={{ paddingLeft: 70, paddingTop: 900 }}>
+                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }} >
+                                +
+                            </ButtonAdd>
+                        </div>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <div >
+                            <p className="txtProID">Product ID</p>
+                        </div>
+                        <div>
+                            <p className="txtProOr">Or</p>
+                        </div>
+                        <div>
+                            <p className="txtProNm">Product Name</p>
+                        </div>
+
+                    </div>
+
                 </Paper>
                 <Hamburger page='ORDERING' user={this.state.user} />
 

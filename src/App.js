@@ -20,6 +20,7 @@ import History from './Component/History'
 import ShippingConfirm from './Component/ShippingConfirm'
 import Shelf from './Component/Shelf'
 import OrderingChart from './Component/OrderingChart'
+import Profile from './Component/Profile'
 
 import { Provider } from 'react-redux';
 import configureStore from './Store';
@@ -55,6 +56,7 @@ class App extends Component {
             <Route exact path="/shippingConfirm" component={ShippingConfirm} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/stock/viewStock/shelf" component={Shelf} />
+            <Route exact path="/profile" component={Profile}/>
           </Switch>
         </Router>
 

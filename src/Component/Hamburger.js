@@ -36,7 +36,7 @@ class Hamburger extends Component {
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
           <span className='title'>{this.props.page}</span>
-          <span clastyle={{ color: '#fff' }}>{this.state.user.firstnameEN}</span>
+          <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={this.showSidebar}>

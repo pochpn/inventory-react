@@ -11,18 +11,30 @@ body, html {
 }
 
 .bg {
-    background-image: url("https://scontent.fbkk11-1.fna.fbcdn.net/v/t1.15752-9/140660601_864921811005605_4370455273363644108_n.png?_nc_cat=104&ccb=3&_nc_sid=ae9488&_nc_ohc=r6D-dmsvkEwAX-yLgCV&_nc_ht=scontent.fbkk11-1.fna&oh=7acb7fb83ff8d4ba2ac3d2d51afe8de3&oe=60547837");
-    height: 1080px;
-    width: 1920px;
+    background-image: url("https://sv1.picz.in.th/images/2021/03/04/oFdARk.png");
+    min-height: 100%;
+    min-width: 1080px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .bgLogin {
-    background-image: url("https://scontent.fbkk11-1.fna.fbcdn.net/v/t1.15752-9/150590877_3561751897269903_2503820508600786235_n.png?_nc_cat=103&ccb=3&_nc_sid=ae9488&_nc_eui2=AeEhhfDsT__jWN2PzMix_xQrTiojYPN2t9NOKiNg83a300XjUFFHebyYcBqKQBNorYjHX-N_wNd-nTByUy7LJPhk&_nc_ohc=Vl_yVG21U5oAX9LGpSM&_nc_ht=scontent.fbkk11-1.fna&oh=bb1eaa8f98eacd24d1fc13edcfe1af0b&oe=606400D4");
-    height: 1080px;
-    width: 1920px;
+    background-image: url("https://sv1.picz.in.th/images/2021/03/04/oF0Crz.png");
+    min-height: 100%;
+    min-width: 1080px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,6 +54,8 @@ body, html {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
 }
+
+/* HOME */
 
 .paperSt {
     position: absolute;
@@ -258,6 +272,8 @@ body, html {
     align-items: center;
     justify-content: center;
 }
+
+/* HOME */
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 .textDb {
@@ -691,6 +707,7 @@ body, html {
     color: #6E0D0D;
 }
 
+/* DASHBOARD */
 
 .paperABC {
     position: absolute;
@@ -760,4 +777,147 @@ body, html {
     top: 747px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 15px;
+}
+
+/* PROFILE */
+
+.paperPhoto {
+    position: absolute;
+    width: 268px;
+    height: 268px;
+    left: 493px;
+    top: 142px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.paperDetail {
+    position: absolute;
+    width: 649px;
+    height: 748px;
+    left: 772px;
+    top: 142px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.paperChangePass {
+    position: absolute;
+    width: 268px;
+    height: 70px;
+    left: 493px;
+    top: 432px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.textChangePass {
+    position: absolute;
+    width: 223px;
+    height: 39px;
+    left: 8%;
+    top: 21%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+}
+
+.textP1 {
+    position: absolute;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+}
+
+.inputP1 {
+    position: absolute;
+    width: 246px;
+    height: 39px;
+    left: 7%;
+    background: #C4C4C4;
+    border-width: 0;
+}
+
+.inputP2 {
+    position: absolute;
+    width: 523px;
+    height: 267px;
+    left: 7%;
+    background: #C4C4C4;
+    border-width: 0;
+}
+
+.inputP3 {
+    position: absolute;
+    width: 246px;
+    height: 39px;
+    left: 49.5%;
+    background: #C4C4C4;
+    border-width: 0;
+}
+
+.inputP4 {
+    position: absolute;
+    width: 246px;
+    height: 39px;
+    left: 49.5%;
+    border-width: 0;
+}
+
+.paperAddMB {
+    position: absolute;
+    width: 268px;
+    height: 70px;
+    left: 493px;
+    top: 423px;
+    background: #EF3F3E !important;
+    border-radius: 12px;
+}
+
+.paperCancelMB {
+    position: absolute;
+    width: 268px;
+    height: 70px;
+    left: 493px;
+    top: 506px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.textAddMB {
+    position: absolute;
+    width: 136px;
+    height: 38px;
+    left: 23%;
+    top: 23%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+}
+
+.textCancelMB {
+    position: absolute;
+    width: 85px;
+    height: 39px;
+    left: 23%;
+    top: 23%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
 }

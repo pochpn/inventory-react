@@ -22,6 +22,7 @@ export const recvOr = ''
 export const returnor = ''
 /*---------logo---------*/
 export const login = 'https://uppic.cc/d/9rF5ESghexi65uteRe4yu'
+export const logoTopBar = 'https://sv1.picz.in.th/images/2021/03/04/oyuPC0.png'
 /*--------alert-------------*/
 export const chooseim = ''
 export const chooseim2 = ''

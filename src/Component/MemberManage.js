@@ -85,7 +85,7 @@ class MemberManage extends Component {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <button onClick={() => history.push('/memberManage/addMember')}>
-                        Add Menber
+                        Add Member
                     </button>
                 </div>
                 {this.state.accounts.map((item) => {

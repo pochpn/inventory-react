@@ -6,7 +6,7 @@ import Hamburger from './Hamburger'
 import { connect } from 'react-redux';
 import { purple } from '@material-ui/core/colors';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow } from 'mdbreact';
-
+import {search,shelf} from '../pic'
 
 class ViewStock extends Component {
     constructor(props) {
@@ -22,26 +22,26 @@ class ViewStock extends Component {
                 <Hamburger page='VIEW STOCK' user={this.state.user} />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
 
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column',flex:1 , justifyContent: 'center'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Shelf ID</a1>
                         <input type="text" style={{ fontSize: 24 }}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%" }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%",flex:1, justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' ,flex:1, justifyContent: 'center'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
                         <input type="text" style={{ fontSize: 24 }}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%" }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%" ,flex:1, justifyContent: 'center'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' ,flex:1, justifyContent: 'center'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product Name</a1>
                         <input type="text" style={{ fontSize: 24 }}></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%" }}
+                        style={{ justifyContent: 'flex-end', width: "10%",flex:1 }}
                         src="https://uppic.cc/d/s5ASX7gEVKHDeKH_612-x" />
 
                 </div>
@@ -60,7 +60,7 @@ class ViewStock extends Component {
                                 <img
 
                                     style={{ width: '70%', alignSelf: 'center' }}
-                                    src="https://sv1.picz.in.th/images/2021/03/02/opFg5Q.png" />
+                                    src={shelf} />
                                 <div class="d-flex justify-content-center">
                                     <MDBCardTitle
                                         className="fontt">
@@ -76,7 +76,7 @@ class ViewStock extends Component {
                                 <img
                                     style={{ width: '70%', alignSelf: 'center' }}
                                     alt="Responsive image"
-                                    src="https://sv1.picz.in.th/images/2021/03/02/opFg5Q.png" />
+                                    src={search} />
                                 <div class="d-flex justify-content-center">
                                     <MDBCardTitle className="fontt">S1-02</MDBCardTitle>
                                 </div>

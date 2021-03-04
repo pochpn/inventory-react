@@ -5,16 +5,16 @@ export const addProduct = (product) => ({
     product: product,
 });
 
-export const deleteAccount = (id) => ({
+export const deleteProduct = (id) => ({
     type: DELETE_PRODUCT,
     id: id,
 });
 
-export const editAccount = (product) => ({
+export const editProduct = (product) => ({
     type: EDIT_PRODUCT,
     product: product,
 });
 
-export const clearAccount = () => ({
+export const clearProduct = () => ({
     type: CLEAR_PRODUCT,
 })

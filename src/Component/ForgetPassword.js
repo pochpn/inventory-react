@@ -95,22 +95,20 @@ class ForgetPassword extends Component {
       <div className="bg">
         <Paper className="paperForget">
           <form className="forget_Pass">
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <h1>Forget Password</h1>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',paddingTop: 32 }}>
               <div>
                 <h1>Account Recover</h1>
               </div>
-              <div>
-                <p>Please enter your email for receive password</p>
+              <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 32}} >
+                <p>Please enter your email for </p>
+                <p>receive password</p>
               </div>
-              <div>
+              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 130 , }}>
                 <input type="text"
                   id="email"
                   name="email"
                   value={this.state.email}
-                  onChange={txt => this.setState({ email: txt.target.value })} />
+                  onChange={txt => this.setState({ email: txt.target.value })} style={{ fontSize: 24,}} />
                 <input type="hidden"
                   id="name"
                   name="name"
@@ -120,19 +118,20 @@ class ForgetPassword extends Component {
                   name="pass"
                   value={this.state.pass} />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <div style={{ paddingLeft: 20, paddingTop: 25 }}>
-                  <ButtonCancel style={{ width: 100 }} onClick={() => history.push('/')}>
-                    Cancel
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ paddingLeft: 20, paddingTop: 195 }}>
+                <ButtonCancel style={{ width: 100 }} onClick={() => history.push('/')}>
+                  Cancel
                 </ButtonCancel>
-                </div>
-                <div style={{ paddingLeft: 20, paddingTop: 25 }}>
-                  <ButtonSend style={{ width: 100 }} onClick={this.onLogin}>
-                    Send
+              </div>
+              <div style={{ paddingLeft: 305, paddingTop: 195 }}>
+                <ButtonSend style={{ width: 100 }} onClick={this.onSend}>
+                  Send
                 </ButtonSend>
-                </div>
               </div>
             </div>
+
           </form>
         </Paper>
       </div>

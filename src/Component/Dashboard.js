@@ -3,6 +3,7 @@ import history from '../history'
 import Topbar from './Topbar'
 import './Style.css'
 
+import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
@@ -18,9 +19,43 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="bg">
+        <Paper className="paperABC" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperTT" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperTI" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperIL" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperOTW" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperDam" >
+          <div>
+            
+          </div>
+        </Paper>
+        <Paper className="paperTO" >
+          <div>
+            
+          </div>
+        </Paper>
         <Hamburger page='DASHBOARD' user={this.state.user} />
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        </div>
+
       </div>
 
     )

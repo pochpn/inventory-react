@@ -24,22 +24,22 @@ class Stock extends Component {
         <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'19%',justifyContent:'center'}}>
           <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/viewStock')}>
             <div>
-              <img className="imVs" src={viewstock} />
-              <p className="textSto">View Stock</p>
+              <img className="imVs2" src={viewstock} />
+              <p className="textSto1">View Stock</p>
             </div>
           </Paper>
 
           <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/countingStock')}>
             <div>
               <img className="imVs" src={counting} />
-              <p className="textSto">Counting Stock</p>
+              <p className="textSto2">Counting Stock</p>
             </div>
           </Paper>
 
           <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock')}>
             <div>
               <img className="imVs" src={editstock} />
-              <p className="textSto">Edit Stock</p>
+              <p className="textSto3">Edit Stock</p>
             </div>
           </Paper>
 

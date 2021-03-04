@@ -796,3 +796,45 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 15px;
 }
+
+/*Shelf*/
+.txtShelf {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    
+    text-align: center;
+    color: black;
+    align-self: start;
+    font-weight: bold;
+}
+
+.txtShelf2 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    margin-top: 40%;
+    text-align: center;
+    color: black;
+    align-self: start;
+    font-weight: bold;
+    
+}
+
+.paperShelf1{
+    display: flex;
+    margin-left: 1%;
+    margin-right: 1%;
+    flex-direction: column;
+    justify-content: center;
+}
+.paperShelf2{
+    display: flex;
+    margin-left: 1%;
+    margin-right: 1%;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 60%;
+}

@@ -22,7 +22,6 @@ class ViewStock extends Component {
             <div className="bg">
                 <Hamburger page='VIEW STOCK' user={this.state.user} />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
-
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Shelf ID</a1>
                         <input type="text" style={{ fontSize: 24 }}></input>

@@ -115,6 +115,70 @@ body, html {
     border-radius: 12px;
 }
 
+/* Paper Ordering Chart */
+
+.schOrder {
+    position: absolute;
+    width: 616px;
+    height: 108px;
+    left: 8px;
+    top: 73px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.topOrdering {
+    position: absolute;
+    width: 1280px;
+    height: 108px;
+    left: 630px;
+    top: 73px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.topicLeft {
+    position: absolute;
+    width: 616px;
+    height: 55px;
+    left: 8px;
+    top: 187px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.topicRight {
+    position: absolute;
+    width: 1280px;
+    height: 55px;
+    left: 630px;
+    top: 187px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.dataLeft {
+    position: absolute;
+    width: 616px;
+    height: 764px;
+    left: 8px;
+    top: 248px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.dataRight {
+    position: absolute;
+    width: 1280px;
+    height: 705px;
+    left: 630px;
+    top: 248px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+/* im */
+
 .imDash {
     position: absolute;
     width: 319px;
@@ -333,6 +397,8 @@ body, html {
     color: #6E0D0D;
 }
 
+/* Picking */
+
 .textPickD {
     position: absolute;
     width: 208px;
@@ -478,6 +544,7 @@ body, html {
     height: 80%;
     /*background-color: #6E0D0D;*/
 }
+
 .imVs2 {
     justify-self: center;
     margin-left: 10%;
@@ -499,8 +566,8 @@ body, html {
     align-self: start;
     top: 69%;
     margin-left: 3.2%;
-    
 }
+
 .textSto2 {
     position: absolute;
     font-family: 'Prompt', sans-serif;
@@ -513,8 +580,8 @@ body, html {
     align-self: start;
     top: 69%;
     margin-left: 1.25%;
-    
 }
+
 .textSto3 {
     position: absolute;
     font-family: 'Prompt', sans-serif;
@@ -524,11 +591,9 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    
     align-self: start;
     top: 69%;
     margin-left: 3.7%;
-    
 }
 
 .im1 {
@@ -628,7 +693,6 @@ body, html {
     color: #6E0D0D;
 }
 
-/*ViewStock*/
 
 .paperShelf {
     justify-items: center;
@@ -662,4 +726,73 @@ body, html {
     /* background-color: aqua; */
     
     
+}
+.paperABC {
+    position: absolute;
+    width: 365px;
+    height: 319px;
+    left: 383px;
+    top: 158px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.paperTT {
+    position: absolute;
+    width: 765px;
+    height: 319px;
+    left: 783px;
+    top: 158px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperTI {
+    position: absolute;
+    width: 365px;
+    height: 477px;
+    left: 383px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperIL {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 777px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperOTW {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 1183px;
+    top: 498px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperDam {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 777px;
+    top: 747px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
+.paperTO {
+    position: absolute;
+    width: 365px;
+    height: 228px;
+    left: 1183px;
+    top: 747px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
 }

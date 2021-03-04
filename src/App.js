@@ -19,6 +19,7 @@ import OrderConfirm from './Component/OrderConfirm'
 import History from './Component/History'
 import ShippingConfirm from './Component/ShippingConfirm'
 import Shelf from './Component/Shelf'
+import OrderingChart from './Component/OrderingChart'
 
 import { Provider } from 'react-redux';
 import configureStore from './Store';
@@ -43,6 +44,7 @@ class App extends Component {
             <Route exact path="/inventoryCost" component={InvenCost} />
             <Route exact path="/stock" component={Stock} />
             <Route exact path="/Ordering" component={Ordering} />
+            <Route exact path="/Ordering/orderingChart" component={OrderingChart} />
             <Route exact path="/stock/viewStock" component={ViewStock} />
             <Route exact path="/stock/countingStock" component={CountingStock} />
             <Route exact path="/stock/editStock" component={EditStock} />

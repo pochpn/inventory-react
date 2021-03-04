@@ -12,6 +12,7 @@ import { FaKey } from "react-icons/fa";
 import { connect } from 'react-redux';
 import { addUser } from '../actions/userAction';
 import { addAccount } from '../actions/accountAction'
+import { addProduct } from '../actions/productAction';
 
 const ButtonLogin = styled.button`
   background: #ef3f3e;
@@ -55,14 +56,24 @@ class Login extends Component {
         querySnapshot.forEach(doc => {
             let account = doc.data()
             account.id = doc.id
-            console.log(account)
+            /*console.log(account)*/
             this.props.addAccount(account)
         });
-        console.log(this.props.accountList)
+        /*console.log(this.props.accountList)*/
     }
 
     getAllReject = (error) => {
         console.log(error)
+    }
+
+    getAllProductSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let product = doc.data()
+            product.id = doc.id
+            console.log(product)
+            this.props.addProduct(product)
+        });
+        console.log(this.props.productList)
     }
 
     getSuccess = (querySnapshot) => {
@@ -76,8 +87,9 @@ class Login extends Component {
         console.log(this.state.user.pass)*/
         if (user.pass === this.state.pass) {
             this.props.addUser(user)
-            console.log(this.props.userList)
+            /*console.log(this.props.userList)*/
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)
+            firestore.getAllProduct(this.getAllProductSuccess, this.getAllReject)
             history.push("/home")
             /*window.location.href="/home"*/
         } else {
@@ -89,6 +101,33 @@ class Login extends Component {
     getReject = (error) => {
         console.log(error)
         alert("Email or Password is incorrect")
+    }
+
+    addProduct = () => {
+        const product = {
+            costPunit: '4590',
+            expDate: '-',
+            expTime: '-',
+            level: '1',
+            oty: '50',
+            pic: 'PIC',
+            productID: '15201A',
+            productName: 'Crocodile Leather',
+            recvDate: '20/01/21',
+            recvTime: '15:30',
+            shelf: 'S1-01',
+            type: 'A',
+            unit: 'EA',
+        }
+        firestore.addProduct(product, this.addSuccess, this.addReject)
+    }
+
+    addSuccess = (doc) => {
+        console.log(doc.id)
+    }
+
+    addReject = (error) => {
+        console.log(error)
     }
 
     render() {
@@ -116,7 +155,7 @@ class Login extends Component {
                                 <input style={{ width: 250 }} type="password" name="pass" onChange={txt => this.setState({ pass: txt.target.value })} />
                             </div>
                             <div style={{ paddingLeft: 20, paddingTop: 25 }}>
-                                <ButtonLogin style={{ width: 250 }} onClick={this.onLogin}>
+                                <ButtonLogin style={{ width: 250 }} onClick={this.onLogin/*this.addProduct*/}>
                                     Login
                                 </ButtonLogin>
                             </div>
@@ -139,6 +178,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addUser: (user) => dispatch(addUser(user)),
         addAccount: (account) => dispatch(addAccount(account)),
+        addProduct: (product) => dispatch(addProduct(product))
     };
 };
 
@@ -146,6 +186,7 @@ const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
         accountList: state.accountReducer.accountList,
+        productList: state.productReducer.productList,
     };
 };
 

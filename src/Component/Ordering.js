@@ -76,7 +76,7 @@ class Ordering extends Component {
                             </ButtonCancel>
                         </div>
                         <div style={{ paddingLeft: 50, paddingTop: 50 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/ordering')}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/Ordering/orderingChart')}>
                                 Next
                             </ButtonNext>
 

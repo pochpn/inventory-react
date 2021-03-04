@@ -26,7 +26,10 @@ class MemberManage extends Component {
         } else {
             this.setState({
                 accounts: this.state.accounts.filter(
-                    (item) => ((item.employeeID === this.state.employeeID) || (item.firstnameEN === this.state.firstnameEN))
+                    (item) => ((item.employeeID === this.state.employeeID) ||
+                        (item.firstnameEN === this.state.firstnameEN) ||
+                        (item.idCard === this.state.idCard) ||
+                        (item.lastnameEN === this.state.lastnameEN))
                 )
             })
         }
@@ -88,7 +91,7 @@ class MemberManage extends Component {
                 {this.state.accounts.map((item) => {
                     return (
                         <ul>
-                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email}</li>
+                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email} - {item.idCard}</li>
                         </ul>
                     );
                 })}

@@ -8,6 +8,7 @@ import { IconContext } from 'react-icons';
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction'
+import { clearProduct } from '../actions/productAction'
 
 class Hamburger extends Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class Hamburger extends Component {
                       console.log('logout')
                       this.props.clearAccount()
                       this.props.clearUser()
+                      this.props.clearProduct()
                     }
                   }}>
                     {item.icon}
@@ -66,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
       clearAccount: () => dispatch(clearAccount()),
       clearUser: () => dispatch(clearUser()),
+      clearProduct: () => dispatch(clearProduct()),
   };
 };
 

@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
 import { addAccount } from '../actions/accountAction'
 
-import Topbar from './Topbar'
 import './Style.css'
 
 import Paper from '@material-ui/core/Paper';
@@ -72,29 +71,29 @@ class AddMember extends Component {
 
                     </div>
                 </Paper>
-                <Paper className="paperAddMB" >
+                <Paper className="paperAddMB" onClick={this.onAdd}>
                     <div >
-                        <p className="textAddMB" onClick={this.onAdd}>Add</p>
+                        <p className="textAddMB" >Add</p>
                     </div>
                 </Paper>
-                <Paper className="paperCancelMB" >
+                <Paper className="paperCancelMB" onClick={() => history.push('/memberManage')}>
                     <div>
-                        <p className="textCancelMB" onClick={() => history.push('/memberManage')}>Cancel</p>
+                        <p className="textCancelMB" >Cancel</p>
                     </div>
                 </Paper>
                 <Paper className="paperDetail" >
                     <div><p className="textP1" style={{width: '156px', height: '39px',left: '7%',top: '2%'}} >Employee ID</p></div>
-                    <div><input className="inputP1" style={{top: '7%'}} onChange={txt => this.setState({ employeeID: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{top: '7%'}} onChange={txt => this.setState({ employeeID: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '171px', height: '39px',left: '7%',top: '12%'}}>Firstname(TH)</p></div>
-                    <div><input className="inputP1" style={{top: '17%'}} onChange={txt => this.setState({ firstnameTH: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{top: '17%'}} onChange={txt => this.setState({ firstnameTH: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '171px', height: '39px',left: '7%',top: '22%'}}>Firstname(EN)</p></div>
-                    <div><input className="inputP1" style={{top: '27%'}} onChange={txt => this.setState({ firstnameEN: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{top: '27%'}} onChange={txt => this.setState({ firstnameEN: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '139px', height: '39px',left: '7%',top: '32%'}}>ID card No.</p></div>
-                    <div><input className="inputP1" style={{top: '37%'}} onChange={txt => this.setState({ idCard: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{top: '37%'}} onChange={txt => this.setState({ idCard: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '39px', height: '39px',left: '7%',top: '42%'}}>Tel.</p></div>
-                    <div><input className="inputP1" style={{top: '47%'}} onChange={txt => this.setState({ tel: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{top: '47%'}} onChange={txt => this.setState({ tel: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '207px', height: '39px',left: '7%',top: '52%'}}>Current Address</p></div>
-                    <div><input className="inputP2" style={{top: '57%'}} onChange={txt => this.setState({ address: txt.target.value })}></input></div>
+                    <div><input className="editP2" style={{top: '57%'}} onChange={txt => this.setState({ address: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '150px', height: '39px',left: '49.5%',top: '2%'}}>Department</p></div>
                     <div style={{paddingTop:'8%'}}><MDBDropdown className="inputP4"  dropright>
                                  <MDBDropdownToggle caret color="primary">
@@ -132,13 +131,13 @@ class AddMember extends Component {
                                  </MDBDropdownMenu>
                              </MDBDropdown></div>
                     <div><p className="textP1" style={{width: '170px', height: '39px',left: '49.5%',top: '12%'}}>Lastname(TH)</p></div>
-                    <div><input className="inputP3" style={{top: '17%'}} onChange={txt => this.setState({ lastnameTH: txt.target.value })}></input></div>
+                    <div><input className="editP3" style={{top: '17%'}} onChange={txt => this.setState({ lastnameTH: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '169px', height: '39px',left: '49.5%',top: '22%'}}>Lastname(EN)</p></div>
-                    <div><input className="inputP3" style={{top: '27%'}} onChange={txt => this.setState({ lastnameEN: txt.target.value })}></input></div>
+                    <div><input className="editP3" style={{top: '27%'}} onChange={txt => this.setState({ lastnameEN: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '161px', height: '39px',left: '49.5%',top: '32%'}}>Date of Birth</p></div>
-                    <div><input className="inputP3" style={{top: '37%'}} onChange={txt => this.setState({ birthDate: txt.target.value })}></input></div>
+                    <div><input className="editP3" style={{top: '37%'}} onChange={txt => this.setState({ birthDate: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{width: '75px', height: '39px',left: '49.5%',top: '42%'}}>E-mail</p></div>
-                    <div><input className="inputP3" style={{top: '47%'}} onChange={txt => this.setState({ email: txt.target.value })}></input></div>
+                    <div><input className="editP3" style={{top: '47%'}} onChange={txt => this.setState({ email: txt.target.value })}></input></div>
                 </Paper>
                 
 

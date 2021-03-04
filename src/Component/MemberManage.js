@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Hamburger from './Hamburger'
+import Paper from '@material-ui/core/Paper';
+import './Style.css'
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
-
+import { search } from '../pic'
 import firestore from '../firebase/firestore'
 
 class MemberManage extends Component {
@@ -59,42 +61,62 @@ class MemberManage extends Component {
     render() {
         return (
             <div className="bg">
+
+                <Paper className="paperSearchMB" >
+
+
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Employee ID</a1>
+                        <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input>
+                        <div><button className="buttonAddMB" style={{ fontSize: 20 }} onClick={() => history.push('/memberManage/addMember')}>Add Member</button></div>
+
+                    </div>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>ID card number</a1>
+                        <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.idCard} onChange={txt => this.setState({ idCard: txt.target.value })}></input>
+                    </div>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>First Name</a1>
+                        <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.firstnameEN} onChange={txt => this.setState({ firstnameEN: txt.target.value })}></input>
+                    </div>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Last Name</a1>
+                        <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.lastnameEN} onChange={txt => this.setState({ lastnameEN: txt.target.value })}></input>
+                    </div>
+                    <img
+                        style={{ justifyContent: 'flex-end', width: "10%", }}
+                        src={search}
+                        onClick={this.onSearch}></img>
+                </Paper>
+
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <div>
-                        <a1>Employee id </a1>
-                        <input type="text" value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })} />
-                    </div>
-                    <div>
-                        <a1>ID card number</a1>
-                        <input type="text" value={this.state.idCard} onChange={txt => this.setState({ idCard: txt.target.value })} />
-                    </div>
-                    <div>
-                        <a1>FirstnameEN</a1>
-                        <input type="text" value={this.state.firstnameEN} onChange={txt => this.setState({ firstnameEN: txt.target.value })} />
-                    </div>
-                    <div>
-                        <a1>LastnameEN</a1>
-                        <input type="text" value={this.state.lastnameEN} onChange={txt => this.setState({ lastnameEN: txt.target.value })} />
-                    </div>
-                    <div>
-                        <button onClick={this.onSearch}>
-                            search
-                        </button>
-                    </div>
+                <div style={{paddingTop:250,paddingLeft:200}}>
+                    {this.state.accounts.map((item) => {
+                        return (
+                            <div style={{ width: '90%' }}>
+                                <Paper className="paper">
+                                    <ul>
+                                        <div><p>Employee ID :{item.employeeID}</p></div>
+                                        <div><p>Department :{item.department}</p></div>
+                                        <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
+                                        <div><p>ID card :{item.idCard}</p></div>
+                                    </ul>
+                                </Paper>
+                            </div>
+
+                        );
+                    })}
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <button onClick={() => history.push('/memberManage/addMember')}>
-                        Add Member
-                    </button>
-                </div>
-                {this.state.accounts.map((item) => {
-                    return (
-                        <ul>
-                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email} - {item.idCard}</li>
-                        </ul>
-                    );
-                })}
+
             </div>
         )
     }

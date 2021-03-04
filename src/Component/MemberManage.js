@@ -5,17 +5,18 @@ import Hamburger from './Hamburger'
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
 
-import { SidebarData } from './SidebarData';
-import { ToastHeader } from 'react-bootstrap';
+import firestore from '../firebase/firestore'
 
 class MemberManage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: null,
-            pass: null,
             user: this.props.userList[this.props.userList.length - 1],
             accounts: this.props.accountList,
+            employeeID: '',
+            idCard: '',
+            firstnameEN: '',
+            lastnameEN: '',
         };
     }
 
@@ -25,7 +26,10 @@ class MemberManage extends Component {
         } else {
             this.setState({
                 accounts: this.state.accounts.filter(
-                    (item) => ((item.employeeID === this.state.employeeID) || (item.firstnameEN === this.state.firstnameEN))
+                    (item) => ((item.employeeID === this.state.employeeID) ||
+                        (item.firstnameEN === this.state.firstnameEN) ||
+                        (item.idCard === this.state.idCard) ||
+                        (item.lastnameEN === this.state.lastnameEN))
                 )
             })
         }
@@ -48,6 +52,10 @@ class MemberManage extends Component {
         console.log(this.state.accounts)
     }
 
+    getReject = (error) => {
+        console.log(error)
+    }
+
     render() {
         return (
             <div className="bg">
@@ -55,22 +63,22 @@ class MemberManage extends Component {
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div>
                         <a1>Employee id </a1>
-                        <input type="text" name="employeeid" />
+                        <input type="text" value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })} />
                     </div>
                     <div>
                         <a1>ID card number</a1>
-                        <input type="text" name="idcard" />
+                        <input type="text" value={this.state.idCard} onChange={txt => this.setState({ idCard: txt.target.value })} />
                     </div>
                     <div>
-                        <a1>Firstname</a1>
-                        <input type="text" name="fristname" />
+                        <a1>FirstnameEN</a1>
+                        <input type="text" value={this.state.firstnameEN} onChange={txt => this.setState({ firstnameEN: txt.target.value })} />
                     </div>
                     <div>
-                        <a1>Lastname</a1>
-                        <input type="text" name="lastname" />
+                        <a1>LastnameEN</a1>
+                        <input type="text" value={this.state.lastnameEN} onChange={txt => this.setState({ lastnameEN: txt.target.value })} />
                     </div>
                     <div>
-                        <button onClick={() => console.log(this.props.accountList)}>
+                        <button onClick={this.onSearch}>
                             search
                         </button>
                     </div>
@@ -80,10 +88,10 @@ class MemberManage extends Component {
                         Add Menber
                     </button>
                 </div>
-                {this.props.accountList.map((item) => {
+                {this.state.accounts.map((item) => {
                     return (
                         <ul>
-                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email}</li>
+                            <li>{item.employeeID} - {item.firstnameEN} - {item.department} - {item.email} - {item.idCard}</li>
                         </ul>
                     );
                 })}

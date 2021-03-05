@@ -1313,3 +1313,9 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 20px;
 }
+
+.picEOQ {
+    position: absolute;
+    width: 80%;
+    height: 50%;
+}

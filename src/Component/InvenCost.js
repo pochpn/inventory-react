@@ -6,6 +6,7 @@ import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
+import {CC,EOQ,TC,OC} from '../pic'
 
 class InvenCost extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class InvenCost extends Component {
         return (
             <div className="bg">
                 <Paper className="paperInEOQ">
-
+                    <img className="picEOQ" src={EOQ}></img>
                 </Paper>
                 <Paper className="paperInOc">
                     

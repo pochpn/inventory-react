@@ -31,3 +31,8 @@ export const Error = ''
 export const Success = ''
 export const Wait = ''
 /*----------invencost---------*/
+
+export const CC ='https://sv1.picz.in.th/images/2021/03/06/DWPzeV.png'
+export const EOQ ='https://sv1.picz.in.th/images/2021/03/06/DWPfan.png'
+export const OC ='https://sv1.picz.in.th/images/2021/03/06/DWP3QW.png'
+export const TC ='https://sv1.picz.in.th/images/2021/03/06/DWPtd1.png'

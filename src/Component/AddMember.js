@@ -57,6 +57,7 @@ class AddMember extends Component {
     addSuccess = (doc) => {
         
         console.log(doc.id)
+        history.push('/memberManage')
     }
 
     addReject = (error) => {

@@ -19,6 +19,7 @@ class MemberManage extends Component {
             idCard: '',
             firstnameEN: '',
             lastnameEN: '',
+            tel:'',
         };
     }
 
@@ -108,7 +109,7 @@ class MemberManage extends Component {
                                         <div><p>Employee ID :{item.employeeID}</p></div>
                                         <div><p>Department :{item.department}</p></div>
                                         <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
-                                        <div><p>ID card :{item.idCard}</p></div>
+                                        <div><p>Tel :{item.tel}</p></div>
                                     </ul>
                                 </Paper>
                             </div>

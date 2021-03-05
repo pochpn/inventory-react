@@ -32,7 +32,7 @@ export const Success = ''
 export const Wait = ''
 /*----------invencost---------*/
 
-export const CC ='https://sv1.picz.in.th/images/2021/03/06/DWPzeV.png'
-export const EOQ ='https://sv1.picz.in.th/images/2021/03/06/DWPfan.png'
-export const OC ='https://sv1.picz.in.th/images/2021/03/06/DWP3QW.png'
-export const TC ='https://sv1.picz.in.th/images/2021/03/06/DWPtd1.png'
+export const CC ='https://sv1.picz.in.th/images/2021/03/06/DWPVjQ.png'
+export const EOQ ='https://www.img.in.th/images/3addeb608715196a9c3aae389d71e601.png'
+export const OC ='https://sv1.picz.in.th/images/2021/03/06/DWPvUg.png'
+export const TC ='https://www.img.in.th/images/a139901e6438af36d33795d8882d2f54.png'

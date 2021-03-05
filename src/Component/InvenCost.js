@@ -32,7 +32,7 @@ class InvenCost extends Component {
                     
                 </Paper>
                 <Hamburger page='INVENTORY COST' user={this.state.user} />
-            
+                
             </div>
         )
     }

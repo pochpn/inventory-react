@@ -1273,3 +1273,43 @@ body, html {
     border-radius: 12px;
     border-width: 0;
 }
+
+.paperInEOQ {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 615px;
+    top: 238px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.paperInOc {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 987px;
+    top: 238px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.paperInCc {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 615px;
+    top: 565px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.paperInTc {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 987px;
+    top: 565px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}

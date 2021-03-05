@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { addUser, clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction'
 
-import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, xxx } from '../pic'
+import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship } from '../pic'
 
 
 class Home extends Component {

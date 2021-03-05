@@ -5,6 +5,7 @@ import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
+import { Paper } from '@material-ui/core';
 
 class InvenCost extends Component {
     constructor(props) {
@@ -17,27 +18,20 @@ class InvenCost extends Component {
     render() {
         return (
             <div className="bg">
+                <Paper className="paperInEOQ">
+
+                </Paper>
+                <Paper className="paperInOc">
+                    
+                </Paper>
+                <Paper className="paperInCc">
+                    
+                </Paper>
+                <Paper className="paperInTc">
+                    
+                </Paper>
                 <Hamburger page='INVENTORY COST' user={this.state.user} />
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                        <button>
-                            Economic Order Quantity
-                        </button>
-                        <button>
-                            Ordering Cost
-                        </button>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                        <button>
-                            Carring Cost
-                        </button>
-                        <button>
-                            Total cost
-                        </button>
-
-                    </div>
-
-                </div>
+            
             </div>
         )
     }

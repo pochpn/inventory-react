@@ -1316,6 +1316,92 @@ body, html {
 
 .picEOQ {
     position: absolute;
-    width: 80%;
-    height: 50%;
+    width: 214.91px;
+    height: 80.3px;
+    left: 18%;
+    top: 20%;
+}
+
+.fontEOQ {
+    position: absolute;
+    width: 307px;
+    height: 89px;
+    left: 3%;
+    top: 60%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.picOc {
+    position: absolute;
+    width: 150.78px;
+    height: 99.51px;
+    left: 24%;
+    top: 20%;
+}
+
+.fontOc {
+    position: absolute;
+    width: 200px;
+    height: 89px;
+    left: 16%;
+    top: 60%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.picCc {
+    position: absolute;
+    width: 150.78px;
+    height: 99.51px;
+    left: 26%;
+    top: 20%;
+}
+
+.fontCc {
+    position: absolute;
+    width: 180px;
+    height: 89px;
+    left: 22%;
+    top: 60%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.picTc {
+    position: absolute;
+    width: 173px;
+    height: 118.17px;
+    left: 22%;
+    top: 14%;
+}
+
+.fontTc {
+    position: absolute;
+    width: 100px;
+    height: 89px;
+    left: 33%;
+    top: 60%;
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 45px;
+    text-align: center;
+    color: #6E0D0D;
 }

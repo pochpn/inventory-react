@@ -21,7 +21,7 @@ class Profile extends Component {
             <div className="bg">
                 <Paper className="paperPhoto" >
                     <div>
-
+                        <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.user.pic} />
                     </div>
                 </Paper>
                 <Paper className="paperDetail" >

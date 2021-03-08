@@ -19,7 +19,7 @@ class MemberManage extends Component {
             idCard: '',
             firstnameEN: '',
             lastnameEN: '',
-            tel:'',
+            tel: '',
         };
     }
 
@@ -100,21 +100,23 @@ class MemberManage extends Component {
                 </Paper>
 
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{paddingTop:250,paddingLeft:200}}>
+                <div style={{ paddingTop: 250, paddingLeft: 200 }}>
                     {this.state.accounts.map((item) => {
-                        return (
-                            <div style={{ width: '90%' }}>
-                                <Paper className="paper">
-                                    <ul>
-                                        <div><p>Employee ID :{item.employeeID}</p></div>
-                                        <div><p>Department :{item.department}</p></div>
-                                        <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
-                                        <div><p>Tel :{item.tel}</p></div>
-                                    </ul>
-                                </Paper>
-                            </div>
-
-                        );
+                        if (item.email !== this.state.user.email) {
+                            return (
+                                <div style={{ width: '90%' }}>
+                                    <Paper className="paper" style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <img style={{ width: '100px', height: '100px', alignSelf: 'center' }} src={item.pic} />
+                                        <ul>
+                                            <div><p>Employee ID :{item.employeeID}</p></div>
+                                            <div><p>Department :{item.department}</p></div>
+                                            <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
+                                            <div><p>Tel :{item.tel}</p></div>
+                                        </ul>
+                                    </Paper>
+                                </div>
+                            );
+                        }
                     })}
                 </div>
 

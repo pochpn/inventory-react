@@ -4,6 +4,7 @@ import history from '../history'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import firestore from "../firebase/firestore"
+import storage from '../firebase/storage'
 
 import { connect } from 'react-redux';
 
@@ -13,6 +14,8 @@ import './Style.css'
 
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
+
+import ImageUploader from 'react-images-upload';
 
 class AddMember extends Component {
     constructor(props) {
@@ -31,10 +34,30 @@ class AddMember extends Component {
             email: null,
             address: null,
             user: this.props.userList[this.props.userList.length - 1],
+            pic: null,
         };
     }
 
     onAdd = () => {
+        if (this.state.pic !== null) {
+            storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+        } else {
+            alert("Please select a profile image")
+        }
+    }
+
+    addSuccess = (doc) => {
+        console.log(doc.id)
+        history.push('/memberManage')
+    }
+
+    addReject = (error) => {
+        console.log(error)
+    }
+
+    uploadSuccess = (uri) => {
+        console.log(uri)
+        this.setState({ pic: uri })
         const user = {
             employeeID: this.state.employeeID,
             department: this.state.department,
@@ -49,27 +72,39 @@ class AddMember extends Component {
             email: this.state.email,
             address: this.state.address,
             pass: this.state.email,
+            pic: uri
         }
         firestore.addUser(user, this.addSuccess, this.addReject)
         this.props.addAccount(user)
+
     }
 
-    addSuccess = (doc) => {
-
-        console.log(doc.id)
-        history.push('/memberManage')
-    }
-
-    addReject = (error) => {
+    uploadReject = (error) => {
         console.log(error)
     }
+
+    onImageChange = (event) => {
+        if (this.state.email === null || this.state.email === '') {
+            alert("Please input Email before select a profile image")
+        } else {
+            if (event.target.files && event.target.files[0]) {
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    this.setState({ pic: e.target.result });
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+    }
+
 
     render() {
         return (
             <div className="bg">
                 <Paper className="paperPhoto" >
-                    <div>
-
+                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+                        <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.pic} />
+                        <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>
                 </Paper>
                 <Paper className="paperAddMB" onClick={this.onAdd}>

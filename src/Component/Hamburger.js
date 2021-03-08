@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, {Component } from 'react';
 import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';

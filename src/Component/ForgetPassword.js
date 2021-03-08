@@ -5,6 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import firebase from '../firebase/firestore'
 import styled, { css } from 'styled-components'
 
+import './Modal.css';
+import { Success } from '../pic';
+
 const ButtonSend = styled.button`
   background: #ef3f3e;
   border-radius: 10px;
@@ -21,10 +24,34 @@ const ButtonCancel = styled.button`
   margin: 0 1em;
   padding: 0.5em 1.5em;
   `
+const ButtonOK = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+const FontHead = styled.div`
+  && {
+    color: #000000;
+    font-size: 36px;
+  }
+`
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
 class ForgetPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modal: false,
       email: null,
       user: null,
       firstnameEN: null,
@@ -33,6 +60,21 @@ class ForgetPassword extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleModalClose = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal: !this.state.modal });
+
+  };
+
+  handleModalOpen = () => {
+    this.setState({ modal: !this.state.modal });
+  };
+
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
@@ -57,7 +99,8 @@ class ForgetPassword extends Component {
 
   reject = (error) => {
     console.log(error)
-    alert("Email is incorrect!!");
+    this.handleModalOpen()
+    // alert("Email is incorrect!!");
   }
 
   onSend = (e) => {
@@ -87,7 +130,8 @@ class ForgetPassword extends Component {
       pass: "",
 
     });
-    alert("Email has been send please check your mail box!");
+    this.handleModalOpen()
+    // alert("Email has been send please check your mail box!");
   }
 
   render() {
@@ -95,20 +139,20 @@ class ForgetPassword extends Component {
       <div className="bg">
         <Paper className="paperForget">
           <form className="forget_Pass">
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',paddingTop: 32 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 32 }}>
               <div>
-                <h1>Account Recover</h1>
+                <FontHead>Account Recover</FontHead>
               </div>
-              <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 32}} >
+              <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 35 }} >
                 <p>Please enter your email for </p>
                 <p>receive password</p>
-              </div>
-              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 130 , }}>
+              </Font>
+              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 80 }}>
                 <input type="text"
                   id="email"
                   name="email"
                   value={this.state.email}
-                  onChange={txt => this.setState({ email: txt.target.value })} style={{ fontSize: 24,}} />
+                  onChange={txt => this.setState({ email: txt.target.value })} style={{ fontSize: 24, width: 510 }} />
                 <input type="hidden"
                   id="name"
                   name="name"
@@ -120,20 +164,37 @@ class ForgetPassword extends Component {
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ paddingLeft: 20, paddingTop: 195 }}>
+              <div style={{ paddingLeft: 20, paddingTop: 200 }}>
                 <ButtonCancel style={{ width: 100 }} onClick={() => history.push('/')}>
                   Cancel
                 </ButtonCancel>
               </div>
-              <div style={{ paddingLeft: 305, paddingTop: 195 }}>
+              <div style={{ paddingLeft: 305, paddingTop: 200 }}>
                 <ButtonSend style={{ width: 100 }} onClick={this.onSend}>
                   Send
                 </ButtonSend>
               </div>
             </div>
-
           </form>
         </Paper>
+        <div hidden={!this.state.modal}>
+          <div className="modal-background" onClick={this.handleModalClose}>
+            <div className="modal-card">
+              <div>
+                <img className="picSuccess" src={Success} />
+              </div>
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
+                  <p>Email has been sent.</p>
+                  <p>Please check your mail box.</p>
+                </Font>
+              </div>
+              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+                <ButtonOK style={{fontSize: 20}} onClick={this.handleModalClose}>OK</ButtonOK>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     )

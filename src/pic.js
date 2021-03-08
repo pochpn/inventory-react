@@ -28,7 +28,7 @@ export const chooseim = ''
 export const chooseim2 = ''
 export const DG = ''
 export const Error = ''
-export const Success = ''
+export const Success = 'https://sv1.picz.in.th/images/2021/03/08/DzBKbI.png'
 export const Wait = ''
 /*----------invencost---------*/
 

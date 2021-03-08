@@ -59,6 +59,13 @@ class MemberManage extends Component {
         console.log(error)
     }
 
+    onMember = (item) => {
+        history.push({
+            pathname: '/memberManage/editMember',
+            state: { member: item },
+        })
+    }
+
     render() {
         return (
             <div className="bg">
@@ -105,13 +112,19 @@ class MemberManage extends Component {
                         if (item.email !== this.state.user.email) {
                             return (
                                 <div style={{ width: '90%' }}>
-                                    <Paper className="paper" style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <Paper className="paper" style={{ display: 'flex', flexDirection: 'row' }}
+                                        onClick={() => {
+                                            history.push({
+                                                pathname: '/memberManage/editMember',
+                                                state: { member: item },
+                                            })
+                                        }} >
                                         <img style={{ width: '100px', height: '100px', alignSelf: 'center' }} src={item.pic} />
                                         <ul>
-                                            <div><p>Employee ID :{item.employeeID}</p></div>
-                                            <div><p>Department :{item.department}</p></div>
-                                            <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
-                                            <div><p>Tel :{item.tel}</p></div>
+                                            <div><p>Employee ID : {item.employeeID}</p></div>
+                                            <div><p>Department : {item.department}</p></div>
+                                            <div><p>Name : {item.firstnameEN} {item.lastnameEN}</p></div>
+                                            <div><p>Tel : {item.tel}</p></div>
                                         </ul>
                                     </Paper>
                                 </div>

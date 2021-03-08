@@ -3,6 +3,7 @@ import history from '../history'
 import Topbar from './Topbar'
 
 import Hamburger from './Hamburger'
+import Modal from './Modal'
 
 import { connect } from 'react-redux';
 import { Paper } from '@material-ui/core';
@@ -20,11 +21,13 @@ class InvenCost extends Component {
     render() {
         return (
             <div className="bg">
+                
                 <Paper className="paperInEOQ">
                     <img className="picEOQ" src={EOQ}></img>
                     <p className="fontEOQ">Economic Order
                     Quantity
                     </p>
+                    <Modal/>
                 </Paper>
                 <Paper className="paperInOc">
                     <img className="picOc" src={OC}></img>

@@ -1521,3 +1521,10 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+.picSuccess {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 47.5%;
+    top: 30%;
+}

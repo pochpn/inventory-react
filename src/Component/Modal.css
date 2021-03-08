@@ -1,0 +1,19 @@
+  
+  .modal-background {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color:  rgba(255, 255, 255, 0.4)!important;;
+  }
+  
+  .modal-card {
+    margin: 0 auto;
+    display: block;
+    margin-top: 250px;
+    width: 713px;
+    height: 312px;
+    background-color: white;
+    border-radius: 15px;
+  }

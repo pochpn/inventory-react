@@ -98,7 +98,7 @@ class AddMember extends Component {
                     <div><p className="textP1" style={{ width: '150px', height: '39px', left: '49.5%', top: '2%' }}>Department</p></div>
                     <div style={{ paddingTop: '8%' }} className="inputP4">
                         <MDBDropdown dropdown>
-                            <MDBDropdownToggle caret color="primary" style={{width:246}}>
+                            <MDBDropdownToggle caret color="light" style={{width:246}}>
                                 {this.state.department}
                             </MDBDropdownToggle>
                             <MDBDropdownMenu basic>

@@ -178,7 +178,7 @@ class ForgetPassword extends Component {
           </form>
         </Paper>
         <div hidden={!this.state.modal}>
-          <div className="modal-background" onClick={this.handleModalClose}>
+          <div className="modal-background">
             <div className="modal-card">
               <div>
                 <img className="picSuccess" src={Success} />

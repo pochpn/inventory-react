@@ -1405,3 +1405,119 @@ body, html {
     text-align: center;
     color: #6E0D0D;
 }
+
+/* Order Confirm */
+
+.OrConRecv {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 358px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.OrConPak {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 800px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.OrConReturn {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 1243px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.imOrRecv {
+    position: absolute;
+    width: 145px;
+    height: 139px;
+    left: 31%;
+    top: 10%;
+}
+
+.imOrPak {
+    position: absolute;
+    width: 145px;
+    height: 139px;
+    left: 30%;
+    top: 10%;
+}
+
+.imOrReturn {
+    position: absolute;
+    width: 138px;
+    height: 137px;
+    left: 30%;
+    top: 10%;
+}
+
+.txtOrRecv1{
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 24%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrCon2{
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 40%;
+    top: 75%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrPak1{
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 29%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrRetu1{
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 25%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}

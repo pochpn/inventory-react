@@ -4,7 +4,7 @@ import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
-import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, xxx, search } from '../pic'
+import { search } from '../pic'
 
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';

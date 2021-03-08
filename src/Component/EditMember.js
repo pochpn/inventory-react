@@ -8,7 +8,7 @@ import storage from '../firebase/storage'
 
 import { connect } from 'react-redux';
 
-import { addAccount } from '../actions/accountAction'
+import { addAccount,deleteAccount } from '../actions/accountAction'
 
 import './Style.css'
 
@@ -95,6 +95,10 @@ class EditMember extends Component {
         }
     }
 
+    onDelete = () => {
+        history.push('/memberManage')
+    }
+
 
     render() {
         return (
@@ -113,6 +117,11 @@ class EditMember extends Component {
                 <Paper className="paperCancelMB" onClick={() => history.push('/memberManage')}>
                     <div>
                         <p className="textCancelMB" >Cancel</p>
+                    </div>
+                </Paper>
+                <Paper className="paperDeleteMB" onClick={this.onDelete}>
+                    <div >
+                        <p className="textAddMB" >Delete</p>
                     </div>
                 </Paper>
                 <Paper className="paperDetail" >

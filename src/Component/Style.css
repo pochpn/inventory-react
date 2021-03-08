@@ -953,6 +953,16 @@ body, html {
     border-radius: 12px;
 }
 
+.paperDeleteMB{
+    position: absolute;
+    width: 268px;
+    height: 70px;
+    left: 493px;
+    top: 819px;
+    background: #EF3F3E !important;
+    border-radius: 12px;
+}
+
 .textAddMB {
     position: absolute;
     width: 136px;

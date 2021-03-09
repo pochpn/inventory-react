@@ -37,7 +37,6 @@ class Hamburger extends Component {
     super(props);
     this.state = {
       modal: false,
-      logout: false,
       sidebar: false,
       user: this.props.user
     };
@@ -93,7 +92,7 @@ class Hamburger extends Component {
                       this.props.clearUser()
                       this.props.clearProduct()
                     }
-                  }}>
+                    }}>
                     {item.icon}
                     <span>{item.title}</span>
                   </Link>

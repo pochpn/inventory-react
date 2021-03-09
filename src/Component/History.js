@@ -1,45 +1,62 @@
 import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
-
+import Paper from '@material-ui/core/Paper';
+import { search } from '../pic'
 import Hamburger from './Hamburger'
 
 
 import { connect } from 'react-redux';
+import { AiOutlineUserAdd } from "react-icons/ai";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 class History extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // startDate: new Date,
       user: this.props.userList[this.props.userList.length - 1],
     };
   }
 
+  
+
   render() {
     return (
       <div className="bg">
-        <Hamburger page='HISTORY' user={this.state.user} />
-        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-            <div>
-              <a1>Types</a1>
-              <input type="text" />
-            </div>
-            <div>
-              <a1>Receipt ID</a1>
-              <input type="text" />
-            </div>
-            <div>
-              <a1>Duration date</a1>
-              <input type="text" />
-              <a1>-</a1>
-              <input type="text" />
-            </div>
-            <button>
-              Search
-                </button>
+        <Paper className="paperSearchMB" >
+          {/* <DatePicker
+            selected = {startDate}
+            onChange = {date => this.state.date}
+            dateFormat = 'dd/MM/yyyy'
+            maxDate = {new Date()}
+          /> */}
+          <div style={{paddingLeft: 50, display: 'flex', flexDirection: 'column'}}>
+            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Types</a1>
+            <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }} ></input>
           </div>
-        </div>
+          <div style={{paddingLeft: 50, display: 'flex', flexDirection: 'column'}}>
+            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Receipt ID</a1>
+            <input type="text" style={{width: 300, fontSize: 24, borderWidth: 0 }}></input>
+          </div>
+          <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column'}}>
+            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Duration Date</a1>
+            <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }}></input>
+          </div>
+          <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column'}}>
+            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}> - </a1>
+          </div>
+          <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column'}}>
+            <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }}></input>
+          </div>
+          <img
+            style={{ justifyContent: 'flex-end', width: "10%", }}
+            src={search}
+            onClick={this.onSearch}></img>
+        </Paper>
+        <Hamburger page='HISTORY' user={this.state.user} />
       </div>
 
     )

@@ -603,7 +603,6 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    
 }
 
 .textSto2 {
@@ -726,6 +725,7 @@ body, html {
 /* DASHBOARD */
 
 /*ViewStock*/
+
 .paperShelf {
     justify-items: center;
     align-items: center;
@@ -946,7 +946,7 @@ body, html {
     border-radius: 12px;
 }
 
-.paperDeleteMB{
+.paperDeleteMB {
     position: absolute;
     width: 268px;
     height: 70px;
@@ -1412,6 +1412,7 @@ body, html {
 }
 
 /*Shelf*/
+
 .paperShelf1 {
     justify-items: center;
     align-items: center;
@@ -1422,7 +1423,7 @@ body, html {
     margin-right: 2%;
 }
 
-.txtShelf{
+.txtShelf {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1436,13 +1437,12 @@ body, html {
     justify-items: center;
     align-items: center;
     height: 20%;
-    background: rgba(255, 255, 255, 0.4)!important; 
+    background: rgba(255, 255, 255, 0.4)!important;
     margin: 1.5%;
-    
     background-color: #6E0D0D;
 }
 
-.txtProShelf{
+.txtProShelf {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1452,6 +1452,7 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
 /* Order Confirm */
 
 .OrConRecv {
@@ -1679,7 +1680,6 @@ body, html {
     color: #6E0D0D;
 }
 
-
 .picSuccess {
     position: absolute;
     width: 100px;
@@ -1694,4 +1694,26 @@ body, html {
     height: 100px;
     left: 47%;
     top: 30%;
+}
+
+/* Add New Product */
+
+.paperAddProduct {
+    position: absolute;
+    width: 1775px;
+    height: 725px;
+    left: 75px;
+    top: 20%;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.paperPhotoPD {
+    position: absolute;
+    width: 268px;
+    height: 268px;
+    left: 240px;
+    top: 30%;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
 }

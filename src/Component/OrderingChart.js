@@ -105,7 +105,7 @@ class Ordering extends Component {
                             <img img className="imsch" src={search} />
                         </div>
                         <div style={{ paddingLeft: 70, paddingTop: 900 }}>
-                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }} >
+                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }}  onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
                                 +
                             </ButtonAdd>
                         </div>

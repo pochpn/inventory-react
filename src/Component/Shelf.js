@@ -63,26 +63,26 @@ class Shelf extends Component {
                         src={search} />
 
                 </div>
-                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '15%'}}>
-                    <p>Product</p>
-                    <p>Product</p>
-                    <p>Product</p>
-                    <p>Product</p>
-                    <p>Product</p>
+                <div className="paperTopProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '9%',borderRadius:'25px'}}>
+                    <p className='txtProTopShelf' style={{}}>Product</p>
+                    <p className='txtProTopShelf' style={{}}>Product ID</p>
+                    <p className='txtProTopShelf' style={{}}>Product Name</p>
+                    <p className='txtProTopShelf' style={{}}>Type</p>
+                    <p className='txtProTopShelf' style={{}}>QTY</p>
+                    <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     {this.props.productList.map((item) => {
                         if (item.shelf === this.state.shelf) {
                             return (
-                                <ul>
-                                    <p><span>{item.pic}</span></p>
-                                    <p><span>{item.productID}</span></p>
-                                    <p><span>{item.productName}</span></p>
-                                    <p><span>{item.type}</span></p>
-                                    <p><span>{item.shelf}</span></p>
-                                    <p><span>{item.unit}</span></p>
-                                    <p><span>------------------------</span></p>
-                                </ul>
+                                <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
+                                    <img src={item.pic} style={{width:'100px', height: '100px'}}></img>
+                                    <p className='txtProShelf' style={{}}>{item.productID}</p>
+                                    <p className='txtProShelf' style={{}}>{item.productName}</p>
+                                    <p className='txtProShelf' style={{}}>{item.type}</p>
+                                    <p className='txtProShelf' style={{}}>{item.oty}</p>
+                                    <p className='txtProShelf' style={{}}>{item.unit}</p>
+                                </scroll>
                             );
                         }
 

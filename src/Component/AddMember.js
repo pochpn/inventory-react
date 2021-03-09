@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
-
+import { Base64 } from 'js-base64';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import firestore from "../firebase/firestore"
@@ -69,7 +69,7 @@ class AddMember extends Component {
             tel: this.state.tel,
             email: this.state.email,
             address: this.state.address,
-            pass: this.state.email,
+            pass: Base64.encode(this.state.email),
             pic: uri
         }
         firestore.addUser(user, this.addSuccess, this.addReject)
@@ -100,7 +100,7 @@ class AddMember extends Component {
         return (
             <div className="bg">
                 <Paper className="paperPhoto" >
-                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column',padding :5 }}>
                         <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.pic} />
                         <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>

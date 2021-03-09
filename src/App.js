@@ -17,7 +17,7 @@ import MemberManage from './Component/MemberManage'
 import AddMember from './Component/AddMember'
 import OrderConfirm from './Component/OrderConfirm'
 import History from './Component/History'
-import ShippingConfirm from './Component/ShippingConfirm'
+import ConfirmShipping from './Component/ConfirmShipping'
 import Shelf from './Component/Shelf'
 import OrderingChart from './Component/OrderingChart'
 import Profile from './Component/Profile'
@@ -61,7 +61,7 @@ class App extends Component {
             <Route exact path="/memberManage/addMember" component={AddMember} />
             <Route exact path="/memberManage/editMember" component={EditMember} />
             <Route exact path="/history" component={History} />
-            <Route exact path="/shippingConfirm" component={ShippingConfirm} />
+            <Route exact path="/confirmShipping" component={ConfirmShipping} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/orderConfirm/receiving" component={ConReceiving} />
             <Route exact path="/orderConfirm/packing" component={ConPacking} />

@@ -72,7 +72,7 @@ class Home extends Component {
                         <p className="textS">CONFIRMATION</p>
                     </div>
                 </Paper>
-                <Paper className="paperCs" onClick={() => history.push('/shippingConfirm')} >
+                <Paper className="paperCs" onClick={() => history.push('/confirmShipping')} >
                     <div>
                         <img className="imCs" src={confirmship} />
                         <p className="textCf">CONFIRMING</p>

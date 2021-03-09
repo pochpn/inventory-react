@@ -603,7 +603,6 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    
 }
 
 .textSto2 {
@@ -726,6 +725,7 @@ body, html {
 /* DASHBOARD */
 
 /*ViewStock*/
+
 .paperShelf {
     justify-items: center;
     align-items: center;
@@ -1412,6 +1412,7 @@ body, html {
 }
 
 /*Shelf*/
+
 .paperShelf1 {
     justify-items: center;
     align-items: center;
@@ -1422,7 +1423,7 @@ body, html {
     margin-right: 2%;
 }
 
-.txtShelf{
+.txtShelf {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1436,13 +1437,12 @@ body, html {
     justify-items: center;
     align-items: center;
     height: 20%;
-    background: rgba(255, 255, 255, 0.4)!important; 
+    background: rgba(255, 255, 255, 0.4)!important;
     margin: 1.5%;
-    
     background-color: #6E0D0D;
 }
 
-.txtProShelf{
+.txtProShelf {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1452,6 +1452,7 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
 /* Order Confirm */
 
 .OrConRecv {
@@ -1757,6 +1758,89 @@ body, html {
     height: 100px;
     left: 47.5%;
     top: 30%;
+}
+
+/* Confirm Shiping */
+
+.conShipTop {
+    position: absolute;
+    width: 1920px;
+    height: 165px;
+    left: 0px;
+    top: 56px;
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
+.txtShipTop1 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 8%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtShipTop2 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 36%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.imschShip {
+    position: absolute;
+    width: 250px;
+    height: 145px;
+    left: 85%;
+    top: 7%;
+}
+
+.StatusShip {
+    position: absolute;
+    width: 504px;
+    height: 79px;
+    left: 1395px;
+    top: 934px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.imShipWait {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 38%;
+    top: 17%;
+}
+
+.imShipSuc {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 5%;
+    top: 17%;
+}
+
+.imShipRej {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 71%;
+    top: 17%;
 }
 
 .picError {

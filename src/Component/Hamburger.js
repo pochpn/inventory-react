@@ -60,12 +60,7 @@ class Hamburger extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  onLogout = () => {
-    console.log('logout')
-    this.props.clearAccount()
-    this.props.clearUser()
-    this.props.clearProduct()
-  }
+
 
   render() {
     return (
@@ -93,26 +88,10 @@ class Hamburger extends Component {
                 <li key={index} className={item.cName}>
                   <Link to={item.path} onClick={() => {
                     if (item.path === '/') {
-                      <div hidden={!this.state.modal}>
-                        <div className="modal-background">
-                          <div className="modal-card">
-                            <div>
-                              <img className="picSuccess" src={Success} />
-                            </div>
-                            <div>
-                              <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
-                                <p>Are you sure ?</p>
-                              </Font>
-                            </div>
-                            <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                              <ButtonOK style={{ fontSize: 20 }} onClick={this.onLogout}>YES</ButtonOK>
-                            </div>
-                            <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                              <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>NO</ButtonOK>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      console.log('logout')
+                      this.props.clearAccount()
+                      this.props.clearUser()
+                      this.props.clearProduct()
                     }
                   }}>
                     {item.icon}
@@ -123,7 +102,28 @@ class Hamburger extends Component {
             })}
           </ul>
         </nav>
+        <div hidden={!this.state.modal}>
+          <div className="modal-background">
+            <div className="modal-card">
+              <div>
+                <img className="picSuccess" src={Success} />
+              </div>
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
+                  <p>Are you sure ?</p>
+                </Font>
+              </div>
+              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+                <ButtonOK style={{ fontSize: 20 }} onClick={this.onLogout}>YES</ButtonOK>
+              </div>
+              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>NO</ButtonOK>
+              </div>
+            </div>
+          </div>
+        </div>
       </IconContext.Provider>
+
     );
   }
 }

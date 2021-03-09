@@ -52,6 +52,7 @@ class Firestore {
         firebase
             .firestore()
             .collection('User')
+            .orderBy('employeeID')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);

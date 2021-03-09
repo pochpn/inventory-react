@@ -26,13 +26,18 @@ export const logoTopBar = 'https://sv1.picz.in.th/images/2021/03/04/oyuPC0.png'
 /*--------alert-------------*/
 export const chooseim = ''
 export const chooseim2 = ''
-export const DG = ''
+export const DG = 'https://www.img.in.th/images/1e08819034bad6902531259bf0331d48.png'
 export const Error = 'https://sv1.picz.in.th/images/2021/03/09/DNT6l2.png'
 export const Success = 'https://sv1.picz.in.th/images/2021/03/08/DzBKbI.png'
-export const Wait = ''
+export const Wait = 'https://www.img.in.th/images/aa127955dce88b968bc5455e345f64b5.png'
 /*----------invencost---------*/
 
 export const CC ='https://sv1.picz.in.th/images/2021/03/06/DWPVjQ.png'
 export const EOQ ='https://www.img.in.th/images/3addeb608715196a9c3aae389d71e601.png'
 export const OC ='https://sv1.picz.in.th/images/2021/03/06/DWPvUg.png'
 export const TC ='https://www.img.in.th/images/a139901e6438af36d33795d8882d2f54.png'
+
+/*----------Status---------*/
+export const Suc = 'https://www.img.in.th/images/34b0f228a4348da5e7e6822c7b2aaff2.png'
+export const Reject = 'https://www.img.in.th/images/b8a19591bdaab2c282168b7c7b9dcd1c.png'
+export const Waiting = 'https://www.img.in.th/images/e4bf6438689c1200ebd61d65de57780e.png'

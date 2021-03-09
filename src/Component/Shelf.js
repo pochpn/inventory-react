@@ -76,7 +76,7 @@ class Shelf extends Component {
                         if (item.shelf === this.state.shelf) {
                             return (
                                 <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
-                                    <p className='txtProShelf' style={{}}>{item.pic}</p>
+                                    <img src={item.pic} style={{width:'100px', height: '100px'}}></img>
                                     <p className='txtProShelf' style={{}}>{item.productID}</p>
                                     <p className='txtProShelf' style={{}}>{item.productName}</p>
                                     <p className='txtProShelf' style={{}}>{item.type}</p>

@@ -22,6 +22,10 @@ import Shelf from './Component/Shelf'
 import OrderingChart from './Component/OrderingChart'
 import Profile from './Component/Profile'
 import PickingChart from './Component/PickingChart'
+import EditMember from './Component/EditMember'
+import ConReceiving from './Component/ConReceiving'
+import ConPacking from './Component/ConPacking'
+import ConReturned from './Component/ConReturned'
 
 import { Provider } from 'react-redux';
 import configureStore from './Store';
@@ -54,9 +58,13 @@ class App extends Component {
             <Route exact path="/picking/pickingChart" component={PickingChart} />
             <Route exact path="/memberManage" component={MemberManage} />
             <Route exact path="/memberManage/addMember" component={AddMember} />
+            <Route exact path="/memberManage/editMember" component={EditMember} />
             <Route exact path="/history" component={History} />
             <Route exact path="/shippingConfirm" component={ShippingConfirm} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
+            <Route exact path="/orderConfirm/receiving" component={ConReceiving} />
+            <Route exact path="/orderConfirm/packing" component={ConPacking} />
+            <Route exact path="/orderConfirm/returned" component={ConReturned} />
             <Route exact path="/stock/viewStock/shelf" component={Shelf} />
             <Route exact path="/profile" component={Profile}/>
           </Switch>

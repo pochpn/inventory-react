@@ -20,6 +20,7 @@ class InvenCost extends Component {
     render() {
         return (
             <div className="bg">
+                
                 <Paper className="paperInEOQ">
                     <img className="picEOQ" src={EOQ}></img>
                     <p className="fontEOQ">Economic Order

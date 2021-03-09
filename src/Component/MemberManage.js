@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { search } from '../pic'
 import firestore from '../firebase/firestore'
 
+import { AiOutlineUserAdd } from "react-icons/ai";
+
+
 class MemberManage extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +22,7 @@ class MemberManage extends Component {
             idCard: '',
             firstnameEN: '',
             lastnameEN: '',
-            tel:'',
+            tel: '',
         };
     }
 
@@ -59,34 +62,40 @@ class MemberManage extends Component {
         console.log(error)
     }
 
+    onMember = (item) => {
+        history.push({
+            pathname: '/memberManage/editMember',
+            state: { member: item },
+        })
+    }
+
     render() {
         return (
             <div className="bg">
 
                 <Paper className="paperSearchMB" >
-
-
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Employee ID</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input>
-                        <div><button className="buttonAddMB" style={{ fontSize: 20 }} onClick={() => history.push('/memberManage/addMember')}>Add Member</button></div>
-
+                        <div style={{ paddingTop: 10 }}>
+                            <button className="buttonAddMB" style={{ fontSize: 20, justifyContent: 'center' }} onClick={() => history.push('/memberManage/addMember')}> <AiOutlineUserAdd size = {40}/> Add Member</button>
+                        </div>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>ID card number</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.idCard} onChange={txt => this.setState({ idCard: txt.target.value })}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>First Name</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.firstnameEN} onChange={txt => this.setState({ firstnameEN: txt.target.value })}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -100,21 +109,29 @@ class MemberManage extends Component {
                 </Paper>
 
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{paddingTop:250,paddingLeft:200}}>
+                <div style={{ paddingTop: 250, paddingLeft: 200 }}>
                     {this.state.accounts.map((item) => {
-                        return (
-                            <div style={{ width: '90%' }}>
-                                <Paper className="paper">
-                                    <ul>
-                                        <div><p>Employee ID :{item.employeeID}</p></div>
-                                        <div><p>Department :{item.department}</p></div>
-                                        <div><p>Name :{item.firstnameEN} {item.lastnameEN}</p></div>
-                                        <div><p>Tel :{item.tel}</p></div>
-                                    </ul>
-                                </Paper>
-                            </div>
-
-                        );
+                        if (item.email !== this.state.user.email) {
+                            return (
+                                <div style={{ width: '90%' }}>
+                                    <Paper className="paper" style={{ display: 'flex', flexDirection: 'row' }}
+                                        onClick={() => {
+                                            history.push({
+                                                pathname: '/memberManage/editMember',
+                                                state: { member: item },
+                                            })
+                                        }} >
+                                        <img style={{ width: '100px', height: '100px', alignSelf: 'center' }} src={item.pic} />
+                                        <ul>
+                                            <div><p>Employee ID : {item.employeeID}</p></div>
+                                            <div><p>Department : {item.department}</p></div>
+                                            <div><p>Name : {item.firstnameEN} {item.lastnameEN}</p></div>
+                                            <div><p>Tel : {item.tel}</p></div>
+                                        </ul>
+                                    </Paper>
+                                </div>
+                            );
+                        }
                     })}
                 </div>
 

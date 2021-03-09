@@ -946,6 +946,16 @@ body, html {
     border-radius: 12px;
 }
 
+.paperDeleteMB{
+    position: absolute;
+    width: 268px;
+    height: 70px;
+    left: 493px;
+    top: 819px;
+    background: #EF3F3E !important;
+    border-radius: 12px;
+}
+
 .textAddMB {
     position: absolute;
     width: 136px;
@@ -1265,6 +1275,8 @@ body, html {
     background: #EF3F3E;
     border-radius: 12px;
     border-width: 0;
+    width: 256px;
+    height: 50px;
 }
 
 .paperInEOQ {
@@ -1439,4 +1451,247 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: 'black';
+}
+/* Order Confirm */
+
+.OrConRecv {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 358px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.OrConPak {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 800px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.OrConReturn {
+    position: absolute;
+    width: 329px;
+    height: 279px;
+    left: 1243px;
+    top: 399px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
+.imOrRecv {
+    position: absolute;
+    width: 145px;
+    height: 139px;
+    left: 31%;
+    top: 10%;
+}
+
+.imOrPak {
+    position: absolute;
+    width: 145px;
+    height: 139px;
+    left: 30%;
+    top: 10%;
+}
+
+.imOrReturn {
+    position: absolute;
+    width: 138px;
+    height: 137px;
+    left: 30%;
+    top: 10%;
+}
+
+.txtOrRecv1 {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 24%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrCon2 {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 40%;
+    top: 75%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrPak1 {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 29%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrRetu1 {
+    position: absolute;
+    width: 208px;
+    height: 73px;
+    left: 25%;
+    top: 64%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+/* Receiving & Packing Order */
+
+.OrConTopic {
+    position: absolute;
+    width: 1920px;
+    height: 150px;
+    left: 0px;
+    top: 56px;
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
+.txtRecvTopic {
+    position: absolute;
+    width: 500px;
+    height: 73px;
+    left: 37%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtPakTopic {
+    position: absolute;
+    width: 500px;
+    height: 73px;
+    left: 39%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.OrConTable {
+    position: absolute;
+    width: 1888px;
+    height: 74px;
+    left: 16px;
+    top: 217px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.txtOrConTable1 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 8%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable2 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 30%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable3 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 50%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable4 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 85%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+
+.picSuccess {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 47.5%;
+    top: 30%;
+}
+
+.picError {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 47%;
+    top: 30%;
 }

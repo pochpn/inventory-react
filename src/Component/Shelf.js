@@ -80,7 +80,7 @@ class Shelf extends Component {
                                     <p className='txtProShelf' style={{}}>{item.productID}</p>
                                     <p className='txtProShelf' style={{}}>{item.productName}</p>
                                     <p className='txtProShelf' style={{}}>{item.type}</p>
-                                    <p className='txtProShelf' style={{}}>{item.oty}</p>
+                                    <p className='txtProShelf' style={{}}>{item.qty}</p>
                                     <p className='txtProShelf' style={{}}>{item.unit}</p>
                                 </scroll>
                             );

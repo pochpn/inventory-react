@@ -30,12 +30,13 @@ class AddProduct extends Component {
             product: this.props.productList[this.props.productList.length - 1],
             user: this.props.userList[this.props.userList.length - 1],
             pic: null,
+            qty: 'Not specified',
         };
     }
 
     onAdd = () => {
-        if (this.state.pic !== null) {
-            storage.uploadProductPic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+        if (this.state.pic !== null && this.state.picName !== null) {
+            storage.uploadProductPic(this.state.pic, this.state.productID, this.uploadSuccess, this.uploadReject)
         } else {
             alert("Please select a product image")
         }
@@ -61,8 +62,9 @@ class AddProduct extends Component {
             unit: this.state.unit,
             date: this.state.date,
             shelf: this.state.shelf,
-            level: this.state.shelf,
-            pic: uri
+            level: this.state.level,
+            qty: this.state.qty,
+            pic: uri,
         }
         firestore.addProduct(product, this.addSuccess, this.addReject)
         this.props.addProduct(product)
@@ -74,16 +76,13 @@ class AddProduct extends Component {
     }
 
     onImageChange = (event) => {
-        if (this.state.email === null || this.state.email === '') {
-            alert("Please input Email before select a profile image")
-        } else {
-            if (event.target.files && event.target.files[0]) {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    this.setState({ pic: e.target.result });
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
+
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                this.setState({ pic: e.target.result });
+            };
+            reader.readAsDataURL(event.target.files[0]);
         }
     }
 
@@ -111,9 +110,9 @@ class AddProduct extends Component {
                     <p className="fontAddPD" style={{ top: '60%' }}>Date</p>
                     <input className="inputPD1" style={{ top: '61%' }} onChange={txt => this.setState({ date: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '70%' }}>Shelf Location</p>
-                    <input className="inputPD3" style={{ top: '71%', left: '60%'}} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '70%',left:'74%',width:'96px' }}>Level</p>
-                    <input className="inputPD3" style={{ top: '71%', left: '82%'}} onChange={txt => this.setState({ level: txt.target.value })}></input>
+                    <input className="inputPD3" style={{ top: '71%', left: '60%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
+                    <p className="fontAddPD" style={{ top: '70%', left: '74%', width: '96px' }}>Level</p>
+                    <input className="inputPD3" style={{ top: '71%', left: '82%' }} onChange={txt => this.setState({ level: txt.target.value })}></input>
                     <button className="btCcAnp" onClick={() => history.push('/ordering/orderingChart')}>Cancel</button>
                     <button className="btAddAnp" onClick={this.onAdd}>Add</button>
                 </Paper>

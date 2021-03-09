@@ -47,7 +47,7 @@ class Ordering extends Component {
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 40, paddingLeft: 400 }}>
                             <p className="textOrAddr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 , paddingLeft : 15}}></textarea>
+                            <textarea type="text" style={{ fontSize: 24, height:110 , width:333}}></textarea>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column' }} >
                             <div style={{ paddingTop: 40, paddingLeft: 600 }}>

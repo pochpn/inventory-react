@@ -694,7 +694,7 @@ body, html {
     width: 208px;
     height: 73px;
     left: 12.5%;
-    top: 68%;
+    top: 56%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -953,7 +953,7 @@ body, html {
     border-radius: 12px;
 }
 
-.paperDeleteMB{
+.paperDeleteMB {
     position: absolute;
     width: 268px;
     height: 70px;
@@ -1645,6 +1645,77 @@ body, html {
     color: #6E0D0D;
 }
 
+/* Order Confirm Returned */
+
+.PaperReturn {
+    position: absolute;
+    width: 1884px;
+    height: 561px;
+    left: 18px;
+    top: 232px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.txtReturn1 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 33.5%;
+    top: 9%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtReturn2 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 33.5%;
+    top: 20%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtReturn3 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 33.5%;
+    top: 34%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtReturn4 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 33.5%;
+    top: 48%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
 
 .picSuccess {
     position: absolute;

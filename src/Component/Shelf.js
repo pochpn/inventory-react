@@ -3,6 +3,7 @@ import history from '../history'
 import Hamburger from './Hamburger'
 
 import firestore from '../firebase/firestore'
+import { search, shelf } from '../pic' 
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
@@ -45,39 +46,49 @@ class Shelf extends Component {
         return (
             <div className="bg">
                 <Hamburger page={this.state.shelf} user={this.state.user} />
-                
-                <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '13%' }}>
-                    <div className="paperShelf1">
-                        <p className="txtShelf" >Product ID</p>
-                        <input type="text" name="employeeid" />
+                <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column',  justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
+                        <input name="productID" type="text" style={{ fontSize: 24 }}></input>
                     </div>
-                    <div className="paperShelf1">
-                        <p className="txtShelf2" >or</p>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
                     </div>
-                    <div className="paperShelf1">
-                        <p className="txtShelf" >Product Name</p>
-                        <input type="text" name="idcard" />
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center'  }}>
+                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product Name</a1>
+                        <input name="productName" type="text" style={{ fontSize: 24 }}></input>
                     </div>
-                    <div className="paperShelf1">
-                        <button className="txtShelf">
-                            search
-                        </button>
-                    </div>
-                </div>
-                {this.props.productList.map((item) => {
-                    if (item.shelf === this.state.shelf) {
-                        return (
-                            <ul>
-                                <li><span>{item.pic}</span></li>
-                                <li><span>{item.productID}</span></li>
-                                <li><span>{item.productName}</span></li>
-                                <li><span>{item.shelf}</span></li>
-                                <li><span>------------------------</span></li>
-                            </ul>
-                        );
-                    }
+                    <img
+                        style={{ justifyContent: 'flex-end', width: "10%",marginLeft:'15%'}}
+                        src={search} />
 
-                })}
+                </div>
+                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '15%'}}>
+                    <p>Product</p>
+                    <p>Product</p>
+                    <p>Product</p>
+                    <p>Product</p>
+                    <p>Product</p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    {this.props.productList.map((item) => {
+                        if (item.shelf === this.state.shelf) {
+                            return (
+                                <ul>
+                                    <p><span>{item.pic}</span></p>
+                                    <p><span>{item.productID}</span></p>
+                                    <p><span>{item.productName}</span></p>
+                                    <p><span>{item.type}</span></p>
+                                    <p><span>{item.shelf}</span></p>
+                                    <p><span>{item.unit}</span></p>
+                                    <p><span>------------------------</span></p>
+                                </ul>
+                            );
+                        }
+
+                    })}
+                </div>
+                
             </div>
         )
     }

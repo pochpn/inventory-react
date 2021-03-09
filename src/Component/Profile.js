@@ -20,7 +20,7 @@ class Profile extends Component {
         return (
             <div className="bg">
                 <Paper className="paperPhoto" >
-                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column',padding: 18 }}>
                         <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.user.pic} />
                     </div>
                 </Paper>

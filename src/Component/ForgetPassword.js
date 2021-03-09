@@ -6,7 +6,7 @@ import firebase from '../firebase/firestore'
 import styled, { css } from 'styled-components'
 
 import './Modal.css';
-import { Success } from '../pic';
+import { Success, Error } from '../pic';
 
 const ButtonSend = styled.button`
   background: #ef3f3e;
@@ -52,6 +52,7 @@ class ForgetPassword extends Component {
     super(props);
     this.state = {
       modal: false,
+      modal2: false,
       email: null,
       user: null,
       firstnameEN: null,
@@ -67,13 +68,23 @@ class ForgetPassword extends Component {
       return;
     }
     this.setState({ modal: !this.state.modal });
-
   };
 
   handleModalOpen = () => {
     this.setState({ modal: !this.state.modal });
   };
 
+  handleModal2Close = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal2: !this.state.modal2 });
+  };
+
+  handleModal2Open = () => {
+    this.setState({ modal2: !this.state.modal2 });
+  };
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -99,7 +110,7 @@ class ForgetPassword extends Component {
 
   reject = (error) => {
     console.log(error)
-    this.handleModalOpen()
+    this.handleModal2Open()
     // alert("Email is incorrect!!");
   }
 
@@ -190,7 +201,24 @@ class ForgetPassword extends Component {
                 </Font>
               </div>
               <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                <ButtonOK style={{fontSize: 20}} onClick={this.handleModalClose}>OK</ButtonOK>
+                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>OK</ButtonOK>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div hidden={!this.state.modal2}>
+          <div className="modal-background">
+            <div className="modal-card">
+              <div>
+                <img className="picError" src={Error} />
+              </div>
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 160 }} >
+                  <p>Email is incorrect !</p>
+                </Font>
+              </div>
+              <div style={{ paddingLeft: 265, paddingTop: 35 }}>
+                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModal2Close}>OK</ButtonOK>
               </div>
             </div>
           </div>

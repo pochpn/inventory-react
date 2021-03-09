@@ -1,4 +1,4 @@
-import React, {Component } from 'react';
+import React, { Component } from 'react';
 import { RiMenuFoldLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
@@ -11,17 +11,60 @@ import { clearAccount } from '../actions/accountAction'
 import { clearProduct } from '../actions/productAction'
 import { logoTopBar } from '../pic'
 
+import styled, { css } from 'styled-components'
+import './Modal.css';
+import { Success } from '../pic';
+
+const ButtonOK = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
 class Hamburger extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modal: false,
+      logout: false,
       sidebar: false,
       user: this.props.user
     };
   }
 
+  handleModalClose = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal: !this.state.modal });
+
+  };
+
+  handleModalOpen = () => {
+    this.setState({ modal: !this.state.modal });
+  };
+
   showSidebar = () => {
     this.setState({ sidebar: !this.state.sidebar });
+  }
+
+  onLogout = () => {
+    console.log('logout')
+    this.props.clearAccount()
+    this.props.clearUser()
+    this.props.clearProduct()
   }
 
   render() {
@@ -50,10 +93,26 @@ class Hamburger extends Component {
                 <li key={index} className={item.cName}>
                   <Link to={item.path} onClick={() => {
                     if (item.path === '/') {
-                      console.log('logout')
-                      this.props.clearAccount()
-                      this.props.clearUser()
-                      this.props.clearProduct()
+                      <div hidden={!this.state.modal}>
+                        <div className="modal-background">
+                          <div className="modal-card">
+                            <div>
+                              <img className="picSuccess" src={Success} />
+                            </div>
+                            <div>
+                              <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
+                                <p>Are you sure ?</p>
+                              </Font>
+                            </div>
+                            <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+                              <ButtonOK style={{ fontSize: 20 }} onClick={this.onLogout}>YES</ButtonOK>
+                            </div>
+                            <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+                              <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>NO</ButtonOK>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     }
                   }}>
                     {item.icon}
@@ -71,9 +130,9 @@ class Hamburger extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      clearAccount: () => dispatch(clearAccount()),
-      clearUser: () => dispatch(clearUser()),
-      clearProduct: () => dispatch(clearProduct()),
+    clearAccount: () => dispatch(clearAccount()),
+    clearUser: () => dispatch(clearUser()),
+    clearProduct: () => dispatch(clearProduct()),
   };
 };
 

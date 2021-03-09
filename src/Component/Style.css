@@ -1653,3 +1653,11 @@ body, html {
     left: 47.5%;
     top: 30%;
 }
+
+.picError {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 47%;
+    top: 30%;
+}

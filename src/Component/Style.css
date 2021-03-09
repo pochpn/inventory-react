@@ -559,8 +559,8 @@ body, html {
 .paperVs {
     justify-items: center;
     align-items: center;
-    width: 315px;
-    height: 270px;
+    width: 309px;
+    height: 263px;
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
@@ -596,7 +596,6 @@ body, html {
 }
 
 .textSto1 {
-    position: absolute;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -604,13 +603,10 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    align-self: start;
-    top: 69%;
-    margin-left: 3.2%;
+    
 }
 
 .textSto2 {
-    position: absolute;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -618,13 +614,9 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    align-self: start;
-    top: 69%;
-    margin-left: 1.25%;
 }
 
 .textSto3 {
-    position: absolute;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -632,9 +624,6 @@ body, html {
     line-height: 73px;
     text-align: center;
     color: #6E0D0D;
-    align-self: start;
-    top: 69%;
-    margin-left: 3.7%;
 }
 
 .im1 {
@@ -736,11 +725,12 @@ body, html {
 
 /* DASHBOARD */
 
+/*ViewStock*/
 .paperShelf {
     justify-items: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 245px;
+    height: 208px;
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
@@ -748,16 +738,17 @@ body, html {
 
 .imViewStock {
     justify-self: center;
-    margin-left: 15%;
+    align-self: center;
     margin-top: 3%;
-    width: 70%;
-    height: 70%;
-    /*background-color: #6E0D0D;*/
+    width: 118px;
+    height: 118px;
+    margin-left: 26%;
+    /* background-color: #6E0D0D; */
     /* background-color: aquamarine; */
 }
 
 .textViewStock {
-    font-family: 'Prompt', sans-serif;
+    font-family: Prompt;
     font-style: normal;
     font-weight: normal;
     font-size: 48px;
@@ -767,6 +758,8 @@ body, html {
     align-self: start;
     /* background-color: aqua; */
 }
+
+/*EndViewStock*/
 
 .paperABC {
     position: absolute;
@@ -1418,6 +1411,47 @@ body, html {
     color: #6E0D0D;
 }
 
+/*Shelf*/
+.paperShelf1 {
+    justify-items: center;
+    align-items: center;
+    width: 245px;
+    height: 208px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.txtShelf{
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+}
+
+.paperProduct {
+    justify-items: center;
+    align-items: center;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.4)!important; 
+    margin: 1.5%;
+    
+    background-color: #6E0D0D;
+}
+
+.txtProShelf{
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    margin: 2%;
+    line-height: 73px;
+    text-align: center;
+    color: 'black';
+}
 /* Order Confirm */
 
 .OrConRecv {
@@ -1722,5 +1756,13 @@ body, html {
     width: 100px;
     height: 100px;
     left: 47.5%;
+    top: 30%;
+}
+
+.picError {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 47%;
     top: 30%;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import history from '../history'
-
+import { Base64 } from 'js-base64';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 import firestore from "../firebase/firestore"
@@ -14,8 +14,6 @@ import './Style.css'
 
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
-
-import ImageUploader from 'react-images-upload';
 
 class AddMember extends Component {
     constructor(props) {
@@ -71,7 +69,7 @@ class AddMember extends Component {
             tel: this.state.tel,
             email: this.state.email,
             address: this.state.address,
-            pass: this.state.email,
+            pass: Base64.encode(this.state.email),
             pic: uri
         }
         firestore.addUser(user, this.addSuccess, this.addReject)

@@ -27,7 +27,7 @@ export const logoTopBar = 'https://sv1.picz.in.th/images/2021/03/04/oyuPC0.png'
 export const chooseim = ''
 export const chooseim2 = ''
 export const DG = ''
-export const Error = ''
+export const Error = 'https://sv1.picz.in.th/images/2021/03/09/DNT6l2.png'
 export const Success = 'https://sv1.picz.in.th/images/2021/03/08/DzBKbI.png'
 export const Wait = ''
 /*----------invencost---------*/

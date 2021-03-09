@@ -63,13 +63,13 @@ class Shelf extends Component {
                         src={search} />
 
                 </div>
-                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '15%',borderRadius:'30px'}}>
-                    <p className='txtProShelf' style={{}}>Product</p>
-                    <p className='txtProShelf' style={{}}>Product ID</p>
-                    <p className='txtProShelf' style={{}}>Product Name</p>
-                    <p className='txtProShelf' style={{}}>Type</p>
-                    <p className='txtProShelf' style={{}}>QTY</p>
-                    <p className='txtProShelf' style={{}}>UNIT</p>
+                <div className="paperTopProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '9%',borderRadius:'25px'}}>
+                    <p className='txtProTopShelf' style={{}}>Product</p>
+                    <p className='txtProTopShelf' style={{}}>Product ID</p>
+                    <p className='txtProTopShelf' style={{}}>Product Name</p>
+                    <p className='txtProTopShelf' style={{}}>Type</p>
+                    <p className='txtProTopShelf' style={{}}>QTY</p>
+                    <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     {this.props.productList.map((item) => {

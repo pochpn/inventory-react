@@ -58,7 +58,7 @@ class Picking extends Component {
                         </div>
                         <div style={{ paddingTop: 48, paddingLeft: 600 }}>
                             <p className="textPickAdr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, paddingBottom: 110 }} />
+                            <textarea type="text" style={{ fontSize: 24, height:179,width:333}} />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>

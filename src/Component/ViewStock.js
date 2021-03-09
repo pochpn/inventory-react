@@ -14,6 +14,7 @@ class ViewStock extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            list: ['S1-01','S1-02'],
         };
     }
 
@@ -45,15 +46,16 @@ class ViewStock extends Component {
                         src={search} />
 
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', height: "10%" }}>
-                    <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select stock</a1>
+                <div style={{ display: 'flex', alignItems: 'center', height: "15%",marginTop:'2%',marginBottom:'2%',backgroundColor:'blue' }}>
+                    <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', padding: "1.5%", paddingLeft: "10%" }}>
+                <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems:'center',backgroundColor:'pink' }}>
+
                         <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => history.push({
                             pathname: '/stock/viewStock/shelf',
                             state: { shelf: 'S1-01' },
                         })}>
-                            <div>
+                            <div style={{alignItems:'center',justifyItems:'center'}}>
                                 <img className="imViewStock" src={shelf} />
                                 <p className="textViewStock">S1-01</p>
                             </div>
@@ -68,6 +70,7 @@ class ViewStock extends Component {
                                 <p className="textViewStock">S1-02</p>
                             </div>
                         </Paper>
+                        
                     
                 </div>
             </div>

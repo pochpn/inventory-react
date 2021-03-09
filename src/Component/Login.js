@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components'
 import Paper from '@material-ui/core/Paper';
 import { BsPeopleFill } from "react-icons/bs";
 import { FaKey } from "react-icons/fa";
-
+import { Base64 } from 'js-base64';
 import { connect } from 'react-redux';
 import { addUser } from '../actions/userAction';
 import { addAccount } from '../actions/accountAction'
@@ -85,7 +85,7 @@ class Login extends Component {
         });
         /*console.log(user.pass)
         console.log(this.state.user.pass)*/
-        if (user.pass === this.state.pass) {
+        if (Base64.decode(user.pass) === this.state.pass) {
             this.props.addUser(user)
             /*console.log(this.props.userList)*/
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)

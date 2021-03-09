@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import { search } from '../pic'
 import firestore from '../firebase/firestore'
 
+import { AiOutlineUserAdd } from "react-icons/ai";
+
+
 class MemberManage extends Component {
     constructor(props) {
         super(props);
@@ -71,29 +74,28 @@ class MemberManage extends Component {
             <div className="bg">
 
                 <Paper className="paperSearchMB" >
-
-
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column'}}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Employee ID</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input>
-                        <div><button className="buttonAddMB" style={{ fontSize: 20 }} onClick={() => history.push('/memberManage/addMember')}>Add Member</button></div>
-
+                        <div style={{ paddingTop: 10 }}>
+                            <button className="buttonAddMB" style={{ fontSize: 20, justifyContent: 'center' }} onClick={() => history.push('/memberManage/addMember')}> <AiOutlineUserAdd size = {40}/> Add Member</button>
+                        </div>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>ID card number</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.idCard} onChange={txt => this.setState({ idCard: txt.target.value })}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>First Name</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.firstnameEN} onChange={txt => this.setState({ firstnameEN: txt.target.value })}></input>
                     </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

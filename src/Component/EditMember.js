@@ -8,7 +8,7 @@ import storage from '../firebase/storage'
 
 import { connect } from 'react-redux';
 
-import { addAccount,deleteAccount } from '../actions/accountAction'
+import { addAccount, deleteAccount, editAccount } from '../actions/accountAction'
 
 import './Style.css'
 
@@ -30,26 +30,42 @@ class EditMember extends Component {
             birthDate: this.props.location.state.member.birthDate,
             tel: this.props.location.state.member.tel,
             email: this.props.location.state.member.email,
+            pass: this.props.location.state.member.pass,
             address: this.props.location.state.member.address,
             user: this.props.userList[this.props.userList.length - 1],
+            id: this.props.location.state.member.id,
             pic: this.props.location.state.member.pic,
+            picPre: this.props.location.state.member.pic,
         };
     }
 
     onEdit = () => {
-        if (this.state.pic !== null) {
+        if (this.state.pic !== this.state.picPre) {
             storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+            console.log('change')
         } else {
-            alert("Please select a profile image")
+            const user = {
+                firstnameTH: this.state.firstnameTH,
+                lastnameTH: this.state.lastnameTH,
+                firstnameEN: this.state.firstnameEN,
+                lastnameEN: this.state.lastnameEN,
+                tel: this.state.tel,
+                address: this.state.address,
+                pass: this.state.pass,
+                pic: this.state.pic,
+                id: this.state.id,
+            }
+            firestore.updateUserByID(user, this.editSuccess, this.editReject)
+            this.props.editAccount(user)
         }
     }
 
-    addSuccess = (doc) => {
-        console.log(doc.id)
+    editSuccess = () => {
+        console.log('Edit Success')
         history.push('/memberManage')
     }
 
-    addReject = (error) => {
+    editReject = (error) => {
         console.log(error)
     }
 
@@ -57,23 +73,18 @@ class EditMember extends Component {
         console.log(uri)
         this.setState({ pic: uri })
         const user = {
-            employeeID: this.state.employeeID,
-            department: this.state.department,
-            departmentID: this.state.departmentID,
             firstnameTH: this.state.firstnameTH,
             lastnameTH: this.state.lastnameTH,
             firstnameEN: this.state.firstnameEN,
             lastnameEN: this.state.lastnameEN,
-            idCard: this.state.idCard,
-            birthDate: this.state.birthDate,
             tel: this.state.tel,
-            email: this.state.email,
             address: this.state.address,
-            pass: this.state.email,
-            pic: uri
+            pass: this.state.pass,
+            pic: uri,
+            id: this.state.id,
         }
-        firestore.addUser(user, this.addSuccess, this.addReject)
-        this.props.addAccount(user)
+        firestore.updateUserByID(user, this.editSuccess, this.editReject)
+        this.props.editAccount(user)
 
     }
 
@@ -82,21 +93,27 @@ class EditMember extends Component {
     }
 
     onImageChange = (event) => {
-        if (this.state.email === null || this.state.email === '') {
-            alert("Please input Email before select a profile image")
-        } else {
-            if (event.target.files && event.target.files[0]) {
-                let reader = new FileReader();
-                reader.onload = (e) => {
-                    this.setState({ pic: e.target.result });
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                this.setState({ pic: e.target.result });
+            };
+            reader.readAsDataURL(event.target.files[0]);
         }
     }
 
-    onDelete = () => {
+    deleteSuccess = () => {
+        console.log('Delete Success')
+        this.props.deleteAccount(this.state.id)
         history.push('/memberManage')
+    }
+
+    deleteReject = (error) => {
+        console.log(error)
+    }
+
+    onDelete = () => {
+        firestore.deleteUser(this.state.id, this.deleteSuccess, this.deleteReject)
     }
 
 
@@ -148,10 +165,7 @@ class EditMember extends Component {
                     <div><p className="textP1" style={{ width: '75px', height: '39px', left: '49.5%', top: '42%' }}>E-mail</p></div>
                     <div><input className="inputP3" style={{ top: '47%' }} placeholder={this.state.email} readOnly ></input></div>
                 </Paper>
-
-
                 <Hamburger page='EDIT MEMBER' user={this.state.user} />
-
             </div>
 
 
@@ -162,13 +176,15 @@ class EditMember extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         addAccount: (account) => dispatch(addAccount(account)),
+        deleteAccount: (id) => dispatch(deleteAccount(id)),
+        editAccount: (account) => dispatch(editAccount(account))
     };
 };
 
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
-        accountList: state.accountReducer.accountList
+        accountList: state.accountReducer.accountList,
     };
 };
 

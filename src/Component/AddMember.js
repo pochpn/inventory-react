@@ -15,8 +15,6 @@ import './Style.css'
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
 
-import ImageUploader from 'react-images-upload';
-
 class AddMember extends Component {
     constructor(props) {
         super(props);

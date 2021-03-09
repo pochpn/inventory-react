@@ -22,6 +22,7 @@ class Firestore {
         this.db = firebase.firestore();
     }
 
+    /*---------------------User----------------------*/
     addUser = (user, success, reject) => {
         firebase
             .firestore()
@@ -34,20 +35,6 @@ class Firestore {
                 reject(error);
             });
     };
-
-    addProduct = (product, success, reject) => {
-        firebase
-            .firestore()
-            .collection('Products')
-            .add(product)
-            .then(function (docRef) {
-                success(docRef);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    };
-
     getUser = (email, success, reject) => {
         firebase
             .firestore()
@@ -61,7 +48,67 @@ class Firestore {
                 reject(err);
             });
     }
+    getAllUser(success, reject) {
+        firebase
+            .firestore()
+            .collection('User')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+    deleteUser = (id, success, reject) => {
+        firebase
+            .firestore()
+            .collection('User')
+            .doc(id)
+            .delete()
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    updateUserByID = (user, success, reject) => {
+        firebase
+            .firestore()
+            .collection('User')
+            .doc(user.id)
+            .update({
+                firstnameTH: user.firstnameTH,
+                lastnameTH: user.lastnameTH,
+                firstnameEN: user.firstnameEN,
+                lastnameEN: user.lastnameEN,
+                tel: user.tel,
+                address: user.address,
+                pass: user.pass,
+                pic: user.pic,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 
+    /*-------------------Product--------------------*/
+    addProduct = (product, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Products')
+            .add(product)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
     getProductByShelf = (shelf, success, reject) => {
         firebase
             .firestore()
@@ -75,7 +122,6 @@ class Firestore {
                 reject(err);
             });
     }
-
     getProductByType = (type, success, reject) => {
         firebase
             .firestore()
@@ -89,20 +135,6 @@ class Firestore {
                 reject(err);
             });
     }
-
-    getAllUser(success, reject) {
-        firebase
-            .firestore()
-            .collection('User')
-            .get()
-            .then(function (querySnapshot) {
-                success(querySnapshot);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    }
-
     getAllProduct(success, reject) {
         firebase
             .firestore()
@@ -115,7 +147,6 @@ class Firestore {
                 reject(error);
             });
     }
-
     getProductByPrice = (price, success, reject) => {
         firebase
             .firestore()
@@ -131,8 +162,7 @@ class Firestore {
                 reject(error);
             });
     };
-
-    updateProductarByID = (product, success, reject) => {
+    updateProductByID = (product, success, reject) => {
         firebase
             .firestore()
             .collection('Product')
@@ -148,7 +178,6 @@ class Firestore {
                 reject(error);
             });
     };
-
     deleteProduct = (id, success, reject) => {
         firebase
             .firestore()
@@ -162,19 +191,8 @@ class Firestore {
                 reject(error);
             });
     };
-    deleteUser = (id, success, reject) => {
-        firebase
-            .firestore()
-            .collection('User')
-            .doc(id)
-            .delete()
-            .then(function () {
-                success(null);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    };
+
+    /*-------------Log---------------*/
     addLog = (log, success, reject) => {
         firebase
             .firestore()

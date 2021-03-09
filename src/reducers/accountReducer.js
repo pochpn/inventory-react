@@ -26,18 +26,13 @@ const accountReducer = (state = initialState, action) => {
                         ? {
                             ...item,
                             address: action.account.address,
-                            birthDate: action.account.birthDate,
-                            department: action.account.department,
-                            departmentID: action.account.departmentID,
-                            email: action.account.email,
-                            employeeID: action.account.employeeID,
                             firstnameEN: action.account.firstnameEN,
                             firstnameTH: action.account.firstnameTH,
-                            idCard: action.account.idCard,
                             lastnameEN: action.account.lastnameEN,
                             lastnameTH: action.account.lastnameTH,
                             pass: action.account.pass,
                             tel: action.account.tel,
+                            pic: action.account.pic,
                         }
                         : item
                 )

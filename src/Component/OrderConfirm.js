@@ -20,21 +20,21 @@ class OrderConfirm extends Component {
   render() {
     return (
       <div className="bg">
-        <Paper className='OrConRecv'>
+        <Paper className='OrConRecv' onClick={() => history.push('/orderConfirm/receiving')}>
           <div>
             <img className="imOrRecv" src={recvOr} />
             <p className="txtOrRecv1">Receiving</p>
             <p className="txtOrCon2">Order</p>
           </div>
         </Paper>
-        <Paper className='OrConPak'>
+        <Paper className='OrConPak' onClick={() => history.push('/orderConfirm/packing')}>
           <div>
             <img className="imOrRecv" src={packor} />
             <p className="txtOrPak1">Packing</p>
             <p className="txtOrCon2">Order</p>
           </div>
         </Paper>
-        <Paper className='OrConReturn'>
+        <Paper className='OrConReturn' onClick={() => history.push('/orderConfirm/returned')}>
           <div>
             <img className="imOrRecv" src={returnor} />
             <p className="txtOrRetu1">Returned</p>

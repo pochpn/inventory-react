@@ -30,7 +30,7 @@ const ButtonNext = styled.button`
   color: #000000;
 `
 
-class Picking extends Component {
+class PickingChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -132,4 +132,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Picking);
+export default connect(mapStateToProps, mapDispatchToProps)(PickingChart);

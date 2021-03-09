@@ -1462,7 +1462,7 @@ body, html {
     top: 10%;
 }
 
-.txtOrRecv1{
+.txtOrRecv1 {
     position: absolute;
     width: 208px;
     height: 73px;
@@ -1477,7 +1477,7 @@ body, html {
     color: #6E0D0D;
 }
 
-.txtOrCon2{
+.txtOrCon2 {
     position: absolute;
     width: 208px;
     height: 73px;
@@ -1492,7 +1492,7 @@ body, html {
     color: #6E0D0D;
 }
 
-.txtOrPak1{
+.txtOrPak1 {
     position: absolute;
     width: 208px;
     height: 73px;
@@ -1507,7 +1507,7 @@ body, html {
     color: #6E0D0D;
 }
 
-.txtOrRetu1{
+.txtOrRetu1 {
     position: absolute;
     width: 208px;
     height: 73px;
@@ -1521,6 +1521,119 @@ body, html {
     /* identical to box height */
     color: #6E0D0D;
 }
+
+/* Receiving & Packing Order */
+
+.OrConTopic {
+    position: absolute;
+    width: 1920px;
+    height: 150px;
+    left: 0px;
+    top: 56px;
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
+.txtRecvTopic {
+    position: absolute;
+    width: 500px;
+    height: 73px;
+    left: 37%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtPakTopic {
+    position: absolute;
+    width: 500px;
+    height: 73px;
+    left: 39%;
+    top: 30%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.OrConTable {
+    position: absolute;
+    width: 1888px;
+    height: 74px;
+    left: 16px;
+    top: 217px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.txtOrConTable1 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 8%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable2 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 30%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable3 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 50%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+.txtOrConTable4 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 85%;
+    top: 5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #6E0D0D;
+}
+
+
 .picSuccess {
     position: absolute;
     width: 100px;

@@ -11,6 +11,8 @@ import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success, Error } from '../pic';
 
+import { editAccount } from '../actions/accountAction'
+
 const ButtonCancel = styled.button`
   background: #868181;
   border-radius: 10px;
@@ -43,26 +45,40 @@ class Profile extends Component {
         this.state = {
             modalChangpass: false,
             user: this.props.userList[this.props.userList.length - 1],
-            pass:null,
-            confirmNewPass:null,
-            newPass : null
+            pass: null,
+            confirmNewPass: null,
+            newPass: null
         };
     }
 
-    onOk =() =>{
-        if (Base64.encode(this.state.pass) === this.state.user.pass && this.state.newPass === this.state.confirmNewPass){
+    onOk = () => {
+        if (Base64.encode(this.state.pass) === this.state.user.pass && this.state.newPass === this.state.confirmNewPass) {
             console.log("correct!!")
             const user = this.state.user
             user.pass = Base64.encode(this.state.newPass)
-            firestore.updateUserByID(user,this.success,this.reject)
+            firestore.updateUserByID(user, this.success, this.reject)
             /*console.log(user)*/
-
+        } else {
+            alert('Incorrect password')
         }
     }
-    success =()=>{
-        console.log()
+    success = () => {
+        const user = {
+            firstnameTH: this.state.user.firstnameTH,
+            lastnameTH: this.state.user.lastnameTH,
+            firstnameEN: this.state.user.firstnameEN,
+            lastnameEN: this.state.user.lastnameEN,
+            tel: this.state.user.tel,
+            address: this.state.user.address,
+            pass: Base64.encode(this.state.newPass),
+            pic: this.state.user.pic,
+            id: this.state.user.id,
+        }
+        this.props.editAccount(user)
+        alert('Update password success')
+        this.setState({ modalChangpass: !this.state.modalChangpass });
     }
-    reject =(e)=>{
+    reject = (e) => {
         console.log(e)
     }
     handleModalClose = (e) => {
@@ -120,29 +136,29 @@ class Profile extends Component {
                     <div className="modal-background">
                         <div className="modal-cardChangePass">
                             <div>
-                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 10}} >Change Password</Font>
+                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 10 }} >Change Password</Font>
                                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} >Current Password</Font>
                             </div>
-                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ pass: txt.target.value })} />
+                            <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                                <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ pass: txt.target.value })} />
                             </div>
                             <div>
-                                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20}} >New Password</Font>
+                                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >New Password</Font>
                             </div>
-                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ newPass: txt.target.value })} />
+                            <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                                <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ newPass: txt.target.value })} />
                             </div>
                             <div>
                                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >Confirm Password</Font>
                             </div>
-                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ confirmNewPass : txt.target.value })} />
+                            <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                                <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ confirmNewPass: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }} >
-                                <div style={{ paddingLeft: 10, paddingTop: 50}}>
+                                <div style={{ paddingLeft: 10, paddingTop: 50 }}>
                                     <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModalClose}>Cancel</ButtonCancel>
                                 </div>
-                                <div style={{ paddingLeft: 50 , paddingTop: 50}}>
+                                <div style={{ paddingLeft: 50, paddingTop: 50 }}>
                                     <ButtonOK style={{ fontSize: 20 }} onClick={this.onOk}>OK</ButtonOK>
                                 </div>
                             </div>
@@ -159,14 +175,14 @@ class Profile extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        editAccount: (account) => dispatch(editAccount(account)),
     };
 };
 
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
-        accountList: state.accountReducer.accountList
+        accountList: state.accountReducer.accountList,
     };
 };
 

@@ -64,7 +64,7 @@ class ForgetPassword extends Component {
 
   handleModalClose = (e) => {
     const currentClass = e.target.className;
-    if (currentClass == 'modal-card') {
+    if (currentClass == 'modal-cardforget') {
       return;
     }
     this.setState({ modal: !this.state.modal });
@@ -76,7 +76,7 @@ class ForgetPassword extends Component {
 
   handleModal2Close = (e) => {
     const currentClass = e.target.className;
-    if (currentClass == 'modal-card') {
+    if (currentClass == 'modal-cardforget') {
       return;
     }
     this.setState({ modal2: !this.state.modal2 });
@@ -190,7 +190,7 @@ class ForgetPassword extends Component {
         </Paper>
         <div hidden={!this.state.modal}>
           <div className="modal-background">
-            <div className="modal-card">
+            <div className="modal-cardforget">
               <div>
                 <img className="picSuccess" src={Success} />
               </div>
@@ -208,7 +208,7 @@ class ForgetPassword extends Component {
         </div>
         <div hidden={!this.state.modal2}>
           <div className="modal-background">
-            <div className="modal-card">
+            <div className="modal-cardforget">
               <div>
                 <img className="picError" src={Error} />
               </div>

@@ -8,12 +8,22 @@
     background-color:  rgba(255, 255, 255, 0.4)!important;;
   }
   
-  .modal-card {
+  .modal-cardforget {
     margin: 0 auto;
     display: block;
     margin-top: 250px;
     width: 713px;
     height: 312px;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  .modal-cardChangePass {
+    margin: 0 auto;
+    display: block;
+    margin-top: 250px;
+    width: 400px;
+    height: 500px;
     background-color: white;
     border-radius: 15px;
   }

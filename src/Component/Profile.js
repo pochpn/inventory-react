@@ -7,20 +7,63 @@ import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
 
 import { connect } from 'react-redux';
+import styled, { css } from 'styled-components'
+import './Modal.css';
+import { Success, Error } from '../pic';
+
+const ButtonCancel = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
+const ButtonOK = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modalChangpass: false,
             user: this.props.userList[this.props.userList.length - 1],
         };
     }
+
+    handleModalClose = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardChangePass') {
+            return;
+        }
+        this.setState({ modalChangpass: !this.state.modalChangpass });
+    };
+
+    handleModalOpen = () => {
+        this.setState({ modalChangpass: !this.state.modalChangpass });
+    };
+
 
     render() {
         return (
             <div className="bg">
                 <Paper className="paperPhoto" >
-                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column',padding: 18 }}>
+                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', padding: 18 }}>
                         <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.user.pic} />
                     </div>
                 </Paper>
@@ -48,13 +91,47 @@ class Profile extends Component {
                     <div><p className="textP1" style={{ width: '75px', height: '39px', left: '49.5%', top: '42%' }}>E-mail</p></div>
                     <div><input placeholder={this.state.user.email} className="inputP3" style={{ top: '47%' }} readOnly></input></div>
                 </Paper>
-                <Paper className="paperChangePass" >
+                <Paper className="paperChangePass" onClick={this.handleModalOpen} >
                     <div>
-                        <p className="textChangePass">Change Password</p>
+                        <p className="textChangePass" >Change Password</p>
                     </div>
                 </Paper>
-
                 <Hamburger page='PROFILE' user={this.state.user} />
+
+                <div hidden={!this.state.modalChangpass}>
+                    <div className="modal-background">
+                        <div className="modal-cardChangePass">
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 10}} >Change Password</Font>
+                                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} >Current Password</Font>
+                            </div>
+                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
+                                <input type="text" style={{ fontSize: 24}}></input>
+                            </div>
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20}} >New Password</Font>
+                            </div>
+                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
+                                <input type="text" style={{ fontSize: 24}}></input>
+                            </div>
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >Confirm Password</Font>
+                            </div>
+                            <div style = {{paddingTop: 10, paddingLeft: 20}}>
+                                <input type="text" style={{ fontSize: 24}}></input>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'row' }} >
+                                <div style={{ paddingLeft: 10, paddingTop: 50}}>
+                                    <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModalClose}>Cancel</ButtonCancel>
+                                </div>
+                                <div style={{ paddingLeft: 50 , paddingTop: 50}}>
+                                    <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>OK</ButtonOK>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

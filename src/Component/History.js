@@ -35,11 +35,11 @@ class History extends Component {
         <Paper className="paperSearchMB" >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Types</a1>
-            <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }} ></input>
+            <input type="text" style={{ width: 300, fontSize: 18, borderWidth: 0 }} ></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Receipt ID</a1>
-            <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }}></input>
+            <input type="text" style={{ width: 300, fontSize: 18, borderWidth: 0 }}></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Duration Date</a1>

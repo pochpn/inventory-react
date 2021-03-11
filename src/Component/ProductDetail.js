@@ -3,36 +3,19 @@ import history from '../history'
 import Hamburger from './Hamburger'
 
 import firestore from '../firebase/firestore'
-import { search, shelf } from '../pic'
+import { search, shelf } from '../pic' 
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
 
-class Shelf extends Component {
+class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            productID: this.props.location.state.productID,
             shelf: this.props.location.state.shelf,
-            productList: null,
         };
-    }
-
-    getSuccess = (querySnapshot) => {
-        let products = []
-        querySnapshot.forEach(doc => {
-            let product = doc.data()
-            product.id = doc.id
-            console.log(product)
-            products = products.concat(product)
-        });
-        console.log(products)
-        this.setState({ productList: products })
-        console.log(this.state.producsList)
-    }
-
-    getReject = (error) => {
-        console.log(error)
     }
 
     render() {
@@ -40,23 +23,22 @@ class Shelf extends Component {
             <div className="bg">
                 <Hamburger page={this.state.shelf} user={this.state.user} />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column',  justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
                         <input name="productID" type="text" style={{ fontSize: 24 }}></input>
                     </div>
                     <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center'  }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product Name</a1>
                         <input name="productName" type="text" style={{ fontSize: 24 }}></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%", marginLeft: '15%' }}
+                        style={{ justifyContent: 'flex-end', width: "10%",marginLeft:'15%'}}
                         src={search} />
-
                 </div>
-                <div className="paperTopProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '9%', borderRadius: '25px' }}>
+                <div className="paperTopProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',height: '9%',borderRadius:'25px'}}>
                     <p className='txtProTopShelf' style={{}}>Product</p>
                     <p className='txtProTopShelf' style={{}}>Product ID</p>
                     <p className='txtProTopShelf' style={{}}>Product Name</p>
@@ -64,19 +46,12 @@ class Shelf extends Component {
                     <p className='txtProTopShelf' style={{}}>QTY</p>
                     <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    {this.props.productProfileList.map((item) => {
-                        if (item.shelf === this.state.shelf) {
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    {this.props.productList.map((item) => {
+                        if ((item.productID == this.state.productID) && (item.shelf == this.state.shelf)) {
                             return (
-                                <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
-                                    <img src={item.pic} style={{ width: '100px', height: '100px' }}
-                                        onClick={() => history.push({
-                                            pathname: '/stock/viewStock/shelf/detail',
-                                            state: {
-                                                productID: item.productID,
-                                                shelf: this.state.shelf,
-                                            },
-                                        })}></img>
+                                <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
+                                    <img src={item.pic} style={{width:'100px', height: '100px'}}></img>
                                     <p className='txtProShelf' style={{}}>{item.productID}</p>
                                     <p className='txtProShelf' style={{}}>{item.productName}</p>
                                     <p className='txtProShelf' style={{}}>{item.type}</p>
@@ -85,10 +60,9 @@ class Shelf extends Component {
                                 </scroll>
                             );
                         }
-
                     })}
                 </div>
-
+                
             </div>
         )
     }
@@ -110,4 +84,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shelf);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

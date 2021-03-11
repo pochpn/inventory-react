@@ -1802,7 +1802,7 @@ body, html {
 .txtShipTop1 {
     position: absolute;
     width: 400px;
-    height: 73px;
+    height: 50px;
     left: 8%;
     top: 15%;
     font-family: 'Prompt', sans-serif;
@@ -1818,7 +1818,7 @@ body, html {
     position: absolute;
     width: 400px;
     height: 73px;
-    left: 36%;
+    left: 31.5%;
     top: 15%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1831,7 +1831,7 @@ body, html {
 
 .imschShip {
     position: absolute;
-    width: 250px;
+    width: 210px;
     height: 145px;
     left: 85%;
     top: 7%;
@@ -1963,3 +1963,16 @@ body, html {
     border-width: 0;
     border-radius: 12px;
 }
+
+/*CountShelf*/
+.txtTopCountShelf{
+
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 77.8px;
+    color: black;
+}
+
+/*End CountShlef*/

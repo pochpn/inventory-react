@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { addUser } from '../actions/userAction';
 import { addAccount } from '../actions/accountAction'
 import { addProduct } from '../actions/productAction';
+import { addProductProfile } from '../actions/productProfileAction';
 
 const ButtonLogin = styled.button`
   background: #ef3f3e;
@@ -70,10 +71,18 @@ class Login extends Component {
         querySnapshot.forEach(doc => {
             let product = doc.data()
             product.id = doc.id
-            console.log(product)
             this.props.addProduct(product)
         });
-        console.log(this.props.productList)
+        /*console.log(this.props.productList)*/
+    }
+
+    getAllProductProfileSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let product = doc.data()
+            product.id = doc.id
+            this.props.addProductProfile(product)
+        });
+        console.log(this.props.productProfileList)
     }
 
     getSuccess = (querySnapshot) => {
@@ -90,6 +99,7 @@ class Login extends Component {
             /*console.log(this.props.userList)*/
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)
             firestore.getAllProduct(this.getAllProductSuccess, this.getAllReject)
+            firestore.getAllProductProfile(this.getAllProductProfileSuccess, this.getAllReject)
             history.push("/home")
             /*window.location.href="/home"*/
         } else {
@@ -178,7 +188,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addUser: (user) => dispatch(addUser(user)),
         addAccount: (account) => dispatch(addAccount(account)),
-        addProduct: (product) => dispatch(addProduct(product))
+        addProduct: (product) => dispatch(addProduct(product)),
+        addProductProfile: (product) => dispatch(addProductProfile(product))
     };
 };
 
@@ -187,6 +198,7 @@ const mapStateToProps = (state) => {
         userList: state.userReducer.userList,
         accountList: state.accountReducer.accountList,
         productList: state.productReducer.productList,
+        productProfile: state.productProfileReducer.productProfileList,
     };
 };
 

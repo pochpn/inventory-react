@@ -70,8 +70,8 @@ class CountShelf extends Component {
                     </div>
                 </scroll>
 
-                <div style={{ paddingLeft: 50, paddingTop: 50 ,backgroundColor:'black',alignItems:'self-end' }}>
-                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52,marginBottom:'2%', }} onClick={() => history.push('')}>
+                <div style={{ paddingLeft: 50, paddingTop: 50 ,alignItems:'self-end' }}>
+                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52,marginBottom:'2%', marginLeft:'85%'}} onClick={() => history.push('')}>
                         Report
                     </ButtonReport>
 

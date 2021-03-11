@@ -45,10 +45,10 @@ class ViewStock extends Component {
                         src={search} />
 
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%', backgroundColor: 'blue' }}>
+                <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%',  }}>
                     <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', backgroundColor: 'pink' }}>
+                <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center',  }}>
                     {this.props.shelfList.map((item) => {
                         return (
                             <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => history.push({

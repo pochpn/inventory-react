@@ -5,10 +5,13 @@ import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import history from '../history'
+
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
-import { clearAccount } from '../actions/accountAction'
-import { clearProduct } from '../actions/productAction'
+import { clearAccount } from '../actions/accountAction';
+import { clearProduct } from '../actions/productAction';
+import { clearProductProfile } from '../actions/productProfileAction';
+
 import { logoTopBar } from '../pic'
 
 import styled, { css } from 'styled-components'
@@ -91,6 +94,7 @@ class Hamburger extends Component {
                       this.props.clearAccount()
                       this.props.clearUser()
                       this.props.clearProduct()
+                      this.props.clearProductProfile()
                     }
                     }}>
                     {item.icon}
@@ -132,6 +136,7 @@ const mapDispatchToProps = (dispatch) => {
     clearAccount: () => dispatch(clearAccount()),
     clearUser: () => dispatch(clearUser()),
     clearProduct: () => dispatch(clearProduct()),
+    clearProductProfile: () => dispatch(clearProductProfile()),
   };
 };
 

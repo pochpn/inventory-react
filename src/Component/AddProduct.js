@@ -8,7 +8,7 @@ import storage from '../firebase/storage'
 
 import { connect } from 'react-redux';
 
-import { addProduct } from '../actions/productAction'
+import { addProductProfile } from '../actions/productProfileAction'
 
 import './Style.css'
 
@@ -22,15 +22,10 @@ class AddProduct extends Component {
             productID: null,
             type: null,
             productName: null,
-            price: null,
             unit: null,
-            date: null,
             shelf: null,
-            level: null,
-            product: this.props.productList[this.props.productList.length - 1],
             user: this.props.userList[this.props.userList.length - 1],
             pic: null,
-            qty: 'Not specified',
         };
     }
 
@@ -58,16 +53,12 @@ class AddProduct extends Component {
             productID: this.state.productID,
             type: this.state.type,
             productName: this.state.productName,
-            price: this.state.price,
             unit: this.state.unit,
-            date: this.state.date,
             shelf: this.state.shelf,
-            level: this.state.level,
-            qty: this.state.qty,
             pic: uri,
         }
-        firestore.addProduct(product, this.addSuccess, this.addReject)
-        this.props.addProduct(product)
+        firestore.addProductProfile(product, this.addSuccess, this.addReject)
+        this.props.addProductProfile(product)
 
     }
 
@@ -103,16 +94,10 @@ class AddProduct extends Component {
                     <input className="inputPD1" style={{ top: '31%' }} onChange={txt => this.setState({ type: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '40%' }}>Product Name</p>
                     <input className="inputPD1" style={{ top: '41%' }} onChange={txt => this.setState({ productName: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '50%' }}>Price/Unit</p>
-                    <input className="inputPD2" style={{ top: '51%', left: '60%' }} onChange={txt => this.setState({ price: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '50%', left: '75.9%' }}>/</p>
-                    <input className="inputPD2" style={{ top: '51%', left: '78.47%' }} onChange={txt => this.setState({ unit: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '60%' }}>Date</p>
+                    <p className="fontAddPD" style={{ top: '60%' }}>Shelf Location</p>
                     <input className="inputPD1" style={{ top: '61%' }} onChange={txt => this.setState({ date: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '70%' }}>Shelf Location</p>
+                    <p className="fontAddPD" style={{ top: '70%' }}>Unit</p>
                     <input className="inputPD3" style={{ top: '71%', left: '60%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
-                    <p className="fontAddPD" style={{ top: '70%', left: '74%', width: '96px' }}>Level</p>
-                    <input className="inputPD3" style={{ top: '71%', left: '82%' }} onChange={txt => this.setState({ level: txt.target.value })}></input>
                     <button className="btCcAnp" onClick={() => history.push('/ordering/orderingChart')}>Cancel</button>
                     <button className="btAddAnp" onClick={this.onAdd}>Add</button>
                 </Paper>
@@ -128,7 +113,7 @@ class AddProduct extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addProduct: (product) => dispatch(addProduct(product)),
+        addProductProfile: (product) => dispatch(addProductProfile(product)),
     };
 };
 
@@ -137,6 +122,7 @@ const mapStateToProps = (state) => {
         userList: state.userReducer.userList,
         accountList: state.accountReducer.accountList,
         productList: state.productReducer.productList,
+        productProfile: state.productProfileReducer.productProfile,
     };
 };
 

@@ -148,21 +148,6 @@ class Firestore {
                 reject(error);
             });
     }
-    getProductByPrice = (price, success, reject) => {
-        firebase
-            .firestore()
-            .collection('Product')
-            .where('price', '>=', price)
-            .orderBy('price', 'desc')
-            .limit(1)
-            .get()
-            .then(function (querySnapshot) {
-                success(querySnapshot);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    };
     updateProductByID = (product, success, reject) => {
         firebase
             .firestore()
@@ -183,6 +168,60 @@ class Firestore {
         firebase
             .firestore()
             .collection('Product')
+            .doc(id)
+            .delete()
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+
+    /*-----------productProfile---------------*/
+    addProductProfile = (productProfile, success, reject) => {
+        firebase
+            .firestore()
+            .collection('ProductProfile')
+            .add(productProfile)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    getAllProductProfile(success, reject) {
+        firebase
+            .firestore()
+            .collection('ProductProfile')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+    updateProductProfileByID = (productProfile, success, reject) => {
+        firebase
+            .firestore()
+            .collection('ProductProfile')
+            .doc(productProfile.id)
+            .update({
+                
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    deleteProductProfile = (id, success, reject) => {
+        firebase
+            .firestore()
+            .collection('ProductProfile')
             .doc(id)
             .delete()
             .then(function () {

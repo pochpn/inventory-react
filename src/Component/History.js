@@ -9,15 +9,12 @@ import Hamburger from './Hamburger'
 import { connect } from 'react-redux';
 import { AiOutlineUserAdd } from "react-icons/ai";
 import DatePicker from 'react-datepicker';
-
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 class History extends Component {
   constructor(props) {
     super(props);
     this.state = {
-   
       Startdate: new Date(),
       Enddate: new Date(),
       user: this.props.userList[this.props.userList.length - 1],

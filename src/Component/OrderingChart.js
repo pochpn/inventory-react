@@ -42,6 +42,7 @@ class Ordering extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+
         };
     }
 
@@ -115,7 +116,7 @@ class Ordering extends Component {
                             <p className="txtProID">Product ID</p>
                         </div>
                         <div>
-                            <p className="txtProOr">Or</p>
+                            <p className="txtProOr">or</p>
                         </div>
                         <div>
                             <p className="txtProNm">Product Name</p>
@@ -141,7 +142,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
-        accountList: state.accountReducer.accountList
+        accountList: state.accountReducer.accountList,
+        productProfileList: state.productProfileReducer.productProfileList,
     };
 };
 

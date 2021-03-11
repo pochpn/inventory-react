@@ -28,7 +28,7 @@ import ConPacking from './Component/ConPacking'
 import ConReturned from './Component/ConReturned'
 import AddProduct from './Component/AddProduct'
 import ConReturnedChart from './Component/ConReturnedChart'
-
+import CountShelf from './Component/CountShelf'
 import { Provider } from 'react-redux';
 import configureStore from './Store';
 
@@ -71,6 +71,7 @@ class App extends Component {
             <Route exact path="/orderConfirm/returned/returnedChart" component={ConReturnedChart} />
             <Route exact path="/stock/viewStock/shelf" component={Shelf} />
             <Route exact path="/profile" component={Profile}/>
+            <Route exact path="/stock/countingStock/countShelf" component={CountShelf}/>
           </Switch>
         </Router>
 

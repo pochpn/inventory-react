@@ -42,7 +42,7 @@ class ShippingConfirm extends Component {
                     <img img className="imschShip" src={search} />
                     <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 80 }}>
                         <div style={{ paddingLeft: 150 }}>
-                            <input type='text' style={{ fontSize: 20 }} />
+                            <input type='text' style={{ fontSize: 16 }} />
                         </div>
                         <div style={{ paddingLeft: 70}}>
                             <DatePicker style={{ width: 300 }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />

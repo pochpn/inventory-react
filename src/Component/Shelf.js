@@ -72,7 +72,7 @@ class Shelf extends Component {
                     <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    {this.props.productList.map((item) => {
+                    {this.props.productProfileList.map((item) => {
                         if (item.shelf === this.state.shelf) {
                             return (
                                 <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
@@ -106,6 +106,7 @@ const mapStateToProps = (state) => {
         accountList: state.accountReducer.accountList,
         userList: state.userReducer.userList,
         productList: state.productReducer.productList,
+        productProfileList: state.productProfileReducer.productProfileList,
     };
 };
 

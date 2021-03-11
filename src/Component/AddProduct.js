@@ -95,9 +95,9 @@ class AddProduct extends Component {
                     <p className="fontAddPD" style={{ top: '40%' }}>Product Name</p>
                     <input className="inputPD1" style={{ top: '41%' }} onChange={txt => this.setState({ productName: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '60%' }}>Shelf Location</p>
-                    <input className="inputPD1" style={{ top: '61%' }} onChange={txt => this.setState({ date: txt.target.value })}></input>
+                    <input className="inputPD1" style={{ top: '61%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '70%' }}>Unit</p>
-                    <input className="inputPD3" style={{ top: '71%', left: '60%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
+                    <input className="inputPD3" style={{ top: '71%', left: '60%' }} onChange={txt => this.setState({ unit: txt.target.value })}></input>
                     <button className="btCcAnp" onClick={() => history.push('/ordering/orderingChart')}>Cancel</button>
                     <button className="btAddAnp" onClick={this.onAdd}>Add</button>
                 </Paper>

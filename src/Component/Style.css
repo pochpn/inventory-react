@@ -172,7 +172,8 @@ body, html {
 .dataLeft {
     position: absolute;
     width: 616px;
-    height: 820px;
+    height: 710px;
+    /* 820 */
     left: 8px;
     top: 248px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -182,7 +183,8 @@ body, html {
 .dataRight {
     position: absolute;
     width: 1280px;
-    height: 745px;
+    height: 635px;
+    /* 745 */
     left: 630px;
     top: 248px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -194,7 +196,7 @@ body, html {
     width: 1283px;
     height: 100px;
     left: 627px;
-    top: 892px;
+    top: 782px;
     /* 970 */
     background: rgba(0, 0, 0, 0)!important;
     border-radius: 0px;
@@ -207,7 +209,7 @@ body, html {
     width: 1283px;
     height: 100px;
     left: 627px;
-    top: 892px;
+    top: 782px;
     /* 970 */
     background: rgba(0, 0, 0, 0)!important;
     border-radius: 0px;

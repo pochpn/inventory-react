@@ -11,6 +11,7 @@ import { clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction';
 import { clearProduct } from '../actions/productAction';
 import { clearProductProfile } from '../actions/productProfileAction';
+import { clearShelf } from '../actions/shelfAction'
 
 import { logoTopBar } from '../pic'
 
@@ -95,6 +96,7 @@ class Hamburger extends Component {
                       this.props.clearUser()
                       this.props.clearProduct()
                       this.props.clearProductProfile()
+                      this.props.clearShelf()
                     }
                     }}>
                     {item.icon}
@@ -137,13 +139,13 @@ const mapDispatchToProps = (dispatch) => {
     clearUser: () => dispatch(clearUser()),
     clearProduct: () => dispatch(clearProduct()),
     clearProductProfile: () => dispatch(clearProductProfile()),
+    clearShelf: () => dispatch(clearShelf()),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-    userList: state.userReducer.userList,
-    accountList: state.accountReducer.accountList
+
   };
 };
 

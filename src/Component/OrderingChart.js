@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import history from '../history'
-import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
@@ -49,6 +48,7 @@ class Ordering extends Component {
     render() {
         return (
             <div className="bg">
+
                 <Paper className='topOrdering'>
                     <p className="txtTop">Ordering Product</p>
                 </Paper>
@@ -67,8 +67,22 @@ class Ordering extends Component {
                     <p className="txtTopR7">Amount</p>
 
                 </Paper>
-                <Paper className='dataLeft'>
 
+                <Paper className='dataLeft'>
+                    <div style={{ paddingLeft: '1%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+                            {this.props.productProfileList.map((item) => {
+                                return (
+                                    <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
+                                        <img src={item.pic} style={{ width: '40px', height: '40px' }}
+                                        ></img>
+                                        <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
+                                        <p className='txtPdInOD ' style={{}}>{item.productName}</p>
+                                    </scroll>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </Paper>
                 <Paper className='dataRight'>
 
@@ -95,6 +109,7 @@ class Ordering extends Component {
                     </div>
                 </Paper>
                 <Paper className='schOrder'>
+
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 70, paddingLeft: 30 }}>
                             <input type="text" style={{ fontSize: 13 }}></input>
@@ -106,11 +121,14 @@ class Ordering extends Component {
                             <img img className="imsch" src={search} />
                         </div>
                         <div style={{ paddingLeft: 70, paddingTop: 790 }}>
-                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }}  onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
+                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }} onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
                                 +
                             </ButtonAdd>
                         </div>
+
+
                     </div>
+
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div >
                             <p className="txtProID">Product ID</p>
@@ -124,8 +142,10 @@ class Ordering extends Component {
 
                     </div>
 
+
                 </Paper>
                 <Hamburger page='ORDERING' user={this.state.user} />
+
 
             </div>
 

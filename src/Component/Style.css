@@ -173,6 +173,7 @@ body, html {
     position: absolute;
     width: 616px;
     height: 710px;
+    max-height: 710px;
     /* 820 */
     left: 8px;
     top: 248px;
@@ -1442,6 +1443,13 @@ body, html {
     margin: 0.5%;
     background-color: #6E0D0D;
 }
+.paperPdInOD {
+    height: 15%;
+    width: 600px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin: 0.5%;
+    background-color: #6E0D0D;
+}
 
 .paperTopProduct {
     justify-items: center;
@@ -1461,6 +1469,17 @@ body, html {
     font-weight: normal;
     font-size: 26px;
     width: 20%;
+    margin: 1.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+}
+.txtPdInOD {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 250px;
     margin: 1.5%;
     line-height: 35px;
     text-align: center;

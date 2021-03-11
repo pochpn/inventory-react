@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import history from '../history'
-import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
@@ -86,7 +85,20 @@ class PickingChart extends Component {
 
                 </Paper>
                 <Paper className='dataLeft'>
-
+                    <div style={{ paddingLeft: '1%' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+                            {this.props.productProfileList.map((item) => {
+                                return (
+                                    <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
+                                        <img src={item.pic} style={{ width: '40px', height: '40px' }}
+                                        ></img>
+                                        <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
+                                        <p className='txtPdInOD ' style={{}}>{item.productName}</p>
+                                    </scroll>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </Paper>
                 <Paper className='dataRight'>
 
@@ -128,7 +140,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
-        accountList: state.accountReducer.accountList
+        accountList: state.accountReducer.accountList,
+        productProfileList: state.productProfileReducer.productProfileList,
     };
 };
 

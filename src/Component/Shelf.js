@@ -15,6 +15,7 @@ class Shelf extends Component {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
             productList: null,
+            qty: 0,
         };
     }
 
@@ -34,6 +35,16 @@ class Shelf extends Component {
     getReject = (error) => {
         console.log(error)
     }
+
+    /*componentDidMount = () => {
+        let qty = 0
+        this.props.productList.forEach(product => {
+            if(product.productID === this.state.product.productID){
+                qty += parseInt(product.qty)
+            }
+        })
+        this.setState({qty: qty})
+    }*/
 
     render() {
         return (
@@ -64,30 +75,39 @@ class Shelf extends Component {
                     <p className='txtProTopShelf' style={{}}>QTY</p>
                     <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <scroll style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     {this.props.productProfileList.map((item) => {
                         if (item.shelf === this.state.shelf) {
+                            let qty = 0
+                            this.props.productList.forEach(product => {
+                                if (product.productID === item.productID) {
+                                    qty += parseInt(product.qty)
+                                }
+                            })
+                            item.qty = qty
                             return (
-                                <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
-                                    <img src={item.pic} style={{ width: '100px', height: '100px' }}
-                                        onClick={() => history.push({
-                                            pathname: '/stock/viewStock/shelf/detail',
-                                            state: {
-                                                productID: item.productID,
-                                                shelf: this.state.shelf,
-                                            },
-                                        })}></img>
+                                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}
+                                    onClick={() => history.push({
+                                        pathname: '/stock/viewStock/shelf/detail',
+                                        state: {
+                                            product: item,
+                                            shelf: this.state.shelf,
+                                        },
+                                    })}>
+                                    <div className='txtProShelf'>
+                                        <img src={item.pic} style={{ width: '100px', height: '100px' }}></img>
+                                    </div>
                                     <p className='txtProShelf' style={{}}>{item.productID}</p>
                                     <p className='txtProShelf' style={{}}>{item.productName}</p>
                                     <p className='txtProShelf' style={{}}>{item.type}</p>
                                     <p className='txtProShelf' style={{}}>{item.qty}</p>
                                     <p className='txtProShelf' style={{}}>{item.unit}</p>
-                                </scroll>
+                                </div>
                             );
                         }
 
                     })}
-                </div>
+                </scroll>
 
             </div>
         )

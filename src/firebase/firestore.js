@@ -232,6 +232,80 @@ class Firestore {
             });
     };
 
+    /*-------------Shelf-------------*/
+    addShelfByID = (shelf, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Shelf')
+            .doc(shelf.shelfID)
+            .add(shelf)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    getShelf = (shelfID, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Shelf')
+            .where('shelfID', '==', shelfID)
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    }
+    getAllShelf(success, reject) {
+        firebase
+            .firestore()
+            .collection('Shelf')
+            .orderBy('shelfID')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+    deleteShelf = (shelfID, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Shelf')
+            .doc(shelfID)
+            .delete()
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    updateShelfByID = (shelf, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Shelf')
+            .doc(shelf.shelfID)
+            .update({
+                height: shelf.height,
+                length: shelf.length,
+                level: shelf.level,
+                maxWeight: shelf.maxWeight,
+                shelfID: shelf.shelfID,
+                width: shelf.width,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+
     /*-------------Log---------------*/
     addLog = (log, success, reject) => {
         firebase

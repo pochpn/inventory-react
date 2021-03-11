@@ -14,6 +14,7 @@ import { addUser } from '../actions/userAction';
 import { addAccount } from '../actions/accountAction'
 import { addProduct } from '../actions/productAction';
 import { addProductProfile } from '../actions/productProfileAction';
+import { addShelf } from '../actions/shelfAction';
 
 const ButtonLogin = styled.button`
   background: #ef3f3e;
@@ -82,7 +83,16 @@ class Login extends Component {
             product.id = doc.id
             this.props.addProductProfile(product)
         });
-        console.log(this.props.productProfileList)
+        /*console.log(this.props.productProfileList)*/
+    }
+
+    getAllShelfSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let shelf = doc.data()
+            shelf.id = doc.id
+            this.props.addShelf(shelf)
+        });
+        console.log(this.props.shelfList)
     }
 
     getSuccess = (querySnapshot) => {
@@ -100,6 +110,7 @@ class Login extends Component {
             firestore.getAllUser(this.getAllSuccess, this.getAllReject)
             firestore.getAllProduct(this.getAllProductSuccess, this.getAllReject)
             firestore.getAllProductProfile(this.getAllProductProfileSuccess, this.getAllReject)
+            firestore.getAllShelf(this.getAllShelfSuccess, this.getAllReject)
             history.push("/home")
             /*window.location.href="/home"*/
         } else {
@@ -189,7 +200,8 @@ const mapDispatchToProps = (dispatch) => {
         addUser: (user) => dispatch(addUser(user)),
         addAccount: (account) => dispatch(addAccount(account)),
         addProduct: (product) => dispatch(addProduct(product)),
-        addProductProfile: (product) => dispatch(addProductProfile(product))
+        addProductProfile: (product) => dispatch(addProductProfile(product)),
+        addShelf: (shelf) => dispatch(addShelf(shelf)),
     };
 };
 
@@ -199,6 +211,7 @@ const mapStateToProps = (state) => {
         accountList: state.accountReducer.accountList,
         productList: state.productReducer.productList,
         productProfile: state.productProfileReducer.productProfileList,
+        shelfList: state.shelfReducer.shelfList,
     };
 };
 

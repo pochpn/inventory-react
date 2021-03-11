@@ -127,6 +127,7 @@ class MemberManage extends Component {
                                         <div><p>Department : {item.department}</p></div>
                                         <div><p>Name : {item.firstnameEN} {item.lastnameEN}</p></div>
                                         <div><p>Tel : {item.tel}</p></div>
+                                        <div><p>Pass : {item.pass}</p></div>
                                     </ul>
                                 </Paper>
                             </div>

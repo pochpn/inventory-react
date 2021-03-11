@@ -1965,8 +1965,8 @@ body, html {
 }
 
 /*CountShelf*/
-.txtTopCountShelf{
 
+.txtTopCountShelf {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -1976,3 +1976,90 @@ body, html {
 }
 
 /*End CountShlef*/
+
+/* History */
+
+.tableHis {
+    position: absolute;
+    width: 1876px;
+    height: 79px;
+    left: 22px;
+    top: 262px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
+.txtTableHis1 {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 6%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtTableHis2 {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 19%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtTableHis3 {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 35%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtTableHis4 {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 62%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtTableHis5 {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 89%;
+    top: 15%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}

@@ -30,7 +30,7 @@ class AddProduct extends Component {
     }
 
     onAdd = () => {
-        if (this.state.pic !== null && this.state.picName !== null) {
+        if (this.state.pic !== null) {
             storage.uploadProductPic(this.state.pic, this.state.productID, this.uploadSuccess, this.uploadReject)
         } else {
             alert("Please select a product image")

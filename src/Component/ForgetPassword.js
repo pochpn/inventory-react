@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com';
 import Paper from '@material-ui/core/Paper';
 import firebase from '../firebase/firestore'
 import styled, { css } from 'styled-components'
-
+import { Base64 } from 'js-base64';
 import './Modal.css';
 import { Success, Error } from '../pic';
 
@@ -97,7 +97,7 @@ class ForgetPassword extends Component {
       user.id = doc.id
       this.setState({
         firstnameEN: user.firstnameEN,
-        pass: user.pass,
+        pass: Base64.decode(user.pass),
         email: user.email,
       })
     });
@@ -134,7 +134,6 @@ class ForgetPassword extends Component {
         console.log(error)
       });
     this.setState({
-      email: "",
       email: "",
       user: "",
       firstnameEN: "",

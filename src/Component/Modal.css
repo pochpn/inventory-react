@@ -7,6 +7,15 @@
     bottom: 0;
     background-color:  rgba(0, 0, 0, 0.1)!important;;
   }
+
+  .modal-backgroundForDash {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color:  rgba(0, 0, 0, 0)!important;;
+  }
   
   .modal-cardforget {
     margin: 0 auto;
@@ -66,4 +75,17 @@
     height: 512px;
     background-color: white;
     border-radius: 15px;
+  }
+
+  .modal-cardDashOTW{
+    position: absolute;
+    margin: 0 auto;
+    display: block;
+    margin-top: 250px;
+    width: 365px;
+    height: 228px;
+    left: 1183px;
+    top: 248px;
+    background-color: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 5px;
   }

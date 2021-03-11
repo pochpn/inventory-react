@@ -7,12 +7,46 @@ import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, } from 'recharts';
 import { connect } from 'react-redux';
+import styled, { css } from 'styled-components'
+import './Modal.css';
+
+const ButtonAll = styled.button`
+  background: #4A71D6;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+
+const ButtonRecv = styled.button`
+  background: #559540;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+
+const ButtonPick = styled.button`
+  background: #FF6060;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+const ButtonAfter = styled.button`
+  background: #C4C4C4;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+`
+
+
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: this.props.userList[this.props.userList.length - 1],
+      modal1: true,
+      modal2: false,
+      modal3: false,
     };
   }
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
@@ -57,6 +91,67 @@ class Dashboard extends Component {
 
     return null;
   };
+
+  handleModalAllR = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal1: !this.state.modal1 });
+
+    this.setState({ modal2: !this.state.modal2 });
+  }
+
+  handleModalAllP = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal1: !this.state.modal1 });
+
+    this.setState({ modal3: !this.state.modal3 });
+  }
+
+  handleModalRecvA = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal2: !this.state.modal2 });
+
+    this.setState({ modal1: !this.state.modal1 });
+  }
+
+  handleModalRecvP = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal2: !this.state.modal2 });
+
+    this.setState({ modal3: !this.state.modal3 });
+  }
+
+  handleModalPickA = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal3: !this.state.modal3 });
+
+    this.setState({ modal1: !this.state.modal1 });
+  }
+
+  handleModalPickR = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-card') {
+      return;
+    }
+    this.setState({ modal3: !this.state.modal3 });
+
+    this.setState({ modal2: !this.state.modal2 });
+  }
+
   render() {
     return (
       <div className="bg">
@@ -100,11 +195,6 @@ class Dashboard extends Component {
 
           </div>
         </Paper>
-        <Paper className="paperOTW" >
-          <div>
-
-          </div>
-        </Paper>
         <Paper className="paperDam" >
           <div>
 
@@ -115,6 +205,58 @@ class Dashboard extends Component {
 
           </div>
         </Paper>
+
+        <div hidden={!this.state.modal1}>
+          <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="modal-cardDashOTW">
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+                <div style={{ paddingLeft: 12 }}>
+                  <ButtonRecv style={{ width: 100 }} onClick={this.handleModalAllR}>Receiving</ButtonRecv>
+                </div>
+                <div style={{ paddingLeft: 20 }}>
+                  <ButtonAfter style={{ width: 100 }}>All</ButtonAfter>
+                </div>
+                <div style={{ paddingLeft: 20 }} >
+                  <ButtonPick style={{ width: 100 }} onClick={this.handleModalAllP}>Picking</ButtonPick>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div hidden={!this.state.modal2}>
+          <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="modal-cardDashOTW">
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+                <div style={{ paddingLeft: 12 }}>
+                  <ButtonAfter style={{ width: 100 }} >Receiving</ButtonAfter>
+                </div>
+                <div style={{ paddingLeft: 20 }}>
+                  <ButtonAll style={{ width: 100 }} onClick={this.handleModalRecvA}>All</ButtonAll>
+                </div>
+                <div style={{ paddingLeft: 20 }} >
+                  <ButtonPick style={{ width: 100 }} onClick={this.handleModalRecvP}>Picking</ButtonPick>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div hidden={!this.state.modal3}>
+          <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="modal-cardDashOTW">
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+                <div style={{ paddingLeft: 12 }}>
+                  <ButtonRecv style={{ width: 100 }} onClick={this.handleModalPickR}>Receiving</ButtonRecv>
+                </div>
+                <div style={{ paddingLeft: 20 }}>
+                  <ButtonAll style={{ width: 100 }} onClick={this.handleModalPickA}>All</ButtonAll>
+                </div>
+                <div style={{ paddingLeft: 20 }} >
+                  <ButtonAfter style={{ width: 100 }}>Picking</ButtonAfter>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <Hamburger page='DASHBOARD' user={this.state.user} />
 
       </div>

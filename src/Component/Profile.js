@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 import './Style.css'
-
+import { Base64 } from 'js-base64';
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
-
+import firestore from "../firebase/firestore"
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components'
 import './Modal.css';
@@ -43,9 +43,28 @@ class Profile extends Component {
         this.state = {
             modalChangpass: false,
             user: this.props.userList[this.props.userList.length - 1],
+            pass:null,
+            confirmNewPass:null,
+            newPass : null
         };
     }
 
+    onOk =() =>{
+        if (Base64.encode(this.state.pass) === this.state.user.pass && this.state.newPass === this.state.confirmNewPass){
+            console.log("correct!!")
+            const user = this.state.user
+            user.pass = Base64.encode(this.state.newPass)
+            firestore.updateUserByID(user,this.success,this.reject)
+            /*console.log(user)*/
+
+        }
+    }
+    success =()=>{
+        console.log()
+    }
+    reject =(e)=>{
+        console.log(e)
+    }
     handleModalClose = (e) => {
         const currentClass = e.target.className;
         if (currentClass == 'modal-cardChangePass') {
@@ -57,7 +76,6 @@ class Profile extends Component {
     handleModalOpen = () => {
         this.setState({ modalChangpass: !this.state.modalChangpass });
     };
-
 
     render() {
         return (
@@ -106,26 +124,26 @@ class Profile extends Component {
                                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} >Current Password</Font>
                             </div>
                             <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="text" style={{ fontSize: 24}}></input>
+                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ pass: txt.target.value })} />
                             </div>
                             <div>
                                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20}} >New Password</Font>
                             </div>
                             <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="text" style={{ fontSize: 24}}></input>
+                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ newPass: txt.target.value })} />
                             </div>
                             <div>
                                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >Confirm Password</Font>
                             </div>
                             <div style = {{paddingTop: 10, paddingLeft: 20}}>
-                                <input type="text" style={{ fontSize: 24}}></input>
+                                <input type="password" style={{ fontSize: 24}} onChange={txt => this.setState({ confirmNewPass : txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }} >
                                 <div style={{ paddingLeft: 10, paddingTop: 50}}>
                                     <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModalClose}>Cancel</ButtonCancel>
                                 </div>
                                 <div style={{ paddingLeft: 50 , paddingTop: 50}}>
-                                    <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>OK</ButtonOK>
+                                    <ButtonOK style={{ fontSize: 20 }} onClick={this.onOk}>OK</ButtonOK>
                                 </div>
                             </div>
 

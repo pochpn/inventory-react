@@ -47,25 +47,31 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>QTY</p>
                     <p className='txtProTopShelf' style={{}}>Counting</p>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    {this.props.productList.map((item) => {
-                        if (item.shelf === this.state.shelf) {
-                            return (
-                                <scroll className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
-                                    <img src={item.pic} style={{width:'100px', height: '100px'}}></img>
-                                    <p className='txtProShelf' style={{}}>{item.productID}</p>
-                                    <p className='txtProShelf' style={{}}>{item.productName}</p>
-                                    <p className='txtProShelf' style={{}}>{item.type}</p>
-                                    <p className='txtProShelf' style={{}}>{item.qty}</p>
-                                    <p className='txtProShelf' style={{}}>{item.unit}</p>
-                                </scroll>
-                            );
-                        }
+                <scroll>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                        {this.props.productList.map((item) => {
+                            if (item.shelf === this.state.shelf) {
+                                return (
+                                    <div className="paperCountShelfProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
+                                        <div className='txtCountShelf'>
+                                            <img src={item.pic} style={{ width: '100px', height: '100px' }}></img>
+                                        </div>
+                                        <p className='txtCountShelf' style={{}}>{item.productID}</p>
+                                        <p className='txtCountShelf' style={{}}>{item.productName}</p>
+                                        <p className='txtCountShelf' style={{}}>{item.type}</p>
+                                        <p className='txtCountShelf' style={{}}>{item.qty}</p>
+                                        <p className='txtCountShelf' style={{}}>{item.unit}</p>
+                                        <input className='txtCountShelf' style={{}}></input>
+                                    </div>
+                                );
+                            }
 
-                    })}
-                </div>
-                <div style={{ paddingLeft: 50, paddingTop: 50 }}>
-                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('')}>
+                        })}
+                    </div>
+                </scroll>
+
+                <div style={{ paddingLeft: 50, paddingTop: 50 ,backgroundColor:'black',alignItems:'self-end' }}>
+                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52,marginBottom:'2%', }} onClick={() => history.push('')}>
                         Report
                     </ButtonReport>
 

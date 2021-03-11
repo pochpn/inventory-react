@@ -12,7 +12,7 @@ class CountingStock extends Component {
     super(props);
     this.state = {
       user: this.props.userList[this.props.userList.length - 1],
-      list: ['S1-01','S1-02'],
+      list: ['S1-01', 'S1-02'],
     };
   }
 
@@ -32,29 +32,20 @@ class CountingStock extends Component {
         <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%' }}>
           <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', }}>
-
-          <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => history.push({
-            pathname: '/stock/countingStock/countShelf',
-            state: { shelf: 'S1-01' },
-          })}>
-            <div style={{ alignItems: 'center', justifyItems: 'center' }}>
-              <img className="imViewStock" src={shelf} />
-              <p className="textViewStock">S1-01</p>
-            </div>
-          </Paper>
-          <Paper className="paperShelf" style={{ borderRadius: "10%" }}
-            onClick={() => history.push({
-              pathname: '/stock/countingStock/countShelf',
-              state: { shelf: 'S1-02' },
-            })}>
-            <div>
-              <img className="imViewStock" src={shelf} />
-              <p className="textViewStock">S1-02</p>
-            </div>
-          </Paper>
-
-
+        <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', backgroundColor: 'pink' }}>
+          {this.props.shelfList.map((item) => {
+            return (
+              <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => history.push({
+                pathname: '/stock/countingStock/countShelf',
+                state: { shelf: item.shelfID },
+              })}>
+                <div style={{ alignItems: 'center', justifyItems: 'center' }}>
+                  <img className="imViewStock" src={shelf} />
+                  <p className="textViewStock">{item.shelfID}</p>
+                </div>
+              </Paper>
+            );
+          })}
         </div>
       </div>
 
@@ -71,7 +62,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userList: state.userReducer.userList,
-    accountList: state.accountReducer.accountList
+    accountList: state.accountReducer.accountList,
+    shelfList: state.shelfReducer.shelfList,
   };
 };
 

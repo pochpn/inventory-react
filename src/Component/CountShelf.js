@@ -33,7 +33,7 @@ class CountShelf extends Component {
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>Shelf</a1>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>S1-01</a1>
+                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>{this.state.shelf}</a1>
                     </div>
 
 

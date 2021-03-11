@@ -55,7 +55,7 @@ export const SidebarData = [
   },
   {
     title: 'CONFIRMATION SHIPPING',
-    path: '/shippingConfirm',
+    path: '/confirmShipping',
     icon: <ImTruck color = 'black' />,
     cName: 'nav-text'
   },

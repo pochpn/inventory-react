@@ -30,7 +30,6 @@ import AddProduct from './Component/AddProduct'
 import ConReturnedChart from './Component/ConReturnedChart'
 import CountShelf from './Component/CountShelf'
 import ProductDetail from './Component/ProductDetail'
-
 import { Provider } from 'react-redux';
 import configureStore from './Store';
 

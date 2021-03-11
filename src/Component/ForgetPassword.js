@@ -6,6 +6,7 @@ import firebase from '../firebase/firestore'
 import styled, { css } from 'styled-components'
 import { Base64 } from 'js-base64';
 import './Modal.css';
+import PinInput from "react-pin-input";
 import { Success, Error } from '../pic';
 
 const ButtonSend = styled.button`
@@ -46,17 +47,30 @@ const Font = styled.div`
     font-size: 24px;
   }
 `
-
+const ButtonInsert = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 170px;
+  height: 48px;
+  border-radius: 12px;
+  paddingLeft: 10 ;
+`
 class ForgetPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       modal2: false,
+      modal3: false,
+      modal4: false,
       email: null,
       user: null,
       firstnameEN: null,
       pass: null,
+      Pin: null,
+      pinVar: null,
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,8 +81,11 @@ class ForgetPassword extends Component {
     if (currentClass == 'modal-cardforget') {
       return;
     }
+
     this.setState({ modal: !this.state.modal });
+    this.handleModal3Open()
   };
+
 
   handleModalOpen = () => {
     this.setState({ modal: !this.state.modal });
@@ -80,6 +97,7 @@ class ForgetPassword extends Component {
       return;
     }
     this.setState({ modal2: !this.state.modal2 });
+
   };
 
   handleModal2Open = () => {
@@ -111,11 +129,12 @@ class ForgetPassword extends Component {
   reject = (error) => {
     console.log(error)
     this.handleModal2Open()
-    // alert("Email is incorrect!!");
+    /* alert("Email is incorrect!!");*/
   }
 
   onSend = (e) => {
     e.preventDefault()
+    this.setState({ Pin: Math.floor(100000 + Math.random() * 900000).toString() })
     firebase.getUser(this.state.email, this.success, this.reject)
   }
 
@@ -144,6 +163,43 @@ class ForgetPassword extends Component {
     // alert("Email has been send please check your mail box!");
   }
 
+  handleModal3Close = (e) => {
+    //const currentClass = e.target.className;
+    //if (currentClass == 'modal-cardforget') {
+   //   return;
+    //}
+    this.setState({ modal3: !this.state.modal3 });
+    this.handleModal4Open()
+  };
+
+
+  handleModal3Open = () => {
+    this.setState({ modal3: !this.state.modal3 });
+  };
+  onCheckP = () => {
+    if (this.state.Pin === this.state.pinVar) {
+      console.log("Correct!!")
+      this.handleModal3Close()
+    }
+    else {
+      console.log("incorrect")
+    }
+  }
+
+  handleModal4Close = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-cardChangePass') {
+      return;
+    }
+
+    this.setState({ modal4: !this.state.modal4 });
+  };
+
+
+  handleModal4Open = () => {
+    this.setState({ modal4: !this.state.modal4 });
+  };
+
   render() {
     return (
       <div className="bg">
@@ -170,7 +226,7 @@ class ForgetPassword extends Component {
                 <input type="hidden"
                   id="pass"
                   name="pass"
-                  value={this.state.pass} />
+                  value={this.state.Pin} />
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -196,11 +252,11 @@ class ForgetPassword extends Component {
               <div>
                 <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
                   <p>Email has been sent.</p>
-                  <p>Please check your mail box.</p>
+                  <p>Please check pin in your mail box.</p>
                 </Font>
               </div>
               <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>OK</ButtonOK>
+                <ButtonInsert style={{ fontSize: 20 }} onClick={this.handleModalClose}>Insert Pin</ButtonInsert>
               </div>
             </div>
           </div>
@@ -222,8 +278,68 @@ class ForgetPassword extends Component {
             </div>
           </div>
         </div>
+        <div hidden={!this.state.modal3}>
+          <div className="modal-background">
+            <div className="modal-cardforget" >
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }} >
+                  <p>Enter Your PIN</p>
+                </Font>
+              </div>
+              <PinInput
+                length={6}
+                initialValue=""
+                secret
+                type="numeric"
+                inputMode="number"
+                style={{ padding: '10px' }}
+                inputStyle={{ borderColor: 'red' }}
+                inputFocusStyle={{ borderColor: 'blue' }}
+                autoSelect={true}
+                regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                onChange={value => this.setState({ pinVar: value })}
+                style={{ paddingLeft: 190, paddingTop: 70 }}
+              />
+              <div style={{ paddingLeft: 265, paddingTop: 35 }}>
+                <ButtonOK style={{ fontSize: 20 }} onClick={this.onCheckP}>Submit</ButtonOK>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div hidden={!this.state.modal4}>
+          <div className="modal-background">
+            <div className="modal-cardChangePass">
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 10 }} >Reset Password</Font>
+                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} ></Font>
+              </div>
+              <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                <input type="hidden" style={{ fontSize: 24 }}  />
+              </div>
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >New Password</Font>
+              </div>
+              <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ newPass: txt.target.value })} />
+              </div>
+              <div>
+                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >Confirm Password</Font>
+              </div>
+              <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+                <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ confirmNewPass: txt.target.value })} />
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'row' }} >
+                <div style={{ paddingLeft: 10, paddingTop: 50 }}>
+                  <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModal4Close}>Cancel</ButtonCancel>
+                </div>
+                <div style={{ paddingLeft: 50, paddingTop: 50 }}>
+                  <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModal4Close}>OK</ButtonOK>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     )
   }
 }

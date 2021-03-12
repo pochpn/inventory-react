@@ -241,7 +241,7 @@ class ForgetPassword extends Component {
               </div>
               <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 35 }} >
                 <p>Please enter your email for </p>
-                <p>receive password</p>
+                <p>receive Reset password PIN</p>
               </Font>
               <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 80 }}>
                 <input type="text"

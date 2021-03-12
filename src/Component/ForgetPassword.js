@@ -117,8 +117,7 @@ class ForgetPassword extends Component {
       this.setState({
         user : user,
         firstnameEN: user.firstnameEN,
-        pass: Base64.decode(user.pass),
-        email: user.email,
+        /*pass: Base64.decode(user.pass),*/
       })
     });
     if (user.email != this.state.email) {
@@ -155,7 +154,6 @@ class ForgetPassword extends Component {
       });
     this.setState({
       email: "",
-      user: "",
       firstnameEN: "",
       pass: "",
 
@@ -222,9 +220,8 @@ class ForgetPassword extends Component {
       pic: this.state.user.pic,
       id: this.state.user.id,
     }
-    this.props.editAccount(user)
     alert('Update password success')
-    this.setState({ modalChangpass: !this.state.modalChangpass });
+    this.setState({ modal4: !this.state.modal4 });
   }
   upReject = (e) => {
     console.log(e)

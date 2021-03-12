@@ -224,7 +224,7 @@ class ForgetPassword extends Component {
     }
     this.props.editAccount(user)
     alert('Update password success')
-    this.setState({ modalChangpass: !this.state.modalChangpass });
+    this.setState({ modal4: !this.state.modal4 });
   }
   upReject = (e) => {
     console.log(e)

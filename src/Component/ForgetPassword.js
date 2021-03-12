@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import emailjs from 'emailjs-com';
 import Paper from '@material-ui/core/Paper';
-import firebase from '../firebase/firestore'
+import firestore from "../firebase/firestore"
 import styled, { css } from 'styled-components'
 import { Base64 } from 'js-base64';
 import './Modal.css';
@@ -70,7 +70,8 @@ class ForgetPassword extends Component {
       pass: null,
       Pin: null,
       pinVar: null,
-
+      newPass: null,
+      confirmPassword: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -114,6 +115,7 @@ class ForgetPassword extends Component {
       user = doc.data()
       user.id = doc.id
       this.setState({
+        user : user,
         firstnameEN: user.firstnameEN,
         pass: Base64.decode(user.pass),
         email: user.email,
@@ -129,13 +131,12 @@ class ForgetPassword extends Component {
   reject = (error) => {
     console.log(error)
     this.handleModal2Open()
-    /* alert("Email is incorrect!!");*/
   }
 
   onSend = (e) => {
     e.preventDefault()
     this.setState({ Pin: Math.floor(100000 + Math.random() * 900000).toString() })
-    firebase.getUser(this.state.email, this.success, this.reject)
+    firestore.getUser(this.state.email, this.success, this.reject)
   }
 
   handleSubmit = () => {
@@ -160,14 +161,13 @@ class ForgetPassword extends Component {
 
     });
     this.handleModalOpen()
-    // alert("Email has been send please check your mail box!");
   }
 
   handleModal3Close = (e) => {
-    //const currentClass = e.target.className;
-    //if (currentClass == 'modal-cardforget') {
-   //   return;
-    //}
+    /*const currentClass = e.target.className;
+    if (currentClass == 'modal-cardforget') {
+      return;
+    }*/
     this.setState({ modal3: !this.state.modal3 });
     this.handleModal4Open()
   };
@@ -199,6 +199,36 @@ class ForgetPassword extends Component {
   handleModal4Open = () => {
     this.setState({ modal4: !this.state.modal4 });
   };
+
+  onOK = () => {
+    if (this.state.newPass === this.state.confirmNewPass) {
+      const user = this.state.user
+      user.pass = Base64.encode(this.state.newPass)
+      firestore.updateUserByID(user, this.upSuccess, this.upReject)
+    } else {
+      console.log("Password ot match!!")
+    }
+  }
+
+  upSuccess = () => {
+    const user = {
+      firstnameTH: this.state.user.firstnameTH,
+      lastnameTH: this.state.user.lastnameTH,
+      firstnameEN: this.state.user.firstnameEN,
+      lastnameEN: this.state.user.lastnameEN,
+      tel: this.state.user.tel,
+      address: this.state.user.address,
+      pass: Base64.encode(this.state.newPass),
+      pic: this.state.user.pic,
+      id: this.state.user.id,
+    }
+    this.props.editAccount(user)
+    alert('Update password success')
+    this.setState({ modalChangpass: !this.state.modalChangpass });
+  }
+  upReject = (e) => {
+    console.log(e)
+}
 
   render() {
     return (
@@ -314,7 +344,7 @@ class ForgetPassword extends Component {
                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} ></Font>
               </div>
               <div style={{ paddingTop: 10, paddingLeft: 20 }}>
-                <input type="hidden" style={{ fontSize: 24 }}  />
+                <input type="hidden" style={{ fontSize: 24 }} />
               </div>
               <div>
                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >New Password</Font>
@@ -333,7 +363,7 @@ class ForgetPassword extends Component {
                   <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModal4Close}>Cancel</ButtonCancel>
                 </div>
                 <div style={{ paddingLeft: 50, paddingTop: 50 }}>
-                  <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModal4Close}>OK</ButtonOK>
+                  <ButtonOK style={{ fontSize: 20 }} onClick={this.onOK}>OK</ButtonOK>
                 </div>
               </div>
             </div>

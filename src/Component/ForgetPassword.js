@@ -237,7 +237,7 @@ class ForgetPassword extends Component {
           <form className="forget_Pass">
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 32 }}>
               <div>
-                <FontHead>Account Recover</FontHead>
+                <FontHead>Password Recovery</FontHead>
               </div>
               <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 35 }} >
                 <p>Please enter your email for </p>

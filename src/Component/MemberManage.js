@@ -121,13 +121,12 @@ class MemberManage extends Component {
                                             state: { member: item },
                                         })
                                     }} >
-                                    <img style={{ width: '100px', height: '100px', alignSelf: 'center' }} src={item.pic} />
+                                    <img style={{ width: '150px', height: '150px', alignSelf: 'center' }} src={item.pic} />
                                     <ul>
                                         <div><p>Employee ID : {item.employeeID}</p></div>
                                         <div><p>Department : {item.department}</p></div>
                                         <div><p>Name : {item.firstnameEN} {item.lastnameEN}</p></div>
                                         <div><p>Tel : {item.tel}</p></div>
-                                        <div><p>Pass : {item.pass}</p></div>
                                     </ul>
                                 </Paper>
                             </div>

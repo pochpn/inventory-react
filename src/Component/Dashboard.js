@@ -187,22 +187,24 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTI" >
           <div>
-
+                <p className="txtTi">TOP ITEM</p>
           </div>
         </Paper>
         <Paper className="paperIL" >
           <div>
-
+                <p className="txtIl">Inventory Levels</p>
+                <p className="txtIl" style={{paddingLeft:'75%',paddingTop:'25%' ,fontSize:'50px'}}>฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >
           <div>
-
+                <p className="txtDam">Damage value this month</p>
+                <p className="txtIl" style={{paddingLeft:'75%',paddingTop:'25%' ,fontSize:'50px'}}>฿</p>
           </div>
         </Paper>
         <Paper className="paperTO" >
           <div>
-
+                <p className="txtTo">Total Orders this month</p>
           </div>
         </Paper>
 

@@ -30,7 +30,7 @@ const ButtonNext = styled.button`
 `
 
 const ButtonAdd = styled.button`
-  background: #EF3F3E;
+  background: #000000;
   border-radius: 100px;
   border: 2px;
   color: #ffffff;
@@ -120,8 +120,8 @@ class Ordering extends Component {
                         <div>
                             <img img className="imsch" src={search} />
                         </div>
-                        <div style={{ paddingLeft: 70, paddingTop: 790 }}>
-                            <ButtonAdd style={{ fontSize: 35, width: 70, height: 70 }} onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
+                        <div style={{ paddingLeft: 90, paddingTop: 50 }}>
+                            <ButtonAdd style={{ fontSize: 35, width: 50, height: 50 }} onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
                                 +
                             </ButtonAdd>
                         </div>

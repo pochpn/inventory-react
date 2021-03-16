@@ -39,7 +39,7 @@ const Font = styled.div`
 
 const Arrow = styled.div`
   top: 0px;
-  right: 160px;
+  right: 165px;
   transform: translate(-50%, -100%);
   clip: rect(0px, 18px, 14px, -4px);
   position: absolute;
@@ -116,7 +116,8 @@ class Hamburger extends Component {
                 </div>
 
               </div>
-            </div></div>
+            </div>
+          </div>
           <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>
           <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
@@ -168,6 +169,7 @@ class Hamburger extends Component {
             </div>
           </div>
         </div>
+
 
       </IconContext.Provider>
 

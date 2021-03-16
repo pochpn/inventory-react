@@ -174,19 +174,39 @@ body, html {
     width: 616px;
     height: 710px;
     max-height: 710px;
-    overflow: scroll;
+    overflow: auto;
     /* 820 */
     left: 8px;
     top: 248px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4)!important;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:rgba(0, 0, 0, 0.4)!important;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2)!important;
+  }
+
 
 .dataRight {
     position: absolute;
     width: 1280px;
     height: 635px;
-    overflow: scroll;
+    overflow: auto;
     /* 745 */
     left: 630px;
     top: 248px;

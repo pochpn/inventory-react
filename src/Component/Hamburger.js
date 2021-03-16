@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import { FaBell } from "react-icons/fa";
 import history from '../history'
 
 import { connect } from 'react-redux';
@@ -36,13 +37,31 @@ const Font = styled.div`
   }
 `
 
+const Arrow = styled.div`
+  top: 0px;
+  right: 160px;
+  transform: translate(-50%, -100%);
+  clip: rect(0px, 18px, 14px, -4px);
+  position: absolute;
+  ::after {
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    transform: rotate(45deg) translate(6px, 6px);
+    box-shadow: rgba(0, 0, 0, 0.44) -1px -1px 1px -1px;
+    background: rgb(255, 255, 255);
+  }
+`
+
 class Hamburger extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
       sidebar: false,
-      user: this.props.user
+      user: this.props.user,
+      modal1: false,
     };
   }
 
@@ -57,6 +76,18 @@ class Hamburger extends Component {
 
   handleModalOpen = () => {
     this.setState({ modal: !this.state.modal });
+  };
+
+  handleModalClose1 = (e) => {
+    const currentClass = e.target.className;
+    if (currentClass == 'modal-tri') {
+      return;
+    }
+    this.setState({ modal1: !this.state.modal1 });
+  };
+
+  handleModalOpen1 = () => {
+    this.setState({ modal1: !this.state.modal1 });
   };
 
   showSidebar = () => {
@@ -76,7 +107,17 @@ class Hamburger extends Component {
             <img className="iconKCN" src={logoTopBar} />
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
-          <span className='title'>{this.props.page}</span>
+          <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
+          <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
+            <div hidden={!this.state.modal1}>
+              <div className="modal-background">
+                <div className="modal-tri">
+                  <Arrow />
+                </div>
+
+              </div>
+            </div></div>
+          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>
           <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -98,7 +139,7 @@ class Hamburger extends Component {
                       this.props.clearProductProfile()
                       this.props.clearShelf()
                     }
-                    }}>
+                  }}>
                     {item.icon}
                     <span>{item.title}</span>
                   </Link>
@@ -127,6 +168,7 @@ class Hamburger extends Component {
             </div>
           </div>
         </div>
+
       </IconContext.Provider>
 
     );

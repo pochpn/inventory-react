@@ -85,7 +85,7 @@ class Ordering extends Component {
                     </div>
                 </Paper>
                 <Paper className='dataRight'>
-
+                        
                 </Paper>
                 <Paper className="buttonOrder">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>

@@ -109,25 +109,25 @@ class MemberManage extends Component {
                 </Paper>
 
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{ paddingTop: 250, paddingLeft: 200 }}>
+                <div style={{ paddingTop: 250}}>
                     {this.state.accounts.map((item) => {
 
                         return (
-                            <div style={{ width: '90%' }}>
-                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row' }}
+                            <div style={{ marginLeft:'12%'}}>
+                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%',borderRadius:'15px'}}
                                     onClick={() => {
                                         history.push({
                                             pathname: '/memberManage/editMember',
                                             state: { member: item },
                                         })
                                     }} >
-                                    <img style={{ width: '150px', height: '150px', alignSelf: 'center' }} src={item.pic} />
-                                    <ul>
-                                        <div><p>Employee ID : {item.employeeID}</p></div>
-                                        <div><p>Department : {item.department}</p></div>
-                                        <div><p>Name : {item.firstnameEN} {item.lastnameEN}</p></div>
-                                        <div><p>Tel : {item.tel}</p></div>
-                                    </ul>
+                                    <img style={{ width: '170px', height: '170px', alignSelf: 'center', borderRadius: '50%', marginLeft: '10%' }} src={item.pic} />
+                                    <div style={{ marginLeft: '10%', alignSelf: 'center' }}>
+                                        <p style={{ fontSize: '24px', fontWeight: 'normal' }}>Employee ID : {item.employeeID}</p>
+                                        <p style={{ fontSize: '24px', fontWeight: 'normal' }}>Department : {item.department}</p>
+                                        <p style={{ fontSize: '24px', fontWeight: 'normal' }}>Name : {item.firstnameEN} {item.lastnameEN}</p>
+                                        <p style={{ fontSize: '24px', fontWeight: 'normal' }}>Tel : {item.tel}</p>
+                                    </div>
                                 </Paper>
                             </div>
                         );

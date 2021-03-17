@@ -30,3 +30,9 @@ export const CLEAR_SHELF = 'CLEAR_SHELF'
 export const ADD_PICKORDER = 'ADD_PICKORDER'
 export const DELETE_PICKORDER = 'DELETE_PICKORDER'
 export const CLEAR_PICKORDER = 'CLEAR_PICKORDER'
+
+/* Notification */
+export const ADD_NOTIFY = 'ADD_NOTIFY'
+export const EDIT_NOTIFY = 'EDIT_NOTIFY'
+export const DELETE_NOTIFY = 'DELETE_NOTIFY'
+export const CLEAR_NOTIFY = 'CLEAR_NOTIFY'

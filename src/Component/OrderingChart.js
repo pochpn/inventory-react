@@ -128,7 +128,7 @@ class Ordering extends Component {
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
                             <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => {
                                 this.props.clearPickOrder()
-                                history.push('/picking')
+                                history.push('/ordering')
                             }}>
                                 Cancel
                             </ButtonCancel>

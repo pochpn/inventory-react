@@ -115,6 +115,7 @@ class Firestore {
             .firestore()
             .collection('Products')
             .where('shelf', '==', shelf)
+            .orderBy('productID')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);
@@ -128,6 +129,7 @@ class Firestore {
             .firestore()
             .collection('Products')
             .where('type', '==', type)
+            .orderBy('productID')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);
@@ -140,6 +142,7 @@ class Firestore {
         firebase
             .firestore()
             .collection('Products')
+            .orderBy('productID')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);
@@ -195,6 +198,7 @@ class Firestore {
         firebase
             .firestore()
             .collection('ProductProfile')
+            .orderBy('productID')
             .get()
             .then(function (querySnapshot) {
                 success(querySnapshot);
@@ -319,6 +323,44 @@ class Firestore {
                 reject(error);
             });
     }
+    /*-----------Notification---------------*/
+    addNotification = (notification, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Notification')
+            .add(notification)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    getAllNotification(success, reject) {
+        firebase
+            .firestore()
+            .collection('Notification')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+    deleteNotification = (id, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Notification')
+            .doc(id)
+            .delete()
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 }
 
 const firestore = new Firestore();

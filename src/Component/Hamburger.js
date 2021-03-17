@@ -118,7 +118,7 @@ class Hamburger extends Component {
               </div>
             </div>
           </div>
-          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>
+          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')}/></span>
           <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>

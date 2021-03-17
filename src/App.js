@@ -32,6 +32,7 @@ import CountShelf from './Component/CountShelf'
 import ProductDetail from './Component/ProductDetail'
 import { Provider } from 'react-redux';
 import configureStore from './Store';
+import BillOrder from './Component/BillOrder'
 
 class App extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class App extends Component {
             <Route exact path="/stock" component={Stock} />
             <Route exact path="/Ordering" component={Ordering} />
             <Route exact path="/Ordering/orderingChart" component={OrderingChart} />
+            <Route exact path="/Ordering/orderingChart/billOrder" component={BillOrder} />
             <Route exact path="/Ordering/orderingChart/AddProduct" component={AddProduct} />
             <Route exact path="/stock/viewStock" component={ViewStock} />
             <Route exact path="/stock/countingStock" component={CountingStock} />

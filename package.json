@@ -23,6 +23,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-images-upload": "^1.2.8",
+    "react-pdf-print": "^0.2.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-pin-input": "^1.0.1",
     "react-redux": "^7.2.2",

@@ -5,7 +5,7 @@ export const historyPic = 'https://sv1.picz.in.th/images/2021/03/02/ovNjH1.png'
 export const orderconfirm = 'https://sv1.picz.in.th/images/2021/03/02/ovNbq2.png'
 export const ordering = 'https://sv1.picz.in.th/images/2021/03/02/ovNUtS.png'
 export const packing = 'https://sv1.picz.in.th/images/2021/03/02/ovNqln.png'
-export const standcount = 'https://uppic.cc/d/plhyz-08rDueCwk4rnFWZ'
+export const standcount = 'https://sv1.picz.in.th/images/2021/03/17/DQSum1.png'
 export const confirmship = 'https://sv1.picz.in.th/images/2021/03/02/ovNOfW.png'
 /*------stockcount-------*/
 export const counting = 'https://sv1.picz.in.th/images/2021/03/12/D3TbnR.png'

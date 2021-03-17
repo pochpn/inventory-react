@@ -73,6 +73,8 @@ class ForgetPassword extends Component {
       newPass: null,
       confirmPassword: null,
       pinMSG : "",
+      newPassMsg : "",
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -211,7 +213,10 @@ class ForgetPassword extends Component {
         pass: "",
       });
     } else {
-      console.log("Password ot match!!")
+      this.setState({
+        newPassMsg : "Password not match"
+      })
+      console.log("Password not match!!")
     }
 
   }
@@ -299,15 +304,15 @@ class ForgetPassword extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-background">
             <div className="modal-cardforget">
-              <div style = {{paddingTop: 20}}> 
+              <div>
                 <img className="picError" src={Error} />
               </div>
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30}} >
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 160 }} >
                   <p>Email is incorrect !</p>
                 </Font>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 35}}>
+              <div style={{ paddingLeft: 265, paddingTop: 35 }}>
                 <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModal2Close}>OK</ButtonOK>
               </div>
             </div>

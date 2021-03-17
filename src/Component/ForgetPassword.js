@@ -253,7 +253,7 @@ class ForgetPassword extends Component {
                 <p>Please enter your email for </p>
                 <p>receive reset password PIN</p>
               </Font>
-              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 80 }}>
+              <div style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 80}}>
                 <input type="text"
                   id="email"
                   name="email"
@@ -368,6 +368,9 @@ class ForgetPassword extends Component {
               </div>
               <div style={{ paddingTop: 10, paddingLeft: 20 }}>
                 <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ confirmNewPass: txt.target.value })} />
+              </div>
+              <div style={{paddingLeft : 20, color : "red"}}>
+                {this.state.newPassMsg}
               </div>
               <div style={{ display: 'flex', flexDirection: 'row' }} >
                 <div style={{ paddingLeft: 10, paddingTop: 50 }}>

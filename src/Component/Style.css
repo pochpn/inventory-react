@@ -2285,6 +2285,7 @@ body, html {
     background: #7ABB64 !important;
     border-radius: 12px;
 }
+
 .btnCancel {
     position: absolute;
     width: 92px;
@@ -2294,6 +2295,7 @@ body, html {
     background: #f04747 !important;
     border-radius: 12px;
 }
+
 .btnEdit {
     position: absolute;
     width: 92px;
@@ -2303,3 +2305,31 @@ body, html {
     background: #edf047 !important;
     border-radius: 12px;
 }
+
+/*EditShelf*/
+
+.textEditShelf {
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 48px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+    align-self: start;
+    /* background-color: aqua; */
+}
+
+.textAddEditShelf {
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 40px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+    align-self: start;
+    /* background-color: aqua; */
+}
+
+/*endEditshelf*/

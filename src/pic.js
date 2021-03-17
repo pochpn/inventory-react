@@ -5,7 +5,7 @@ export const historyPic = 'https://sv1.picz.in.th/images/2021/03/02/ovNjH1.png'
 export const orderconfirm = 'https://sv1.picz.in.th/images/2021/03/02/ovNbq2.png'
 export const ordering = 'https://sv1.picz.in.th/images/2021/03/02/ovNUtS.png'
 export const packing = 'https://sv1.picz.in.th/images/2021/03/02/ovNqln.png'
-export const standcount = 'https://sv1.picz.in.th/images/2021/03/17/DQdYkZ.png'
+export const standcount = 'https://sv1.picz.in.th/images/2021/03/17/DQSum1.png'
 export const confirmship = 'https://sv1.picz.in.th/images/2021/03/02/ovNOfW.png'
 /*------stockcount-------*/
 export const counting = 'https://sv1.picz.in.th/images/2021/03/12/D3TbnR.png'
@@ -41,3 +41,6 @@ export const TC ='https://www.img.in.th/images/a139901e6438af36d33795d8882d2f54.
 export const Suc = 'https://www.img.in.th/images/34b0f228a4348da5e7e6822c7b2aaff2.png'
 export const Reject = 'https://www.img.in.th/images/b8a19591bdaab2c282168b7c7b9dcd1c.png'
 export const Waiting = 'https://www.img.in.th/images/e4bf6438689c1200ebd61d65de57780e.png'
+
+/*----------EditShelf---------*/
+export const plus = 'https://sv1.picz.in.th/images/2021/03/18/DQk3Je.png'

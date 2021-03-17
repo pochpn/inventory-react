@@ -70,7 +70,7 @@ const ButtonAdd1 = styled.button`
 
 
 
-class Ordering extends Component {
+class OrderingChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -335,4 +335,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Ordering);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderingChart);

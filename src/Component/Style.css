@@ -181,26 +181,30 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
 }
+
 /* width */
+
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.4)!important;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background:rgba(0, 0, 0, 0.4)!important;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.2)!important;
-  }
+}
 
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4)!important;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2)!important;
+}
 
 .dataRight {
     position: absolute;
@@ -2248,4 +2252,13 @@ body, html {
     font-size: 24px;
     line-height: 36px;
     color: #000000;
+}
+
+/* Bill Ordering */
+
+.bill {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    background-color: #000000 !important;
 }

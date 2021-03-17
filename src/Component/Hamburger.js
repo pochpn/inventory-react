@@ -13,6 +13,7 @@ import { clearAccount } from '../actions/accountAction';
 import { clearProduct } from '../actions/productAction';
 import { clearProductProfile } from '../actions/productProfileAction';
 import { clearShelf } from '../actions/shelfAction'
+import { clearPickOrder } from '../actions/pickOrderAction'
 
 import { logoTopBar } from '../pic'
 
@@ -118,7 +119,7 @@ class Hamburger extends Component {
               </div>
             </div>
           </div>
-          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>
+          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')}/></span>
           <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -139,6 +140,7 @@ class Hamburger extends Component {
                       this.props.clearProduct()
                       this.props.clearProductProfile()
                       this.props.clearShelf()
+                      this.props.clearPickOrder()
                     }
                   }}>
                     {item.icon}
@@ -184,6 +186,7 @@ const mapDispatchToProps = (dispatch) => {
     clearProduct: () => dispatch(clearProduct()),
     clearProductProfile: () => dispatch(clearProductProfile()),
     clearShelf: () => dispatch(clearShelf()),
+    clearPickOrder: () => dispatch(clearPickOrder()),
   };
 };
 

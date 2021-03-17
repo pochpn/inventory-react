@@ -25,3 +25,8 @@ export const ADD_SHELF = 'ADD_SHELF'
 export const EDIT_SHELF = 'EDIT_SHELF'
 export const DELETE_SHELF = 'DELETE_SHELF'
 export const CLEAR_SHELF = 'CLEAR_SHELF'
+
+/* PickOrder */
+export const ADD_PICKORDER = 'ADD_PICKORDER'
+export const DELETE_PICKORDER = 'DELETE_PICKORDER'
+export const CLEAR_PICKORDER = 'CLEAR_PICKORDER'

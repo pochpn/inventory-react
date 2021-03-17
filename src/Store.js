@@ -4,6 +4,7 @@ import productReducer from './reducers/productReducer'
 import productProfileReducer from './reducers/productProfileReducer'
 import shelfReducer from './reducers/shelfReducer'
 import pickOrderReducer from './reducers/pickOrderReducer'
+import notificationReducer from './reducers/notificationReducer'
 import { createStore, combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     productProfileReducer: productProfileReducer,
     shelfReducer: shelfReducer,
     pickOrderReducer: pickOrderReducer,
+    notificationReducer: notificationReducer,
 
 });
 

@@ -26,12 +26,18 @@ class billOrder extends Component {
                     <ReactToPrint content={() => this.componentRef}>
                         <PrintContextConsumer>
                             {({ handlePrint }) => (
-                                <Paper className="btnSend" onClick={handlePrint}>Send</Paper>
+                                <Paper className="btnSend" onClick={handlePrint}>
+                                    <p className="txtbtnSend">Send</p>
+                                </Paper>
                             )}
                         </PrintContextConsumer>
                     </ReactToPrint>
-                    <Paper className="btnCancel" onClick={() => history.push('/ordering')}>Cancel</Paper>
-                    <Paper className="btnEdit" onClick={() => history.push('/ordering/orderingChart')}>Edit</Paper>
+                    <Paper className="btnCancel" onClick={() => history.push('/ordering')}>
+                        <p className="txtbtnCancle">Cancel</p>
+                    </Paper>
+                    <Paper className="btnEdit" onClick={() => history.push('/ordering/orderingChart')}>
+                        <p className="txtbtnEdit">Edit</p>
+                    </Paper>
                 </Paper>
 
             </div>

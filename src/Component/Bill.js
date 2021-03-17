@@ -12,7 +12,21 @@ export class ComponentToPrint extends React.PureComponent {
     render() {
         return (
             <Paper className='bill'>
-                <p style={{ fontSize: 64 }}>HI</p>
+                <Paper className="blackTopic">
+
+                </Paper>
+                <Paper className="borLeft">
+                    
+                </Paper>
+                <Paper className="borRight">
+                    
+                </Paper>
+                <Paper className="dataBill">
+                    
+                </Paper>
+                <Paper className="topBill">
+                    
+                </Paper>
             </Paper>
         );
     }

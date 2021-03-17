@@ -12,6 +12,7 @@ import './Modal.css';
 
 import { addPickOrder, deletePickOrder, clearPickOrder } from '../actions/pickOrderAction'
 import { addProduct } from '../actions/productAction'
+import { addNotification } from '../actions/notificationAction'
 
 import firestore from '../firebase/firestore'
 
@@ -82,6 +83,7 @@ class OrderingChart extends Component {
             level: '',
             costPunit: '',
             qty: '',
+            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ'
         };
     }
 
@@ -157,9 +159,13 @@ class OrderingChart extends Component {
             firestore.addProduct(product, this.success, this.reject)
             this.props.addProduct(product)
         })
+        const notification = {
+            notificationHead: this.state.notificationHead,
+        }
+        firestore.addNotification(notification, this.success, this.reject)
+        this.props.addNotification(notification)
         this.props.clearPickOrder()
-        history.push('/home')
-        /*history.push('/ordering/orderingChart/billOrder')*/
+        history.push('/ordering/orderingChart/billOrder')
     }
 
     render() {
@@ -323,7 +329,8 @@ const mapDispatchToProps = (dispatch) => {
         addPickOrder: (product) => dispatch(addPickOrder(product)),
         deletePickOrder: (id) => dispatch(deletePickOrder(id)),
         clearPickOrder: () => dispatch(clearPickOrder()),
-        addProduct: (product) => dispatch(addProduct(product))
+        addProduct: (product) => dispatch(addProduct(product)),
+        addNotification: (notification) => dispatch(addNotification(notification))
     };
 };
 

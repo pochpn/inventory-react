@@ -8,6 +8,8 @@ import { search } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+import './Modal.css';
+
 import { addPickOrder, deletePickOrder, clearPickOrder } from '../actions/pickOrderAction'
 
 const ButtonCancel = styled.button`
@@ -38,14 +40,57 @@ const ButtonAdd = styled.button`
   color: #ffffff;
 `
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+const ButtonCancel1 = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
+const ButtonAdd1 = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 10px;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+`
+
+
+
 class Ordering extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modal: false,
             user: this.props.userList[this.props.userList.length - 1],
             list: [0],
         };
     }
+
+    handleModalClose = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardforget') {
+            return;
+        }
+
+        this.setState({ modal: !this.state.modal });
+    };
+
+
+    handleModalOpen = () => {
+        this.setState({ modal: !this.state.modal });
+    };
+
 
     onClear = () => {
         this.props.clearPickOrder()
@@ -54,6 +99,7 @@ class Ordering extends Component {
     onAdd = (item) => {
         this.props.addPickOrder(item)
         console.log(this.props.pickOrderList)
+        this.handleModalOpen()
     }
 
     onDelete = (id) => {
@@ -80,7 +126,6 @@ class Ordering extends Component {
                     <p className="txtTopR5">Cost/Unit</p>
                     <p className="txtTopR6">QTY</p>
                     <p className="txtTopR7">Amount</p>
-
                 </Paper>
 
                 <Paper className='dataLeft'>
@@ -177,11 +222,39 @@ class Ordering extends Component {
                         <div>
                             <p className="txtProNm">Product Name</p>
                         </div>
-
                     </div>
 
-
                 </Paper>
+
+                <div hidden={!this.state.modal}>
+                    <div className="modal-background">
+                        <div className="modal-orderChart">
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 10 }}>
+                                <Font>Product ID</Font>
+                                <Font>Exp.</Font>
+                                <Font>Shelf</Font>
+                                <Font>Level</Font>
+                                <Font>Cost/Unit</Font>
+                                <Font>QTY</Font>
+                                <Font>Amount</Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
+                                <Font>Product ID</Font>
+                                <input type="type" style={{ width: 150, height: 35, paddingLeft: 30, fontSize: 24 }} />
+                                <Font>Shelf</Font>
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
+                                <Font>Amount</Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40}}>
+                                <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
+                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Add</ButtonAdd1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <Hamburger page='ORDERING' user={this.state.user} />
 
 

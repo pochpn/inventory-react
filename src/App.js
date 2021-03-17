@@ -33,6 +33,8 @@ import ProductDetail from './Component/ProductDetail'
 import { Provider } from 'react-redux';
 import configureStore from './Store';
 import BillOrder from './Component/BillOrder'
+import EditShelf from './Component/EditShelf'
+import EditProduct from './Component/EditProduct'
 
 class App extends Component {
   constructor(props) {
@@ -76,6 +78,9 @@ class App extends Component {
             <Route exact path="/stock/viewStock/shelf/detail" component={ProductDetail} />
             <Route exact path="/profile" component={Profile}/>
             <Route exact path="/stock/countingStock/countShelf" component={CountShelf}/>
+            <Route exact path="/stock/editStock/editshelf" component={EditShelf} />
+            <Route exact path="/stock/editStock/editproduct" component={EditProduct} />
+
           </Switch>
         </Router>
 

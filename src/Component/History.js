@@ -29,6 +29,10 @@ class History extends Component {
     this.setState({ Enddate: Enddate })
   }
 
+  onSearch = () => {
+    console.log(this.state.Startdate)
+  }
+
   render() {
     return (
       <div className="bg">

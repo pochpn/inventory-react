@@ -109,5 +109,14 @@
     height: 230px;
     background-color: white;
     border-radius: 15px;
+  }
 
+  .modal-editstock-deloredit {
+    margin: 0 auto;
+    display: block;
+    margin-top: 300px;
+    width: 550px;
+    height: 220px;
+    background-color: white;
+    border-radius: 15px;
   }

@@ -86,7 +86,6 @@ class Ordering extends Component {
         this.setState({ modal: !this.state.modal });
     };
 
-
     handleModalOpen = () => {
         this.setState({ modal: !this.state.modal });
     };

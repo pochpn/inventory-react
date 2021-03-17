@@ -8,6 +8,7 @@ import { Base64 } from 'js-base64';
 import './Modal.css';
 import PinInput from "react-pin-input";
 import { Success, Error } from '../pic';
+import Countdown from 'react-countdown';
 
 const ButtonSend = styled.button`
   background: #ef3f3e;
@@ -56,6 +57,7 @@ const ButtonInsert = styled.button`
   border-radius: 12px;
   paddingLeft: 10 ;
 `
+
 class ForgetPassword extends Component {
   constructor(props) {
     super(props);
@@ -72,10 +74,11 @@ class ForgetPassword extends Component {
       pinVar: null,
       newPass: null,
       confirmPassword: null,
-      pinMSG : "",
-      newPassMsg : "",
+      pinMSG: "",
+      newPassMsg: "",
 
     };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -118,7 +121,7 @@ class ForgetPassword extends Component {
       user = doc.data()
       user.id = doc.id
       this.setState({
-        user : user,
+        user: user,
         firstnameEN: user.firstnameEN,
         /*pass: Base64.decode(user.pass),*/
       })
@@ -144,10 +147,10 @@ class ForgetPassword extends Component {
   handleSubmit = () => {
     emailjs
       .sendForm(
-        "service_58nvw9r",
-        "template_sfafrso",
+        "service_pl9f58s",
+        "template_9suscsc",
         ".forget_Pass",
-        "user_GNYzCs6qX14Dws420mU9Z",
+        "user_3Zi9yXMQepvN9h33fUUJ5",
       )
       .then(function () {
         console.log('Send')
@@ -177,12 +180,12 @@ class ForgetPassword extends Component {
       console.log("Correct!!")
       this.handleModal3Close()
       this.setState({
-        pinMSG :""
+        pinMSG: ""
       });
     }
     else {
       this.setState({
-        pinMSG :"Incorrect PIN"
+        pinMSG: "Incorrect PIN"
       });
       console.log("incorrect")
     }
@@ -214,12 +217,13 @@ class ForgetPassword extends Component {
       });
     } else {
       this.setState({
-        newPassMsg : "Password not match"
+        newPassMsg: "Password not match"
       })
       console.log("Password not match!!")
     }
 
   }
+
 
   upSuccess = () => {
     const user = {
@@ -238,9 +242,17 @@ class ForgetPassword extends Component {
   }
   upReject = (e) => {
     console.log(e)
-}
+  }
+  
+
 
   render() {
+    const Completionist = () => {
+      this.setState({
+        Pin :"Invalid"
+      })
+    return <span>{this.state.Pin}</span>;
+  }
     return (
       <div className="bg">
         <Paper className="paperForget">
@@ -326,7 +338,7 @@ class ForgetPassword extends Component {
                   <p>Enter Your PIN</p>
                 </Font>
               </div>
-              <div style ={{paddingLeft : 310, color : "red"}}>{this.state.pinMSG}</div>
+              <div style={{ paddingLeft: 310, color: "red" }}>{this.state.pinMSG}</div>
               <PinInput
                 length={6}
                 initialValue=""
@@ -341,6 +353,11 @@ class ForgetPassword extends Component {
                 onChange={value => this.setState({ pinVar: value })}
                 style={{ paddingLeft: 190, paddingTop: 35 }}
               />
+              <div>
+                <Countdown date={Date.now() + 10000*6*3}>
+                <Completionist />
+              </Countdown>
+              </div>
               <div style={{ paddingLeft: 282, paddingTop: 40 }}>
                 <ButtonOK style={{ fontSize: 17 }} onClick={this.onCheckP}>Submit</ButtonOK>
               </div>
@@ -368,6 +385,9 @@ class ForgetPassword extends Component {
               </div>
               <div style={{ paddingTop: 10, paddingLeft: 20 }}>
                 <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ confirmNewPass: txt.target.value })} />
+              </div>
+              <div style={{ paddingLeft: 20, color: "red" }}>
+                {this.state.newPassMsg}
               </div>
               <div style={{ display: 'flex', flexDirection: 'row' }} >
                 <div style={{ paddingLeft: 10, paddingTop: 50 }}>

@@ -71,7 +71,10 @@ class ForgetPassword extends Component {
       Pin: null,
       pinVar: null,
       newPass: null,
-      confirmPassword: null
+      confirmPassword: null,
+      pinMSG : "",
+      newPassMsg : "",
+
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -152,12 +155,7 @@ class ForgetPassword extends Component {
       .catch(function (error) {
         console.log(error)
       });
-    this.setState({
-      email: "",
-      firstnameEN: "",
-      pass: "",
 
-    });
     this.handleModalOpen()
   }
 
@@ -178,8 +176,14 @@ class ForgetPassword extends Component {
     if (this.state.Pin === this.state.pinVar) {
       console.log("Correct!!")
       this.handleModal3Close()
+      this.setState({
+        pinMSG :""
+      });
     }
     else {
+      this.setState({
+        pinMSG :"Incorrect PIN"
+      });
       console.log("incorrect")
     }
   }
@@ -203,9 +207,18 @@ class ForgetPassword extends Component {
       const user = this.state.user
       user.pass = Base64.encode(this.state.newPass)
       firestore.updateUserByID(user, this.upSuccess, this.upReject)
+      this.setState({
+        email: "",
+        firstnameEN: "",
+        pass: "",
+      });
     } else {
-      console.log("Password ot match!!")
+      this.setState({
+        newPassMsg : "Password not match"
+      })
+      console.log("Password not match!!")
     }
+
   }
 
   upSuccess = () => {
@@ -313,6 +326,7 @@ class ForgetPassword extends Component {
                   <p>Enter Your PIN</p>
                 </Font>
               </div>
+              <div style ={{paddingLeft : 310, color : "red"}}>{this.state.pinMSG}</div>
               <PinInput
                 length={6}
                 initialValue=""
@@ -325,10 +339,10 @@ class ForgetPassword extends Component {
                 autoSelect={true}
                 regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
                 onChange={value => this.setState({ pinVar: value })}
-                style={{ paddingLeft: 190, paddingTop: 70 }}
+                style={{ paddingLeft: 190, paddingTop: 35 }}
               />
-              <div style={{ paddingLeft: 265, paddingTop: 35 }}>
-                <ButtonOK style={{ fontSize: 20 }} onClick={this.onCheckP}>Submit</ButtonOK>
+              <div style={{ paddingLeft: 282, paddingTop: 40 }}>
+                <ButtonOK style={{ fontSize: 17 }} onClick={this.onCheckP}>Submit</ButtonOK>
               </div>
             </div>
           </div>

@@ -21,14 +21,14 @@ class EditStock extends Component {
       <div className="bg">
         <Hamburger page='EDIT STOCK' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'row',paddingTop:'19%',justifyContent:'center'}}>
-          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/viewStock')}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock/editshelf')}>
             <div style={{alignContent:'center',marginBottom:'100%',justifyContent:'center'}}>
               <img className="imVs" src={editshelf}  />
               <p className="textSto1">Edit Shelf</p>
             </div>
           </Paper>
 
-          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/countingStock')}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock/editproduct')}>
             <div style={{alignContent:'center',marginBottom:'100%'}}>
               <img className="imVs" src={editpro} />
               <p className="textSto2">Edit Product</p>

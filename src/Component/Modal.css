@@ -100,3 +100,14 @@
     border-radius: 20px;
     background: #FFF4F2;
   }
+
+  .modal-orderChart {
+    margin: 0 auto;
+    display: block;
+    margin-top: 300px;
+    width: 1200px;
+    height: 230px;
+    background-color: white;
+    border-radius: 15px;
+
+  }

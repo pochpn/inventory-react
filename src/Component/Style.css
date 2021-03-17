@@ -2268,3 +2268,30 @@ body, html {
     height: 297mm;
     background-color: #000000 !important;
 }
+
+/*EditShelf*/
+.textEditShelf {
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 48px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+    align-self: start;
+    /* background-color: aqua; */
+}
+
+.textAddEditShelf {
+    font-family: Prompt;
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 40px;
+    line-height: 73px;
+    text-align: center;
+    color: #6E0D0D;
+    align-self: start;
+    /* background-color: aqua; */
+}
+
+/*endEditshelf*/

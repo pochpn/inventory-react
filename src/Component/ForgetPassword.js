@@ -247,13 +247,12 @@ class ForgetPassword extends Component {
 
 
   render() {
-    const Completionist = () =>{
+    const Completionist = () => {
       this.setState({
-        Pin:"invalid"
+        Pin :"Invalid"
       })
-      console.log(this.state.Pin)
-      return <span>You are good to go!</span>;
-    }
+    return <span>{this.state.Pin}</span>;
+  }
     return (
       <div className="bg">
         <Paper className="paperForget">
@@ -355,7 +354,7 @@ class ForgetPassword extends Component {
                 style={{ paddingLeft: 190, paddingTop: 35 }}
               />
               <div>
-                <Countdown date={Date.now() + 10000*6}>
+                <Countdown date={Date.now() + 10000*6*3}>
                 <Completionist />
               </Countdown>
               </div>

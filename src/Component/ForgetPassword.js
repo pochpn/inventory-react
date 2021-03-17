@@ -291,15 +291,15 @@ class ForgetPassword extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-background">
             <div className="modal-cardforget">
-              <div>
+              <div style = {{paddingTop: 20}}> 
                 <img className="picError" src={Error} />
               </div>
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 160 }} >
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30}} >
                   <p>Email is incorrect !</p>
                 </Font>
               </div>
-              <div style={{ paddingLeft: 265, paddingTop: 35 }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 35}}>
                 <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModal2Close}>OK</ButtonOK>
               </div>
             </div>

@@ -356,10 +356,10 @@ class ViewStock extends Component {
                 <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%', }}>
                     <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {this.props.shelfList.map((item) => {
                         return (
-                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => { this.handleModalQuesOpen(item) }}>
+                            <Paper className="paperShelf" style={{ borderRadius: "10%"}} onClick={() => { this.handleModalQuesOpen(item) }}>
                                 <div style={{ alignItems: 'center', justifyItems: 'center' }}>
                                     <img className="imViewStock" src={shelf} />
                                     <p className="textEditShelf">{item.shelfID}</p>

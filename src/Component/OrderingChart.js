@@ -11,6 +11,10 @@ import { connect } from 'react-redux';
 import './Modal.css';
 
 import { addPickOrder, deletePickOrder, clearPickOrder } from '../actions/pickOrderAction'
+import { addProduct } from '../actions/productAction'
+import { addNotification } from '../actions/notificationAction'
+
+import firestore from '../firebase/firestore'
 
 const ButtonCancel = styled.button`
   background: #A09797;
@@ -67,13 +71,19 @@ const ButtonAdd1 = styled.button`
 
 
 
-class Ordering extends Component {
+class OrderingChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
             user: this.props.userList[this.props.userList.length - 1],
-            list: [0],
+            info: this.props.location.state.info,
+            item: {},
+            expDate: '',
+            level: '',
+            costPunit: '',
+            qty: '',
+            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ'
         };
     }
 
@@ -82,8 +92,39 @@ class Ordering extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
+        this.setState({
+            modal: !this.state.modal,
+            expDate: '',
+            level: '',
+            costPunit: '',
+            qty: '',
+        });
+    };
 
-        this.setState({ modal: !this.state.modal });
+    handleModalCloseAdd = (e) => {
+        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
+            const product = this.state.item
+            product.expDate = this.state.expDate
+            product.level = this.state.level
+            product.costPunit = this.state.costPunit
+            product.qty = this.state.qty
+            product.recvDate = this.state.info.date
+            product.amount = (this.state.costPunit * this.state.qty).toString()
+            console.log(product)
+            this.props.addPickOrder(product)
+
+            const currentClass = e.target.className;
+            if (currentClass == 'modal-cardforget') {
+                return;
+            }
+            this.setState({
+                modal: !this.state.modal,
+                expDate: '',
+                level: '',
+                costPunit: '',
+                qty: '',
+            });
+        }
     };
 
     handleModalOpen = () => {
@@ -96,13 +137,34 @@ class Ordering extends Component {
     }
 
     onAdd = (item) => {
-        this.props.addPickOrder(item)
-        console.log(this.props.pickOrderList)
+        this.setState({ item: item })
         this.handleModalOpen()
     }
 
     onDelete = (id) => {
         this.props.deletePickOrder(id)
+    }
+
+    success = (doc) => {
+        console.log(doc.id)
+    }
+
+    reject = (error) => {
+        console.log(error)
+    }
+
+    onNext = () => {
+        this.props.pickOrderList.forEach(product => {
+            firestore.addProduct(product, this.success, this.reject)
+            this.props.addProduct(product)
+        })
+        const notification = {
+            notificationHead: this.state.notificationHead,
+        }
+        firestore.addNotification(notification, this.success, this.reject)
+        this.props.addNotification(notification)
+        this.props.clearPickOrder()
+        history.push('/ordering/orderingChart/billOrder')
     }
 
     render() {
@@ -152,12 +214,12 @@ class Ordering extends Component {
                                     <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                             <p style={{}}>{item.productID}</p>
-                                            <input style={{ width: '200px' }}></input>
-                                            <input style={{ width: '120px' }}></input>
-                                            <input style={{ width: '200px' }}></input>
-                                            <input style={{ width: '250px' }}></input>
-                                            <input style={{ width: '100px' }}></input>
-                                            <p style={{}}>Cost/Unit * QTY</p>
+                                            <p style={{}}>{item.expDate}</p>
+                                            <p style={{}}>{item.shelf}</p>
+                                            <p style={{}}>{item.level}</p>
+                                            <p style={{}}>{item.costPunit}</p>
+                                            <p style={{}}>{item.qty}</p>
+                                            <p style={{}}>{item.amount}</p>
                                             <ButtonAdd style={{ width: 30, height: 30 }} onClick={() => this.onDelete(item.id)}></ButtonAdd>
                                         </div>
                                     </scroll>
@@ -183,7 +245,7 @@ class Ordering extends Component {
                             </ButtonClear>
                         </div>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/ordering/orderingChart/billOrder')}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
                                 Next
                             </ButtonNext>
                         </div>
@@ -235,20 +297,18 @@ class Ordering extends Component {
                                 <Font>Level</Font>
                                 <Font>Cost/Unit</Font>
                                 <Font>QTY</Font>
-                                <Font>Amount</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font>Product ID</Font>
-                                <input type="type" style={{ width: 150, height: 35, paddingLeft: 30, fontSize: 24 }} />
-                                <Font>Shelf</Font>
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} />
-                                <Font>Amount</Font>
+                                <Font>{this.state.item.productID}</Font>
+                                <input type="type" style={{ width: 150, height: 35, paddingLeft: 30, fontSize: 24 }} value={this.state.expDate} onChange={txt => this.setState({ expDate: txt.target.value })} />
+                                <Font>{this.state.item.shelf}</Font>
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40}}>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
-                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Add</ButtonAdd1>
+                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
                             </div>
                         </div>
                     </div>
@@ -268,6 +328,8 @@ const mapDispatchToProps = (dispatch) => {
         addPickOrder: (product) => dispatch(addPickOrder(product)),
         deletePickOrder: (id) => dispatch(deletePickOrder(id)),
         clearPickOrder: () => dispatch(clearPickOrder()),
+        addProduct: (product) => dispatch(addProduct(product)),
+        addNotification: (notification) => dispatch(addNotification(notification))
     };
 };
 
@@ -279,4 +341,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Ordering);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderingChart);

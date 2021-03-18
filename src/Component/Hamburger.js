@@ -114,6 +114,15 @@ class Hamburger extends Component {
               <div className="modal-background">
                 <div className="modal-tri">
                   <Arrow />
+                  {this.props.notificationList.map((item) => {
+                                return (
+                                    <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                            <p style={{}}>{item.notificationHead}</p>
+                                        </div>
+                                    </scroll>
+                                );
+                            })}
                 </div>
 
               </div>
@@ -192,7 +201,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-
+    notificationList: state.notificationReducer.notificationList,
   };
 };
 

@@ -76,14 +76,13 @@ class ProductDetail extends Component {
                         if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
                             return (
                                 <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>
-                                    
                                     <p className='txtProShelf' style={{}}>{item.recvDate}</p>
                                     <p className='txtProShelf' style={{}}>{item.expDate}</p>
                                     <p className='txtProShelf' style={{}}>{item.shelf}</p>
                                     <p className='txtProShelf' style={{}}>{item.level}</p>
                                     <p className='txtProShelf' style={{}}>{item.costPunit}</p>
                                     <p className='txtProShelf' style={{}}>{item.qty}</p>
-                                    <p className='txtProShelf' style={{}}>{item.costPunit*item.qty}</p>
+                                    <p className='txtProShelf' style={{}}>{item.amount}</p>
                                 </div>
                             );
                         }

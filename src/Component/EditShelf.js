@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 import { search, shelf, plus } from '../pic'
 import Paper from '@material-ui/core/Paper';
-import { Success, DG } from '../pic';
+import { Success, DG, shelf2 } from '../pic';
 import './Modal.css';
 
 const Font = styled.div`
@@ -163,7 +163,8 @@ class ViewStock extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
-        this.setState({ modalEdit: !this.state.modalEdit });
+        this.setState({ modalEdit: !this.state.modalEdit,
+                        modalQues: !this.state.modalQues});
     };
 
 
@@ -214,9 +215,9 @@ class ViewStock extends Component {
                     <div className="modal-background">
                         <div className="modal-editstock-deloredit">
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Font>{this.state.shelfSelect.shelfID}</Font>
+                                <Font style={{ fontSize: 30, paddingTop: 15 }}>{this.state.shelfSelect.shelfID}</Font>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 20 }}>
                                 <ButtonDelete style={{ fontSize: 30 }} onClick = {this.handleModalSureOpen}> Delete </ButtonDelete>
                                 <ButtonEdit style={{ fontSize: 30 }} onClick = {this.handleModalEditOpen}> Edit </ButtonEdit>
                             </div>
@@ -267,11 +268,11 @@ class ViewStock extends Component {
                                     <div><Font style={{ paddingTop: 20 }}>Level</Font></div>
                                     <div style = {{  paddingTop: 10}}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} /></div>
                                 </div>
-                                <div style={{ display: 'flex', justifyContent: 'flex-end', backgroundColor: 'black' }}>
-                                    <img className="picSuccess" src={Success} />
-                                </div>
+                                
+                                <img className="picShelfEdit" src={shelf2} style = {{paddingTop: 60}} />
+                                
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 30, paddingLeft: 50 }}>
+                            <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 15, paddingLeft: 50 }}>
                                 <Font >Width</Font>
                                 <Font style={{ paddingLeft: 160 }}>Length</Font>
                                 <Font style={{ paddingLeft: 160 }}>Height</Font>
@@ -295,7 +296,7 @@ class ViewStock extends Component {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
                                 <ButtonSave style={{ fontSize: 24 }}>Save</ButtonSave>
-                                <ButtonCancel style={{ fontSize: 24 }}>Cancel</ButtonCancel>
+                                <ButtonCancel style={{ fontSize: 24 }} onClick={this.handleModalEditClose}>Cancel</ButtonCancel>
                             </div>
                         </div>
                     </div>

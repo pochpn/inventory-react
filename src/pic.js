@@ -44,3 +44,8 @@ export const Waiting = 'https://www.img.in.th/images/e4bf6438689c1200ebd61d65de5
 
 /*----------EditShelf---------*/
 export const plus = 'https://sv1.picz.in.th/images/2021/03/18/DQk3Je.png'
+
+/*---------Bill---------*/
+export const logoTop ='https://www.img.in.th/images/dde6d6703e5e42d80013f6cb38968ad1.png'
+export const logoPump = 'https://www.img.in.th/images/bddf4759260fc43c938d17e3c971c84e.png'
+export const line = 'https://www.img.in.th/images/68d1192c9350adb6de3a6cfdda3688f7.png'

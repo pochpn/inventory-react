@@ -32,11 +32,11 @@ class billOrder extends Component {
         console.log(error)
     }
     
-    onSend = () => {
+    onSend = async() => {
         const notification = {
             notificationHead: this.state.notificationHead,
         }
-        firestore.addNotification(notification, this.success, this.reject)
+        await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)
     }
 

@@ -163,11 +163,11 @@ class OrderingChart extends Component {
             firestore.addProduct(product, this.success, this.reject)
             this.props.addProduct(product)
         })
-        const notification = {
-            notificationHead: this.state.notificationHead,
-        }
-        firestore.addNotification(notification, this.success, this.reject)
-        this.props.addNotification(notification)
+        // const notification = {
+        //     notificationHead: this.state.notificationHead,
+        // }
+        // firestore.addNotification(notification, this.success, this.reject)
+        // this.props.addNotification(notification)
         this.props.clearPickOrder()
         history.push('/home')
         /*history.push('/ordering/orderingChart/billOrder')*/

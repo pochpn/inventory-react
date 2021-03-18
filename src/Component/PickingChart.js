@@ -111,11 +111,12 @@ class PickingChart extends Component {
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
                             {this.props.productProfileList.map((item) => {
                                 return (
-                                    <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
-                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} onClick={() => { this.onAdd(item) }}>
+                                    <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', paddingLeft: '7%' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' }} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> > </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -128,16 +129,16 @@ class PickingChart extends Component {
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
                             {this.props.pickOrderList.map((item) => {
                                 return (
-                                    <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
+                                    <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                            <p style={{}}>{item.productID}</p>
-                                            <input style={{ width: '200px' }}></input>
-                                            <input style={{ width: '120px' }}></input>
-                                            <input style={{ width: '200px' }}></input>
-                                            <input style={{ width: '250px' }}></input>
-                                            <input style={{ width: '100px' }}></input>
-                                            <p style={{}}>Cost/Unit * QTY</p>
-                                            <ButtonAdd style={{ width: 30, height: 30 }} onClick={() => this.onDelete(item.id)}></ButtonAdd>
+                                            <p className='txtPdInSl ' style={{}}>{item.productID}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
+                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
+                                            <p className='txtPdInSl ' style={{}}>{item.amount}</p>
+                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
                                 );

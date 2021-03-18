@@ -1153,7 +1153,7 @@ body, html {
     position: absolute;
     width: 150px;
     height: 50px;
-    left: 18%;
+    left: 19%;
     top: 10%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1183,7 +1183,7 @@ body, html {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 45%;
+    left: 43%;
     top: 10%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1198,7 +1198,7 @@ body, html {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 60%;
+    left: 55%;
     top: 10%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1213,7 +1213,7 @@ body, html {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 78%;
+    left: 72%;
     top: 10%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1228,7 +1228,7 @@ body, html {
     position: absolute;
     width: 50px;
     height: 50px;
-    left: 90%;
+    left: 82%;
     top: 10%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -1478,6 +1478,24 @@ body, html {
     margin: 0.5%;
     background-color: #6E0D0D;
 }
+.paperSelectPd {
+    height: 15%;
+    width: 1225px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin: 0.5%;
+    background-color: #6E0D0D;
+}
+
+.paperNoti {
+    height: 10%;
+    width: 366px;
+    background: #FF9F8C !important;
+    margin-top: 0.5%;
+}
+
+.paperSl {
+    background: rgba(255, 255, 255, 0.4)!important;
+}
 
 .paperTopProduct {
     justify-items: center;
@@ -1509,6 +1527,18 @@ body, html {
     font-weight: normal;
     font-size: 14px;
     width: 250px;
+    margin: 1.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+}
+
+.txtPdInSl {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 160px;
     margin: 1.5%;
     line-height: 35px;
     text-align: center;
@@ -1872,8 +1902,6 @@ body, html {
     /* top: 30%; */
 }
 
-
-
 /* Confirm Shiping */
 
 .conShipTop {
@@ -1956,7 +1984,6 @@ body, html {
     left: 71%;
     top: 17%;
 }
-
 
 /* Add New Product */
 

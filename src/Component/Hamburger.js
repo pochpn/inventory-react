@@ -112,23 +112,23 @@ class Hamburger extends Component {
           <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
             <div hidden={!this.state.modal1}>
               <div className="modal-background">
-                <div className="modal-tri">
+                <div className="modal-tri" style={{paddingTop:'1%'}}>
                   <Arrow />
                   {this.props.notificationList.map((item) => {
-                                return (
-                                    <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '30px', paddingLeft: '7%' }}>
-                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                            <p style={{}}>{item.notificationHead}</p>
-                                        </div>
-                                    </scroll>
-                                );
-                            })}
+                    return (
+                      <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                          <p className='txtPdInOD' style={{}}>{item.notificationHead}</p>
+                        </div>
+                      </scroll>
+                    );
+                  })}
                 </div>
 
               </div>
             </div>
           </div>
-          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')}/></span>
+          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')} /></span>
           <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -160,7 +160,7 @@ class Hamburger extends Component {
             })}
           </ul>
         </nav>
-        
+
         <div hidden={!this.state.modal}>
           <div className="modal-background">
             <div className="modal-card">

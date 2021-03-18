@@ -22,7 +22,7 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 shelfList: state.shelfList.map((item) =>
-                    item.id === action.shelf.shelfID
+                    item.id === action.shelf.id
                         ? {
                             ...item,
                             height: action.shelf.height,

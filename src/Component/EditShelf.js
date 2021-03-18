@@ -38,6 +38,16 @@ const ButtonEdit = styled.button`
   margin: 0 1em;
   padding: 0.5em 1.5em;
 `
+const ButtonInputCount = styled.button`
+  background: #929990;
+  border: 2px;
+  color: blue;
+  width: 200px;
+  height: 110px;
+  border-radius: 20px;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+`
 
 const ButtonYes = styled.button`
   background: #ef3f3e;
@@ -69,7 +79,7 @@ const ButtonSave = styled.button`
   height: 61px;
   border-radius: 12px;
   margin: 0 1em;
-  padding: 0.5em 1.75em;
+  padding: 0.5em 1.5em;
 `
 
 const ButtonCancel = styled.button`
@@ -80,7 +90,7 @@ const ButtonCancel = styled.button`
   height: 61px;
   border-radius: 12px;
   margin: 0 1em;
-  padding: 0.5em 1.75em;
+  padding: 0.5em 1.5em;
 `
 
 
@@ -94,6 +104,7 @@ class ViewStock extends Component {
             modalSuc: false,
             modalEdit: false,
             user: this.props.userList[this.props.userList.length - 1],
+            shelfSelect: {}
         };
     }
 
@@ -108,8 +119,11 @@ class ViewStock extends Component {
     };
 
 
-    handleModalQuesOpen = () => {
-        this.setState({ modalQues: !this.state.modalQues });
+    handleModalQuesOpen = (item) => {
+        this.setState({
+            modalQues: !this.state.modalQues,
+            shelfSelect: item
+        });
     };
     ////////////////////////////////////////////////////////
 
@@ -180,7 +194,7 @@ class ViewStock extends Component {
                 <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', }}>
                     {this.props.shelfList.map((item) => {
                         return (
-                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={this.handleModalQuesOpen}>
+                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => {this.handleModalQuesOpen(item)}}>
                                 <div style={{ alignItems: 'center', justifyItems: 'center' }}>
                                     <img className="imViewStock" src={shelf} />
                                     <p className="textEditShelf">{item.shelfID}</p>
@@ -200,11 +214,11 @@ class ViewStock extends Component {
                     <div className="modal-background">
                         <div className="modal-editstock-deloredit">
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Font>Text Shelf ใส่ด้วยไอ่สัส</Font>
+                                <Font>{this.state.shelfSelect.shelfID}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
-                                <ButtonDelete style={{ fontSize: 30 }} onClick={this.handleModalSureOpen}> DELETE </ButtonDelete>
-                                <ButtonEdit style={{ fontSize: 30 }} onClick={this.handleModalEditOpen}> EDIT </ButtonEdit>
+                                <ButtonDelete style={{ fontSize: 30 }} onClick = {this.handleModalSureOpen}> Delete </ButtonDelete>
+                                <ButtonEdit style={{ fontSize: 30 }} onClick = {this.handleModalEditOpen}> Edit </ButtonEdit>
                             </div>
                         </div>
                     </div>

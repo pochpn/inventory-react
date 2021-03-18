@@ -30,7 +30,7 @@ class History extends Component {
   }
 
   onSearch = () => {
-    console.log(this.state.Startdate)
+    console.log(this.state.Startdate.getDate()+'/'+(this.state.Startdate.getMonth()+1)+'/'+this.state.Startdate.getFullYear())
   }
 
   render() {

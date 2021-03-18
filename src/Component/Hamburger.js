@@ -160,6 +160,7 @@ class Hamburger extends Component {
             })}
           </ul>
         </nav>
+        
         <div hidden={!this.state.modal}>
           <div className="modal-background">
             <div className="modal-card">

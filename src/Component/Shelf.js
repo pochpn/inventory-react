@@ -14,37 +14,30 @@ class Shelf extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
-            productList: null,
+            productProfileList: this.props.productProfileList,
             qty: 0,
+            productID: '',
+            productName: '',
         };
     }
 
-    getSuccess = (querySnapshot) => {
-        let products = []
-        querySnapshot.forEach(doc => {
-            let product = doc.data()
-            product.id = doc.id
-            console.log(product)
-            products = products.concat(product)
-        });
-        console.log(products)
-        this.setState({ productList: products })
-        console.log(this.state.producsList)
-    }
-
-    getReject = (error) => {
-        console.log(error)
-    }
-
-    /*componentDidMount = () => {
-        let qty = 0
-        this.props.productList.forEach(product => {
-            if(product.productID === this.state.product.productID){
-                qty += parseInt(product.qty)
-            }
+    onSearch = () => {
+        console.log(this.state.productProfileList)
+        if (this.state.productID === '' && this.state.productName === '') {
+            this.setState({ productProfileList: this.props.productProfileList })
+        } else {
+            this.setState({
+                productProfileList: this.state.productProfileList.filter(
+                    (item) => ((item.productID === this.state.productID) ||
+                        (item.productName === this.state.productName))
+                )
+            })
+        }
+        this.setState({
+            productID: '',
+            productName: '',
         })
-        this.setState({qty: qty})
-    }*/
+    }
 
     render() {
         return (
@@ -53,18 +46,20 @@ class Shelf extends Component {
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
-                        <input name="productID" type="text" style={{ fontSize: 24 }}></input>
+                        <input name="productID" type="text" style={{ fontSize: 24 }} onChange={txt => this.setState({ productID: txt.target.value })} value={this.state.productID} ></input>
                     </div>
                     <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product Name</a1>
-                        <input name="productName" type="text" style={{ fontSize: 24 }}></input>
+                        <input name="productName" type="text" style={{ fontSize: 24 }} onChange={txt => this.setState({ productName: txt.target.value })} value={this.state.productName} ></input>
                     </div>
                     <img
                         style={{ justifyContent: 'flex-end', width: "10%", marginLeft: '15%' }}
-                        src={search} />
+                        src={search}
+                        onClick={this.onSearch}
+                    />
 
                 </div>
                 <div className="paperTopProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '9%', borderRadius: '25px' }}>
@@ -76,7 +71,7 @@ class Shelf extends Component {
                     <p className='txtProTopShelf' style={{}}>UNIT</p>
                 </div>
                 <scroll style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    {this.props.productProfileList.map((item) => {
+                    {this.state.productProfileList.map((item) => {
                         if (item.shelf === this.state.shelf) {
                             let qty = 0
                             this.props.productList.forEach(product => {

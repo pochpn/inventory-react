@@ -8,6 +8,9 @@ import './Style.css'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 const ButtonCancel = styled.button`
   background: #A09797;
   border-radius: 10px;
@@ -30,7 +33,7 @@ class Ordering extends Component {
             supplier: null,
             address: null,
             telSup: null,
-            date: null,
+            date: new Date(),
             contactName: null,
             telCon: null,
         };
@@ -42,7 +45,7 @@ class Ordering extends Component {
                 supplier: this.state.supplier,
                 address: this.state.address,
                 telSup: this.state.telSup,
-                date: this.state.date,
+                date: (this.state.date.getDate()+'/'+(this.state.date.getMonth()+1)+'/'+this.state.date.getFullYear()).toString(),
                 contactName: this.state.contactName,
                 telCon: this.state.telCon,
             }
@@ -65,7 +68,7 @@ class Ordering extends Component {
                         </div>
                         <div style={{ paddingTop: 110, paddingLeft: 600 }}>
                             <p className="textOrDate">Date</p>
-                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ date: txt.target.value })} />
+                            <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>

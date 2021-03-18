@@ -39,6 +39,16 @@ const ButtonEdit = styled.button`
   margin: 0 1em;
   padding: 0.5em 1.5em;
 `
+const ButtonInputCount = styled.button`
+  background: #929990;
+  border: 2px;
+  color: blue;
+  width: 200px;
+  height: 110px;
+  border-radius: 20px;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+`
 
 
 class ViewStock extends Component {

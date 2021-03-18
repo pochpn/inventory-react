@@ -44,3 +44,4 @@ export const Waiting = 'https://www.img.in.th/images/e4bf6438689c1200ebd61d65de5
 
 /*----------EditShelf---------*/
 export const plus = 'https://sv1.picz.in.th/images/2021/03/18/DQk3Je.png'
+export const shelf2 = 'https://sv1.picz.in.th/images/2021/03/18/DqY27J.png'

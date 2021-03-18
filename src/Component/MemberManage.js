@@ -47,21 +47,6 @@ class MemberManage extends Component {
         })
     }
 
-    getSuccess = (querySnapshot) => {
-        let accounts = []
-        querySnapshot.forEach(doc => {
-            let account = doc.data()
-            account.id = doc.id
-            accounts = accounts.concat(account)
-        });
-        this.setState({ accounts: accounts })
-        console.log(this.state.accounts)
-    }
-
-    getReject = (error) => {
-        console.log(error)
-    }
-
     onMember = (item) => {
         history.push({
             pathname: '/memberManage/editMember',

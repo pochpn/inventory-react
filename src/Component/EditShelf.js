@@ -49,6 +49,7 @@ class ViewStock extends Component {
             modalSuc: false,
             modalEdit: false,
             user: this.props.userList[this.props.userList.length - 1],
+            shelfSelect: {}
         };
     }
 
@@ -61,8 +62,11 @@ class ViewStock extends Component {
     };
 
 
-    handleModalQuesOpen = () => {
-        this.setState({ modalQues: !this.state.modalQues });
+    handleModalQuesOpen = (item) => {
+        this.setState({
+            modalQues: !this.state.modalQues,
+            shelfSelect: item
+        });
     };
 
 
@@ -116,7 +120,7 @@ class ViewStock extends Component {
                 <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', }}>
                     {this.props.shelfList.map((item) => {
                         return (
-                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={this.handleModalQuesOpen}>
+                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => {this.handleModalQuesOpen(item)}}>
                                 <div style={{ alignItems: 'center', justifyItems: 'center' }}>
                                     <img className="imViewStock" src={shelf} />
                                     <p className="textEditShelf">{item.shelfID}</p>
@@ -135,12 +139,12 @@ class ViewStock extends Component {
                 <div hidden={!this.state.modalQues}>
                     <div className="modal-background">
                         <div className="modal-editstock-deloredit">
-                            <div style = {{display: 'flex', justifyContent: 'center'}}>
-                                <Font>Text Shelf ใส่ด้วยไอ่สัส</Font>
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <Font>{this.state.shelfSelect.shelfID}</Font>
                             </div>
-                            <div style = {{display: 'flex', justifyContent: 'space-around', paddingTop: 50}}>
-                                <ButtonDelete style = {{fontSize: 30}}> Delete </ButtonDelete>
-                                <ButtonEdit style = {{fontSize: 30}}> Edit </ButtonEdit>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
+                                <ButtonDelete style={{ fontSize: 30 }}> Delete </ButtonDelete>
+                                <ButtonEdit style={{ fontSize: 30 }}> Edit </ButtonEdit>
                             </div>
                         </div>
                     </div>

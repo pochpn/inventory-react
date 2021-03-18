@@ -16,6 +16,9 @@ import { addNotification } from '../actions/notificationAction'
 
 import firestore from '../firebase/firestore'
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 const ButtonCancel = styled.button`
   background: #A09797;
   border-radius: 10px;
@@ -83,7 +86,8 @@ class OrderingChart extends Component {
             level: '',
             costPunit: '',
             qty: '',
-            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ'
+            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            date: new Date(),
         };
     }
 
@@ -104,7 +108,7 @@ class OrderingChart extends Component {
     handleModalCloseAdd = (e) => {
         if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
             const product = this.state.item
-            product.expDate = this.state.expDate
+            product.expDate = (this.state.date.getDate()+'/'+(this.state.date.getMonth()+1)+'/'+this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
             product.qty = this.state.qty
@@ -123,6 +127,7 @@ class OrderingChart extends Component {
                 level: '',
                 costPunit: '',
                 qty: '',
+                date: new Date(),
             });
         }
     };
@@ -164,7 +169,8 @@ class OrderingChart extends Component {
         firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)
         this.props.clearPickOrder()
-        history.push('/ordering/orderingChart/billOrder')
+        history.push('/home')
+        /*history.push('/ordering/orderingChart/billOrder')*/
     }
 
     render() {
@@ -300,7 +306,7 @@ class OrderingChart extends Component {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
                                 <Font>{this.state.item.productID}</Font>
-                                <input type="type" style={{ width: 150, height: 35, paddingLeft: 30, fontSize: 24 }} value={this.state.expDate} onChange={txt => this.setState({ expDate: txt.target.value })} />
+                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                                 <Font>{this.state.item.shelf}</Font>
                                 <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
                                 <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />

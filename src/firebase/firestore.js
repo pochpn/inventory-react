@@ -237,11 +237,10 @@ class Firestore {
     };
 
     /*-------------Shelf-------------*/
-    addShelfByID = (shelf, success, reject) => {
+    addShelf = (shelf, success, reject) => {
         firebase
             .firestore()
             .collection('Shelf')
-            .doc(shelf.shelfID)
             .add(shelf)
             .then(function (docRef) {
                 success(docRef);
@@ -293,7 +292,7 @@ class Firestore {
         firebase
             .firestore()
             .collection('Shelf')
-            .doc(shelf.shelfID)
+            .doc(shelf.id)
             .update({
                 height: shelf.height,
                 length: shelf.length,

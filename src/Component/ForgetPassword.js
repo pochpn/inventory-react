@@ -298,16 +298,16 @@ class ForgetPassword extends Component {
         <div hidden={!this.state.modal}>
           <div className="modal-background">
             <div className="modal-cardforget">
-              <div>
+              <div  style = {{paddingTop: 20}}>
                 <img className="picSuccess" src={Success} />
               </div>
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
+                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }} >
                   <p>Email has been sent.</p>
                   <p>Please check pin in your mail box.</p>
                 </Font>
               </div>
-              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
+              <div style={{ paddingLeft: 270, paddingTop: 10 }}>
                 <ButtonInsert style={{ fontSize: 20 }} onClick={this.handleModalClose}>Insert Pin</ButtonInsert>
               </div>
             </div>
@@ -353,7 +353,7 @@ class ForgetPassword extends Component {
                 onChange={value => this.setState({ pinVar: value })}
                 style={{ paddingLeft: 190, paddingTop: 35 }}
               />
-              <div>
+              <div style = {{}}>
                 <Countdown date={Date.now() + 10000*6*3}>
                 <Completionist />
               </Countdown>

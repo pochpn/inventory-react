@@ -10,6 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import { Success, DG, shelf2 } from '../pic';
 import './Modal.css';
 
+import firestore from '../firebase/firestore'
+import { addShelf, editShelf, deleteShelf } from '../actions/shelfAction'
+
 const Font = styled.div`
   && {
     color: #000000;
@@ -103,8 +106,15 @@ class ViewStock extends Component {
             modalSure: false,
             modalSuc: false,
             modalEdit: false,
+            modalAdd: false,
             user: this.props.userList[this.props.userList.length - 1],
-            shelfSelect: {}
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
         };
     }
 
@@ -115,14 +125,29 @@ class ViewStock extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
-        this.setState({ modalQues: !this.state.modalQues });
+        this.setState({
+            modalQues: !this.state.modalQues,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
     };
 
 
     handleModalQuesOpen = (item) => {
         this.setState({
             modalQues: !this.state.modalQues,
-            shelfSelect: item
+            shelfSelect: item,
+            shelfID: item.shelfID,
+            level: item.level,
+            width: item.width,
+            length: item.length,
+            height: item.height,
+            maxWeight: item.maxWeight,
         });
     };
     ////////////////////////////////////////////////////////
@@ -134,13 +159,18 @@ class ViewStock extends Component {
         }
         this.setState({
             modalSure: !this.state.modalSure,
-            modalQues: !this.state.modalQues
+            modalQues: !this.state.modalQues,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
         });
     };
 
-
     handleModalSureOpen = () => {
-
         this.setState({ modalSure: !this.state.modalSure });
     };
     ////////////////////////////////////////////////////////
@@ -149,12 +179,37 @@ class ViewStock extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
-        this.setState({ modalSuc: !this.state.modalSuc });
+        this.setState({
+            modalSuc: !this.state.modalSuc,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
     };
 
+    deleteSuccess = () => {
+        console.log('Delete Success')
+    }
 
     handleModalSucOpen = () => {
-        this.setState({ modalSuc: !this.state.modalSuc });
+        /*this.setState({ modalSuc: !this.state.modalSuc });*/
+        firestore.deleteShelf(this.state.shelfSelect.id, this.deleteSuccess, this.reject)
+        this.props.deleteShelf(this.state.shelfSelect.id)
+        this.setState({
+            modalSure: false,
+            modalQues: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
     };
     ////////////////////////////////////////////////////////
 
@@ -163,8 +218,17 @@ class ViewStock extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
-        this.setState({ modalEdit: !this.state.modalEdit,
-                        modalQues: !this.state.modalQues});
+        this.setState({
+            modalEdit: !this.state.modalEdit,
+            modalQues: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
     };
 
 
@@ -172,6 +236,106 @@ class ViewStock extends Component {
         this.setState({ modalEdit: !this.state.modalEdit });
     };
     ////////////////////////////////////////////////////////
+
+    handleModalAddClose = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardforget') {
+            return;
+        }
+        this.setState({
+            modalAdd: !this.state.modalAdd,
+            modalQues: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
+    };
+
+
+    handleModalAddOpen = () => {
+        this.setState({ modalAdd: !this.state.modalEdit });
+    };
+
+
+    ///////////////////////////////////////////////////////
+
+    editSuccess = () => {
+        console.log('Edit Success')
+    }
+
+    onSaveEdit = () => {
+        console.log('EDIT')
+        const shelf = {
+            shelfID: this.state.shelfID,
+            level: this.state.level,
+            length: this.state.length,
+            maxWeight: this.state.maxWeight,
+            width: this.state.width,
+            height: this.state.height,
+            id: this.state.shelfSelect.id,
+        }
+        firestore.updateShelfByID(shelf, this.editSuccess, this.reject)
+        this.props.editShelf(shelf)
+        this.setState({
+            modalEdit: false,
+            modalQues: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
+    }
+
+    addSuccess = (doc) => {
+        console.log(doc.id)
+        const shelf = {
+            shelfID: this.state.shelfID,
+            level: this.state.level,
+            length: this.state.length,
+            maxWeight: this.state.maxWeight,
+            width: this.state.width,
+            height: this.state.height,
+            id: doc.id
+        }
+        this.props.addShelf(shelf)
+        this.setState({
+            modalAdd: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
+    }
+
+    reject = (error) => {
+        console.log(error)
+    }
+
+    onSaveAdd = () => {
+        console.log('ADD')
+        const shelf = {
+            shelfID: this.state.shelfID,
+            level: this.state.level,
+            length: this.state.length,
+            maxWeight: this.state.maxWeight,
+            width: this.state.width,
+            height: this.state.height,
+        }
+        console.log(shelf)
+        firestore.addShelf(shelf, this.addSuccess, this.reject)
+    }
+
+
 
     render() {
         return (
@@ -192,10 +356,10 @@ class ViewStock extends Component {
                 <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%', }}>
                     <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row', padding: "1%", alignItems: 'center', }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {this.props.shelfList.map((item) => {
                         return (
-                            <Paper className="paperShelf" style={{ borderRadius: "10%" }} onClick={() => {this.handleModalQuesOpen(item)}}>
+                            <Paper className="paperShelf" style={{ borderRadius: "10%"}} onClick={() => { this.handleModalQuesOpen(item) }}>
                                 <div style={{ alignItems: 'center', justifyItems: 'center' }}>
                                     <img className="imViewStock" src={shelf} />
                                     <p className="textEditShelf">{item.shelfID}</p>
@@ -204,7 +368,7 @@ class ViewStock extends Component {
                         );
                     })}
                     <Paper className="paperShelf" style={{ borderRadius: "10%" }}>
-                        <div style={{ alignItems: 'center', justifyItems: 'center' }}>
+                        <div style={{ alignItems: 'center', justifyItems: 'center' }} onClick={this.handleModalAddOpen} >
                             <img className="imViewStock" src={plus} />
                             <p className="textAddEditShelf">ADD SHELF</p>
                         </div>
@@ -218,8 +382,8 @@ class ViewStock extends Component {
                                 <Font style={{ fontSize: 30, paddingTop: 15 }}>{this.state.shelfSelect.shelfID}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 20 }}>
-                                <ButtonDelete style={{ fontSize: 30 }} onClick = {this.handleModalSureOpen}> Delete </ButtonDelete>
-                                <ButtonEdit style={{ fontSize: 30 }} onClick = {this.handleModalEditOpen}> Edit </ButtonEdit>
+                                <ButtonDelete style={{ fontSize: 30 }} onClick={this.handleModalSureOpen}> Delete </ButtonDelete>
+                                <ButtonEdit style={{ fontSize: 30 }} onClick={this.handleModalEditOpen}> Edit </ButtonEdit>
                             </div>
                         </div>
                     </div>
@@ -264,13 +428,13 @@ class ViewStock extends Component {
                             <div style={{ display: 'flex' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: 50 }}>
                                     <div><Font style={{ paddingTop: 45 }}>Shelf ID</Font></div>
-                                    <div style = {{  paddingTop: 10}}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} /></div>
+                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.shelfID} readOnly /></div>
                                     <div><Font style={{ paddingTop: 20 }}>Level</Font></div>
-                                    <div style = {{  paddingTop: 10}}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} /></div>
+                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
                                 </div>
-                                
-                                <img className="picShelfEdit" src={shelf2} style = {{paddingTop: 60}} />
-                                
+
+                                <img className="picShelfEdit" src={shelf2} style={{ paddingTop: 60 }} />
+
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 15, paddingLeft: 50 }}>
                                 <Font >Width</Font>
@@ -279,24 +443,68 @@ class ViewStock extends Component {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 10, paddingLeft: 50 }}>
                                 <div>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} />
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} onChange={txt => this.setState({ width: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 30 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} />
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} onChange={txt => this.setState({ length: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 45 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} />
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', paddingTop: 30, paddingLeft: 50 }}>
                                 <Font>Maximum weight</Font>
-                                <div style = {{  paddingTop: 10}}>
-                                    <input type="type" style={{ width: 230, height: 39, fontSize: 24 }} />
+                                <div style={{ paddingTop: 10 }}>
+                                    <input type="type" style={{ width: 230, height: 39, fontSize: 24 }} value={this.state.maxWeight} onChange={txt => this.setState({ maxWeight: txt.target.value })} />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
-                                <ButtonSave style={{ fontSize: 24 }}>Save</ButtonSave>
+                                <ButtonSave style={{ fontSize: 24 }} onClick={this.onSaveEdit}>Save</ButtonSave>
                                 <ButtonCancel style={{ fontSize: 24 }} onClick={this.handleModalEditClose}>Cancel</ButtonCancel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div hidden={!this.state.modalAdd}>
+                    <div className="modal-background">
+                        <div className="modal-editstock-EditInput ">
+                            <div style={{ display: 'flex' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: 50 }}>
+                                    <div><Font style={{ paddingTop: 45 }}>Shelf ID</Font></div>
+                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.shelfID} onChange={txt => this.setState({ shelfID: txt.target.value })} /></div>
+                                    <div><Font style={{ paddingTop: 20 }}>Level</Font></div>
+                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
+                                </div>
+
+                                <img className="picShelfEdit" src={shelf2} style={{ paddingTop: 60 }} />
+
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 15, paddingLeft: 50 }}>
+                                <Font >Width</Font>
+                                <Font style={{ paddingLeft: 160 }}>Length</Font>
+                                <Font style={{ paddingLeft: 160 }}>Height</Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 10, paddingLeft: 50 }}>
+                                <div>
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} onChange={txt => this.setState({ width: txt.target.value })} />
+                                </div>
+                                <div style={{ paddingLeft: 30 }}>
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} onChange={txt => this.setState({ length: txt.target.value })} />
+                                </div>
+                                <div style={{ paddingLeft: 45 }}>
+                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', paddingTop: 30, paddingLeft: 50 }}>
+                                <Font>Maximum weight</Font>
+                                <div style={{ paddingTop: 10 }}>
+                                    <input type="type" style={{ width: 230, height: 39, fontSize: 24 }} value={this.state.maxWeight} onChange={txt => this.setState({ maxWeight: txt.target.value })} />
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
+                                <ButtonSave style={{ fontSize: 24 }} onClick={this.onSaveAdd}>Save</ButtonSave>
+                                <ButtonCancel style={{ fontSize: 24 }} onClick={this.handleModalAddClose}>Cancel</ButtonCancel>
                             </div>
                         </div>
                     </div>
@@ -309,7 +517,9 @@ class ViewStock extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        addShelf: (shelf) => dispatch(addShelf(shelf)),
+        editShelf: (shelf) => dispatch(editShelf(shelf)),
+        deleteShelf: (id) => dispatch(deleteShelf(id)),
     };
 };
 

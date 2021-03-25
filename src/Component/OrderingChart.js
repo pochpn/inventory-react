@@ -108,7 +108,7 @@ class OrderingChart extends Component {
     handleModalCloseAdd = (e) => {
         if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
             const product = this.state.item
-            product.expDate = (this.state.date.getDate()+'/'+(this.state.date.getMonth()+1)+'/'+this.state.date.getFullYear()).toString()
+            product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
             product.qty = this.state.qty
@@ -205,7 +205,7 @@ class OrderingChart extends Component {
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
-                                            <Paper className="paperSl"  style={{width:'22px',marginRight:'3.7%',boxShadow:'none'}} onClick={() => { this.onAdd(item) }}><p style={{fontWeight:'lighter',color:'black',textAlign:'center',paddingTop:'80%'}}> > </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' }} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> > </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -221,13 +221,13 @@ class OrderingChart extends Component {
                                     <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                             <p className='txtPdInSl ' style={{}}>{item.productID}</p>
-                                            <p className='txtPdInSl ' style={{paddingLeft:'28px'}}>{item.expDate}</p>
-                                            <p className='txtPdInSl ' style={{paddingLeft:'10px'}}>{item.shelf}</p>
-                                            <p className='txtPdInSl ' style={{paddingLeft:'30px'}}>{item.level}</p>
-                                            <p className='txtPdInSl ' style={{paddingLeft:'60px'}}>{item.costPunit}</p>
-                                            <p className='txtPdInSl ' style={{marginLeft:'75px'}}>{item.qty}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
+                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
                                             <p className='txtPdInSl ' style={{}}>{item.amount}</p>
-                                            <Paper className="paperSl"  style={{width:'31px',marginLeft:'3.8%',boxShadow:'none',}} onClick={() => this.onDelete(item.id)}><p style={{fontWeight:'lighter',color:'black',textAlign:'center',paddingTop:'100%'}}> X </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -272,7 +272,10 @@ class OrderingChart extends Component {
                             <img img className="imsch" src={search} />
                         </div>
                         <div style={{ paddingLeft: 90, paddingTop: 50 }}>
-                            <ButtonAdd style={{ fontSize: 35, width: 50, height: 50 }} onClick={() => history.push('/Ordering/orderingChart/AddProduct')}>
+                            <ButtonAdd style={{ fontSize: 35, width: 50, height: 50 }} onClick={() => history.push({
+                                pathname: '/Ordering/orderingChart/AddProduct',
+                                state: { info: this.state.info },
+                            })} >
                                 +
                             </ButtonAdd>
                         </div>

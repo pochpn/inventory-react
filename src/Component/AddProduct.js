@@ -26,6 +26,7 @@ class AddProduct extends Component {
             shelf: null,
             user: this.props.userList[this.props.userList.length - 1],
             pic: null,
+            info: this.props.location.state.info,
         };
     }
 
@@ -39,7 +40,10 @@ class AddProduct extends Component {
 
     addSuccess = (doc) => {
         console.log(doc.id)
-        history.push('/ordering/orderingChart')
+        history.push({
+            pathname: '/Ordering/orderingChart',
+            state: { info: this.state.info },
+        })
     }
 
     addReject = (error) => {
@@ -98,7 +102,10 @@ class AddProduct extends Component {
                     <input className="inputPD1" style={{ top: '51%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '60%' }}>Unit</p>
                     <input className="inputPD3" style={{ top: '61%', left: '60%' }} onChange={txt => this.setState({ unit: txt.target.value })}></input>
-                    <button className="btCcAnp" onClick={() => history.push('/ordering/orderingChart')}>Cancel</button>
+                    <button className="btCcAnp" onClick={() => history.push({
+                        pathname: '/Ordering/orderingChart',
+                        state: { info: this.state.info },
+                    })}>Cancel</button>
                     <button className="btAddAnp" onClick={this.onAdd}>Add</button>
                 </Paper>
 

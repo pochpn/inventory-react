@@ -9,6 +9,7 @@ import './Modal.css';
 import PinInput from "react-pin-input";
 import { Success, Error } from '../pic';
 import Countdown from 'react-countdown';
+import { AiOutlineReload } from "react-icons/ai";
 
 const ButtonSend = styled.button`
   background: #ef3f3e;
@@ -36,10 +37,25 @@ const ButtonOK = styled.button`
   margin: 0 1em;
   padding: 0.5em 1.75em;
 `
+const ButtonResend = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1em;
+  `
+
 const FontHead = styled.div`
   && {
     color: #000000;
     font-size: 36px;
+  }
+`
+const FontTopic = styled.div`
+  && {
+    color: #000000;
+    font-size: 30px;
   }
 `
 const Font = styled.div`
@@ -78,11 +94,11 @@ class ForgetPassword extends Component {
       newPassMsg: "",
 
     };
-    
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  ///////////////////////////////////////////////////////
   handleModalClose = (e) => {
     const currentClass = e.target.className;
     if (currentClass == 'modal-cardforget') {
@@ -97,7 +113,7 @@ class ForgetPassword extends Component {
   handleModalOpen = () => {
     this.setState({ modal: !this.state.modal });
   };
-
+  ///////////////////////////////////////////////////////
   handleModal2Close = (e) => {
     const currentClass = e.target.className;
     if (currentClass == 'modal-cardforget') {
@@ -110,7 +126,7 @@ class ForgetPassword extends Component {
   handleModal2Open = () => {
     this.setState({ modal2: !this.state.modal2 });
   };
-
+  ///////////////////////////////////////////////////////
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   };
@@ -161,7 +177,7 @@ class ForgetPassword extends Component {
 
     this.handleModalOpen()
   }
-
+  ///////////////////////////////////////////////////////
   handleModal3Close = (e) => {
     /*const currentClass = e.target.className;
     if (currentClass == 'modal-cardforget') {
@@ -175,6 +191,7 @@ class ForgetPassword extends Component {
   handleModal3Open = () => {
     this.setState({ modal3: !this.state.modal3 });
   };
+  ///////////////////////////////////////////////////////
   onCheckP = () => {
     if (this.state.Pin === this.state.pinVar) {
       console.log("Correct!!")
@@ -243,16 +260,16 @@ class ForgetPassword extends Component {
   upReject = (e) => {
     console.log(e)
   }
-  
+
 
 
   render() {
     const Completionist = () => {
       this.setState({
-        Pin :"Invalid"
+        Pin: "Invalid"
       })
-    return <span>{this.state.Pin}</span>;
-  }
+      return <span>{this.state.Pin}</span>;
+    }
     return (
       <div className="bg">
         <Paper className="paperForget">
@@ -298,7 +315,7 @@ class ForgetPassword extends Component {
         <div hidden={!this.state.modal}>
           <div className="modal-background">
             <div className="modal-cardforget">
-              <div  style = {{paddingTop: 20}}>
+              <div style={{ paddingTop: 20 }}>
                 <img className="picSuccess" src={Success} />
               </div>
               <div>
@@ -316,7 +333,7 @@ class ForgetPassword extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-background">
             <div className="modal-cardforget">
-              <div  style = {{paddingTop: 20}}>
+              <div style={{ paddingTop: 20 }}>
                 <img className="picError" src={Error} />
               </div>
               <div>
@@ -334,32 +351,39 @@ class ForgetPassword extends Component {
           <div className="modal-background">
             <div className="modal-cardforget" >
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }} >
-                  <p>Enter Your PIN</p>
-                </Font>
+                <FontTopic style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }} >
+                  Enter Your PIN
+                </FontTopic>
               </div>
-              <div style={{ paddingLeft: 310, color: "red" }}>{this.state.pinMSG}</div>
-              <PinInput
-                length={6}
-                initialValue=""
-                secret
-                type="numeric"
-                inputMode="number"
-                style={{ padding: '10px' }}
-                inputStyle={{ borderColor: 'red' }}
-                inputFocusStyle={{ borderColor: 'blue' }}
-                autoSelect={true}
-                regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
-                onChange={value => this.setState({ pinVar: value })}
-                style={{ paddingLeft: 190, paddingTop: 35 }}
-              />
-              <div style = {{}}>
-                <Countdown date={Date.now() + 10000*6*3}>
-                <Completionist />
-              </Countdown>
+              <div style={{ paddingLeft: 300, color: "red" }}>{this.state.pinMSG}</div>
+              <div style = {{display: 'flex', flexDirection: 'row'}}>
+                <PinInput
+                  length={6}
+                  initialValue=""
+                  secret
+                  type="numeric"
+                  inputMode="number"
+                  style={{ padding: '10px' }}
+                  inputStyle={{ borderColor: 'red' }}
+                  inputFocusStyle={{ borderColor: 'blue' }}
+                  autoSelect={true}
+                  regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                  onChange={value => this.setState({ pinVar: value })}
+                  style={{ paddingLeft: 190, paddingTop: 40 }}
+                />
+                <div style = {{paddingTop: 45}}>
+                  <ButtonResend> Resent <AiOutlineReload size = {20}/></ButtonResend>
+                </div>
               </div>
-              <div style={{ paddingLeft: 282, paddingTop: 40 }}>
-                <ButtonOK style={{ fontSize: 17 }} onClick={this.onCheckP}>Submit</ButtonOK>
+              <div style={{ paddingTop: 15, paddingLeft: 290 }}>
+                <Countdown date={Date.now() + 10000 * 6 * 3}>
+                  <Completionist />
+                </Countdown>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div style={{ paddingTop: 50 }}>
+                  <ButtonOK style={{ fontSize: 17 }} onClick={this.onCheckP}>Submit</ButtonOK>
+                </div>
               </div>
             </div>
           </div>
@@ -368,32 +392,32 @@ class ForgetPassword extends Component {
           <div className="modal-background">
             <div className="modal-cardChangePass">
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 10 }} >Reset Password</Font>
+                <FontHead style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 20 }} >Reset Password</FontHead>
                 <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 25, paddingLeft: 20 }} ></Font>
               </div>
               <div style={{ paddingTop: 10, paddingLeft: 20 }}>
                 <input type="hidden" style={{ fontSize: 24 }} />
               </div>
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >New Password</Font>
+                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 10, paddingLeft: 30 }} >New Password</Font>
               </div>
-              <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+              <div style={{ paddingTop: 10, paddingLeft: 30 }}>
                 <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ newPass: txt.target.value })} />
               </div>
               <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 20 }} >Confirm Password</Font>
+                <Font style={{ display: 'flex', flexDirection: 'column', paddingTop: 20, paddingLeft: 30 }} >Confirm Password</Font>
               </div>
-              <div style={{ paddingTop: 10, paddingLeft: 20 }}>
+              <div style={{ paddingTop: 10, paddingLeft: 30 }}>
                 <input type="password" style={{ fontSize: 24 }} onChange={txt => this.setState({ confirmNewPass: txt.target.value })} />
               </div>
               <div style={{ paddingLeft: 20, color: "red" }}>
                 {this.state.newPassMsg}
               </div>
               <div style={{ display: 'flex', flexDirection: 'row' }} >
-                <div style={{ paddingLeft: 10, paddingTop: 50 }}>
+                <div style={{ paddingLeft: 10, paddingTop: 100 }}>
                   <ButtonCancel style={{ fontSize: 20 }} onClick={this.handleModal4Close}>Cancel</ButtonCancel>
                 </div>
-                <div style={{ paddingLeft: 50, paddingTop: 50 }}>
+                <div style={{ paddingLeft: 50, paddingTop: 100 }}>
                   <ButtonOK style={{ fontSize: 20 }} onClick={this.onOK}>OK</ButtonOK>
                 </div>
               </div>

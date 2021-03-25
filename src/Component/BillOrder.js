@@ -11,7 +11,7 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
-import { ComponentToPrint } from './Bill.js';
+import ComponentToPrint from './Bill.js';
 
 
 class billOrder extends Component {

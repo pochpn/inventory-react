@@ -9,7 +9,7 @@ import { logoTop, logoPump, line } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
-export class ComponentToPrint extends React.PureComponent {
+class ComponentToPrint extends React.PureComponent {
     render() {
         return (
             <Paper className='bill'>
@@ -45,7 +45,22 @@ export class ComponentToPrint extends React.PureComponent {
                     <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
                 <Paper className="dataBill">
-
+                    {this.props.pickOrderList.map((item) => {
+                        return (
+                            <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <p className='txtPdInSl ' style={{}}>{item.productID}</p>
+                                    <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
+                                    <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
+                                    <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
+                                    <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
+                                    <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
+                                    <p className='txtPdInSl ' style={{}}>{item.amount}</p>
+                                    <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                                </div>
+                            </scroll>
+                        );
+                    })}
                 </Paper>
                 <Paper className="topBill">
 
@@ -85,3 +100,20 @@ export class ComponentToPrint extends React.PureComponent {
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        userList: state.userReducer.userList,
+        accountList: state.accountReducer.accountList,
+        productProfile: state.productProfileReducer.productProfileList,
+        notificationList: state.notificationReducer.notificationList,
+        pickOrderList: state.pickOrderReducer.pickOrderList,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComponentToPrint);

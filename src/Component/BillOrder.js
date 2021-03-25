@@ -19,7 +19,8 @@ class billOrder extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ'
+            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            info: this.props.location.state.info,
         };
     }
 
@@ -27,12 +28,12 @@ class billOrder extends Component {
         console.log(doc.id)
         history.push('/home')
     }
-    
+
     reject = (error) => {
         console.log(error)
     }
-    
-    onSend = async() => {
+
+    onSend = async () => {
         const notification = {
             notificationHead: this.state.notificationHead,
         }
@@ -45,7 +46,7 @@ class billOrder extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} />
+                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info}/>
                     {/* <ReactToPrint content={() => this.componentRef}>
                         <PrintContextConsumer>
                             {({ handlePrint }) => (
@@ -61,7 +62,10 @@ class billOrder extends Component {
                     <Paper className="btnCancel" onClick={() => history.push('/ordering')}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" onClick={() => history.push('/ordering/orderingChart')}>
+                    <Paper className="btnEdit" onClick={() => history.push({
+                        pathname: '/Ordering/orderingChart',
+                        state: { info: this.state.info },
+                    })}>
                         <p className="txtbtnEdit">Edit</p>
                     </Paper>
                 </Paper>
@@ -86,7 +90,7 @@ const mapStateToProps = (state) => {
         accountList: state.accountReducer.accountList,
         productProfile: state.productProfileReducer.productProfileList,
         notificationList: state.notificationReducer.notificationList,
-
+        pickOrderList: state.pickOrderReducer.pickOrderList,
     };
 };
 

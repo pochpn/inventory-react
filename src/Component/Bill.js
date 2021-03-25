@@ -26,10 +26,9 @@ export class ComponentToPrint extends React.PureComponent {
                     <p className="txtsubtp2">ที่อยู่</p>
                     <p className="txtsubtp3">เบอร์ติดต่อ</p>
 
-                    <p className="txtdataL1">บจก. A จำกัด</p>
-                    <p className="txtdataL2">99/9 หมู่9 ถนนเลขที่9</p>
-                    <p className="txtdataL22">แขวงพระโขนงเหนือ เขตวัฒนา กทม. 10110</p>
-                    <p className="txtdataL3">02-9999999</p>
+                    <p className="txtdataL1">{this.props.info.supplier}</p>
+                    <p className="txtdataL2">{this.props.info.address}</p>
+                    <p className="txtdataL3">{this.props.info.telSup}</p>
                 </Paper>
                 <Paper className="borRight">
                     <p className="txtTopicR1">Date</p>
@@ -41,9 +40,9 @@ export class ComponentToPrint extends React.PureComponent {
                     <p className="txtsubtp5">ผู้ติดต่อ</p>
                     <p className="txtsubtp6">เบอร์ติดต่อ</p>
 
-                    <p className="txtdataR1">26/01/2021</p>
-                    <p className="txtdataR2">ปรียาภรณ์ มุสิกะอินทร์</p>
-                    <p className="txtdataR3">02-8888888</p>
+                    <p className="txtdataR1">{this.props.info.date}</p>
+                    <p className="txtdataR2">{this.props.info.contactName}</p>
+                    <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
                 <Paper className="dataBill">
 

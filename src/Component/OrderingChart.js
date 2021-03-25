@@ -159,18 +159,21 @@ class OrderingChart extends Component {
     }
 
     onNext = () => {
-        this.props.pickOrderList.forEach(product => {
+        /*this.props.pickOrderList.forEach(product => {
             firestore.addProduct(product, this.success, this.reject)
             this.props.addProduct(product)
-        })
+        })*/
         // const notification = {
         //     notificationHead: this.state.notificationHead,
         // }
         // firestore.addNotification(notification, this.success, this.reject)
         // this.props.addNotification(notification)
-        this.props.clearPickOrder()
+        /*this.props.clearPickOrder()*/
         // history.push('/home')
-        history.push('/ordering/orderingChart/billOrder')
+        history.push({
+            pathname: '/ordering/orderingChart/billOrder',
+            state: { info: this.state.info },
+        })
     }
 
     render() {

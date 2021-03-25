@@ -65,12 +65,6 @@ class ComponentToPrint extends React.PureComponent {
                 <Paper className="topBill">
 
                 </Paper>
-                <Paper className="subtotalBox">
-
-                </Paper>
-                <Paper className="taxBox">
-
-                </Paper>
                 <Paper className="totalBox">
 
                 </Paper>
@@ -90,11 +84,7 @@ class ComponentToPrint extends React.PureComponent {
                 <img img className="line2" src={line} />
                 <img img className="line3" src={line} />
                 <img img className="line4" src={line} />
-                <p className="txtSubTotal">Subtotal</p>
-                <p className="txtTax">Tax</p>
                 <p className="txtTotal">Total</p>
-                <p className="txtsSubTotal">รวมเป็นเงิน</p>
-                <p className="txtsTax">จำนวนภาษีมูลค่าเพิ่ม</p>
                 <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
             </Paper>
         );

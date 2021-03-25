@@ -2502,7 +2502,7 @@ body, html {
     width: 200px;
     height: 70px;
     left: 895px;
-    top: 1215px;
+    top: 1075px;
     background: #000000 !important;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -3124,7 +3124,7 @@ body, html {
     width: 400px;
     height: 73px;
     left: 66.5%;
-    top: 76%;
+    top: 67%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -3138,8 +3138,8 @@ body, html {
     position: absolute;
     width: 400px;
     height: 73px;
-    left: 62%;
-    top: 77.5%;
+    left: 61.5%;
+    top: 68.5%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;

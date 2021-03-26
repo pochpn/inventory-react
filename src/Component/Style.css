@@ -3496,3 +3496,61 @@ body, html {
     /* identical to box height */
     color: #FFFFFF;
 }
+/*billO*/
+.billOproduct1 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18.5px;
+    width: 11%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct2 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 25.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct3 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 32%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct4 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 21%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct5 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 24%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+
+/*end billo*/

@@ -208,7 +208,10 @@ class OrderingChart extends Component {
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
-                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' }} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}>></p></Paper>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' }} onClick={() => { this.onAdd(item) }}>
+                                                <p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}>
+                                                    >
+                                                </p></Paper>
                                         </div>
                                     </scroll>
                                 );

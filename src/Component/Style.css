@@ -595,6 +595,10 @@ body, html {
     margin-right: 2%;
 }
 
+.paperVs:hover {
+    text-decoration: none;
+}
+
 .paperForget {
     /* Forgot Password */
     position: absolute;

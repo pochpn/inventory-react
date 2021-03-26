@@ -2459,9 +2459,10 @@ body, html {
     height: 580px;
     left: 25px;
     top: 473px;
-    background: #FFFFFF;
-    border: 1px solid #000000;
+    background: #861212 ;
+    border: 1px solid #440606;
     box-sizing: border-box;
+    
 }
 
 .noteBill {
@@ -3331,3 +3332,74 @@ body, html {
     /* identical to box height */
     color: #000000;
 }
+
+/*billO*/
+.billOproduct1 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 11.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct2 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 25.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct3 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 32%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct4 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 21%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct6 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 21%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct5 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    width: 24%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+
+
+/*end billo*/

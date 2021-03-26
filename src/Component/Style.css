@@ -1478,6 +1478,7 @@ body, html {
     margin: 0.5%;
     background-color: #6E0D0D;
 }
+
 .paperSelectPd {
     height: 15%;
     width: 1225px;
@@ -2534,7 +2535,7 @@ body, html {
     box-sizing: border-box;
 }
 
-.txtTotaldata{
+.txtTotaldata {
     position: absolute;
     width: 197px;
     height: 73px;
@@ -2818,7 +2819,6 @@ body, html {
     left: 81%;
     top: 27%;
 }
-
 
 .txtTopicL1 {
     position: absolute;
@@ -3240,7 +3240,6 @@ body, html {
     color: #000000;
 }
 
-
 /*EditShelf*/
 
 .textEditShelf {
@@ -3391,7 +3390,6 @@ body, html {
     color: #000000;
 }
 
-
 .txtPdataL3 {
     position: absolute;
     width: 400px;
@@ -3496,7 +3494,9 @@ body, html {
     /* identical to box height */
     color: #FFFFFF;
 }
+
 /*billO*/
+
 .billOproduct1 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3506,8 +3506,8 @@ body, html {
     line-height: 35px;
     text-align: center;
     color: 'black';
-    
 }
+
 .billOproduct2 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3517,8 +3517,8 @@ body, html {
     line-height: 35px;
     text-align: center;
     color: 'black';
-    
 }
+
 .billOproduct3 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3528,8 +3528,8 @@ body, html {
     line-height: 35px;
     text-align: center;
     color: 'black';
-    
 }
+
 .billOproduct4 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3539,8 +3539,8 @@ body, html {
     line-height: 35px;
     text-align: center;
     color: 'black';
-    
 }
+
 .billOproduct5 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3550,7 +3550,6 @@ body, html {
     line-height: 35px;
     text-align: center;
     color: 'black';
-    
 }
 
 .txtPONO {
@@ -3584,3 +3583,43 @@ body, html {
 }
 
 /*end billo*/
+
+.TOPPickModal {
+    justify-items: center;
+    align-items: center;
+    width: 1200px;
+    height: 170px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin-left: 0%;
+    margin-right: 0%;
+    
+}
+
+.TOPPickModalTB {
+    justify-items: center;
+    align-items: center;
+    width: 1200px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin-left: 0%;
+    margin-right: 0%;
+    
+}
+
+.txtTBModal {
+    justify-items: center;
+    align-items: center;
+    width: 30%;
+    font-size: 16px;
+}
+
+.TBPickModal {
+    justify-items: center;
+    align-items: center;
+    width: 1200px;
+    height: 430px;
+    background: rgba(0, 0, 0, 0.4)!important;
+    margin-left: 0%;
+    margin-right: 0%;
+    
+}

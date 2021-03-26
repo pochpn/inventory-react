@@ -3378,17 +3378,6 @@ body, html {
     color: 'black';
     
 }
-.billOproduct6 {
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    width: 21%;
-    line-height: 35px;
-    text-align: center;
-    color: 'black';
-    
-}
 .billOproduct5 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3400,6 +3389,5 @@ body, html {
     color: 'black';
     
 }
-
 
 /*end billo*/

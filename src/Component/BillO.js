@@ -44,7 +44,7 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtdataR2">{this.props.info.contactName}</p>
                     <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
-                <Paper className="dataBill">
+                <Paper className="dataBill2">
                     {this.props.pickOrderList.map((item) => {
                         return (
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
@@ -70,7 +70,7 @@ class ComponentToPrint extends React.PureComponent {
 
                 </Paper>
                 <img img className="imLogo" src={logoTop} />
-                <img img className="imPump" src={logoPump} />
+                <img img className="imPump2" src={logoPump} />
                 <p className="txtB1">บริษัท คลังชนะ จำกัด มหาชน</p>
                 <p className="txtB2">126 หมู่ 8 ตำบลทุ่งสุขลา อำเภอศรีราชา</p>
                 <p className="txtB3">จังหวัดชลบุรี 20230</p>
@@ -80,11 +80,11 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtTB4">QTY(ea)</p>
                 <p className="txtTB5">Cost/Unit</p>
                 <p className="txtTB6">Amount</p>
-                <img img className="line0" src={line} />
-                <img img className="line1" src={line} />
-                <img img className="line2" src={line} />
-                <img img className="line3" src={line} />
-                <img img className="line4" src={line} />
+                <img img className="linee0" src={line} />
+                <img img className="linee1" src={line} />
+                <img img className="linee2" src={line} />
+                <img img className="linee3" src={line} />
+                <img img className="linee4" src={line} />
                 <p className="txtTotal">Total</p>
                 <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
             </Paper>

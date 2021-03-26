@@ -2464,15 +2464,41 @@ body, html {
     box-sizing: border-box;
 }
 
+.dataBill2 {
+    position: absolute;
+    width: 1071px;
+    height: 870px;
+    left: 25px;
+    top: 473px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+
 .noteBill {
     position: absolute;
-    width: 671px;
-    height: 162px;
+    width: 1071px;
+    height: 250px;
     left: 26px;
-    top: 760px;
+    top: 1160px;
     background: #FFFDFD;
     border: 1px solid #000000;
     box-sizing: border-box;
+}
+
+.txtNote {
+    position: absolute;
+    width: 100px;
+    height: 73px;
+    left: 2.5%;
+    top: 69.5%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
 }
 
 .subtotalBox {
@@ -2502,7 +2528,7 @@ body, html {
     width: 200px;
     height: 70px;
     left: 895px;
-    top: 1075px;
+    top: 1375px;
     background: #000000 !important;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -2613,6 +2639,14 @@ body, html {
     height: 300px;
     left: 38%;
     top: 37%;
+}
+
+.imPump2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 38%;
+    top: 46.8%;
 }
 
 .txtTB1 {
@@ -2744,6 +2778,47 @@ body, html {
     left: 81%;
     top: 27%;
 }
+
+.linee0 {
+    position: absolute;
+    width: 3px;
+    height: 914px;
+    left: 10%;
+    top: 27%;
+}
+
+.linee1 {
+    position: absolute;
+    width: 3px;
+    height: 914px;
+    left: 28%;
+    top: 27%;
+}
+
+.linee2 {
+    position: absolute;
+    width: 3px;
+    height: 914px;
+    left: 50.5%;
+    top: 27%;
+}
+
+.linee3 {
+    position: absolute;
+    width: 3px;
+    height: 914px;
+    left: 66%;
+    top: 27%;
+}
+
+.linee4 {
+    position: absolute;
+    width: 3px;
+    height: 914px;
+    left: 81%;
+    top: 27%;
+}
+
 
 .txtTopicL1 {
     position: absolute;
@@ -2975,11 +3050,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 20%;
-    top: -1%;
+    top: 0%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -2990,11 +3065,11 @@ body, html {
     width: 480px;
     height: 30px;
     left: 20%;
-    top: 36%;
+    top: 37%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 30px;
     /* identical to box height */
     color: #000000;
@@ -3005,11 +3080,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 20%;
-    top: 38%;
+    top: 39%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3020,11 +3095,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 20%;
-    top: 60%;
+    top: 61%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3035,11 +3110,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 41%;
-    top: -1%;
+    top: 0%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3050,11 +3125,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 41%;
-    top: 25%;
+    top: 26%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3065,11 +3140,11 @@ body, html {
     width: 400px;
     height: 73px;
     left: 41%;
-    top: 60%;
+    top: 61%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3140,7 +3215,7 @@ body, html {
     width: 400px;
     height: 73px;
     left: 66.5%;
-    top: 67%;
+    top: 86%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -3155,7 +3230,7 @@ body, html {
     width: 400px;
     height: 73px;
     left: 61.5%;
-    top: 68.5%;
+    top: 87.5%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -3290,12 +3365,12 @@ body, html {
     position: absolute;
     width: 400px;
     height: 73px;
-    left: 20%;
-    top: -1%;
+    left: 31%;
+    top: 0%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
@@ -3303,15 +3378,15 @@ body, html {
 
 .txtPdataL2 {
     position: absolute;
-    width: 400px;
-    height: 73px;
-    left: 20%;
-    top: 25%;
+    width: 480px;
+    height: 30px;
+    left: 31%;
+    top: 37%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 73px;
+    font-size: 16px;
+    line-height: 30px;
     /* identical to box height */
     color: #000000;
 }
@@ -3321,13 +3396,161 @@ body, html {
     position: absolute;
     width: 400px;
     height: 73px;
-    left: 20%;
-    top: 60%;
+    left: 31%;
+    top: 61%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 73px;
     /* identical to box height */
     color: #000000;
 }
+
+.txtPdataR1 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 47%;
+    top: 0%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPdataR2 {
+    position: absolute;
+    width: 230px;
+    height: 30px;
+    left: 47%;
+    top: 35.8%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPdataR3 {
+    position: absolute;
+    width: 200px;
+    height: 73px;
+    left: 47%;
+    top: 61%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPTB4 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 56%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.txtPTB5 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 71%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.txtPTB6 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 86%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+/*billO*/
+.billOproduct1 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18.5px;
+    width: 11%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct2 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 25.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct3 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 32%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct4 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 21%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+.billOproduct5 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    width: 24%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+    
+}
+
+/*end billo*/

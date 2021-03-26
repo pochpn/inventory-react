@@ -41,9 +41,9 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtsubtp5">ผู้เบิกสินค้า</p>
                     <p className="txtsubtp6">แผนก</p>
 
-                    <p className="txtdataR1">Mai</p>
-                    <p className="txtdataR2">Tum</p>
-                    <p className="txtdataR3">Laew</p>
+                    <p className="txtPdataR1">Mai</p>
+                    <p className="txtPdataR2">Tum</p>
+                    <p className="txtPdataR3">Laew</p>
                 </Paper>
                 <Paper className="dataBill">
                     {this.props.pickOrderList.map((item) => {
@@ -77,9 +77,10 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtTB1">No</p>
                 <p className="txtTB2">Product ID</p>
                 <p className="txtTB3">ProductName</p>
-                <p className="txtTB4">Shelf</p>
-                <p className="txtTB5">Level</p>
-                <p className="txtTB6">QTY(ea)</p>
+                <p className="txtPTB4">Shelf</p>
+                <p className="txtPTB5">Level</p>
+                <p className="txtPTB6">QTY(ea)</p>
+                <p className="txtNote">Note</p>
                 <img img className="line0" src={line} />
                 <img img className="line1" src={line} />
                 <img img className="line2" src={line} />

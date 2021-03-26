@@ -3338,8 +3338,8 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    width: 11.5%;
+    font-size: 18.5px;
+    width: 11%;
     line-height: 35px;
     text-align: center;
     color: 'black';
@@ -3360,7 +3360,7 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     width: 32%;
     line-height: 35px;
     text-align: center;
@@ -3371,7 +3371,7 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     width: 21%;
     line-height: 35px;
     text-align: center;
@@ -3382,7 +3382,7 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     width: 21%;
     line-height: 35px;
     text-align: center;
@@ -3393,7 +3393,7 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 20px;
     width: 24%;
     line-height: 35px;
     text-align: center;

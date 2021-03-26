@@ -2508,6 +2508,22 @@ body, html {
     box-sizing: border-box;
 }
 
+.txtTotaldata{
+    position: absolute;
+    width: 197px;
+    height: 73px;
+    left: 0%;
+    top: 0%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    font-size: 26px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #ffffff;
+}
+
 .txtPurc {
     position: absolute;
     width: 400px;
@@ -2971,15 +2987,15 @@ body, html {
 
 .txtdataL2 {
     position: absolute;
-    width: 400px;
-    height: 73px;
+    width: 480px;
+    height: 30px;
     left: 20%;
-    top: 25%;
+    top: 36%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 73px;
+    line-height: 30px;
     /* identical to box height */
     color: #000000;
 }
@@ -3177,3 +3193,141 @@ body, html {
 }
 
 /*endEditshelf*/
+
+/* Bill Picking */
+
+.txtMR {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 8%;
+    top: 0%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.txtsubMR {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 37%;
+    top: 40%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.colonPAddr {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 28.3%;
+    top: 25%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.colonPTel {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 28.3%;
+    top: 60%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.colonPDate {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 43.9%;
+    top: -1%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.colonPDepart {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 43.9%;
+    top: 60%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPdataL1 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 20%;
+    top: -1%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPdataL2 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 20%;
+    top: 25%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+
+.txtPdataL3 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 20%;
+    top: 60%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}

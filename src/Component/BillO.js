@@ -66,6 +66,7 @@ class ComponentToPrint extends React.PureComponent {
 
                 </Paper>
                 <Paper className="totalBox">
+                    <p className="txtTotaldata">00,000,000.00</p>
 
                 </Paper>
                 <img img className="imLogo" src={logoTop} />

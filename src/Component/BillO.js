@@ -45,20 +45,23 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
                 <Paper className="dataBill2">
+                    
                     {this.props.pickOrderList.map((item) => {
+                        let i=0
                         return (
+                            
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',width:'1711px',marginTop:'2%' }}>
-                                    <p className='billOproduct1 ' style={{}}>{item.productID}</p>
-                                    <p className='billOproduct2 ' style={{ }}>{item.expDate}</p>
-                                    <p className='billOproduct3 ' style={{  }}>{item.shelf}</p>
-                                    <p className='billOproduct4 ' style={{  }}>{item.level}</p>
-                                    <p className='billOproduct4' style={{  }}>{item.costPunit}</p>
-                                    <p className='billOproduct5' style={{  }}>{item.qty}</p>
-                                    
+                                    <p className='billOproduct1 ' style={{}}>{this.props.pickOrderList.indexOf(item)+1}</p>
+                                    <p className='billOproduct2 ' style={{}}>{item.productID}</p>
+                                    <p className='billOproduct3 ' style={{}}>{item.shelf}</p>
+                                    <p className='billOproduct4 ' style={{}}>{item.level}</p>
+                                    <p className='billOproduct4' style={{}}>{item.costPunit}</p>
+                                    <p className='billOproduct5' style={{}}>{item.qty}</p>
                                     
                                 </div>
                             </scroll>
+                            
                         );
                     })}
                 </Paper>

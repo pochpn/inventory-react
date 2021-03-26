@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
-
+import { Base64 } from 'js-base64';
 import firestore from "../firebase/firestore"
 import storage from '../firebase/storage'
 
@@ -65,6 +65,7 @@ class EditMember extends Component {
             id: this.props.location.state.member.id,
             pic: this.props.location.state.member.pic,
             picPre: this.props.location.state.member.pic,
+            confirmPWD: null,
         };
     }
     /////////////////////////////////////////////////////////
@@ -156,14 +157,19 @@ class EditMember extends Component {
     }
 
     deleteReject = (error) => {
+        
         console.log(error)
+        this.setState({modalErrorPass : true})
     }
 
     onDelete = () => {
-        firestore.deleteUser(this.state.id, this.deleteSuccess, this.deleteReject)
-        this.handlemodalDeleteUserClose()
+        if (this.state.user.pass === Base64.encode(this.state.confirmPWD)) {
+            firestore.deleteUser(this.state.id, this.deleteSuccess, this.deleteReject)
+            this.handlemodalDeleteUserClose()
+        }else{
+            this.setState({modalErrorPass : true})
+        }
     }
-
 
     render() {
         return (
@@ -222,11 +228,11 @@ class EditMember extends Component {
                                     <p>Please Input Password</p>
                                 </Font>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 30}}>
-                                <input type="text" style={{ fontSize: 24, width: 300 }} />
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 30 }}>
+                                <input type="password" style={{ fontSize: 24, width: 300 }} name="pass" onChange={txt => this.setState({ confirmPWD: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 60 }}>
-                                <ButtonCancel style={{ fontSize: 20}} onClick={this.handlemodalDeleteUserClose}>Cancel</ButtonCancel>
+                                <ButtonCancel style={{ fontSize: 20 }} onClick={this.handlemodalDeleteUserClose}>Cancel</ButtonCancel>
                                 <ButtonOK style={{ fontSize: 20 }} onClick={this.onDelete}>OK</ButtonOK>
                             </div>
                         </div>

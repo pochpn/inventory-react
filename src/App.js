@@ -33,6 +33,7 @@ import ProductDetail from './Component/ProductDetail'
 import { Provider } from 'react-redux';
 import configureStore from './Store';
 import BillOrder from './Component/BillOrder'
+import BillOrder2 from './Component/BillOrder2'
 import EditShelf from './Component/EditShelf'
 import EditProduct from './Component/EditProduct'
 import BillPick from './Component/BillPick'
@@ -73,6 +74,7 @@ class App extends Component {
             <Route exact path="/confirmShipping" component={ConfirmShipping} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/orderConfirm/receiving" component={ConReceiving} />
+            <Route exact path="/orderConfirm/receiving/billOrder2" component={BillOrder2} />
             <Route exact path="/orderConfirm/packing" component={ConPacking} />
             <Route exact path="/orderConfirm/returned" component={ConReturned} />
             <Route exact path="/orderConfirm/returned/returnedChart" component={ConReturnedChart} />

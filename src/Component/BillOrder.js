@@ -15,6 +15,8 @@ import { clearPickOrder } from '../actions/pickOrderAction'
 
 import ComponentToPrint from './BillO.js';
 
+import { addBill } from '../actions/billAction'
+
 
 class billOrder extends Component {
     constructor(props) {
@@ -38,6 +40,15 @@ class billOrder extends Component {
 
     addBillSuccess = (doc) => {
         console.log(doc.id)
+        let bill = {
+            info: this.state.info,
+            order: this.state.order,
+            managerConfirm: true,
+            confirm: false,
+            readStatus: false,
+            id: doc.id,
+        }
+        this.props.addBill(bill)
         this.props.clearPickOrder()
         history.push('/home')
     }
@@ -50,9 +61,9 @@ class billOrder extends Component {
         this.props.addNotification(notification)*/
         const bill = {
             info: this.state.info,
-            order: this.props.pickOrderList,
-            managerConfirm: false,
-            orderConfirm: false,
+            order: this.state.order,
+            managerConfirm: true,
+            confirm: false,
             readStatus: false,
         }
         firestore.addBill(bill, this.addBillSuccess, this.reject)
@@ -92,6 +103,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clearPickOrder: () => dispatch(clearPickOrder()),
         addNotification: (notification) => dispatch(addNotification(notification)),
+        addBill: (bill) => dispatch(addBill(bill))
     };
 };
 

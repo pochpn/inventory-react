@@ -22,10 +22,10 @@ const billReducer = (state = initialState, action) => {
             return {
                 ...state,
                 billList: state.billList.map((item) =>
-                    item.id === action.product.id
+                    item.id === action.bill.id
                         ? {
                             ...item,
-                            
+                            confirm: action.bill.confirm
                         }
                         : item
                 )

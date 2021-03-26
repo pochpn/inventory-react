@@ -402,6 +402,22 @@ class Firestore {
                 reject(error);
             });
     }
+
+    updateBillByID = (bill, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Bill')
+            .doc(bill.id)
+            .update({
+                confirm: bill.confirm,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 }
 
 const firestore = new Firestore();

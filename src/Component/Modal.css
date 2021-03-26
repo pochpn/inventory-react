@@ -130,3 +130,14 @@
     background-color: #FFD5CF;
     border-radius: 30px;
   }
+
+  
+  .modal-cardDeleteUser {
+    margin: 0 auto;
+    display: block;
+    margin-top: 350px;
+    width: 713px;
+    height: 312px;
+    background-color: #FFF4F2;
+    border-radius: 15px;
+  }

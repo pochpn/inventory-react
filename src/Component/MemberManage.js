@@ -3,14 +3,41 @@ import history from '../history'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
-
+import styled, { css } from 'styled-components'
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
-import { search } from '../pic'
+import { search, DG } from '../pic'
 import firestore from '../firebase/firestore'
 
+import './Modal.css';
 import { AiOutlineUserAdd } from "react-icons/ai";
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+const ButtonYes = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+const ButtonNo = styled.button`
+  background: #929990;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
 
 class MemberManage extends Component {
     constructor(props) {
@@ -25,6 +52,15 @@ class MemberManage extends Component {
             tel: '',
         };
     }
+
+    handlemodalDeleteUserClose = (e) => {
+        this.setState({ modalDeleteUser: false });
+    };
+
+
+    handlemodalDeleteUserOpen = () => {
+        this.setState({ modalDeleteUser: true });
+    };
 
     onSearch = () => {
         if (this.state.employeeID === '' && this.state.idCard === '' && this.state.firstnameEN === '' && this.state.lastnameEN === '') {
@@ -94,12 +130,12 @@ class MemberManage extends Component {
                 </Paper>
 
                 <Hamburger page='MEMBER MANAGEMENT' user={this.state.user} />
-                <div style={{ paddingTop: 250}}>
+                <div style={{ paddingTop: 250 }}>
                     {this.state.accounts.map((item) => {
 
                         return (
-                            <div style={{ marginLeft:'12%'}}>
-                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%',borderRadius:'15px'}}
+                            <div style={{ marginLeft: '12%' }}>
+                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%', borderRadius: '15px' }}
                                     onClick={() => {
                                         history.push({
                                             pathname: '/memberManage/editMember',
@@ -119,7 +155,6 @@ class MemberManage extends Component {
 
                     })}
                 </div>
-
             </div>
         )
     }

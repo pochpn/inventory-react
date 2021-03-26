@@ -9,16 +9,45 @@ import storage from '../firebase/storage'
 import { connect } from 'react-redux';
 
 import { addAccount, deleteAccount, editAccount } from '../actions/accountAction'
-
+import './Modal.css';
 import './Style.css'
-
+import styled, { css } from 'styled-components'
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
+import { Error } from '../pic'
+
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+const ButtonCancel = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
+
+const ButtonOK = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
 
 class EditMember extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modalDeleteUser: false,
+            modalErrorPass: false,
             employeeID: this.props.location.state.member.employeeID,
             department: this.props.location.state.member.department,
             departmentID: this.props.location.state.member.departmentID,
@@ -38,7 +67,25 @@ class EditMember extends Component {
             picPre: this.props.location.state.member.pic,
         };
     }
+    /////////////////////////////////////////////////////////
+    handlemodalDeleteUserClose = (e) => {
+        this.setState({ modalDeleteUser: false });
+    };
 
+
+    handlemodalDeleteUserOpen = () => {
+        this.setState({ modalDeleteUser: true });
+    };
+    ////////////////////////////////////////////////////////
+    handlemodalErrorPassClose = (e) => {
+        this.setState({ modalErrorPass: false });
+    };
+
+
+    handlemodalErrorPassOpen = () => {
+        this.setState({ modalErrorPass: true });
+    };
+    ////////////////////////////////////////////////////////
     onEdit = () => {
         if (this.state.pic !== this.state.picPre) {
             storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
@@ -114,6 +161,7 @@ class EditMember extends Component {
 
     onDelete = () => {
         firestore.deleteUser(this.state.id, this.deleteSuccess, this.deleteReject)
+        this.handlemodalDeleteUserClose()
     }
 
 
@@ -121,7 +169,7 @@ class EditMember extends Component {
         return (
             <div className="bg">
                 <Paper className="paperPhoto" >
-                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column',padding : 5 }}>
+                    <div style={{ alignContent: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', padding: 5 }}>
                         <img style={{ width: '230px', height: '230px', alignSelf: 'center' }} src={this.state.pic} />
                         <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>
@@ -136,7 +184,7 @@ class EditMember extends Component {
                         <p className="textCancelMB" >Cancel</p>
                     </div>
                 </Paper>
-                <Paper className="paperDeleteMB" onClick={this.onDelete}>
+                <Paper className="paperDeleteMB" onClick={this.handlemodalDeleteUserOpen}>
                     <div >
                         <p className="textAddMB" >Delete</p>
                     </div>
@@ -166,6 +214,44 @@ class EditMember extends Component {
                     <div><input className="inputP3" style={{ top: '47%' }} placeholder={this.state.email} readOnly ></input></div>
                 </Paper>
                 <Hamburger page='EDIT MEMBER' user={this.state.user} />
+                <div hidden={!this.state.modalDeleteUser}>
+                    <div className="modal-background">
+                        <div className="modal-cardDeleteUser">
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 40 }} >
+                                    <p>Please Input Password</p>
+                                </Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 30}}>
+                                <input type="text" style={{ fontSize: 24, width: 300 }} />
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 60 }}>
+                                <ButtonCancel style={{ fontSize: 20}} onClick={this.handlemodalDeleteUserClose}>Cancel</ButtonCancel>
+                                <ButtonOK style={{ fontSize: 20 }} onClick={this.onDelete}>OK</ButtonOK>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div hidden={!this.state.modalErrorPass}>
+                    <div className="modal-background" >
+                        <div className="modal-cardforget">
+                            <div style={{ paddingTop: 20 }}>
+                                <img className="picError" src={Error} />
+                            </div>
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30 }} >
+                                    <p>Password is incorrect !
+                                    Please try again.
+                                    </p>
+                                </Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 35 }}>
+                                <ButtonOK style={{ fontSize: 20 }} onClick={this.handlemodalErrorPassClose}>OK</ButtonOK>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 

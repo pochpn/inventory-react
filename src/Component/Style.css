@@ -3553,4 +3553,34 @@ body, html {
     
 }
 
+.txtPONO {
+    position: absolute;
+    width: 100px;
+    height: 73px;
+    left: 80%;
+    top: -1%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtPoNoInfo {
+    position: absolute;
+    width: 100px;
+    height: 73px;
+    left: 86%;
+    top: -1%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
 /*end billo*/

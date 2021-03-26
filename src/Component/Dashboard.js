@@ -45,24 +45,55 @@ class Dashboard extends Component {
       modal1: true,
       modal2: false,
       modal3: false,
+      typeA: 0,
+      typeB: 0,
+      typeC: 0,
+      inventLv : 0,
+
     };
+
+    this.props.productList.forEach((item)=>{
+      if(item.type === 'A'){
+        this.setState({typeA: this.state.typeA+=parseInt(item.qty)})
+      }
+      if(item.type === 'B'){
+        this.setState({typeB: this.state.typeB+=parseInt(item.qty)})
+      }
+      if(item.type === 'C'){
+        this.setState({typeC: this.state.typeC+=parseInt(item.qty)})
+      }
+      this.setState({inventLv : this.state.inventLv += parseInt(item.costPunit)})
+    })
   }
+
+  formatMoney = (inum) =>{  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
+    var s_inum=new String(inum);
+    var num2=s_inum.split(".");
+    var n_inum="";  
+    if(num2[0]!=undefined){
+        var l_inum=num2[0].length;  
+        for(let i=0;i<l_inum;i++){  
+            if(parseInt(l_inum-i)%3==0){  
+                if(i==0){  
+                    n_inum+=s_inum.charAt(i);         
+                }else{  
+                    n_inum+=","+s_inum.charAt(i);         
+                }     
+            }else{  
+                n_inum+=s_inum.charAt(i);  
+            }  
+        }  
+    }else{
+        n_inum=inum;
+    }
+    if(num2[1]!=undefined){
+        n_inum+="."+num2[1];
+    }
+    return n_inum;
+}
+
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
 
-  pieData = [
-    {
-      "name": "TypeA",
-      "value": 10
-    },
-    {
-      "name": "TypeB",
-      "value": 20
-    },
-    {
-      "name": "TypeC",
-      "value": 70
-    },
-  ];
   barData = [
     {
       name: '1', value: 4.2,
@@ -82,7 +113,7 @@ class Dashboard extends Component {
     if (active) {
       return (
         <div className="custom-tooltip" style={{ backgroundColor: '#ffff', padding: '5px', border: '1px solid #cccc' }}>
-          <label>{`${payload[0].name} : ${payload[0].value}%`}</label>
+          <label>{`${payload[0].name} : ${payload[0].value}`}</label>
         </div>
       );
     }
@@ -151,58 +182,46 @@ class Dashboard extends Component {
   }
 
   render() {
+    let pieData = [
+      {
+        "name": "TypeA",
+        "value": this.state.typeA
+      },
+      {
+        "name": "TypeB",
+        "value": this.state.typeB
+      },
+      {
+        "name": "TypeC",
+        "value": this.state.typeC
+      },
+    ];
+    console.log(pieData[0].value)
     return (
       <div className="bg">
-        <Paper className="paperABC" >
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <PieChart width={730} height={300}>
-              <Pie data={this.pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} fill="#8884d8" >
-                {
-                  this.pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={this.COLORS[index % this.COLORS.length]} />)
-                }
-              </Pie>
-              <Tooltip content={<this.CustomTooltip />} />
-              <Legend />
-            </PieChart>
-          </div>
-        </Paper>
-        <Paper className="paperTT" >
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <BarChart
-                margin={{ top: 45, right: 30, left: 0, bottom: 0 }}
-                width={750}
-                height={300}
-                data={this.barData}>
-                <Bar dataKey="value" fill="#0088FE" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-              </BarChart>
-
-            </div>
-          </div>
-        </Paper>
+        
+        
         <Paper className="paperTI" >
           <div>
-                <p className="txtTi">TOP ITEM</p>
+            <p className="txtTi">TOP ITEM</p>
           </div>
         </Paper>
         <Paper className="paperIL" >
           <div>
-                <p className="txtIl">Inventory Levels</p>
-                <p className="txtIl" style={{paddingLeft:'75%',paddingTop:'25%' ,fontSize:'50px'}}>฿</p>
+            <p className="txtIl">Inventory Levels</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{this.formatMoney(this.state.inventLv.toFixed(2))}</p>
+            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >
           <div>
-                <p className="txtDam">Damage value this month</p>
-                <p className="txtIl" style={{paddingLeft:'75%',paddingTop:'25%' ,fontSize:'50px'}}>฿</p>
+            <p className="txtDam">Damage value this month</p>
+            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}>฿</p>
           </div>
         </Paper>
         <Paper className="paperTO" >
           <div>
-                <p className="txtTo">Total Orders this month</p>
+            <p className="txtTo">Total Orders this month</p>
           </div>
         </Paper>
 
@@ -257,6 +276,36 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
+        <Paper className="paperABC" >
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <PieChart width={730} height={300}>
+              <Pie data={pieData} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={120} fill="#8884d8" >
+                {
+                  pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={this.COLORS[index % this.COLORS.length]} />)
+                }
+              </Pie>
+              <Tooltip content={<this.CustomTooltip />} />
+              <Legend />
+            </PieChart>
+          </div>
+        </Paper>
+        <Paper className="paperTT" >
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <BarChart
+                margin={{ top: 45, right: 30, left: 0, bottom: 0 }}
+                width={750}
+                height={300}
+                data={this.barData}>
+                <Bar dataKey="value" fill="#0088FE" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+              </BarChart>
+
+            </div>
+          </div>
+        </Paper>
         <Hamburger page='DASHBOARD' user={this.state.user} />
 
       </div>
@@ -274,7 +323,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userList: state.userReducer.userList,
-    accountList: state.accountReducer.accountList
+    accountList: state.accountReducer.accountList,
+    productList: state.productReducer.productList,
   };
 };
 

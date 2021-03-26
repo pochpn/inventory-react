@@ -10,7 +10,15 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
 class ComponentToPrint extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            total: 0,
+        };
+    }
+
     render() {
+
         return (
             <Paper className='bill'>
                 <Paper className="blackTopic">
@@ -45,23 +53,23 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
                 <Paper className="dataBill2">
-                    
+
                     {this.props.pickOrderList.map((item) => {
-                        let i=0
+                        this.setState({ total: this.state.total += parseInt(item.amount) })
                         return (
-                            
+
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
-                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',width:'1711px',marginTop:'2%' }}>
-                                    <p className='billOproduct1 ' style={{}}>{this.props.pickOrderList.indexOf(item)+1}</p>
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>
+                                    <p className='billOproduct1 ' style={{}}>{this.props.pickOrderList.indexOf(item) + 1}</p>
                                     <p className='billOproduct2 ' style={{}}>{item.productID}</p>
                                     <p className='billOproduct3 ' style={{}}>{item.shelf}</p>
                                     <p className='billOproduct4 ' style={{}}>{item.level}</p>
                                     <p className='billOproduct4' style={{}}>{item.costPunit}</p>
                                     <p className='billOproduct5' style={{}}>{item.qty}</p>
-                                    
+
                                 </div>
                             </scroll>
-                            
+
                         );
                     })}
                 </Paper>
@@ -69,7 +77,7 @@ class ComponentToPrint extends React.PureComponent {
 
                 </Paper>
                 <Paper className="totalBox">
-                    <p className="txtTotaldata">00,000,000.00</p>
+                    <p className="txtTotaldata">{this.state.total}</p>
 
                 </Paper>
                 <img img className="imLogo" src={logoTop} />
@@ -83,6 +91,8 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtTB4">QTY(ea)</p>
                 <p className="txtTB5">Cost/Unit</p>
                 <p className="txtTB6">Amount</p>
+                <p className="txtPONO">PO No. :</p>
+                <p className="txtPoNoInfo">{this.props.info.reNum}</p>
                 <img img className="linee0" src={line} />
                 <img img className="linee1" src={line} />
                 <img img className="linee2" src={line} />

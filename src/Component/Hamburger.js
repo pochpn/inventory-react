@@ -79,7 +79,7 @@ class Hamburger extends Component {
   };
 
   handleModalOpen1 = () => {
-    this.setState({ modal1: true });
+    this.setState({ modal1: !this.state.modal1 });
   };
 
   showSidebar = () => {

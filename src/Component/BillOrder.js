@@ -42,12 +42,12 @@ class billOrder extends Component {
         history.push('/home')
     }
 
-    onSend = /*async*/ () => {
-        /*const notification = {
+    onSend = async () => {
+        const notification = {
             notificationHead: this.state.notificationHead,
         }
         await firestore.addNotification(notification, this.success, this.reject)
-        this.props.addNotification(notification)*/
+        this.props.addNotification(notification)
         const bill = {
             info: this.state.info,
             order: this.props.pickOrderList,

@@ -2087,12 +2087,11 @@ body, html {
 
 .tableHis {
     position: absolute;
-    width: 1876px;
     height: 79px;
-    left: 22px;
     top: 262px;
-    background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4)!important;
 }
 
 .txtTableHis1 {

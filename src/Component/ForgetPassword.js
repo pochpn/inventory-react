@@ -178,6 +178,7 @@ class ForgetPassword extends Component {
   };
   ///////////////////////////////////////////////////////
   onCheckP = () => {
+
     if (this.state.Pin === this.state.pinVar) {
       console.log("Correct!!")
       this.handleModal3Close()
@@ -241,14 +242,16 @@ class ForgetPassword extends Component {
     console.log(e)
   }
 
-
+  onResend = (e) =>{
+    this.onSend(e)
+  }
 
   render() {
     const Completionist = () => {
       this.setState({
         Pin: "Invalid"
       })
-      return <span>{this.state.Pin}</span>;
+      return <p>Timeout</p>;
     }
     return (
       <div className="bg">
@@ -352,7 +355,7 @@ class ForgetPassword extends Component {
                   style={{ paddingLeft: 190, paddingTop: 40 }}
                 />
                 <div style = {{paddingTop: 45}}>
-                  <ButtonResend> Resent <AiOutlineReload size = {20}/></ButtonResend>
+                  <ButtonResend onClick={this.onResend}><AiOutlineReload size = {20}/> </ButtonResend>
                 </div>
               </div>
               <div style={{ paddingTop: 15, paddingLeft: 290 }}>

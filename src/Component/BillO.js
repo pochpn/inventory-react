@@ -10,12 +10,20 @@ import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
 class ComponentToPrint extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            total: 0,
+        };
+    }
+
     render() {
+
         return (
             <Paper className='bill'>
                 <Paper className="blackTopic">
                     <p className="txtPurc">Purchase Order</p>
-                    <p className="txtsubPurc">ใบสั่งซื้อ</p>
+                    <p className="txtsubPurc">{this.props.info.reNum}</p>
                 </Paper>
                 <Paper className="borLeft">
                     <p className="txtTopicL1">Supplier :</p>
@@ -46,6 +54,7 @@ class ComponentToPrint extends React.PureComponent {
                 </Paper>
                 <Paper className="dataBill">
                     {this.props.pickOrderList.map((item) => {
+                        this.setState({total: this.state.total += parseInt(item.amount)})
                         return (
                             <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -56,7 +65,6 @@ class ComponentToPrint extends React.PureComponent {
                                     <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
                                     <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
                                     <p className='txtPdInSl ' style={{}}>{item.amount}</p>
-                                    <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                 </div>
                             </scroll>
                         );
@@ -66,7 +74,7 @@ class ComponentToPrint extends React.PureComponent {
 
                 </Paper>
                 <Paper className="totalBox">
-                    <p className="txtTotaldata">00,000,000.00</p>
+                    <p className="txtTotaldata">{this.state.total}</p>
 
                 </Paper>
                 <img img className="imLogo" src={logoTop} />

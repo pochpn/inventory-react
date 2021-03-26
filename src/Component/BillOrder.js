@@ -11,6 +11,8 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
+import { clearPickOrder } from '../actions/pickOrderAction'
+
 import ComponentToPrint from './BillO.js';
 
 
@@ -46,7 +48,7 @@ class billOrder extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info}/>
+                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} />
                     {/* <ReactToPrint content={() => this.componentRef}>
                         <PrintContextConsumer>
                             {({ handlePrint }) => (
@@ -59,7 +61,10 @@ class billOrder extends Component {
                     <Paper className="btnSend" onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => history.push('/ordering')}>
+                    <Paper className="btnCancel" onClick={() => {
+                        this.props.clearPickOrder()
+                        history.push('/ordering')
+                    }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
                     <Paper className="btnEdit" onClick={() => history.push({
@@ -79,8 +84,8 @@ class billOrder extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
-        addNotification: (notification) => dispatch(addNotification(notification))
+        clearPickOrder: () => dispatch(clearPickOrder()),
+        addNotification: (notification) => dispatch(addNotification(notification)),
     };
 };
 

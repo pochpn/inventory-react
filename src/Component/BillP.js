@@ -14,35 +14,36 @@ class ComponentToPrint extends React.PureComponent {
         return (
             <Paper className='bill'>
                 <Paper className="blackTopic">
-                    <p className="txtPurc">Material Request</p>
-                    <p className="txtsubPurc">ใบเบิกสินค้า</p>
+                    <p className="txtMR">Material Request</p>
+                    <p className="txtsubMR">ใบเบิกสินค้า</p>
                 </Paper>
                 <Paper className="borLeft">
                     <p className="txtTopicL1">Customer Name :</p>
-                    <p className="txtTopicL2">Address :</p>
+                    <p className="txtTopicL2">Address</p>
+                    <p className="colonPAddr">:</p>
                     <p className="txtTopicL3">Tel.</p>
-                    <p className="colonTel1">:</p>
+                    <p className="colonPTel">:</p>
                     <p className="txtsubtp1">ผู้ขาย</p>
                     <p className="txtsubtp2">ที่อยู่</p>
                     <p className="txtsubtp3">เบอร์ติดต่อ</p>
 
-                    <p className="txtdataL1"></p>
-                    <p className="txtdataL2"></p>
-                    <p className="txtdataL3"></p>
+                    <p className="txtPdataL1">Mig</p>
+                    <p className="txtPdataL2">Na</p>
+                    <p className="txtPdataL3">Ei</p>
                 </Paper>
                 <Paper className="borRight">
                     <p className="txtTopicR1">Date</p>
-                    <p className="colonDate">:</p>
+                    <p className="colonPDate">:</p>
                     <p className="txtTopicR2">Requseted Name :</p>
                     <p className="txtTopicR3">Department</p>
-                    <p className="colonTel2">:</p>
+                    <p className="colonPDepart">:</p>
                     <p className="txtsubtp4">วันที่เบิกสินค้า</p>
                     <p className="txtsubtp5">ผู้เบิกสินค้า</p>
                     <p className="txtsubtp6">แผนก</p>
 
-                    <p className="txtdataR1"></p>
-                    <p className="txtdataR2"></p>
-                    <p className="txtdataR3"></p>
+                    <p className="txtPdataR1">Mai</p>
+                    <p className="txtPdataR2">Tum</p>
+                    <p className="txtPdataR3">Laew</p>
                 </Paper>
                 <Paper className="dataBill">
                     {this.props.pickOrderList.map((item) => {
@@ -76,9 +77,10 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtTB1">No</p>
                 <p className="txtTB2">Product ID</p>
                 <p className="txtTB3">ProductName</p>
-                <p className="txtTB4">Shelf</p>
-                <p className="txtTB5">Level</p>
-                <p className="txtTB6">QTY(ea)</p>
+                <p className="txtPTB4">Shelf</p>
+                <p className="txtPTB5">Level</p>
+                <p className="txtPTB6">QTY(ea)</p>
+                <p className="txtNote">Note</p>
                 <img img className="line0" src={line} />
                 <img img className="line1" src={line} />
                 <img img className="line2" src={line} />

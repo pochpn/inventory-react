@@ -83,7 +83,7 @@ class Hamburger extends Component {
   };
 
   showSidebar = () => {
-    this.setState({ sidebar: true });
+    this.setState({ sidebar: !this.state.sidebar });
   }
 
 

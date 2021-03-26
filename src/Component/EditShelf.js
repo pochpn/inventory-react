@@ -101,7 +101,6 @@ class ViewStock extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            on: false,
             modalQues: false,
             modalSure: false,
             modalSuc: false,
@@ -121,12 +120,8 @@ class ViewStock extends Component {
 
     ////////////////////////////////////////////////////////
     handleModalQuesClose = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-cardforget') {
-            return;
-        }
         this.setState({
-            modalQues: !this.state.modalQues,
+            modalQues: false,
             shelfSelect: {},
             shelfID: '',
             level: '',
@@ -137,10 +132,9 @@ class ViewStock extends Component {
         });
     };
 
-
     handleModalQuesOpen = (item) => {
         this.setState({
-            modalQues: !this.state.modalQues,
+            modalQues: true,
             shelfSelect: item,
             shelfID: item.shelfID,
             level: item.level,
@@ -153,13 +147,9 @@ class ViewStock extends Component {
     ////////////////////////////////////////////////////////
 
     handleModalSureClose = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-cardforget') {
-            return;
-        }
         this.setState({
-            modalSure: !this.state.modalSure,
-            modalQues: !this.state.modalQues,
+            modalSure: false,
+            modalQues: false,
             shelfSelect: {},
             shelfID: '',
             level: '',
@@ -171,16 +161,12 @@ class ViewStock extends Component {
     };
 
     handleModalSureOpen = () => {
-        this.setState({ modalSure: !this.state.modalSure });
+        this.setState({ modalSure: true });
     };
     ////////////////////////////////////////////////////////
     handleModalSucClose = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-cardforget') {
-            return;
-        }
         this.setState({
-            modalSuc: !this.state.modalSuc,
+            modalSuc: false,
             shelfSelect: {},
             shelfID: '',
             level: '',
@@ -214,12 +200,8 @@ class ViewStock extends Component {
     ////////////////////////////////////////////////////////
 
     handleModalEditClose = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-cardforget') {
-            return;
-        }
         this.setState({
-            modalEdit: !this.state.modalEdit,
+            modalEdit: false,
             modalQues: false,
             shelfSelect: {},
             shelfID: '',
@@ -238,12 +220,8 @@ class ViewStock extends Component {
     ////////////////////////////////////////////////////////
 
     handleModalAddClose = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-cardforget') {
-            return;
-        }
         this.setState({
-            modalAdd: !this.state.modalAdd,
+            modalAdd: false,
             modalQues: false,
             shelfSelect: {},
             shelfID: '',
@@ -255,11 +233,9 @@ class ViewStock extends Component {
         });
     };
 
-
     handleModalAddOpen = () => {
-        this.setState({ modalAdd: !this.state.modalEdit });
+        this.setState({ modalAdd: true });
     };
-
 
     ///////////////////////////////////////////////////////
 

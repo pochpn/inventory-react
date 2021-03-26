@@ -45,7 +45,6 @@ const ButtonResend = styled.button`
   margin: 0 1em;
   padding: 0.5em 1em;
   `
-
 const FontHead = styled.div`
   && {
     color: #000000;
@@ -100,31 +99,21 @@ class ForgetPassword extends Component {
   }
   ///////////////////////////////////////////////////////
   handleModalClose = (e) => {
-    const currentClass = e.target.className;
-    if (currentClass == 'modal-cardforget') {
-      return;
-    }
-
-    this.setState({ modal: !this.state.modal });
+    this.setState({ modal: false });
     this.handleModal3Open()
   };
 
 
   handleModalOpen = () => {
-    this.setState({ modal: !this.state.modal });
+    this.setState({ modal: true });
   };
   ///////////////////////////////////////////////////////
   handleModal2Close = (e) => {
-    const currentClass = e.target.className;
-    if (currentClass == 'modal-cardforget') {
-      return;
-    }
-    this.setState({ modal2: !this.state.modal2 });
-
+    this.setState({ modal2: false });
   };
 
   handleModal2Open = () => {
-    this.setState({ modal2: !this.state.modal2 });
+    this.setState({ modal2: true });
   };
   ///////////////////////////////////////////////////////
   handleChange = (e) => {
@@ -179,17 +168,13 @@ class ForgetPassword extends Component {
   }
   ///////////////////////////////////////////////////////
   handleModal3Close = (e) => {
-    /*const currentClass = e.target.className;
-    if (currentClass == 'modal-cardforget') {
-      return;
-    }*/
-    this.setState({ modal3: !this.state.modal3 });
+    this.setState({ modal3: false });
     this.handleModal4Open()
   };
 
 
   handleModal3Open = () => {
-    this.setState({ modal3: !this.state.modal3 });
+    this.setState({ modal3: true });
   };
   ///////////////////////////////////////////////////////
   onCheckP = () => {
@@ -207,21 +192,16 @@ class ForgetPassword extends Component {
       console.log("incorrect")
     }
   }
-
+   ///////////////////////////////////////////////////////
   handleModal4Close = (e) => {
-    const currentClass = e.target.className;
-    if (currentClass == 'modal-cardChangePass') {
-      return;
-    }
-
-    this.setState({ modal4: !this.state.modal4 });
+    this.setState({ modal4: false });
   };
 
 
   handleModal4Open = () => {
-    this.setState({ modal4: !this.state.modal4 });
+    this.setState({ modal4: true });
   };
-
+   ///////////////////////////////////////////////////////
   onOK = () => {
     if (this.state.newPass === this.state.confirmNewPass) {
       const user = this.state.user
@@ -331,7 +311,7 @@ class ForgetPassword extends Component {
           </div>
         </div>
         <div hidden={!this.state.modal2}>
-          <div className="modal-background">
+          <div className="modal-background" >
             <div className="modal-cardforget">
               <div style={{ paddingTop: 20 }}>
                 <img className="picError" src={Error} />

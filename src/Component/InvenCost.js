@@ -22,48 +22,34 @@ class InvenCost extends Component {
     }
 
     handleModalClose1 = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-card') {
-            return;
-        }
-        this.setState({ modal1: !this.state.modal1 });
+        this.setState({ modal1: false });
     };
 
     handleModalOpen1 = () => {
-        this.setState({ modal1: !this.state.modal1 });
+        this.setState({ modal1: true });
     };
+
     handleModalClose2 = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-card') {
-            return;
-        }
-        this.setState({ modal2: !this.state.modal2 });
+        this.setState({ modal2: false });
     };
 
     handleModalOpen2 = () => {
-        this.setState({ modal2: !this.state.modal2 });
+        this.setState({ modal2: true });
     };
     handleModalClose3 = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-card') {
-            return;
-        }
-        this.setState({ modal3: !this.state.modal3 });
+        this.setState({ modal3: false });
     };
 
     handleModalOpen3 = () => {
-        this.setState({ modal3: !this.state.modal3 });
+        this.setState({ modal3: true });
     };
+
     handleModalClose4 = (e) => {
-        const currentClass = e.target.className;
-        if (currentClass == 'modal-card') {
-            return;
-        }
-        this.setState({ modal4: !this.state.modal4 });
+        this.setState({ modal4: false });
     };
 
     handleModalOpen4 = () => {
-        this.setState({ modal4: !this.state.modal4 });
+        this.setState({ modal4: true });
     };
 
 

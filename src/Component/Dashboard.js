@@ -37,8 +37,6 @@ const ButtonAfter = styled.button`
   color: #ffffff;
 `
 
-
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);

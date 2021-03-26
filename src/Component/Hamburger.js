@@ -67,32 +67,23 @@ class Hamburger extends Component {
   }
 
   handleModalClose = (e) => {
-    const currentClass = e.target.className;
-    if (currentClass == 'modal-card') {
-      return;
-    }
-    this.setState({ modal: !this.state.modal });
-
+    this.setState({ modal: false });
   };
 
   handleModalOpen = () => {
-    this.setState({ modal: !this.state.modal });
+    this.setState({ modal: true });
   };
 
   handleModalClose1 = (e) => {
-    const currentClass = e.target.className;
-    if (currentClass == 'modal-tri') {
-      return;
-    }
-    this.setState({ modal1: !this.state.modal1 });
+    this.setState({ modal1: false });
   };
 
   handleModalOpen1 = () => {
-    this.setState({ modal1: !this.state.modal1 });
+    this.setState({ modal1: true });
   };
 
   showSidebar = () => {
-    this.setState({ sidebar: !this.state.sidebar });
+    this.setState({ sidebar: true });
   }
 
 

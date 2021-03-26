@@ -90,7 +90,7 @@ class InvenCost extends Component {
                     <div className="modal-background" style={{display:'flex',flexDirection:'column'}}>
                         <div className="modal-card2">
                             <button style={{width:'40px',height:'40px'}} onClick={this.handleModalClose2}></button>
-                            <p style={{paddingTop:'25%',paddingLeft:'35%',fontSize:'48px'}}>0 BATH</p>
+                            <p style={{paddingTop:'25%',paddingLeft:'35%',fontSize:'48px'}}>0 BAHT</p>
                         </div>
                     </div>
                 </div>

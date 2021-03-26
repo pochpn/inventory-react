@@ -172,7 +172,10 @@ class OrderingChart extends Component {
         // history.push('/home')
         history.push({
             pathname: '/ordering/orderingChart/billOrder',
-            state: { info: this.state.info },
+            state: {
+                info: this.state.info,
+                order: this.props.pickOrderList,
+            },
         })
     }
 
@@ -244,7 +247,7 @@ class OrderingChart extends Component {
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
                             <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => {
                                 this.props.clearPickOrder()
-                                history.push('/ordering')
+                                history.push('/home')
                             }}>
                                 Cancel
                             </ButtonCancel>

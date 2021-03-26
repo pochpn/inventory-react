@@ -322,6 +322,7 @@ class Firestore {
                 reject(error);
             });
     }
+
     /*-----------Notification---------------*/
     addNotification = (notification, success, reject) => {
         firebase
@@ -360,6 +361,47 @@ class Firestore {
                 reject(error);
             });
     };
+
+    /*------------------Bill---------------------*/
+    addBill = (bill, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Bill')
+            .add(bill)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+
+    deleteBill = (id, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Bill')
+            .doc(id)
+            .delete()
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
+
+    getAllBill = (success, reject) => {
+        firebase
+            .firestore()
+            .collection('Bill')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    }
 }
 
 const firestore = new Firestore();

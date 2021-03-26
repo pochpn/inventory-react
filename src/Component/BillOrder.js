@@ -23,6 +23,7 @@ class billOrder extends Component {
             user: this.props.userList[this.props.userList.length - 1],
             notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
             info: this.props.location.state.info,
+            order: this.props.location.state.order,
         };
     }
 
@@ -35,12 +36,26 @@ class billOrder extends Component {
         console.log(error)
     }
 
-    onSend = async () => {
-        const notification = {
+    addBillSuccess = (doc) => {
+        console.log(doc.id)
+        this.props.clearPickOrder()
+        history.push('/home')
+    }
+
+    onSend = /*async*/ () => {
+        /*const notification = {
             notificationHead: this.state.notificationHead,
         }
         await firestore.addNotification(notification, this.success, this.reject)
-        this.props.addNotification(notification)
+        this.props.addNotification(notification)*/
+        const bill = {
+            info: this.state.info,
+            order: this.props.pickOrderList,
+            managerConfirm: false,
+            orderConfirm: false,
+            readStatus: false,
+        }
+        firestore.addBill(bill, this.addBillSuccess, this.reject)
     }
 
 
@@ -48,22 +63,13 @@ class billOrder extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} />
-                    {/* <ReactToPrint content={() => this.componentRef}>
-                        <PrintContextConsumer>
-                            {({ handlePrint }) => (
-                                <Paper className="btnSend" onClick={handlePrint}>
-                                    <p className="txtbtnSend">Send</p>
-                                </Paper>
-                            )}
-                        </PrintContextConsumer>
-                    </ReactToPrint> */}
+                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>
                     <Paper className="btnCancel" onClick={() => {
                         this.props.clearPickOrder()
-                        history.push('/ordering')
+                        history.push('/home')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>

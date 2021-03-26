@@ -5,6 +5,8 @@ import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import './Style.css'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import styled, { css } from 'styled-components'
 
@@ -28,6 +30,7 @@ class Picking extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            date: new Date(),
         };
     }
 
@@ -38,9 +41,9 @@ class Picking extends Component {
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 110, paddingLeft: 400 }}>
                             <p className="textPickD">Date</p>
-                            <input type="text" style={{ fontSize: 24, }}></input>
+                            <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                         </div>
-                        <div style={{ paddingTop: 110, paddingLeft: 600 }}>
+                        <div style={{ paddingTop: 110, paddingLeft: 710 }}>
                             <p className="textPickCT">Contact Name</p>
                             <input type="text" style={{ fontSize: 24, }} />
                         </div>

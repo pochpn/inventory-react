@@ -95,7 +95,7 @@
     position: absolute;
     width: 366px;
     height: 479px;
-    top:60px;
+    top: 60px;
     left: 80%;
     border-radius: 20px;
     background: #FFF4F2;
@@ -131,7 +131,6 @@
     border-radius: 30px;
   }
 
-  
   .modal-cardDeleteUser {
     margin: 0 auto;
     display: block;
@@ -140,4 +139,13 @@
     height: 312px;
     background-color: #FFF4F2;
     border-radius: 15px;
+  }
+
+  .modal-PickingChart {
+    margin: 0 auto;
+    display: block;
+    margin-top: 100px;
+    width: 1200px;
+    height: 750px;
+    background-color: #FFD5CF;
   }

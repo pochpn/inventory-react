@@ -4,12 +4,19 @@ import Topbar from './Topbar'
 import Paper from '@material-ui/core/Paper';
 import { search } from '../pic'
 import Hamburger from './Hamburger'
-
+import styled, { css } from 'styled-components'
 
 import { connect } from 'react-redux';
 import { AiOutlineUserAdd } from "react-icons/ai";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
 
 class History extends Component {
   constructor(props) {
@@ -30,46 +37,44 @@ class History extends Component {
   }
 
   onSearch = () => {
-    console.log(this.state.Startdate.getDate()+'/'+(this.state.Startdate.getMonth()+1)+'/'+this.state.Startdate.getFullYear())
+    console.log(this.state.Startdate.getDate() + '/' + (this.state.Startdate.getMonth() + 1) + '/' + this.state.Startdate.getFullYear())
   }
 
   render() {
     return (
       <div className="bg">
-        <Paper className="paperSearchMB" >
+        <Paper className="paperSearchMB" style={{ display: 'flex', justifyContent: 'center' }} >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Types</a1>
-            <input type="text" style={{ width: 300, fontSize: 18, borderWidth: 0 }} ></input>
+            <input type="text" style={{ width: 160, fontSize: 18, borderWidth: 0 }} ></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Receipt ID</a1>
-            <input type="text" style={{ width: 300, fontSize: 18, borderWidth: 0 }}></input>
+            <input type="text" style={{ width: 200, fontSize: 18, borderWidth: 0 }}></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Duration Date</a1>
-            <DatePicker style={{ width: 300 }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
-
-            {/* <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }}></input> */}
+            <DatePicker style={{ width: "100%" }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}> - </a1>
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
-            <DatePicker style={{ width: 100 }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
-
-            {/* <input type="text" style={{ width: 300, fontSize: 24, borderWidth: 0 }}></input> */}
+            <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
           </div>
-          <img
-            style={{ justifyContent: 'flex-end', width: "10%", }}
-            src={search}
-            onClick={this.onSearch}></img>
+            <img
+              style={{ width: "10%", paddingTop: 15}}
+              src={search}
+              onClick={this.onSearch}></img>
         </Paper>
-        <Paper className='tableHis'>
-          <p className="txtTableHis1">No.</p>
-          <p className="txtTableHis2">Date</p>
-          <p className="txtTableHis3">Receipt ID</p>
-          <p className="txtTableHis4">Description</p>
-          <p className="txtTableHis5">OIC</p>
+        <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Font>No.</Font>
+            <Font>Date</Font>
+            <Font>Receipt ID</Font>
+            <Font>Description</Font>
+            <Font>OIC</Font>
+          </div>
         </Paper>
         <Hamburger page='HISTORY' user={this.state.user} />
       </div>

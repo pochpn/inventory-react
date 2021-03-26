@@ -352,7 +352,7 @@ class ViewStock extends Component {
                 </div>
 
                 <div hidden={!this.state.modalQues}>
-                    <div className="modal-background">
+                    <div className="modal-background" onClick = {this.handleModalQuesClose}>
                         <div className="modal-editstock-deloredit">
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <Font style={{ fontSize: 30, paddingTop: 15 }}>{this.state.shelfSelect.shelfID}</Font>

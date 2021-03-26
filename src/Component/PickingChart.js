@@ -162,7 +162,7 @@ class PickingChart extends Component {
                             </ButtonClear>
                         </div>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking/pickingChart/billPick')}>
                                 Next
                             </ButtonNext>
                         </div>

@@ -11,16 +11,16 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
-import ComponentToPrint from './BillO.js';
+import ComponentToPrint from './BillP.js';
 
 
-class billOrder extends Component {
+class billPick extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
-            info: this.props.location.state.info,
+            notificationHead: 'ยืนยันคำร้องการจ่าย',
+            // info: this.props.location.state.info,
         };
     }
 
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(billOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(billPick);

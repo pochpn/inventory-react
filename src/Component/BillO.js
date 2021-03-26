@@ -53,7 +53,6 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtdataR3">{this.props.info.telCon}</p>
                 </Paper>
                 <Paper className="dataBill2">
-
                     {this.props.pickOrderList.map((item) => {
                         this.setState({ total: this.state.total += parseInt(item.amount) })
                         return (

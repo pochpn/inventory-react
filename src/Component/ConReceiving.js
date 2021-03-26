@@ -17,6 +17,15 @@ class ConReceiving extends Component {
         };
     }
 
+    onCheck = (item) => {
+        history.push({
+            pathname: '/orderConfirm/receiving/billOrder2',
+            state: {
+                bill: item,
+            },
+        })
+    }
+
     render() {
         return (
             <div className="bg">
@@ -29,6 +38,18 @@ class ConReceiving extends Component {
                     <p className="txtOrConTable3">Contact Name</p>
                     <p className="txtOrConTable4">Tel.</p>
                 </Paper>
+                {this.props.billList.map((item) => {
+                    if (item.managerConfirm && !item.confirm) {
+                        return (
+                            <Paper style={{ display: 'flex', flexDirection: 'row' }} onClick={() => this.onCheck(item)} >
+                                <p>{item.info.reNum}|</p>
+                                <p>{item.info.date}|</p>
+                                <p>{item.info.contactName}|</p>
+                                <p>{item.info.telCon}</p>
+                            </Paper>)
+                    }
+
+                })}
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
 
             </div>
@@ -46,7 +67,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         userList: state.userReducer.userList,
-        accountList: state.accountReducer.accountList
+        accountList: state.accountReducer.accountList,
+        billList: state.billReducer.billList,
     };
 };
 

@@ -36,3 +36,9 @@ export const ADD_NOTIFY = 'ADD_NOTIFY'
 export const EDIT_NOTIFY = 'EDIT_NOTIFY'
 export const DELETE_NOTIFY = 'DELETE_NOTIFY'
 export const CLEAR_NOTIFY = 'CLEAR_NOTIFY'
+
+/* Bill */
+export const ADD_BILL = 'ADD_BILL'
+export const DELETE_BILL = 'DELETE_BILL'
+export const EDIT_BILL = 'EDIT_BILL'
+export const CLEAR_BILL = 'CLEAR_BILL'

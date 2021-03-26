@@ -5,6 +5,7 @@ import productProfileReducer from './reducers/productProfileReducer'
 import shelfReducer from './reducers/shelfReducer'
 import pickOrderReducer from './reducers/pickOrderReducer'
 import notificationReducer from './reducers/notificationReducer'
+import billReducer from './reducers/billReducer'
 import { createStore, combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -15,7 +16,7 @@ const rootReducer = combineReducers({
     shelfReducer: shelfReducer,
     pickOrderReducer: pickOrderReducer,
     notificationReducer: notificationReducer,
-
+    billReducer: billReducer,
 });
 
 const configureStore = createStore(rootReducer);

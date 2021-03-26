@@ -10,6 +10,35 @@ import { connect } from 'react-redux';
 
 import { addPickOrder, deletePickOrder, clearPickOrder } from '../actions/pickOrderAction'
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
+const ButtonCancel1 = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
+const ButtonAdd1 = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 10px;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+`
+
 const ButtonCancel = styled.button`
   background: #A09797;
   border-radius: 10px;
@@ -43,21 +72,84 @@ class PickingChart extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            item: {},
+            expDate: '',
+            level: '',
+            costPunit: '',
+            qty: '',
+            notificationHead: 'ยืนยันคำร้องการจ่าย',
+            date: new Date(),
         };
     }
+
+    handleModalClose = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardforget') {
+            return;
+        }
+        this.setState({
+            modal: !this.state.modal,
+        });
+    };
+
+    handleModalClose1 = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardforget') {
+            return;
+        }
+        this.setState({
+            modal1: !this.state.modal1,
+        });
+    };
+
+    handleModalCloseAdd = (e) => {
+        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
+            const product = this.state.item
+            product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
+            product.level = this.state.level
+            product.costPunit = this.state.costPunit
+            product.qty = this.state.qty
+            product.recvDate = this.state.info.date
+            product.amount = (this.state.costPunit * this.state.qty).toString()
+            console.log(product)
+            this.props.addPickOrder(product)
+
+            const currentClass = e.target.className;
+            if (currentClass == 'modal-cardforget') {
+                return;
+            }
+            this.setState({
+                modal1: !this.state.modal1,
+                expDate: '',
+                level: '',
+                costPunit: '',
+                qty: '',
+                date: new Date(),
+            });
+        }
+    };
 
     onClear = () => {
         this.props.clearPickOrder()
     }
 
     onAdd = (item) => {
-        this.props.addPickOrder(item)
+        this.setState({ item: item })
         console.log(this.props.pickOrderList)
+        this.handleModalOpen()
     }
 
     onDelete = (id) => {
         this.props.deletePickOrder(id)
     }
+
+    handleModalOpen = () => {
+        this.setState({ modal: !this.state.modal });
+    };
+
+    handleModalOpen1 = () => {
+        this.setState({ modal1: !this.state.modal1 });
+    };
 
     render() {
         return (
@@ -169,6 +261,75 @@ class PickingChart extends Component {
 
                     </div>
                 </Paper>
+
+                <div hidden={!this.state.modal}>
+                    <div className="modal-background">
+                        <div className="modal-PickingChart">
+                            <Paper className="TOPPickModal">
+
+                            </Paper>
+                            <div style={{ paddingTop: 10 }}>
+                                <Paper className="TOPPickModalTB" >
+                                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'center',paddingLeft:50 }}>
+                                        <p className='txtTBModal'>Received Date</p>
+                                        <p className='txtTBModal'>Exp.</p>
+                                        <p className='txtTBModal'>Shelf</p>
+                                        <p className='txtTBModal'>Level</p>
+                                        <p className='txtTBModal'>Cost/Unit</p>
+                                        <p className='txtTBModal'>QTY</p>
+                                        <p className='txtTBModal'>Amount</p>
+                                    </div>
+                                </Paper>
+                            </div>
+                            <div style={{ paddingTop: 10 }}>
+                                    <Paper className='TBPickModal'>
+                                        <scroll>
+                                        <p style={{fontSize:20}}>Mig</p>
+                                        <p style={{fontSize:20}}>Mig</p>
+                                        <p style={{fontSize:20}}>Mig</p>
+                                        <p style={{fontSize:20}}>Mig</p>
+                                        <p style={{fontSize:20}} onClick={this.handleModalOpen1} >Mig</p>
+                                        </scroll>
+                                        
+                                    </Paper>
+
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center',}}>
+                                <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
+                                <ButtonAdd style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div hidden={!this.state.modal1}>
+                    <div className="modal-background">
+                        <div className="modal-orderChart">
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 10 }}>
+                                <Font>Product ID</Font>
+                                <Font>Exp.</Font>
+                                <Font>Shelf</Font>
+                                <Font>Level</Font>
+                                <Font>Cost/Unit</Font>
+                                <Font>QTY</Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
+                                <Font>{this.state.item.productID}</Font>
+                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <Font>{this.state.item.shelf}</Font>
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
+                                <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
+                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <Hamburger page='PICKING' user={this.state.user} />
 
             </div>

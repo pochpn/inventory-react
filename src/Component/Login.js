@@ -15,6 +15,7 @@ import { addAccount } from '../actions/accountAction'
 import { addProduct } from '../actions/productAction';
 import { addProductProfile } from '../actions/productProfileAction';
 import { addShelf } from '../actions/shelfAction';
+import { addBill } from '../actions/billAction'
 
 const ButtonLogin = styled.button`
   background: #ef3f3e;
@@ -92,7 +93,16 @@ class Login extends Component {
             shelf.id = doc.id
             this.props.addShelf(shelf)
         });
-        console.log(this.props.shelfList)
+        /*console.log(this.props.shelfList)*/
+    }
+
+    getAllBillSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let bill = doc.data()
+            bill.id = doc.id
+            this.props.addBill(bill)
+        });
+        console.log(this.props.billList)
     }
 
     getSuccess = (querySnapshot) => {
@@ -111,6 +121,7 @@ class Login extends Component {
             firestore.getAllProduct(this.getAllProductSuccess, this.getAllReject)
             firestore.getAllProductProfile(this.getAllProductProfileSuccess, this.getAllReject)
             firestore.getAllShelf(this.getAllShelfSuccess, this.getAllReject)
+            firestore.getAllBill(this.getAllBillSuccess, this.getAllReject)
             history.push("/home")
             /*window.location.href="/home"*/
         } else {
@@ -202,6 +213,7 @@ const mapDispatchToProps = (dispatch) => {
         addProduct: (product) => dispatch(addProduct(product)),
         addProductProfile: (product) => dispatch(addProductProfile(product)),
         addShelf: (shelf) => dispatch(addShelf(shelf)),
+        addBill: (bill) => dispatch(addBill(bill)),
     };
 };
 
@@ -212,6 +224,7 @@ const mapStateToProps = (state) => {
         productList: state.productReducer.productList,
         productProfile: state.productProfileReducer.productProfileList,
         shelfList: state.shelfReducer.shelfList,
+        billList: state.billReducer.billList,
     };
 };
 

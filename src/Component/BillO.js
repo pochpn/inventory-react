@@ -23,7 +23,7 @@ class ComponentToPrint extends React.PureComponent {
             <Paper className='bill'>
                 <Paper className="blackTopic">
                     <p className="txtPurc">Purchase Order</p>
-                    <p className="txtsubPurc">{this.props.info.reNum}</p>
+                    <p className="txtsubPurc">ใบสั่งซื้อ</p>
                 </Paper>
                 <Paper className="borLeft">
                     <p className="txtTopicL1">Supplier :</p>
@@ -89,6 +89,8 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtTB4">QTY(ea)</p>
                 <p className="txtTB5">Cost/Unit</p>
                 <p className="txtTB6">Amount</p>
+                <p className="txtPONO">PO No. :</p>
+                <p className="txtPoNoInfo">{this.props.info.reNum}</p>
                 <img img className="linee0" src={line} />
                 <img img className="linee1" src={line} />
                 <img img className="linee2" src={line} />

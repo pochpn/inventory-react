@@ -9,7 +9,7 @@ const billReducer = (state = initialState, action) => {
         case ADD_BILL:
             return {
                 ...state,
-                billList: state.billList.concat(action.product)
+                billList: state.billList.concat(action.bill)
             };
 
         case DELETE_BILL:

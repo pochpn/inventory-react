@@ -1275,7 +1275,7 @@ body, html {
     top: 55px;
     background: rgba(255, 255, 255, 0.4)!important;
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     justify-content: center;
     align-Items: center;
 }
@@ -1597,11 +1597,11 @@ body, html {
 }
 
 .imOrRecv {
-    position: absolute;
-    width: 145px;
-    height: 139px;
-    left: 31%;
-    top: 10%;
+    justify-self: center;
+    margin-left: 28%;
+    padding-top: 10%;
+    width: 50%;
+    height: 50%;
 }
 
 .imOrPak {
@@ -1621,33 +1621,24 @@ body, html {
 }
 
 .txtOrRecv1 {
-    position: absolute;
-    width: 208px;
-    height: 73px;
-    left: 24%;
-    top: 64%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 37px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #6E0D0D;
+
+    font-size: 36px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
 }
 
 .txtOrCon2 {
-    position: absolute;
-    width: 208px;
-    height: 73px;
-    left: 40%;
-    top: 75%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #6E0D0D;
+    line-height: 10px;
+    text-align: center;
+    color: #000000;
 }
 
 .txtOrPak1 {
@@ -1723,7 +1714,7 @@ body, html {
 .OrConTable {
     position: absolute;
     width: 98%;
-    left:1%;
+    left: 1%;
     height: 74px;
     top: 217px;
     background: rgba(255, 255, 255, 0.4)!important;
@@ -3586,6 +3577,7 @@ body, html {
 /*end billo*/
 
 /*PickChat*/
+
 .TOPPickModal {
     justify-items: center;
     align-items: center;
@@ -3593,7 +3585,6 @@ body, html {
     height: 170px;
     background: rgba(255, 255, 255, 0.4)!important;
     margin-bottom: 0.5%;
-    
 }
 
 .TOPPickModalTB {
@@ -3625,7 +3616,7 @@ body, html {
     overflow: auto;
 }
 
-.txtTBModal2{
+.txtTBModal2 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -3679,13 +3670,15 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
 /*End PickChat*/
 
 /*History*/
+
 .paperHistory {
     position: absolute;
     height: 90px;
-    left:1%;
+    left: 1%;
     border-radius: 12px;
     width: 98%;
     background: rgba(245, 245, 245, 0.4)!important;
@@ -3704,12 +3697,13 @@ body, html {
 }
 
 /*End History*/
+
 /* Recieving Order */
 
 .paperRcvOd {
     position: absolute;
     height: 90px;
-    left:1%;
+    left: 1%;
     border-radius: 12px;
     width: 98%;
     background: rgba(255, 255, 255, 0.4)!important;

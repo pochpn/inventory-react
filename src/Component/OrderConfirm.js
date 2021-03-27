@@ -20,29 +20,38 @@ class OrderConfirm extends Component {
   render() {
     return (
       <div className="bg">
-        <Paper className='OrConRecv' onClick={() => history.push('/orderConfirm/receiving')}>
-          <div>
-            <img className="imOrRecv" src={recvOr} />
-            <p className="txtOrRecv1">Receiving</p>
-            <p className="txtOrCon2">Order</p>
-          </div>
-        </Paper>
-        <Paper className='OrConPak' onClick={() => history.push('/orderConfirm/packing')}>
-          <div>
-            <img className="imOrRecv" src={packor} />
-            <p className="txtOrPak1">Packing</p>
-            <p className="txtOrCon2">Order</p>
-          </div>
-        </Paper>
-        <Paper className='OrConReturn' onClick={() => history.push('/orderConfirm/returned')}>
-          <div>
-            <img className="imOrRecv" src={returnor} />
-            <p className="txtOrRetu1">Returned</p>
-            <p className="txtOrCon2">Order</p>
-          </div>
-        </Paper>
         <Hamburger page='ORDER CONFIRMATION' user={this.state.user} />
-        
+        <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '19%', justifyContent: 'center' }}>
+
+          <Paper className='paperVs' style={{ borderRadius: "10%" }} onClick={() => history.push('/orderConfirm/receiving')}>
+            <div style={{ alignContent: 'center', marginBottom: '100%', justifyContent: 'center' }}>
+              <img className="imOrRecv" src={recvOr} />
+              <div style={{paddingTop:"5%"}}>
+                <p className="txtOrRecv1">Receiving</p>
+                <p className="txtOrCon2">Order</p>
+              </div>
+            </div>
+          </Paper>
+          <Paper className='paperVs' style={{ borderRadius: "10%" }} onClick={() => history.push('/orderConfirm/packing')}>
+            <div style={{ alignContent: 'center', marginBottom: '100%', justifyContent: 'center' }}>
+              <img className="imOrRecv" src={packor} />
+              <div style={{paddingTop:"5%"}}>
+                <p className="txtOrRecv1">Packing</p>
+                <p className="txtOrCon2">Order</p>
+              </div>
+            </div>
+          </Paper>
+          <Paper className='paperVs' style={{ borderRadius: "10%" }} onClick={() => history.push('/orderConfirm/returned')}>
+            <div style={{ alignContent: 'center', marginBottom: '100%', justifyContent: 'center' }}>
+              <img className="imOrRecv" src={returnor} />
+              <div style={{paddingTop:"5%"}}>
+                <p className="txtOrRecv1">Returned</p>
+                <p className="txtOrCon2">Order</p>
+              </div>
+            </div>
+          </Paper>
+
+        </div>
       </div>
 
     )

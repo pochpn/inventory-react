@@ -70,38 +70,6 @@ class Dashboard extends Component {
 
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
 
-  barData = [
-    {
-      name: 'Jan', value: 4.2,
-    },
-    {
-      name: 'Feb', value: 4.5,
-    },
-    {
-      name: 'Mar', value: 5.1,
-    },
-    {
-      name: 'Apr', value: 6.3,
-    },
-    {
-      name: 'May', value: 6.0,
-    },
-    {
-      name: 'Jun', value: 3.3,
-    },
-    {
-      name: 'Jul', value: 4.3,
-    },
-    {
-      name: 'Oct', value: 5.5,
-    },
-    {
-      name: 'Nov', value: 1.1,
-    },
-    {
-      name: 'Dec', value: 4.5,
-    },
-  ];
 
   CustomTooltip = ({ active, payload, label }) => {
     if (active) {
@@ -191,6 +159,44 @@ class Dashboard extends Component {
       },
     ];
     console.log(pieData[0].value)
+    let barData = [
+      {
+        name: 'Jan', value: 4.2, turnover: 2.2,
+      },
+      {
+        name: 'Feb', value: 4.5, turnover: 2.25,
+      },
+      {
+        name: 'Mar', value: 5.1, turnover: 2.55,
+      },
+      {
+        name: 'Apr', value: 6.3, turnover: 3.12,
+      },
+      {
+        name: 'May', value: 6.0, turnover: 3.0,
+      },
+      {
+        name: 'Jun', value: 3.3, turnover: 1.65,
+      },
+      {
+        name: 'Jul', value: 4.3, turnover: 2.15,
+      },
+      {
+        name: 'Aug', value: 5.5, turnover: 2.75,
+      },
+      {
+        name: 'Sep', value: 4.3, turnover: 2.15,
+      },
+      {
+        name: 'Oct', value: 4.3, turnover: 2.15,
+      },
+      {
+        name: 'Nov', value: 1.1, turnover: 0.55,
+      },
+      {
+        name: 'Dec', value: 4.5, turnover: 2.25,
+      },
+    ];
     return (
       <div className="bg">
 
@@ -289,7 +295,7 @@ class Dashboard extends Component {
               <ComposedChart
                 width={700}
                 height={420}
-                data={this.barData}
+                data={barData}
                 margin={{
                   top: 50, right: 0, bottom: 100, left: 0,
                 }}
@@ -300,7 +306,7 @@ class Dashboard extends Component {
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="value" barSize={20} fill="#413ea0" />
-                <Line type="monotone" dataKey="value" stroke="#ff7300" />
+                <Line type="monotone" dataKey="turnover" stroke="#ff7300" />
               </ComposedChart>
             </div>
           </div>

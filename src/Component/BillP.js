@@ -74,7 +74,7 @@ class ComponentToPrint extends React.PureComponent {
 
                 </Paper>
                 <Paper className="totalBox">
-                    <p className="txtTotaldata"></p>
+                    <p className="txtTotaldata">{formatMoney(this.state.total)}</p>
 
                 </Paper>
                 

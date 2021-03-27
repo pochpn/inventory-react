@@ -312,28 +312,31 @@ class PickingChart extends Component {
                             </Paper>
 
 
+
                             <Paper className='TBPickModal'
-                                style={{ display: 'flex', flexDirection: 'row', width: '100%', borderRadius: '15px' }}>
-                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                                style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
+                                
                                     {this.props.productList.map((item) => {
                                         if (item.productID == this.state.item.productID) {
                                             return (
-                                                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }} onClick={() => this.onAddTrue(item)}>
-                                                    <p className='txtProShelf' style={{}}>{item.recvDate}</p>
-                                                    <p className='txtProShelf' style={{}}>{item.expDate}</p>
-                                                    <p className='txtProShelf' style={{}}>{item.shelf}</p>
-                                                    <p className='txtProShelf' style={{}}>{item.level}</p>
-                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.costPunit)}</p>
-                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
-                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.amount)}</p>
-                                                </div>
+                                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }}>
+                                                        <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.expDate}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.level}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.level}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.amount)}</p>
+                                                    </div>
+                                                </scroll>
                                             );
                                         }
                                     })}
-                                </scroll>
+                                
+
 
                             </Paper>
-
 
                             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5%', marginBottom: '0.5%' }}>
                                 <ButtonCancel1 style={{ fontSize: 25, width: 150, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>

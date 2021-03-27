@@ -11,6 +11,38 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
+
+const ImageSuc = styled.img.attrs({
+    src: Suc
+})`
+    width: 11%;
+    height: 75%;
+
+`
+
+const ImageRej = styled.img.attrs({
+    src: Reject
+})`
+width: 11%;
+height: 75%;
+
+`
+
+const ImageWait = styled.img.attrs({
+    src: Waiting
+})`
+width: 11%;
+height: 75%;
+
+`
+
 class ShippingConfirm extends Component {
     constructor(props) {
         super(props);
@@ -57,13 +89,13 @@ class ShippingConfirm extends Component {
                         onClick={this.onSearch}></img>
                 </Paper>
                 <Paper className='StatusShip'>
-                    <div style={{ display: 'flex', flexDirection: 'row', }}>
-                        <img img className="imShipSuc" src={Suc} />
-                        <p style={{ fontSize: 24, paddingLeft: 85, paddingTop: 20 }}>Success</p>
-                        <img img className="imShipWait" src={Waiting} />
-                        <p style={{ fontSize: 24, paddingLeft: 75, paddingTop: 20 }}>Waiting</p>
-                        <img img className="imShipRej" src={Reject} />
-                        <p style={{ fontSize: 24, paddingLeft: 75, paddingTop: 20 }}>Reject</p>
+                    <div style={{ display: 'flex', flexDirection: 'row', paddingTop:"2%",paddingLeft:"2%"}}>
+                        <ImageSuc/>
+                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%",paddingRight:"2%"}}>Success</Font>
+                        <ImageWait />
+                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%",paddingRight:"2%"}}>Waiting</Font>
+                        <ImageRej />
+                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%"}}>Reject</Font>
                     </div>
                 </Paper>
                 <Hamburger page='CONFIRMING SHIPPING' user={this.state.user} />

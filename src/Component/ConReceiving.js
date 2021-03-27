@@ -73,9 +73,8 @@ class ConReceiving extends Component {
                 <div style={{ paddingTop: 150 }}>
                     {this.props.billList.map((item) => {
                         if (item.managerConfirm && !item.confirm) {
-
                             return (
-                                <div style={{paddingTop: 100}}>
+                                <div style={{paddingTop: 100}} onClick={() => this.onCheck(item)}>
                                     <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                             <Font>{item.info.reNum}</Font>
@@ -85,7 +84,6 @@ class ConReceiving extends Component {
                                         </div>
                                     </Paper>
                                 </div>
-
                             );
                         }
                     })}

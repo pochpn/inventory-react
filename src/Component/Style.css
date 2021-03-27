@@ -1956,34 +1956,34 @@ body, html {
 
 .StatusShip {
     position: absolute;
-    width: 504px;
-    height: 79px;
-    left: 1395px;
-    top: 884px;
+    width: 24%;
+    height: 7%;
+    left: 74%;
+    top: 90%;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
 }
 
 .imShipWait {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 8.5%;
+    height: 67%;
     left: 38%;
     top: 17%;
 }
 
 .imShipSuc {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    left: 5%;
+    width: 8.5%;
+    height: 67%;
+    left: 4%;
     top: 17%;
 }
 
 .imShipRej {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 8.5%;
+    height: 67%;
     left: 71%;
     top: 17%;
 }
@@ -3622,7 +3622,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 0%;
     margin-right: 0%;
-    
+    overflow: auto;
 }
 
 .txtTBModal2{
@@ -3683,12 +3683,12 @@ body, html {
 
 /*History*/
 .paperHistory {
-    justify-items: center;
-    align-items: center;
-    height: 110px;
-    background: rgba(255, 255, 255, 0.4)!important;
-    margin: 0.5%;
-    background-color: #6E0D0D;
+    position: absolute;
+    height: 90px;
+    left:1%;
+    border-radius: 12px;
+    width: 98%;
+    background: rgba(245, 245, 245, 0.4)!important;
 }
 
 .txtHis {
@@ -3702,6 +3702,8 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
+/*End History*/
 /* Recieving Order */
 
 .paperRcvOd {

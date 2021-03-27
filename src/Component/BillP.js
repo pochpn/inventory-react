@@ -56,6 +56,7 @@ class ComponentToPrint extends React.PureComponent {
                 </Paper>
                 <Paper className="dataBill2">
                     {this.props.pickOrderList.map((item) => {
+                        this.setState({ total: this.state.total += parseInt(item.amount) })
                         return (
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>

@@ -3623,7 +3623,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 0%;
     margin-right: 0%;
-    
+    overflow: auto;
 }
 
 .txtTBModal2{

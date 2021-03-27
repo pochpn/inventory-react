@@ -74,7 +74,6 @@ class ProductDetail extends Component {
                 
                 <scroll style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     {this.props.productList.map((item) => {
-
                         if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
                             return (
                                 <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center',borderRadius:'30px',width:'97%'}}>

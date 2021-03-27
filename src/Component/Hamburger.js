@@ -103,21 +103,20 @@ class Hamburger extends Component {
           <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
           <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
             <div hidden={!this.state.modal1}>
-              <div className="modal-background">
-                <div className="modal-tri" style={{paddingTop:'1%'}}>
-                  <Arrow />
-                  {this.props.notificationList.map((item) => {
-                    return (
-                      <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                          <p className='txtPdInOD' style={{}}>{item.notificationHead}</p>
-                        </div>
-                      </scroll>
-                    );
-                  })}
-                </div>
 
+              <div className="modal-tri" style={{ paddingTop: '1%' }}>
+                <Arrow />
+                {this.props.notificationList.map((item) => {
+                  return (
+                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <p className='txtPdInOD' style={{}}>{item.notificationHead}</p>
+                      </div>
+                    </scroll>
+                  );
+                })}
               </div>
+
             </div>
           </div>
           <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')} /></span>

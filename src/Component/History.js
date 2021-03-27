@@ -109,6 +109,7 @@ class History extends Component {
                       <FontData>{item.info.reNum}</FontData>
                       <FontData>{item.info.date}</FontData>
                       <FontData>{item.info.contactName}</FontData>
+                      <FontData></FontData>
                       <FontData>{item.info.telCon}</FontData>
                     </div>
                   </Paper>

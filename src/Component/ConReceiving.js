@@ -69,7 +69,6 @@ class ConReceiving extends Component {
                         <Font2>Tel.</Font2>
                     </div>
                 </Paper>
-
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
                 <div style={{ paddingTop: 150 }}>
                     {this.props.billList.map((item) => {

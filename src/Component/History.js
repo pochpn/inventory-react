@@ -40,32 +40,41 @@ class History extends Component {
     console.log(this.state.Startdate.getDate() + '/' + (this.state.Startdate.getMonth() + 1) + '/' + this.state.Startdate.getFullYear())
   }
 
+  onCheck = (item) => {
+    history.push({
+      pathname: '/history/billOHis',
+      state: {
+        bill: item,
+      },
+    })
+  }
+
   render() {
     return (
       <div className="bg">
         <Paper className="paperSearchMB" style={{ display: 'flex', justifyContent: 'center' }} >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Types</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Types</a1>
             <input type="text" style={{ width: 160, fontSize: 18, borderWidth: 0 }} ></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Receipt ID</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Receipt ID</a1>
             <input type="text" style={{ width: 200, fontSize: 18, borderWidth: 0 }}></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Duration Date</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Duration Date</a1>
             <DatePicker style={{ width: "100%" }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}> - </a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}> - </a1>
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
             <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
           </div>
-            <img
-              style={{ width: "10%", paddingTop: 15}}
-              src={search}
-              onClick={this.onSearch}></img>
+          <img
+            style={{ width: "10%", paddingTop: 15 }}
+            src={search}
+            onClick={this.onSearch}></img>
         </Paper>
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -76,6 +85,18 @@ class History extends Component {
             <Font>OIC</Font>
           </div>
         </Paper>
+        {this.props.billList.map((item) => {
+          if (item.confirm && (item.type === 'PO')) {
+            return (
+              <Paper style={{ display: 'flex', flexDirection: 'row' }} onClick={() => this.onCheck(item)} >
+                <p>{item.info.reNum}|</p>
+                <p>{item.info.date}|</p>
+                <p>{item.info.contactName}|</p>
+                <p>{item.info.telCon}</p>
+              </Paper>
+            )
+          }
+        })}
         <Hamburger page='HISTORY' user={this.state.user} />
       </div>
 
@@ -92,7 +113,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userList: state.userReducer.userList,
-    accountList: state.accountReducer.accountList
+    accountList: state.accountReducer.accountList,
+    billList: state.billReducer.billList,
   };
 };
 

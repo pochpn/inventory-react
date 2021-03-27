@@ -20,7 +20,8 @@ class billPick extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             notificationHead: 'ยืนยันคำร้องการจ่าย',
-            // info: this.props.location.state.info,
+            info: this.props.location.state.info,
+            order: this.props.location.state.order,
         };
     }
 
@@ -46,7 +47,7 @@ class billPick extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info}/>
+                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} order={this.state.order} />
                     {/* <ReactToPrint content={() => this.componentRef}>
                         <PrintContextConsumer>
                             {({ handlePrint }) => (

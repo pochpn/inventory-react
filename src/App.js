@@ -37,6 +37,7 @@ import BillOrder2 from './Component/BillOrder2'
 import EditShelf from './Component/EditShelf'
 import EditProduct from './Component/EditProduct'
 import BillPick from './Component/BillPick'
+import BillOHis from './Component/BillOHis'
 
 class App extends Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class App extends Component {
             <Route exact path="/memberManage/addMember" component={AddMember} />
             <Route exact path="/memberManage/editMember" component={EditMember} />
             <Route exact path="/history" component={History} />
+            <Route exact path="/history/billOHis" component={BillOHis} />
             <Route exact path="/confirmShipping" component={ConfirmShipping} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/orderConfirm/receiving" component={ConReceiving} />

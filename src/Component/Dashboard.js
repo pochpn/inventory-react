@@ -72,16 +72,34 @@ class Dashboard extends Component {
 
   barData = [
     {
-      name: '1', value: 4.2,
+      name: 'Jan', value: 4.2,
     },
     {
-      name: '2', value: 4.5,
+      name: 'Feb', value: 4.5,
     },
     {
-      name: '3', value: 5.1,
+      name: 'Mar', value: 5.1,
     },
     {
-      name: '4', value: 6.3,
+      name: 'Apr', value: 6.3,
+    },
+    {
+      name: 'May', value: 6.0,
+    },
+    {
+      name: 'Jun', value: 3.3,
+    },
+    {
+      name: 'Jul', value: 4.3,
+    },
+    {
+      name: 'Oct', value: 5.5,
+    },
+    {
+      name: 'Nov', value: 1.1,
+    },
+    {
+      name: 'Dec', value: 4.5,
     },
   ];
 
@@ -267,7 +285,7 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTT" >
           <div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',paddingRight : 50 }}>
               <ComposedChart
                 width={700}
                 height={420}

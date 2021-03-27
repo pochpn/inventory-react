@@ -9,6 +9,8 @@ import { logoTop, logoPump, line } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+import { formatMoney } from '../formatMoney'
+
 class ComponentToPrint2 extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -62,9 +64,9 @@ class ComponentToPrint2 extends React.PureComponent {
                                     <p className='billOproduct1 ' style={{}}>{this.props.bill.order.indexOf(item) + 1}</p>
                                     <p className='billOproduct2 ' style={{}}>{item.productID}</p>
                                     <p className='billOproduct3 ' style={{}}>{item.productName}</p>
-                                    <p className='billOproduct4 ' style={{}}>{item.qty}</p>
-                                    <p className='billOproduct4' style={{}}>{item.costPunit}</p>
-                                    <p className='billOproduct5' style={{}}>{item.qty*item.costPunit}</p>
+                                    <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
+                                    <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
+                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty*item.costPunit)}</p>
 
                                 </div>
                             </scroll>

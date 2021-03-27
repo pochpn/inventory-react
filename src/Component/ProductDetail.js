@@ -8,6 +8,8 @@ import { search, shelf } from '../pic'
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
 
+import { formatMoney } from '../formatMoney'
+
 class ProductDetail extends Component {
     constructor(props) {
         super(props);
@@ -80,9 +82,9 @@ class ProductDetail extends Component {
                                     <p className='txtProShelf' style={{}}>{item.expDate}</p>
                                     <p className='txtProShelf' style={{}}>{item.shelf}</p>
                                     <p className='txtProShelf' style={{}}>{item.level}</p>
-                                    <p className='txtProShelf' style={{}}>{item.costPunit}</p>
-                                    <p className='txtProShelf' style={{}}>{item.qty}</p>
-                                    <p className='txtProShelf' style={{}}>{item.amount}</p>
+                                    <p className='txtProShelf' style={{}}>{formatMoney(item.costPunit)}</p>
+                                    <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
+                                    <p className='txtProShelf' style={{}}>{formatMoney(item.amount)}</p>
                                 </div>
                             );
                         }

@@ -17,6 +17,8 @@ import { addProductProfile } from '../actions/productProfileAction';
 import { addShelf } from '../actions/shelfAction';
 import { addBill } from '../actions/billAction'
 
+import { Error } from '../pic';
+
 const ButtonLogin = styled.button`
   background: #ef3f3e;
   border-radius: 10px;
@@ -25,6 +27,18 @@ const ButtonLogin = styled.button`
   margin: 0 1em;
   padding: 0.5em 3em;
 `
+
+const ButtonOK = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+
 const FontLogin = styled.div`
   && {
     color: #EF3F3E;
@@ -39,10 +53,19 @@ const Font = styled.div`
   }
 `
 
+const FontError = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+    font-weight: semibold;
+  }
+`
+
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modalError: false,
             email: null,
             pass: null,
             account: null,
@@ -50,6 +73,15 @@ class Login extends Component {
             accounts: null,
         };
     }
+
+    handleModalErrorClose = (e) => {
+        this.setState({ modalError: false });
+    };
+
+
+    handleModalErrorOpen = () => {
+        this.setState({ modalError: true });
+    };
 
     onLogin = () => {
         firestore.getUser(this.state.email, this.getSuccess, this.getReject)
@@ -132,7 +164,8 @@ class Login extends Component {
 
     getReject = (error) => {
         console.log(error)
-        alert("Email or Password is incorrect")
+        this.handleModalErrorOpen()
+        // alert("Email or Password is incorrect")
     }
 
     addProduct = () => {
@@ -166,7 +199,7 @@ class Login extends Component {
         return (
             <div className="bgLogin">
                 <div style={{ paddingLeft: 1390, paddingTop: 350 }}>
-                    <Paper className="paper" style={{ backgroundColor: 'white', width: 316, height: 398, borderRadius: 20}}>
+                    <Paper className="paper" style={{ backgroundColor: 'white', width: 316, height: 398, borderRadius: 20 }}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <div style={{ paddingLeft: 105 }}>
                                 <FontLogin>Login</FontLogin>
@@ -200,6 +233,23 @@ class Login extends Component {
                             </div>
                         </div>
                     </Paper>
+                </div>
+                <div hidden={!this.state.modalError}>
+                    <div className="modal-background" >
+                        <div className="modal-cardforget">
+                            <div style={{ paddingTop: 20 }}>
+                                <img className="picError" src={Error} />
+                            </div>
+                            <div>
+                                <FontError style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30 }} >
+                                    <p>Email or Password is incorrect.</p>
+                                </FontError>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: 35 }}>
+                                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalErrorClose}>OK</ButtonOK>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

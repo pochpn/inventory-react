@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import styled, { css } from 'styled-components'
 import './Modal.css';
 
+import { formatMoney } from '../formatMoney'
+
 const ButtonAll = styled.button`
   background: #4A71D6;
   border-radius: 10px;
@@ -65,32 +67,6 @@ class Dashboard extends Component {
       this.setState({inventLv : this.state.inventLv += parseInt(item.costPunit)})
     })
   }
-
-  formatMoney = (inum) =>{  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
-    var s_inum=new String(inum);
-    var num2=s_inum.split(".");
-    var n_inum="";  
-    if(num2[0]!=undefined){
-        var l_inum=num2[0].length;  
-        for(let i=0;i<l_inum;i++){  
-            if(parseInt(l_inum-i)%3==0){  
-                if(i==0){  
-                    n_inum+=s_inum.charAt(i);         
-                }else{  
-                    n_inum+=","+s_inum.charAt(i);         
-                }     
-            }else{  
-                n_inum+=s_inum.charAt(i);  
-            }  
-        }  
-    }else{
-        n_inum=inum;
-    }
-    if(num2[1]!=undefined){
-        n_inum+="."+num2[1];
-    }
-    return n_inum;
-}
 
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
 
@@ -209,7 +185,7 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{this.formatMoney(this.state.inventLv.toFixed(2))}</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(this.state.inventLv.toFixed(2))}</p>
             <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
           </div>
         </Paper>

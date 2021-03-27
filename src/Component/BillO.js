@@ -20,7 +20,6 @@ class ComponentToPrint extends React.PureComponent {
     }
 
     render() {
-
         return (
             <Paper className='bill'>
                 <Paper className="blackTopic">

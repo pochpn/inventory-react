@@ -320,7 +320,7 @@ class PickingChart extends Component {
                                         if (item.productID == this.state.item.productID) {
                                             return (
                                                 <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-                                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }}>
+                                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
                                                         <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.expDate}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.level}</p>

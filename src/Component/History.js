@@ -18,6 +18,15 @@ const Font = styled.div`
   }
 `
 
+const FontData = styled.div`
+  && {
+    color: #000000;
+    font-size: 30px;
+    width: 250px;
+    font-weight: lighter;
+  }
+`
+
 class History extends Component {
   constructor(props) {
     super(props);
@@ -86,25 +95,30 @@ class History extends Component {
             <Font>OIC</Font>
           </div>
         </Paper>
-        
-        <scroll>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            {this.props.billList.map((item) => {
-              if (item.confirm && (item.type === 'PO')) {
-                return (
-                  <div className="paperHistory" style={{ display: 'flex', flexDirection: 'row', borderRadius: '30px', width: '97%', backgroundColor: 'black' }} onClick={() => this.onCheck(item)}>
-                    <p className='txtHis' style={{}}>{item.info.reNum}|</p>
-                    <p className='txtHis' style={{}}>{item.info.date}|</p>
-                    <p className='txtHis' style={{}}>{item.info.contactName}|</p>
-                    <p className='txtHis' style={{}}>{item.info.telCon}</p>
-                  </div>
-                )
-              }
-            })}
-          </div>
-        </scroll>
-        
+
+
+        <div style={{ paddingTop: 150 }}>
+          {this.props.billList.map((item) => {
+            if (item.confirm && (item.type === 'PO')) {
+              return (
+                <div style={{ paddingTop: 100 }}>
+                  <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }} onClick={() => this.onCheck(item)}>
+                      <FontData>{item.info.reNum}|</FontData>
+                      <FontData>{item.info.date}|</FontData>
+                      <FontData>{item.info.contactName}|</FontData>
+                      <FontData>{item.info.telCon}</FontData>
+                    </div>
+                  </Paper>
+                </div>
+              )
+            }
+          })}
+        </div>
+
         <Hamburger page='HISTORY' user={this.state.user} />
+
+
       </div>
 
     )

@@ -5,7 +5,7 @@ import './Style.css'
 
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
-import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ComposedChart, Line, CartesianGrid } from 'recharts';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components'
 import './Modal.css';
@@ -50,21 +50,21 @@ class Dashboard extends Component {
       typeA: 0,
       typeB: 0,
       typeC: 0,
-      inventLv : 0,
+      inventLv: 0,
 
     };
 
-    this.props.productList.forEach((item)=>{
-      if(item.type === 'A'){
-        this.setState({typeA: this.state.typeA+=parseInt(item.qty)})
+    this.props.productList.forEach((item) => {
+      if (item.type === 'A') {
+        this.setState({ typeA: this.state.typeA += parseInt(item.qty) })
       }
-      if(item.type === 'B'){
-        this.setState({typeB: this.state.typeB+=parseInt(item.qty)})
+      if (item.type === 'B') {
+        this.setState({ typeB: this.state.typeB += parseInt(item.qty) })
       }
-      if(item.type === 'C'){
-        this.setState({typeC: this.state.typeC+=parseInt(item.qty)})
+      if (item.type === 'C') {
+        this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
-      this.setState({inventLv : this.state.inventLv += parseInt(item.costPunit)})
+      this.setState({ inventLv: this.state.inventLv += parseInt(item.costPunit) })
     })
   }
 
@@ -175,8 +175,8 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     return (
       <div className="bg">
-        
-        
+
+
         <Paper className="paperTI" >
           <div>
             <p className="txtTi">TOP ITEM</p>
@@ -268,17 +268,22 @@ class Dashboard extends Component {
         <Paper className="paperTT" >
           <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <BarChart
-                margin={{ top: 45, right: 30, left: 0, bottom: 0 }}
-                width={750}
-                height={300}
-                data={this.barData}>
-                <Bar dataKey="value" fill="#0088FE" />
+              <ComposedChart
+                width={700}
+                height={420}
+                data={this.barData}
+                margin={{
+                  top: 50, right: 0, bottom: 100, left: 0,
+                }}
+              >
+                <CartesianGrid stroke="#f5f5f5" />
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-              </BarChart>
-
+                <Legend />
+                <Bar dataKey="value" barSize={20} fill="#413ea0" />
+                <Line type="monotone" dataKey="value" stroke="#ff7300" />
+              </ComposedChart>
             </div>
           </div>
         </Paper>

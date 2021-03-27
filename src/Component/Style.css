@@ -3676,11 +3676,10 @@ body, html {
 /*History*/
 
 .paperHistory {
-    position: absolute;
     height: 90px;
     left: 1%;
     border-radius: 12px;
-    width: 98%;
+    width: 99%;
     background: rgba(245, 245, 245, 0.4)!important;
 }
 
@@ -3701,11 +3700,10 @@ body, html {
 /* Recieving Order */
 
 .paperRcvOd {
-    position: absolute;
     height: 90px;
     left: 1%;
     border-radius: 12px;
-    width: 98%;
+    width: 99%;
     background: rgba(255, 255, 255, 0.4)!important;
 }
 

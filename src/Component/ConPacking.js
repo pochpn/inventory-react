@@ -58,7 +58,7 @@ class ConPacking extends Component {
         <Hamburger page='PACKING ORDER' user={this.state.user} />
         <div style={{ paddingTop: 150 }}>
           {this.props.billList.map((item) => {
-            if (item.managerConfirm && !item.confirm) {
+            if (item.managerConfirm && !item.confirm && (item.type === 'MR')) {
               return (
                 <div style={{ paddingTop: 100 }}>
                   <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -90,7 +90,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     userList: state.userReducer.userList,
-    accountList: state.accountReducer.accountList
+    accountList: state.accountReducer.accountList,
+    billList: state.billReducer.billList,
   };
 };
 

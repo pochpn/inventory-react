@@ -13,6 +13,8 @@ import { addPickOrder, deletePickOrder, clearPickOrder } from '../actions/pickOr
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { formatMoney } from '../formatMoney'
+
 const Font = styled.div`
   && {
     color: #000000;
@@ -75,12 +77,11 @@ class PickingChart extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             item: {},
-            expDate: '',
-            level: '',
-            costPunit: '',
             qty: '',
             notificationHead: 'ยืนยันคำร้องการจ่าย',
-            date: new Date(),
+            modal: false,
+            modal1: false,
+            product: {},
         };
     }
 
@@ -90,7 +91,7 @@ class PickingChart extends Component {
             return;
         }
         this.setState({
-            modal: !this.state.modal,
+            modal: false,
         });
     };
 
@@ -100,19 +101,15 @@ class PickingChart extends Component {
             return;
         }
         this.setState({
-            modal1: !this.state.modal1,
+            modal1: false,
         });
     };
 
     handleModalCloseAdd = (e) => {
-        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
-            const product = this.state.item
-            product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
-            product.level = this.state.level
-            product.costPunit = this.state.costPunit
+        if (this.state.qty != (null && '')) {
+            const product = this.state.product
             product.qty = this.state.qty
-            product.recvDate = this.state.info.date
-            product.amount = (this.state.costPunit * this.state.qty).toString()
+            product.amount = (this.state.product.costPunit * this.state.qty).toString()
             console.log(product)
             this.props.addPickOrder(product)
 
@@ -121,12 +118,9 @@ class PickingChart extends Component {
                 return;
             }
             this.setState({
-                modal1: !this.state.modal1,
-                expDate: '',
-                level: '',
-                costPunit: '',
+                modal1: false,
+                modal: false,
                 qty: '',
-                date: new Date(),
             });
         }
     };
@@ -137,8 +131,12 @@ class PickingChart extends Component {
 
     onAdd = (item) => {
         this.setState({ item: item })
-        console.log(this.props.pickOrderList)
         this.handleModalOpen()
+    }
+
+    onAddTrue = (item) => {
+        this.setState({ product: item })
+        this.handleModalOpen1()
     }
 
     onDelete = (id) => {
@@ -146,38 +144,14 @@ class PickingChart extends Component {
     }
 
     handleModalOpen = () => {
-        this.setState({ modal: !this.state.modal });
+        this.setState({
+            modal: true,
+        });
     };
 
     handleModalOpen1 = () => {
-        this.setState({ modal1: !this.state.modal1 });
+        this.setState({ modal1: true });
     };
-
-    formatMoney = (inum) => {  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
-        var s_inum = new String(inum);
-        var num2 = s_inum.split(".");
-        var n_inum = "";
-        if (num2[0] != undefined) {
-            var l_inum = num2[0].length;
-            for (let i = 0; i < l_inum; i++) {
-                if (parseInt(l_inum - i) % 3 == 0) {
-                    if (i == 0) {
-                        n_inum += s_inum.charAt(i);
-                    } else {
-                        n_inum += "," + s_inum.charAt(i);
-                    }
-                } else {
-                    n_inum += s_inum.charAt(i);
-                }
-            }
-        } else {
-            n_inum = inum;
-        }
-        if (num2[1] != undefined) {
-            n_inum += "." + num2[1];
-        }
-        return n_inum;
-    }
 
     render() {
         return (
@@ -255,9 +229,9 @@ class PickingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
-                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{this.formatMoney(item.costPunit)}</p>
-                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{this.formatMoney(item.qty)}</p>
-                                            <p className='txtPdInSl ' style={{}}>{this.formatMoney(item.amount)}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
+                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
+                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
                                             <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
@@ -301,7 +275,7 @@ class PickingChart extends Component {
                                     <p className='txtTopPicChart' style={{}}>Type</p>
                                     <p className='txtTopPicChart2' style={{}}>QTY</p>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center',width:'100%' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                                     <div className='txtTopPicChartDetail'>
                                         <img src={this.state.pic} style={{ width: '80px', height: '80px' }}></img>
                                     </div>
@@ -330,18 +304,21 @@ class PickingChart extends Component {
                             <Paper className='TBPickModal'
                                 style={{ display: 'flex', flexDirection: 'row', width: '100%', borderRadius: '15px' }}>
                                 <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-
-
-                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }}>
-                                        <p className='txtTBModal2' style={{}}>20/20/2543</p>
-                                        <p className='txtTBModal2' style={{}}>20/20/2543</p>
-                                        <p className='txtTBModal2' style={{}}>S1-04</p>
-                                        <p className='txtTBModal2' style={{}}>6</p>
-                                        <p className='txtTBModal2' style={{}}>55555</p>
-                                        <p className='txtTBModal2' style={{}}>6</p>
-                                        <p className='txtTBModal2' style={{}}>5656565</p>
-                                    </div>
-
+                                    {this.props.productList.map((item) => {
+                                        if (item.productID == this.state.item.productID) {
+                                            return (
+                                                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }} onClick={() => this.onAddTrue(item)}>
+                                                    <p className='txtProShelf' style={{}}>{item.recvDate}</p>
+                                                    <p className='txtProShelf' style={{}}>{item.expDate}</p>
+                                                    <p className='txtProShelf' style={{}}>{item.shelf}</p>
+                                                    <p className='txtProShelf' style={{}}>{item.level}</p>
+                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.costPunit)}</p>
+                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
+                                                    <p className='txtProShelf' style={{}}>{formatMoney(item.amount)}</p>
+                                                </div>
+                                            );
+                                        }
+                                    })}
                                 </scroll>
 
                             </Paper>
@@ -349,7 +326,6 @@ class PickingChart extends Component {
 
                             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5%', marginBottom: '0.5%' }}>
                                 <ButtonCancel1 style={{ fontSize: 25, width: 150, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
-                                <ButtonAdd style={{ fontSize: 25, width: 150, height: 50, textAlign: 'center' }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd>
                             </div>
 
                         </div>
@@ -368,11 +344,11 @@ class PickingChart extends Component {
                                 <Font>QTY</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font>{this.state.item.productID}</Font>
-                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                                <Font>{this.state.item.shelf}</Font>
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <Font>{this.state.product.productID}</Font>
+                                <Font>{this.state.product.expDate}</Font>
+                                <Font>{this.state.product.shelf}</Font>
+                                <Font>{this.state.product.level}</Font>
+                                <Font>{this.state.product.costPunit}</Font>
                                 <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
@@ -404,6 +380,7 @@ const mapStateToProps = (state) => {
         userList: state.userReducer.userList,
         productProfileList: state.productProfileReducer.productProfileList,
         pickOrderList: state.pickOrderReducer.pickOrderList,
+        productList: state.productReducer.productList,
     };
 };
 

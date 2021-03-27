@@ -54,17 +54,17 @@ class Ordering extends Component {
             }
             let hour = date.getHours().toString()
             if (date.getHours().toString().length === 1) {
-                day = '0' + date.getHours().toString()
+                hour = '0' + date.getHours().toString()
             }
             let min = date.getMinutes().toString()
             if (date.getMinutes().toString().length === 1) {
-                day = '0' + date.getMinutes().toString()
+                min = '0' + date.getMinutes().toString()
             }
             let sec = date.getSeconds().toString()
             if (date.getSeconds().toString().length === 1) {
-                day = '0' + date.getSeconds().toString()
+                console.log('wi')
+                sec = '0' + date.getSeconds().toString()
             }
-
             const info = {
                 supplier: this.state.supplier,
                 address: this.state.address,

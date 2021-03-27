@@ -82,6 +82,7 @@ class PickingChart extends Component {
             modal: false,
             modal1: false,
             product: {},
+            info: this.props.location.state.info,
         };
     }
 
@@ -152,6 +153,16 @@ class PickingChart extends Component {
     handleModalOpen1 = () => {
         this.setState({ modal1: true });
     };
+
+    onNext = () => {
+        history.push({
+            pathname: '/picking/pickingChart/billPick',
+            state: {
+                info: this.state.info,
+                order: this.props.pickOrderList,
+            },
+        })
+    }
 
     render() {
         return (
@@ -256,7 +267,7 @@ class PickingChart extends Component {
                             </ButtonClear>
                         </div>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking/pickingChart/billPick')}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
                                 Next
                             </ButtonNext>
                         </div>

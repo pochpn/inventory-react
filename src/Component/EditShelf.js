@@ -122,13 +122,6 @@ class ViewStock extends Component {
     handleModalQuesClose = (e) => {
         this.setState({
             modalQues: false,
-            shelfSelect: {},
-            shelfID: '',
-            level: '',
-            width: '',
-            length: '',
-            height: '',
-            maxWeight: '',
         });
     };
 
@@ -215,7 +208,8 @@ class ViewStock extends Component {
 
 
     handleModalEditOpen = () => {
-        this.setState({ modalEdit: !this.state.modalEdit });
+        console.log(this.state.shelfID)
+        this.setState({ modalEdit: true });
     };
     ////////////////////////////////////////////////////////
 

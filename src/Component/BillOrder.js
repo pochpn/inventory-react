@@ -31,7 +31,6 @@ class billOrder extends Component {
 
     success = (doc) => {
         console.log(doc.id)
-        history.push('/home')
     }
 
     reject = (error) => {
@@ -76,7 +75,7 @@ class billOrder extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} order={this.state.order} />
+                    <ComponentToPrint info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>

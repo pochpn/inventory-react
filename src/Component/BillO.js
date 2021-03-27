@@ -67,7 +67,6 @@ class ComponentToPrint extends React.PureComponent {
                                     <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
                                     <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
                                     <p className='billOproduct5' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
-
                                 </div>
                             </scroll>
 

@@ -76,6 +76,7 @@ class History extends Component {
             src={search}
             onClick={this.onSearch}></img>
         </Paper>
+
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <Font>No.</Font>
@@ -85,18 +86,24 @@ class History extends Component {
             <Font>OIC</Font>
           </div>
         </Paper>
-        {this.props.billList.map((item) => {
-          if (item.confirm && (item.type === 'PO')) {
-            return (
-              <Paper style={{ display: 'flex', flexDirection: 'row' }} onClick={() => this.onCheck(item)} >
-                <p>{item.info.reNum}|</p>
-                <p>{item.info.date}|</p>
-                <p>{item.info.contactName}|</p>
-                <p>{item.info.telCon}</p>
-              </Paper>
-            )
-          }
-        })}
+        
+        <scroll>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            {this.props.billList.map((item) => {
+              if (item.confirm && (item.type === 'PO')) {
+                return (
+                  <div className="paperHistory" style={{ display: 'flex', flexDirection: 'row', borderRadius: '30px', width: '97%', backgroundColor: 'black' }} onClick={() => this.onCheck(item)}>
+                    <p className='txtHis' style={{}}>{item.info.reNum}|</p>
+                    <p className='txtHis' style={{}}>{item.info.date}|</p>
+                    <p className='txtHis' style={{}}>{item.info.contactName}|</p>
+                    <p className='txtHis' style={{}}>{item.info.telCon}</p>
+                  </div>
+                )
+              }
+            })}
+          </div>
+        </scroll>
+        
         <Hamburger page='HISTORY' user={this.state.user} />
       </div>
 

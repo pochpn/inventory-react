@@ -45,19 +45,19 @@ class History extends Component {
       <div className="bg">
         <Paper className="paperSearchMB" style={{ display: 'flex', justifyContent: 'center' }} >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Types</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Types</a1>
             <input type="text" style={{ width: 160, fontSize: 18, borderWidth: 0 }} ></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Receipt ID</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Receipt ID</a1>
             <input type="text" style={{ width: 200, fontSize: 18, borderWidth: 0 }}></input>
           </div>
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Duration Date</a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Duration Date</a1>
             <DatePicker style={{ width: "100%" }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
-            <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}> - </a1>
+            <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}> - </a1>
           </div>
           <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
             <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />

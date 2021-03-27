@@ -36,24 +36,25 @@ class ShippingConfirm extends Component {
     render() {
         return (
             <div className="bg">
-                <Paper className='conShipTop'>
-                    <p className='txtShipTop1'>MR No.</p>
-                    <p className='txtShipTop2'>Duration Date</p>
-                    <img img className="imschShip" src={search} />
-                    <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 80 }}>
-                        <div style={{ paddingLeft: 150 }}>
-                            <input type='text' style={{ fontSize: 16 }} />
-                        </div>
-                        <div style={{ paddingLeft: 70}}>
-                            <DatePicker style={{ width: 300 }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
-                        </div>
-                        <div style={{ paddingLeft: 10, paddingRight: 10 }}>
-                            <p style={{ fontSize: 20 }}>-</p>
-                        </div>
-                        <div>
-                            <DatePicker style={{ width: 300 }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
-                        </div>
+                <Paper className='conShipTop' style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
+                        <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>MR No.</a1>
+                        <input type="text" style={{ width: 200, fontSize: 18, borderWidth: 0 }}></input>
                     </div>
+                    <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
+                        <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Duration Date</a1>
+                        <DatePicker style={{ width: "100%" }} selected={this.state.Startdate} onChange={this.onChangeStart} dateFormat='dd/MM/yyy' />
+                    </div>
+                    <div style={{ paddingLeft: 30, paddingTop: 30, display: 'flex', flexDirection: 'column' }}>
+                        <a1 style={{ fontSize: 26, fontWeight: 'lighter', paddingTop: 10 }}> - </a1>
+                    </div>
+                    <div style={{ paddingLeft: 30, paddingTop: 37, display: 'flex', flexDirection: 'column' }}>
+                        <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
+                    </div>
+                    <img
+                        style={{ width: "10%", paddingTop: 15 }}
+                        src={search}
+                        onClick={this.onSearch}></img>
                 </Paper>
                 <Paper className='StatusShip'>
                     <div style={{ display: 'flex', flexDirection: 'row', }}>

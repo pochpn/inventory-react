@@ -62,9 +62,11 @@ const ButtonNext = styled.button`
 
 const ButtonAdd = styled.button`
   background: #000000;
-  border-radius: 100px;
   border: 2px;
+  border-radius: 10px;
   color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
 `
 
 class PickingChart extends Component {
@@ -151,28 +153,28 @@ class PickingChart extends Component {
         this.setState({ modal1: !this.state.modal1 });
     };
 
-    formatMoney = (inum) =>{  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
-        var s_inum=new String(inum);
-        var num2=s_inum.split(".");
-        var n_inum="";  
-        if(num2[0]!=undefined){
-            var l_inum=num2[0].length;  
-            for(let i=0;i<l_inum;i++){  
-                if(parseInt(l_inum-i)%3==0){  
-                    if(i==0){  
-                        n_inum+=s_inum.charAt(i);         
-                    }else{  
-                        n_inum+=","+s_inum.charAt(i);         
-                    }     
-                }else{  
-                    n_inum+=s_inum.charAt(i);  
-                }  
-            }  
-        }else{
-            n_inum=inum;
+    formatMoney = (inum) => {  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
+        var s_inum = new String(inum);
+        var num2 = s_inum.split(".");
+        var n_inum = "";
+        if (num2[0] != undefined) {
+            var l_inum = num2[0].length;
+            for (let i = 0; i < l_inum; i++) {
+                if (parseInt(l_inum - i) % 3 == 0) {
+                    if (i == 0) {
+                        n_inum += s_inum.charAt(i);
+                    } else {
+                        n_inum += "," + s_inum.charAt(i);
+                    }
+                } else {
+                    n_inum += s_inum.charAt(i);
+                }
+            }
+        } else {
+            n_inum = inum;
         }
-        if(num2[1]!=undefined){
-            n_inum+="."+num2[1];
+        if (num2[1] != undefined) {
+            n_inum += "." + num2[1];
         }
         return n_inum;
     }
@@ -290,41 +292,66 @@ class PickingChart extends Component {
 
                 <div hidden={!this.state.modal}>
                     <div className="modal-background">
-                        <div className="modal-PickingChart">
-                            <Paper className="TOPPickModal">
+                        <div className="modal-PickingChart" style={{ borderRadius: '15px' }}>
+                            <Paper className="TOPPickModal" style={{ borderRadius: '15px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', width: '97%', alignContent: 'center', alignItems: 'center', width: '100%' }}>
+                                    <p className='txtTopPicChart' style={{}}>Product Picture</p>
+                                    <p className='txtTopPicChart' style={{}}>Product ID</p>
+                                    <p className='txtTopPicChart' style={{}}>Product Name</p>
+                                    <p className='txtTopPicChart' style={{}}>Type</p>
+                                    <p className='txtTopPicChart2' style={{}}>QTY</p>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center',width:'100%' }}>
+                                    <div className='txtTopPicChartDetail'>
+                                        <img src={this.state.pic} style={{ width: '80px', height: '80px' }}></img>
+                                    </div>
+                                    <p className='txtTopPicChartDetail' style={{}}>1</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>2</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>3</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>4</p>
+
+                                </div>
+                            </Paper>
+
+                            <Paper className="TOPPickModalTB"
+                                style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'center', alignContent: 'center', alignItems: 'center', borderRadius: '15px' }} >
+
+                                <p className='txtTBModal'>Received Date</p>
+                                <p className='txtTBModal'>Exp.</p>
+                                <p className='txtTBModal'>Shelf</p>
+                                <p className='txtTBModal'>Level</p>
+                                <p className='txtTBModal'>Cost/Unit</p>
+                                <p className='txtTBModal'>QTY</p>
+                                <p className='txtTBModal'>Amount</p>
 
                             </Paper>
-                            <div style={{ paddingTop: 10 }}>
-                                <Paper className="TOPPickModalTB" >
-                                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'center',paddingLeft:50 }}>
-                                        <p className='txtTBModal'>Received Date</p>
-                                        <p className='txtTBModal'>Exp.</p>
-                                        <p className='txtTBModal'>Shelf</p>
-                                        <p className='txtTBModal'>Level</p>
-                                        <p className='txtTBModal'>Cost/Unit</p>
-                                        <p className='txtTBModal'>QTY</p>
-                                        <p className='txtTBModal'>Amount</p>
-                                    </div>
-                                </Paper>
-                            </div>
-                            <div style={{ paddingTop: 10 }}>
-                                    <Paper className='TBPickModal'>
-                                        <scroll>
-                                        <p style={{fontSize:20}}>Mig</p>
-                                        <p style={{fontSize:20}}>Mig</p>
-                                        <p style={{fontSize:20}}>Mig</p>
-                                        <p style={{fontSize:20}}>Mig</p>
-                                        <p style={{fontSize:20}} onClick={this.handleModalOpen1} >Mig</p>
-                                        </scroll>
-                                        
-                                    </Paper>
 
+
+                            <Paper className='TBPickModal'
+                                style={{ display: 'flex', flexDirection: 'row', width: '100%', borderRadius: '15px' }}>
+                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+
+
+                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }}>
+                                        <p className='txtTBModal2' style={{}}>20/20/2543</p>
+                                        <p className='txtTBModal2' style={{}}>20/20/2543</p>
+                                        <p className='txtTBModal2' style={{}}>S1-04</p>
+                                        <p className='txtTBModal2' style={{}}>6</p>
+                                        <p className='txtTBModal2' style={{}}>55555</p>
+                                        <p className='txtTBModal2' style={{}}>6</p>
+                                        <p className='txtTBModal2' style={{}}>5656565</p>
+                                    </div>
+
+                                </scroll>
+
+                            </Paper>
+
+
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5%', marginBottom: '0.5%' }}>
+                                <ButtonCancel1 style={{ fontSize: 25, width: 150, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
+                                <ButtonAdd style={{ fontSize: 25, width: 150, height: 50, textAlign: 'center' }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center',}}>
-                                <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
-                                <ButtonAdd style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd>
-                            </div>
-                            
+
                         </div>
                     </div>
                 </div>

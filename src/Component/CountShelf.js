@@ -48,11 +48,11 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>Counting</p>
                 </div>
                 <scroll>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                         {this.props.productList.map((item) => {
                             if (item.shelf === this.state.shelf) {
                                 return (
-                                    <div className="paperCountShelfProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
+                                    <div  style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
                                         <div className='txtCountShelf'>
                                             <img src={item.pic} style={{ width: '100px', height: '100px' }}></img>
                                         </div>

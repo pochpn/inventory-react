@@ -9,7 +9,16 @@ import { logoTop, logoPump, line } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+import { formatMoney } from '../formatMoney'
+
 class ComponentToPrint extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            total: 0,
+        };
+    }
+
     render() {
         return (
             <Paper className='bill'>
@@ -27,37 +36,35 @@ class ComponentToPrint extends React.PureComponent {
                     <p className="txtsubtp2">ที่อยู่</p>
                     <p className="txtsubtp3">เบอร์ติดต่อ</p>
 
-                    <p className="txtPdataL1">Mig</p>
-                    <p className="txtPdataL2">Na</p>
-                    <p className="txtPdataL3">Ei</p>
+                    <p className="txtPdataL1">{this.props.info.customerName}</p>
+                    <p className="txtPdataL2">{this.props.info.address}</p>
+                    <p className="txtPdataL3">{this.props.info.telCus}</p>
                 </Paper>
                 <Paper className="borRight">
                     <p className="txtTopicR1">Date</p>
                     <p className="colonPDate">:</p>
                     <p className="txtTopicR2">Requseted Name :</p>
-                    <p className="txtTopicR3">Department</p>
+                    <p className="txtTopicR3">Tel.</p>
                     <p className="colonPDepart">:</p>
                     <p className="txtsubtp4">วันที่เบิกสินค้า</p>
                     <p className="txtsubtp5">ผู้เบิกสินค้า</p>
-                    <p className="txtsubtp6">แผนก</p>
+                    <p className="txtsubtp6">เบอร์ติดต่อ</p>
 
-                    <p className="txtPdataR1">Mai</p>
-                    <p className="txtPdataR2">Tum</p>
-                    <p className="txtPdataR3">Laew</p>
+                    <p className="txtPdataR1">{this.props.info.date}</p>
+                    <p className="txtPdataR2">{this.props.info.reqName}</p>
+                    <p className="txtPdataR3">{this.props.info.telReq}</p>
                 </Paper>
-                <Paper className="dataBill">
+                <Paper className="dataBill2">
                     {this.props.pickOrderList.map((item) => {
                         return (
-                            <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
-                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                    <p className='txtPdInSl ' style={{}}>{item.productID}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
-                                    <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
-                                    <p className='txtPdInSl ' style={{}}>{item.amount}</p>
-                                    <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                            <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>
+                                    <p className='billOproduct1 ' style={{}}>{this.props.order.indexOf(item) + 1}</p>
+                                    <p className='billOproduct2 ' style={{}}>{item.productID}</p>
+                                    <p className='billOproduct3 ' style={{}}>{item.productName}</p>
+                                    <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
+                                    <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
+                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                 </div>
                             </scroll>
                         );
@@ -66,11 +73,13 @@ class ComponentToPrint extends React.PureComponent {
                 <Paper className="topBill">
 
                 </Paper>
-                <Paper className="noteBill">
+                <Paper className="totalBox">
+                    <p className="txtTotaldata">{formatMoney(this.state.total)}</p>
 
                 </Paper>
+                
                 <img img className="imLogo" src={logoTop} />
-                <img img className="imPump" src={logoPump} />
+                <img img className="imPump2" src={logoPump} />
                 <p className="txtB1">บริษัท คลังชนะ จำกัด มหาชน</p>
                 <p className="txtB2">126 หมู่ 8 ตำบลทุ่งสุขลา อำเภอศรีราชา</p>
                 <p className="txtB3">จังหวัดชลบุรี 20230</p>
@@ -80,12 +89,13 @@ class ComponentToPrint extends React.PureComponent {
                 <p className="txtPTB4">Shelf</p>
                 <p className="txtPTB5">Level</p>
                 <p className="txtPTB6">QTY(ea)</p>
-                <p className="txtNote">Note</p>
-                <img img className="line0" src={line} />
-                <img img className="line1" src={line} />
-                <img img className="line2" src={line} />
-                <img img className="line3" src={line} />
-                <img img className="line4" src={line} />
+                <img img className="linee0" src={line} />
+                <img img className="linee1" src={line} />
+                <img img className="linee2" src={line} />
+                <img img className="linee3" src={line} />
+                <img img className="linee4" src={line} />
+                <p className="txtTotal">Total</p>
+                <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
                 
             </Paper>
         );

@@ -152,7 +152,6 @@ class MemberManage extends Component {
                                 </Paper>
                             </div>
                         );
-
                     })}
                 </div>
             </div>

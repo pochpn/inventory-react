@@ -3683,11 +3683,9 @@ body, html {
 
 /*History*/
 .paperHistory {
-    position: absolute;
     height: 90px;
-    left:1%;
     border-radius: 12px;
-    width: 98%;
+    width: 99%;
     background: rgba(245, 245, 245, 0.4)!important;
 }
 

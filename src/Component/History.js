@@ -21,7 +21,7 @@ const Font = styled.div`
 const FontData = styled.div`
   && {
     color: #000000;
-    font-size: 30px;
+    font-size: 26px;
     width: 250px;
     font-weight: lighter;
   }
@@ -61,6 +61,7 @@ class History extends Component {
   render() {
     return (
       <div className="bg">
+      
         <Paper className="paperSearchMB" style={{ display: 'flex', justifyContent: 'center' }} >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Types</a1>
@@ -85,6 +86,7 @@ class History extends Component {
             src={search}
             onClick={this.onSearch}></img>
         </Paper>
+        
 
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -96,17 +98,17 @@ class History extends Component {
           </div>
         </Paper>
 
-
-        <div style={{ paddingTop: 150 }}>
+        <Hamburger page='HISTORY' user={this.state.user} />
+        <div style={{ paddingTop: 290, paddingLeft: "1%" }}>
           {this.props.billList.map((item) => {
             if (item.confirm && (item.type === 'PO')) {
               return (
-                <div style={{ paddingTop: 100 }}>
+                <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }} onClick={() => this.onCheck(item)}>
-                      <FontData>{item.info.reNum}|</FontData>
-                      <FontData>{item.info.date}|</FontData>
-                      <FontData>{item.info.contactName}|</FontData>
+                      <FontData>{item.info.reNum}</FontData>
+                      <FontData>{item.info.date}</FontData>
+                      <FontData>{item.info.contactName}</FontData>
                       <FontData>{item.info.telCon}</FontData>
                     </div>
                   </Paper>
@@ -115,10 +117,7 @@ class History extends Component {
             }
           })}
         </div>
-
-        <Hamburger page='HISTORY' user={this.state.user} />
-
-
+        
       </div>
 
     )

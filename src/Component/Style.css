@@ -1684,9 +1684,8 @@ body, html {
 
 .OrConTopic {
     position: absolute;
-    width: 1920px;
+    width: 100%;
     height: 150px;
-    left: 0px;
     top: 56px;
     background: rgba(255, 255, 255, 0.4)!important;
 }
@@ -1723,9 +1722,9 @@ body, html {
 
 .OrConTable {
     position: absolute;
-    width: 1888px;
+    width: 98%;
+    left:1%;
     height: 74px;
-    left: 16px;
     top: 217px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
@@ -3682,3 +3681,16 @@ body, html {
     color: 'black';
 }
 /*End PickChat*/
+
+/* Recieving Order */
+
+.paperRcvOd {
+    position: absolute;
+    height: 90px;
+    left:1%;
+    border-radius: 12px;
+    width: 98%;
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
+/* End Recieving Order */

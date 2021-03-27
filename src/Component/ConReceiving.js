@@ -9,6 +9,32 @@ import { returnor, recvOr, packor } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 36px;
+    width: 250px;
+    font-weight: lighter;
+  }
+`
+
+const Font2 = styled.div`
+  && {
+    color: #000000;
+    font-size: 36px;
+    font-weight: bold;
+  }
+`
+
+const Font3 = styled.div`
+  && {
+    color: #000000;
+    font-size: 48px;
+    font-weight: bold;
+  }
+`
+
+
 class ConReceiving extends Component {
     constructor(props) {
         super(props);
@@ -29,29 +55,42 @@ class ConReceiving extends Component {
     render() {
         return (
             <div className="bg">
-                <Paper className='OrConTopic'>
-                    <p className="txtRecvTopic">Receiving Order</p>
+                <Paper className='OrConTopic' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                        <Font3>Receiving Order</Font3>
+                    </div>
                 </Paper>
-                <Paper className='OrConTable'>
-                    <p className="txtOrConTable1">PO No.</p>
-                    <p className="txtOrConTable2">Date</p>
-                    <p className="txtOrConTable3">Contact Name</p>
-                    <p className="txtOrConTable4">Tel.</p>
-                </Paper>
-                {this.props.billList.map((item) => {
-                    if (item.managerConfirm && !item.confirm) {
-                        return (
-                            <Paper style={{ display: 'flex', flexDirection: 'row' }} onClick={() => this.onCheck(item)} >
-                                <p>{item.info.reNum}|</p>
-                                <p>{item.info.date}|</p>
-                                <p>{item.info.contactName}|</p>
-                                <p>{item.info.telCon}</p>
-                            </Paper>)
-                    }
 
-                })}
+                <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                        <Font2>PO No.</Font2>
+                        <Font2>Date</Font2>
+                        <Font2>Contact Name</Font2>
+                        <Font2>Tel.</Font2>
+                    </div>
+                </Paper>
+
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
+                <div style={{ paddingTop: 150 }}>
+                    {this.props.billList.map((item) => {
+                        if (item.managerConfirm && !item.confirm) {
 
+                            return (
+                                <div style={{paddingTop: 100}}>
+                                    <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                            <Font>{item.info.reNum}</Font>
+                                            <Font>{item.info.date}</Font>
+                                            <Font>{item.info.contactName}</Font>
+                                            <Font>{item.info.telCon}</Font>
+                                        </div>
+                                    </Paper>
+                                </div>
+
+                            );
+                        }
+                    })}
+                </div>
             </div>
 
         )

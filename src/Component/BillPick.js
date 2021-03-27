@@ -12,7 +12,8 @@ import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
 import ComponentToPrint from './BillP.js';
-
+import { clearPickOrder } from '../actions/pickOrderAction'
+import { addBill } from '../actions/billAction'
 
 class billPick extends Component {
     constructor(props) {
@@ -27,11 +28,26 @@ class billPick extends Component {
 
     success = (doc) => {
         console.log(doc.id)
-        history.push('/home')
     }
 
     reject = (error) => {
         console.log(error)
+    }
+
+    addBillSuccess = (doc) => {
+        console.log(doc.id)
+        let bill = {
+            info: this.state.info,
+            order: this.state.order,
+            managerConfirm: true,
+            confirm: false,
+            readStatus: false,
+            id: doc.id,
+            type: 'MR',
+        }
+        this.props.addBill(bill)
+        this.props.clearPickOrder()
+        history.push('/home')
     }
 
     onSend = async () => {
@@ -40,6 +56,15 @@ class billPick extends Component {
         }
         await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)
+        const bill = {
+            info: this.state.info,
+            order: this.state.order,
+            managerConfirm: true,
+            confirm: false,
+            readStatus: false,
+            type: 'MR',
+        }
+        firestore.addBill(bill, this.addBillSuccess, this.reject)
     }
 
 
@@ -47,24 +72,18 @@ class billPick extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint ref={el => (this.componentRef = el)} info={this.state.info} order={this.state.order} />
-                    {/* <ReactToPrint content={() => this.componentRef}>
-                        <PrintContextConsumer>
-                            {({ handlePrint }) => (
-                                <Paper className="btnSend" onClick={handlePrint}>
-                                    <p className="txtbtnSend">Send</p>
-                                </Paper>
-                            )}
-                        </PrintContextConsumer>
-                    </ReactToPrint> */}
+                    <ComponentToPrint info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => history.push('/ordering')}>
+                    <Paper className="btnCancel" onClick={() => {
+                        this.props.clearPickOrder()
+                        history.push('/home')
+                    }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
                     <Paper className="btnEdit" onClick={() => history.push({
-                        pathname: '/Ordering/orderingChart',
+                        pathname: '/picking/pickingChart',
                         state: { info: this.state.info },
                     })}>
                         <p className="txtbtnEdit">Edit</p>
@@ -80,8 +99,9 @@ class billPick extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
-        addNotification: (notification) => dispatch(addNotification(notification))
+        clearPickOrder: () => dispatch(clearPickOrder()),
+        addNotification: (notification) => dispatch(addNotification(notification)),
+        addBill: (bill) => dispatch(addBill(bill))
     };
 };
 

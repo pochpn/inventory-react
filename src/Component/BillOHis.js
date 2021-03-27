@@ -23,7 +23,7 @@ class BillOHis extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint2 ref={el => (this.componentRef = el)} bill={this.state.bill} />
+                    <ComponentToPrint2 bill={this.state.bill} />
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/history')
                     }}>

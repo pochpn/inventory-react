@@ -9,6 +9,8 @@ import { logoTop, logoPump, line } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+import { formatMoney } from '../formatMoney'
+
 class ComponentToPrint extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -55,16 +57,14 @@ class ComponentToPrint extends React.PureComponent {
                 <Paper className="dataBill">
                     {this.props.pickOrderList.map((item) => {
                         return (
-                            <scroll className="paperSelectPd" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
-                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                    <p className='txtPdInSl ' style={{}}>{item.productID}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
-                                    <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{item.costPunit}</p>
-                                    <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{item.qty}</p>
-                                    <p className='txtPdInSl ' style={{}}>{item.amount}</p>
-                                    <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                            <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>
+                                    <p className='billOproduct1 ' style={{}}>{this.props.order.indexOf(item) + 1}</p>
+                                    <p className='billOproduct2 ' style={{}}>{item.productID}</p>
+                                    <p className='billOproduct3 ' style={{}}>{item.productName}</p>
+                                    <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
+                                    <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
+                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                 </div>
                             </scroll>
                         );

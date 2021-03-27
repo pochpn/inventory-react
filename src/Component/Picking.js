@@ -31,7 +31,53 @@ class Picking extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             date: new Date(),
+            reqName: null,
+            telReq: null,
+            customerName: null,
+            address: null,
+            telCus: null,
         };
+    }
+
+    onNext = () => {
+        if ((this.state.reqName != (null && '')) && (this.state.telReq != (null && '')) && (this.state.customerName != (null && '')) && (this.state.address != (null && '')) && (this.state.telCus != (null && ''))) {
+            let date = this.state.date
+            let year = date.getFullYear().toString().substr(2, 3)
+            let mount = date.getMonth().toString()
+            if (date.getMonth().toString().length === 1) {
+                mount = '0' + date.getMonth().toString()
+            }
+            let day = date.getDate().toString()
+            if (date.getDate().toString().length === 1) {
+                day = '0' + date.getDate().toString()
+            }
+            let hour = date.getHours().toString()
+            if (date.getHours().toString().length === 1) {
+                day = '0' + date.getHours().toString()
+            }
+            let min = date.getMinutes().toString()
+            if (date.getMinutes().toString().length === 1) {
+                day = '0' + date.getMinutes().toString()
+            }
+            let sec = date.getSeconds().toString()
+            if (date.getSeconds().toString().length === 1) {
+                day = '0' + date.getSeconds().toString()
+            }
+
+            const info = {
+                reqName: this.state.reqName,
+                telReq: this.state.telReq,
+                customerName: this.state.customerName,
+                address: this.state.address,
+                telCus: this.state.telCus,
+                date: (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString(),
+                reNum: 'MA' + year + mount + day + hour + min + sec,
+            }
+            history.push({
+                pathname: '/picking/pickingChart',
+                state: { info: info },
+            })
+        }
     }
 
     render() {
@@ -44,24 +90,24 @@ class Picking extends Component {
                             <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                         </div>
                         <div style={{ paddingTop: 110, paddingLeft: 710 }}>
-                            <p className="textPickCT">Contact Name</p>
-                            <input type="text" style={{ fontSize: 24, }} />
+                            <p className="textPickCT">CustomerName</p>
+                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ customerName: txt.target.value })} />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <div style={{ paddingTop: 48, paddingLeft: 400 }}>
                                 <p className="textPickRN">Request Name</p>
-                                <input type="text" style={{ fontSize: 24, }} />
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ reqName: txt.target.value })} />
                             </div>
                             <div style={{ paddingTop: 48, paddingLeft: 400 }}>
                                 <p className="textPickTel">Tel.</p>
-                                <input type="text" style={{ fontSize: 24, }} />
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telReq: txt.target.value })} />
                             </div>
                         </div>
                         <div style={{ paddingTop: 48, paddingLeft: 600 }}>
                             <p className="textPickAdr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, height:179,width:333}} />
+                            <textarea type="text" style={{ fontSize: 24, height: 179, width: 333 }} onChange={txt => this.setState({ address: txt.target.value })} />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -69,7 +115,7 @@ class Picking extends Component {
                             paddingTop: 48, paddingLeft: 1334
                         }}>
                             <p className="textPickCC">Customer Tel.</p>
-                            <input type="text" style={{ fontSize: 24, }} />
+                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCus: txt.target.value })} />
                         </div>
                     </div>
 
@@ -81,9 +127,9 @@ class Picking extends Component {
                                 </ButtonCancel>
                         </div>
                         <div style={{ paddingLeft: 50, paddingTop: 25 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/picking/pickingChart')}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
                                 Next
-                                </ButtonNext>
+                            </ButtonNext>
                         </div>
                     </div>
                 </Paper>

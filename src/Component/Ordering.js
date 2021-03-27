@@ -41,7 +41,7 @@ class Ordering extends Component {
     }
 
     onNext = () => {
-        if ((this.state.supplier != (null && '')) && (this.state.address != (null && '')) && (this.state.telCon != (null && '')) && (this.state.telSup != (null && '')) && (this.state.date != (null && '')) && (this.state.contactName != (null && ''))) {
+        if ((this.state.supplier != (null && '')) && (this.state.address != (null && '')) && (this.state.telCon != (null && '')) && (this.state.telSup != (null && '')) && (this.state.contactName != (null && ''))) {
             let date = this.state.date
             let year = date.getFullYear().toString().substr(2, 3)
             let mount = date.getMonth().toString()
@@ -64,7 +64,6 @@ class Ordering extends Component {
             if (date.getSeconds().toString().length === 1) {
                 day = '0' + date.getSeconds().toString()
             }
-            console.log(year + mount + day + hour + min + sec)
 
             const info = {
                 supplier: this.state.supplier,
@@ -80,7 +79,6 @@ class Ordering extends Component {
                 state: { info: info },
             })
         }
-
     }
 
     render() {

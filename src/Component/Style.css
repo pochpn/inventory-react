@@ -3681,3 +3681,25 @@ body, html {
     color: 'black';
 }
 /*End PickChat*/
+
+/*History*/
+.paperHistory {
+    justify-items: center;
+    align-items: center;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin: 0.5%;
+    background-color: #6E0D0D;
+}
+
+.txtHis {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    width: 20%;
+    margin: 1.5%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+}

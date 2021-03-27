@@ -5,10 +5,12 @@ import './Style.css'
 
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
-import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ComposedChart, Line, CartesianGrid } from 'recharts';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components'
 import './Modal.css';
+
+import { formatMoney } from '../formatMoney'
 
 const ButtonAll = styled.button`
   background: #4A71D6;
@@ -48,64 +50,56 @@ class Dashboard extends Component {
       typeA: 0,
       typeB: 0,
       typeC: 0,
-      inventLv : 0,
+      inventLv: 0,
 
     };
 
-    this.props.productList.forEach((item)=>{
-      if(item.type === 'A'){
-        this.setState({typeA: this.state.typeA+=parseInt(item.qty)})
+    this.props.productList.forEach((item) => {
+      if (item.type === 'A') {
+        this.setState({ typeA: this.state.typeA += parseInt(item.qty) })
       }
-      if(item.type === 'B'){
-        this.setState({typeB: this.state.typeB+=parseInt(item.qty)})
+      if (item.type === 'B') {
+        this.setState({ typeB: this.state.typeB += parseInt(item.qty) })
       }
-      if(item.type === 'C'){
-        this.setState({typeC: this.state.typeC+=parseInt(item.qty)})
+      if (item.type === 'C') {
+        this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
-      this.setState({inventLv : this.state.inventLv += parseInt(item.costPunit)})
+      this.setState({ inventLv: this.state.inventLv += parseInt(item.costPunit) })
     })
   }
-
-  formatMoney = (inum) =>{  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
-    var s_inum=new String(inum);
-    var num2=s_inum.split(".");
-    var n_inum="";  
-    if(num2[0]!=undefined){
-        var l_inum=num2[0].length;  
-        for(let i=0;i<l_inum;i++){  
-            if(parseInt(l_inum-i)%3==0){  
-                if(i==0){  
-                    n_inum+=s_inum.charAt(i);         
-                }else{  
-                    n_inum+=","+s_inum.charAt(i);         
-                }     
-            }else{  
-                n_inum+=s_inum.charAt(i);  
-            }  
-        }  
-    }else{
-        n_inum=inum;
-    }
-    if(num2[1]!=undefined){
-        n_inum+="."+num2[1];
-    }
-    return n_inum;
-}
 
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
 
   barData = [
     {
-      name: '1', value: 4.2,
+      name: 'Jan', value: 4.2,
     },
     {
-      name: '2', value: 4.5,
+      name: 'Feb', value: 4.5,
     },
     {
-      name: '3', value: 5.1,
+      name: 'Mar', value: 5.1,
     },
     {
-      name: '4', value: 6.3,
+      name: 'Apr', value: 6.3,
+    },
+    {
+      name: 'May', value: 6.0,
+    },
+    {
+      name: 'Jun', value: 3.3,
+    },
+    {
+      name: 'Jul', value: 4.3,
+    },
+    {
+      name: 'Oct', value: 5.5,
+    },
+    {
+      name: 'Nov', value: 1.1,
+    },
+    {
+      name: 'Dec', value: 4.5,
     },
   ];
 
@@ -199,8 +193,8 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     return (
       <div className="bg">
-        
-        
+
+
         <Paper className="paperTI" >
           <div>
             <p className="txtTi">TOP ITEM</p>
@@ -209,7 +203,7 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{this.formatMoney(this.state.inventLv.toFixed(2))}</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(this.state.inventLv.toFixed(2))}</p>
             <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
           </div>
         </Paper>
@@ -291,18 +285,23 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTT" >
           <div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <BarChart
-                margin={{ top: 45, right: 30, left: 0, bottom: 0 }}
-                width={750}
-                height={300}
-                data={this.barData}>
-                <Bar dataKey="value" fill="#0088FE" />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center',paddingRight : 50 }}>
+              <ComposedChart
+                width={700}
+                height={420}
+                data={this.barData}
+                margin={{
+                  top: 50, right: 0, bottom: 100, left: 0,
+                }}
+              >
+                <CartesianGrid stroke="#f5f5f5" />
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-              </BarChart>
-
+                <Legend />
+                <Bar dataKey="value" barSize={20} fill="#413ea0" />
+                <Line type="monotone" dataKey="value" stroke="#ff7300" />
+              </ComposedChart>
             </div>
           </div>
         </Paper>

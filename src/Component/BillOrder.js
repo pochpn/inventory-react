@@ -47,6 +47,7 @@ class billOrder extends Component {
             confirm: false,
             readStatus: false,
             id: doc.id,
+            type: 'PO',
         }
         this.props.addBill(bill)
         this.props.clearPickOrder()
@@ -65,6 +66,7 @@ class billOrder extends Component {
             managerConfirm: true,
             confirm: false,
             readStatus: false,
+            type: 'PO',
         }
         firestore.addBill(bill, this.addBillSuccess, this.reject)
     }

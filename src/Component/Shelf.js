@@ -6,7 +6,9 @@ import firestore from '../firebase/firestore'
 import { search, shelf } from '../pic'
 
 import { addAccount, clearAccount } from '../actions/accountAction'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+
+import { formatMoney } from '../formatMoney'
 
 class Shelf extends Component {
     constructor(props) {
@@ -95,7 +97,7 @@ class Shelf extends Component {
                                     <p className='txtProShelf' style={{}}>{item.productID}</p>
                                     <p className='txtProShelf' style={{}}>{item.productName}</p>
                                     <p className='txtProShelf' style={{}}>{item.type}</p>
-                                    <p className='txtProShelf' style={{}}>{item.qty}</p>
+                                    <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
                                     <p className='txtProShelf' style={{}}>{item.unit}</p>
                                 </div>
                             );

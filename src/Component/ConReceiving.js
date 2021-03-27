@@ -39,7 +39,7 @@ class ConReceiving extends Component {
                     <p className="txtOrConTable4">Tel.</p>
                 </Paper>
                 {this.props.billList.map((item) => {
-                    if (item.managerConfirm && !item.confirm) {
+                    if (item.managerConfirm && !item.confirm && (item.type==='PO')) {
                         return (
                             <Paper style={{ display: 'flex', flexDirection: 'row' }} onClick={() => this.onCheck(item)} >
                                 <p>{item.info.reNum}|</p>
@@ -48,7 +48,6 @@ class ConReceiving extends Component {
                                 <p>{item.info.telCon}</p>
                             </Paper>)
                     }
-
                 })}
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
 

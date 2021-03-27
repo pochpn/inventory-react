@@ -19,6 +19,8 @@ import firestore from '../firebase/firestore'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { formatMoney } from '../formatMoney'
+
 const ButtonCancel = styled.button`
   background: #A09797;
   border-radius: 10px;
@@ -89,31 +91,6 @@ class OrderingChart extends Component {
             notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
             date: new Date(),
         };
-    }
-    formatMoney = (inum) =>{  // ฟังก์ชันสำหรับแปลงค่าตัวเลขให้อยู่ในรูปแบบ เงิน
-        var s_inum=new String(inum);
-        var num2=s_inum.split(".");
-        var n_inum="";  
-        if(num2[0]!=undefined){
-            var l_inum=num2[0].length;  
-            for(let i=0;i<l_inum;i++){  
-                if(parseInt(l_inum-i)%3==0){  
-                    if(i==0){  
-                        n_inum+=s_inum.charAt(i);         
-                    }else{  
-                        n_inum+=","+s_inum.charAt(i);         
-                    }     
-                }else{  
-                    n_inum+=s_inum.charAt(i);  
-                }  
-            }  
-        }else{
-            n_inum=inum;
-        }
-        if(num2[1]!=undefined){
-            n_inum+="."+num2[1];
-        }
-        return n_inum;
     }
 
     handleModalClose = (e) => {
@@ -258,9 +235,9 @@ class OrderingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '28px' }}>{item.expDate}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '10px' }}>{item.shelf}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
-                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{this.formatMoney(item.costPunit)}</p>
-                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{this.formatMoney(item.qty)}</p>
-                                            <p className='txtPdInSl ' style={{}}>{this.formatMoney(item.amount)}</p>
+                                            <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
+                                            <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
+                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
                                             <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>

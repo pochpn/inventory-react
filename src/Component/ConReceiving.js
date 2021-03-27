@@ -72,7 +72,7 @@ class ConReceiving extends Component {
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
                 <div style={{ paddingTop: 150 }}>
                     {this.props.billList.map((item) => {
-                        if (item.managerConfirm && !item.confirm) {
+                        if (item.managerConfirm && !item.confirm && (item.type === 'PO')) {
                             return (
                                 <div style={{paddingTop: 100}} onClick={() => this.onCheck(item)}>
                                     <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

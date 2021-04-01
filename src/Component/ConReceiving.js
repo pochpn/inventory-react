@@ -70,11 +70,11 @@ class ConReceiving extends Component {
                     </div>
                 </Paper>
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
-                <div style={{ paddingTop: 150 ,paddingLeft:'1%'}}>
+                <div style={{ paddingTop: 230 ,paddingLeft:'1%'}}>
                     {this.props.billList.map((item) => {
                         if (item.managerConfirm && !item.confirm && (item.type === 'PO')) {
                             return (
-                                <div style={{paddingTop: 100}} onClick={() => this.onCheck(item)}>
+                                <div style={{paddingTop: 20}} onClick={() => this.onCheck(item)}>
                                     <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                             <Font>{item.info.reNum}</Font>

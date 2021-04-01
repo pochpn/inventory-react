@@ -56,11 +56,11 @@ class ConPacking extends Component {
         </Paper>
 
         <Hamburger page='PACKING ORDER' user={this.state.user} />
-        <div style={{ paddingTop: 150 }}>
+        <div style={{ paddingTop: 230,paddingLeft:'1%' }}>
           {this.props.billList.map((item) => {
             if (item.managerConfirm && !item.confirm && (item.type === 'MR')) {
               return (
-                <div style={{ paddingTop: 100 }}>
+                <div style={{ paddingTop: 20 }}>
                   <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <Font>{item.info.reNum}</Font>

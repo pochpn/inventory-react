@@ -45,6 +45,15 @@ body, html {
     background-color: rgba(245, 245, 245, 0.4) !important;
 }
 
+.PLogin {
+    justify-items: center;
+    align-items: center;
+    width: 316px;
+    height: 398px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 20px;
+}
+
 .paperDash {
     position: absolute;
     width: 548px;
@@ -572,13 +581,12 @@ body, html {
 }
 
 .paperOrdering {
-    position: absolute;
+    justify-items: center;
+    align-items: center;
     width: 1886px;
     /*1404*/
     height: 600px;
     /*561*/
-    left: 18px;
-    top: 234px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
 }
@@ -665,18 +673,13 @@ body, html {
 
 /* Text Ordering */
 
-.textOrSup {
-    position: absolute;
-    width: 208px;
-    height: 73px;
-    left: 12.5%;
-    top: 15%;
+.textOr {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 30px;
-    line-height: 73px;
-    /* identical to box height */
+    line-height: 20px;
+    text-align: center;
     color: #6E0D0D;
 }
 
@@ -1624,7 +1627,6 @@ body, html {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: normal;
-
     font-size: 36px;
     line-height: 20px;
     text-align: center;

@@ -81,61 +81,66 @@ class Ordering extends Component {
         }
     }
 
+
     render() {
         return (
             <div className="bg">
-                <Paper className="paperOrdering">
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 110, paddingLeft: 400 }}>
-                            <p className="textOrSup">Supplier</p>
-                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ supplier: txt.target.value })}></input>
-                        </div>
-                        <div style={{ paddingTop: 110, paddingLeft: 600 }}>
-                            <p className="textOrDate">Date</p>
-                            <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 40, paddingLeft: 400 }}>
-                            <p className="textOrAddr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, height: 110, width: 333 }} onChange={txt => this.setState({ address: txt.target.value })}></textarea>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column' }} >
-                            <div style={{ paddingTop: 40, paddingLeft: 600 }}>
-                                <p className="textOrConN">Contact Name</p>
-                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ contactName: txt.target.value })} />
+                <Hamburger page='ORDERING' user={this.state.user} />
+                <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '0.25%', paddingTop: '9%', justifyContent: 'center' }}>
+                    <Paper className="paperOrdering">
+                        <div style={{ display: 'flex', flexDirection: 'row' ,paddingLeft:'7%'}}>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
+                                <p className="textOr" style={{ paddingRight: '5%',paddingTop:'1%' }}>Supplier</p>
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ supplier: txt.target.value })}></input>
                             </div>
-                            <div style={{ paddingTop: 40, paddingLeft: 600 }}>
-                                <p className="textOrTelAd">Tel.</p>
-                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCon: txt.target.value })} />
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
+                                <p className="textOr" style={{ paddingRight: '57%',paddingTop:'1%' }}>Date</p>
+                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                             </div>
                         </div>
+                        <div style={{ display: 'flex', flexDirection: 'row' ,paddingLeft:'7%'}}>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.5%' }}>
+                                <p className="textOr" style={{ paddingRight: '5%' ,paddingTop:'1%'}}>Address</p>
+                                <textarea type="text" style={{ fontSize: 24, height: 110, width: 333 }} onChange={txt => this.setState({ address: txt.target.value })}></textarea>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '3%', paddingLeft: '12.5%' }} >
+                                <div style={{ display: 'flex', flexDirection: 'row', }}>
+                                    <p className="textOr" style={{ paddingRight: '0%',paddingTop:'1%' }}>Contact</p>
+                                    <p className="textOr" style={{ paddingRight: '5%',paddingLeft:'2%' ,paddingTop:'1%' }}>Name</p>
+                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ contactName: txt.target.value })} />
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '7%', }}>
+                                    <p className="textOr" style={{ paddingRight: '35.5%' ,paddingTop:'1%'}}>Tel.</p>
+                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCon: txt.target.value })} />
+                                </div>
+                            </div>
 
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 40, paddingLeft: 400 }}>
-                            <p className="textOrTelCn">Tel.</p>
-                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telSup: txt.target.value })}></input>
                         </div>
+                        <div style={{ display: 'flex', flexDirection: 'row' , paddingLeft:'7%'}}>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.5%' }}>
+                                <p className="textOr" style={{ paddingRight: '25%',paddingTop:'1%' }}>Tel.</p>
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telSup: txt.target.value })}></input>
+                            </div>
 
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
 
-                        <div style={{ paddingLeft: 730, paddingTop: 50 }}>
-                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
-                                Cancel
+                            <div style={{ paddingLeft: 730, paddingTop: 50 }}>
+                                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
+                                    Cancel
                             </ButtonCancel>
-                        </div>
-                        <div style={{ paddingLeft: 50, paddingTop: 50 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
-                                Next
+                            </div>
+                            <div style={{ paddingLeft: 50, paddingTop: 50 }}>
+                                <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
+                                    Next
                             </ButtonNext>
 
+                            </div>
                         </div>
-                    </div>
 
-                </Paper>
-                <Hamburger page='ORDERING' user={this.state.user} />
+                    </Paper>
+                </div>
+
 
             </div>
 

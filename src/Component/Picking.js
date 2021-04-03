@@ -83,57 +83,63 @@ class Picking extends Component {
     render() {
         return (
             <div className="bg">
-                <Paper className="paperPicking">
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ paddingTop: 110, paddingLeft: 400 }}>
-                            <p className="textPickD">Date</p>
-                            <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                        </div>
-                        <div style={{ paddingTop: 110, paddingLeft: 710 }}>
-                            <p className="textPickCT">CustomerName</p>
-                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ customerName: txt.target.value })} />
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ paddingTop: 48, paddingLeft: 400 }}>
-                                <p className="textPickRN">Request Name</p>
-                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ reqName: txt.target.value })} />
-                            </div>
-                            <div style={{ paddingTop: 48, paddingLeft: 400 }}>
-                                <p className="textPickTel">Tel.</p>
-                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telReq: txt.target.value })} />
-                            </div>
-                        </div>
-                        <div style={{ paddingTop: 48, paddingLeft: 600 }}>
-                            <p className="textPickAdr">Address</p>
-                            <textarea type="text" style={{ fontSize: 24, height: 179, width: 333 }} onChange={txt => this.setState({ address: txt.target.value })} />
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div style={{
-                            paddingTop: 48, paddingLeft: 1334
-                        }}>
-                            <p className="textPickCC">Customer Tel.</p>
-                            <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCus: txt.target.value })} />
-                        </div>
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
-
-                        <div style={{ paddingLeft: 0, paddingTop: 25 }}>
-                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
-                                Cancel
-                                </ButtonCancel>
-                        </div>
-                        <div style={{ paddingLeft: 50, paddingTop: 25 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
-                                Next
-                            </ButtonNext>
-                        </div>
-                    </div>
-                </Paper>
                 <Hamburger page='PICKING' user={this.state.user} />
+                <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '0.25%', paddingTop: '9%', justifyContent: 'center' }}>
+                    <Paper className="paperOrdering">
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '7%' }}>
+                                <p className="textOr" style={{ paddingRight: '68%' }}>Date</p>
+                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '26.5%' }}>
+                                <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Customer</p>
+                                <p className="textOr" style={{ paddingRight: '10%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ customerName: txt.target.value })} />
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '3%', paddingLeft: '7%' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', }}>
+                                    <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Request</p>
+                                    <p className="textOr" style={{ paddingRight: '10%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
+                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ reqName: txt.target.value })} />
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '10%', }}>
+                                    <p className="textOr" style={{ paddingRight: '41%' }}>Tel.</p>
+                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telReq: txt.target.value })} />
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.7%' }}>
+                                <p className="textOr" style={{ paddingRight: '37.1%' }}>Address</p>
+                                <div style={{ display: 'flex', flexDirection: 'row', }}>
+                                    <textarea type="text" style={{ fontSize: 24, height: 150, width: 335 }} onChange={txt => this.setState({ address: txt.target.value })} />
+                                </div>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '53.5%',paddingTop: '3%',paddingBottom:'1%'}}>
+                            <div style={{ display: 'flex', flexDirection: 'row', }}>
+                                <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Customer</p>
+                                <p className="textOr" style={{ paddingRight: '18.2%', paddingLeft: '2%', paddingTop: '1%' }}>Tel.</p>
+                                <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCus: txt.target.value })} />
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+
+                            <div style={{ paddingLeft: 0, paddingTop: 25 }}>
+                                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
+                                    Cancel
+                                </ButtonCancel>
+                            </div>
+                            <div style={{ paddingLeft: 50, paddingTop: 25 }}>
+                                <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
+                                    Next
+                            </ButtonNext>
+                            </div>
+                        </div>
+                    </Paper>
+                </div>
+
             </div>
 
         )

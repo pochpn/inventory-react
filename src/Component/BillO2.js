@@ -11,11 +11,11 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 
-class ComponentToPrint2 extends React.PureComponent {
+class BillO2 extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            total: 0,
+
         };
     }
 
@@ -56,7 +56,7 @@ class ComponentToPrint2 extends React.PureComponent {
                 </Paper>
                 <Paper className="dataBill2">
                     {this.props.bill.order.map((item) => {
-                        this.setState({ total: this.state.total += parseInt(item.amount) })
+                        
                         return (
 
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
@@ -64,9 +64,9 @@ class ComponentToPrint2 extends React.PureComponent {
                                     <p className='billOproduct1 ' style={{}}>{this.props.bill.order.indexOf(item) + 1}</p>
                                     <p className='billOproduct2 ' style={{}}>{item.productID}</p>
                                     <p className='billOproduct3 ' style={{}}>{item.productName}</p>
-                                    <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
-                                    <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
-                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty*item.costPunit)}</p>
+                                    <p className='billOproduct4 ' style={{}}>{item.shelf}</p>
+                                    <p className='billOproduct4' style={{}}>{item.level}</p>
+                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty)}</p>
 
                                 </div>
                             </scroll>
@@ -77,10 +77,7 @@ class ComponentToPrint2 extends React.PureComponent {
                 <Paper className="topBill">
 
                 </Paper>
-                <Paper className="totalBox">
-                    <p className="txtTotaldata">{this.state.total}</p>
-
-                </Paper>
+                
                 <img img className="imLogo" src={logoTop} />
                 <img img className="imPump2" src={logoPump} />
                 <p className="txtB1">บริษัท คลังชนะ จำกัด มหาชน</p>
@@ -89,9 +86,9 @@ class ComponentToPrint2 extends React.PureComponent {
                 <p className="txtTB1">No</p>
                 <p className="txtTB2">Product ID</p>
                 <p className="txtTB3">ProductName</p>
-                <p className="txtTB4">QTY(ea)</p>
-                <p className="txtTB5">Cost/Unit</p>
-                <p className="txtTB6">Amount</p>
+                <p className="txtTB4">Shelf</p>
+                <p className="txtTB5">Level</p>
+                <p className="txtTB6">QTY(ea)</p>
                 <p className="txtPONO">PO No. :</p>
                 <p className="txtPoNoInfo">{this.props.bill.info.reNum}</p>
                 <img img className="linee0" src={line} />
@@ -99,8 +96,7 @@ class ComponentToPrint2 extends React.PureComponent {
                 <img img className="linee2" src={line} />
                 <img img className="linee3" src={line} />
                 <img img className="linee4" src={line} />
-                <p className="txtTotal">Total</p>
-                <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
+
             </Paper>
         );
     }
@@ -121,4 +117,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentToPrint2);
+export default connect(mapStateToProps, mapDispatchToProps)(BillO2);

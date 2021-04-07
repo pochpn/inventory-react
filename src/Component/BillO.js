@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 
-class ComponentToPrint extends React.PureComponent {
+class BillO extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -119,4 +119,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ComponentToPrint);
+export default connect(mapStateToProps, mapDispatchToProps)(BillO);

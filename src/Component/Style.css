@@ -63,6 +63,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
+    cursor:pointer;
 }
 
 /* HOME */
@@ -75,6 +76,7 @@ body, html {
     top: 178px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperIv {
@@ -85,6 +87,7 @@ body, html {
     top: 534px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperOd {
@@ -95,6 +98,7 @@ body, html {
     top: 458px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperPk {
@@ -105,6 +109,7 @@ body, html {
     top: 458px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperOc {
@@ -115,6 +120,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperCs {
@@ -125,6 +131,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 .paperHs {
@@ -135,6 +142,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    cursor:pointer;
 }
 
 /* Paper Ordering Chart */
@@ -601,6 +609,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
+    cursor:pointer;
 }
 
 .paperVs:hover {
@@ -770,6 +779,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
+    cursor:pointer;
 }
 
 .imViewStock {
@@ -1469,6 +1479,15 @@ body, html {
     color: #6E0D0D;
 }
 
+.paperProduct2 {
+    justify-items: center;
+    align-items: center;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    margin: 0.5%;
+    background-color: #6E0D0D;
+    cursor:pointer;
+}
 .paperProduct {
     justify-items: center;
     align-items: center;

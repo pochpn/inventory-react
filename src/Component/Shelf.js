@@ -83,7 +83,7 @@ class Shelf extends Component {
                             })
                             item.qty = qty
                             return (
-                                <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}
+                                <div className="paperProduct2" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}
                                     onClick={() => history.push({
                                         pathname: '/stock/viewStock/shelf/detail',
                                         state: {

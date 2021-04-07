@@ -11,40 +11,21 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
+import BillP2 from './BillP2.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
-
-import BillO2 from './BillO2.js';
-
 import { editBill, deleteBill } from '../actions/billAction'
-import { addProduct, clearProduct } from '../actions/productAction'
 
-class BillOrder2 extends Component {
+import { deleteProduct, editProduct } from '../actions/productAction'
+
+class BillPick extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            notificationHead: 'ยืนยันคำร้องการจ่าย',
             bill: this.props.location.state.bill,
-            product: null,
+            product: {},
         };
-    }
-
-    getAllProductSuccess = (querySnapshot) => {
-        querySnapshot.forEach(doc => {
-            let product = doc.data()
-            product.id = doc.id
-            this.props.addProduct(product)
-        });
-        history.push('/orderConfirm/receiving')
-    }
-
-    onGetAll = () => {
-        this.props.clearProduct()
-        firestore.getAllProduct(this.getAllProductSuccess, this.reject)
-    }
-
-    addProductSuccess = (doc) => {
-        console.log('Add Success')
     }
 
     updateBillSuccess = () => {
@@ -52,16 +33,7 @@ class BillOrder2 extends Component {
         bill.confirm = true
         this.props.editBill(bill)
         console.log('Update Success')
-        this.state.bill.order.forEach((item) => {
-            this.setState({ product: item })
-            console.log(this.state.product)
-            firestore.addProduct(item, this.addProductSuccess, this.reject)
-        })
-        this.onGetAll()
-    }
-
-    reject = (error) => {
-        console.log(error)
+        history.push('/orderConfirm/packing')
     }
 
     onAccept = () => {
@@ -70,27 +42,51 @@ class BillOrder2 extends Component {
         firestore.updateBillByID(bill, this.updateBillSuccess, this.reject)
     }
 
+    reject = (error) => {
+        console.log(error)
+    }
+
     deleteBillSuccess = () => {
         console.log('Delete Success')
         this.props.deleteBill(this.state.bill.id)
     }
 
-    onReject = () => {
-        firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)
-        history.push('/orderConfirm/receiving')
+    getSuccess = () => {
+
     }
 
+    getReject = (error) => {
+        console.log(error)
+    }
+
+    addSuccess = (doc) => {
+        console.log('success')
+    }
+
+    addReject = (error) => {
+        console.log(error)
+    }
+
+    onReject = () => {
+        /*firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)*/
+        this.state.bill.order.forEach((item) => {
+            this.setState({product: item})
+            console.log(this.state.product)
+            /*firestore.getProductByID(item.id, this.getSuccess, this.getReject)*/
+            /*firestore.addProductByID(item, this.addSuccess, this.addReject)*/
+        })
+    }
 
     render() {
         return (
             <div>
                 <Paper className="printBill">
-                    <BillO2 bill={this.state.bill} />
+                    <BillP2 bill={this.state.bill} />
                     <Paper className="btnSend" onClick={this.onAccept}>
                         <p className="txtbtnSend">Accept</p>
                     </Paper>
                     <Paper className="btnCancel" onClick={() => {
-                        history.push('/orderConfirm/receiving')
+                        history.push('/orderConfirm/packing')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
@@ -110,10 +106,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clearPickOrder: () => dispatch(clearPickOrder()),
         addNotification: (notification) => dispatch(addNotification(notification)),
+        deleteProduct: (id) => dispatch(deleteProduct(id)),
+        editProduct: (product) => dispatch(editProduct(product)),
         editBill: (bill) => dispatch(editBill(bill)),
         deleteBill: (id) => dispatch(deleteBill(id)),
-        addProduct: (product) => dispatch(addProduct(product)),
-        clearProduct: () => dispatch(clearProduct()),
     };
 };
 
@@ -127,4 +123,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillOrder2);
+export default connect(mapStateToProps, mapDispatchToProps)(BillPick);

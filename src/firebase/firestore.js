@@ -110,6 +110,32 @@ class Firestore {
                 reject(error);
             });
     };
+    addProductByID = (product, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Products')
+            .doc(product.id)
+            .set(product)
+            .then(function (docRef) {
+                success(docRef);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    getProductByID = (id, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Products')
+            .doc(id)
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (err) {
+                reject(err);
+            });
+    }
     getProductByShelf = (shelf, success, reject) => {
         firebase
             .firestore()
@@ -154,7 +180,7 @@ class Firestore {
     updateProductByID = (product, success, reject) => {
         firebase
             .firestore()
-            .collection('Product')
+            .collection('Products')
             .doc(product.id)
             .update({
                 qty: product.qty
@@ -169,7 +195,7 @@ class Firestore {
     deleteProduct = (id, success, reject) => {
         firebase
             .firestore()
-            .collection('Product')
+            .collection('Products')
             .doc(id)
             .delete()
             .then(function () {

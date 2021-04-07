@@ -116,6 +116,21 @@ class History extends Component {
                 </div>
               )
             }
+            if (item.confirm && (item.type === 'MR')) {
+              return (
+                <div style={{ paddingTop: 10 }}>
+                  <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }} onClick={() => this.onCheck(item)}>
+                      <FontData>{item.info.reNum}</FontData>
+                      <FontData>{item.info.date}</FontData>
+                      <FontData>{item.info.reqName}</FontData>
+                      <FontData></FontData>
+                      <FontData>{item.info.telReq}</FontData>
+                    </div>
+                  </Paper>
+                </div>
+              )
+            }
           })}
         </div>
         

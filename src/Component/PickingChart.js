@@ -124,7 +124,7 @@ class PickingChart extends Component {
                 qty: '',
             });
         } else {
-            console.log('dfgerkge')
+            alert('QTY is invalid.')
         }
     };
 

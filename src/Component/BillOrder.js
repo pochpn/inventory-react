@@ -18,7 +18,7 @@ import BillO from './BillO.js';
 import { addBill } from '../actions/billAction'
 
 
-class billOrder extends Component {
+class BillOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -118,4 +118,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(billOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(BillOrder);

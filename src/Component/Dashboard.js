@@ -220,40 +220,40 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: this.state.jVal, turnover: 2.2,
+        name: 'Jan', value: this.state.jVal, turnover: this.state.jVal/2,
       },
       {
-        name: 'Feb', value: this.state.fVal, turnover: 2.25,
+        name: 'Feb', value: this.state.fVal, turnover: this.state.fVal/2,
       },
       {
-        name: 'Mar', value: this.state.mVal, turnover: 2.55,
+        name: 'Mar', value: this.state.mVal, turnover: this.state.mVal/2,
       },
       {
-        name: 'Apr', value: this.state.aVal, turnover: 3.12,
+        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal/2,
       },
       {
-        name: 'May', value: this.state.mayVal, turnover: 3.0,
+        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal/2,
       },
       {
-        name: 'Jun', value: this.state.junVal, turnover: 1.65,
+        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal/2,
       },
       {
-        name: 'Jul', value: this.state.julVal, turnover: 2.15,
+        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal/2,
       },
       {
-        name: 'Aug', value: this.state.augVal, turnover: 2.75,
+        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal/2,
       },
       {
-        name: 'Sep', value: this.state.sepVal, turnover: 2.15,
+        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal/2,
       },
       {
-        name: 'Oct', value: this.state.octVal, turnover: 2.15,
+        name: 'Oct', value: this.state.octVal, turnover: this.state.ocyVal/2,
       },
       {
-        name: 'Nov', value: this.state.novVal, turnover: 0.55,
+        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal/2,
       },
       {
-        name: 'Dec', value: this.state.decVal, turnover: 2.25,
+        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal/2,
       },
     ];
     console.log(this.state.mVal)

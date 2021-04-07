@@ -25,17 +25,7 @@ const productReducer = (state = initialState, action) => {
                     item.id === action.product.id
                         ? {
                             ...item,
-                            productID: action.product.productID,
-                            productName: action.product.productName,
-                            recvDate: action.product.recvDate,
-                            expDate: action.product.expDate,
-                            level: action.product.level,
-                            shelf: action.product.shelf,
                             oty: action.product.oty,
-                            pic: action.product.pic,
-                            type: action.product.type,
-                            unit: action.product.unit,
-                            costPunit: action.product.costPunit,
                         }
                         : item
                 )

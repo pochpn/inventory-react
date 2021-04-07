@@ -63,9 +63,9 @@ class ComponentToPrint extends React.PureComponent {
                                     <p className='billOproduct1 ' style={{}}>{this.props.order.indexOf(item) + 1}</p>
                                     <p className='billOproduct2 ' style={{}}>{item.productID}</p>
                                     <p className='billOproduct3 ' style={{}}>{item.productName}</p>
-                                    <p className='billOproduct4 ' style={{}}>{formatMoney(item.qty)}</p>
-                                    <p className='billOproduct4' style={{}}>{formatMoney(item.costPunit)}</p>
-                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
+                                    <p className='billOproduct4 ' style={{}}>{item.shelf}</p>
+                                    <p className='billOproduct4' style={{}}>{item.level}</p>
+                                    <p className='billOproduct5' style={{}}>{formatMoney(item.qty)}</p>
                                 </div>
                             </scroll>
                         );

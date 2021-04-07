@@ -157,8 +157,7 @@ class Firestore {
             .collection('Product')
             .doc(product.id)
             .update({
-                model: product.model,
-                description: product.description,
+                qty: product.qty
             })
             .then(function () {
                 success(null);

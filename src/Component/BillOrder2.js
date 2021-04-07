@@ -13,7 +13,7 @@ import firestore from '../firebase/firestore'
 
 import { clearPickOrder } from '../actions/pickOrderAction'
 
-import ComponentToPrint2 from './BillO2.js';
+import BillO2 from './BillO2.js';
 
 import { editBill, deleteBill } from '../actions/billAction'
 import { addProduct, clearProduct } from '../actions/productAction'
@@ -85,7 +85,7 @@ class billOrder2 extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint2 ref={el => (this.componentRef = el)} bill={this.state.bill} />
+                    <BillO2 ref={el => (this.componentRef = el)} bill={this.state.bill} />
                     <Paper className="btnSend" onClick={this.onAccept}>
                         <p className="txtbtnSend">Accept</p>
                     </Paper>

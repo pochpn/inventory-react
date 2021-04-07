@@ -21,6 +21,8 @@ import { logoTopBar } from '../pic'
 import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success } from '../pic';
+import NotifyMe from 'react-notification-timeline';
+import './NotifyMe.scss';
 
 const ButtonOK = styled.button`
   background: #ef3f3e;
@@ -64,7 +66,11 @@ class Hamburger extends Component {
       sidebar: false,
       user: this.props.user,
       modal1: false,
+      data:[]
+
     };
+
+
   }
 
   handleModalClose = (e) => {
@@ -87,6 +93,24 @@ class Hamburger extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
+  dataNoti =() =>{
+    var data=[]
+    this.props.notificationList.forEach(item =>{
+      const json = [{
+        "notificationHead": item.notificationHead
+      }]
+      console.log(json)
+      data = data.concat(json)
+      console.log(data)
+    })
+    this.setState({data: data})
+    console.log(data)
+  }
+
+  componentDidMount(){
+    this.dataNoti();
+  }
+
 
 
   render() {
@@ -96,31 +120,29 @@ class Hamburger extends Component {
           <Link to='#' className='menu-bars'>
             <RiMenuUnfoldLine size={40} onClick={this.showSidebar} />
           </Link>
-          <div onClick={() => history.push('/home')}>
+          <div style={{ cursor: 'pointer' }} onClick={() => history.push('/home')}>
             <img className="iconKCN" src={logoTopBar} />
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
-          <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
-          <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
-            <div hidden={!this.state.modal1}>
-
-              <div className="modal-tri" style={{ paddingTop: '1%' }}>
-                <Arrow />
-                {this.props.notificationList.map((item) => {
-                  return (
-                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <p className='txtPdInOD' style={{}}>{item.notificationHead}</p>
-                      </div>
-                    </scroll>
-                  );
-                })}
-              </div>
-
-            </div>
+          <span className='title' style={{ paddingLeft: '169px' }} >{this.props.page}</span>
+          <div><NotifyMe
+            data={this.state.data}
+            storageKey={null}
+            notific_key={null}
+            notific_value = 'notificationHead'
+            heading='Notification Alerts'
+            sortedByKey={false}
+            showDate={true}
+            size={28}
+            color="yellow"
+          />
           </div>
-          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')} /></span>
-          <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
+          
+        
+          <div style={{ cursor: 'pointer' }} onClick={() => history.push('/profile')}>
+            <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic}/></span>
+            <span style={{ color: '#fff'}}>{this.state.user.firstnameEN}</span>
+          </div>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={this.showSidebar}>

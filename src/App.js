@@ -34,10 +34,12 @@ import { Provider } from 'react-redux';
 import configureStore from './Store';
 import BillOrder from './Component/BillOrder'
 import BillOrder2 from './Component/BillOrder2'
+import BillOHis from './Component/BillOHis'
 import EditShelf from './Component/EditShelf'
 import EditProduct from './Component/EditProduct'
 import BillPick from './Component/BillPick'
-import BillOHis from './Component/BillOHis'
+import BillPick2 from './Component/BillPick2'
+import BillPHis from './Component/BillPHis'
 
 class App extends Component {
   constructor(props) {
@@ -73,11 +75,13 @@ class App extends Component {
             <Route exact path="/memberManage/editMember" component={EditMember} />
             <Route exact path="/history" component={History} />
             <Route exact path="/history/billOHis" component={BillOHis} />
+            <Route exact path="/history/billPHis" component={BillPHis} />
             <Route exact path="/confirmShipping" component={ConfirmShipping} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/orderConfirm/receiving" component={ConReceiving} />
             <Route exact path="/orderConfirm/receiving/billOrder2" component={BillOrder2} />
             <Route exact path="/orderConfirm/packing" component={ConPacking} />
+            <Route exact path="/orderConfirm/packing/billPick2" component={BillPick2} />
             <Route exact path="/orderConfirm/returned" component={ConReturned} />
             <Route exact path="/orderConfirm/returned/returnedChart" component={ConReturnedChart} />
             <Route exact path="/stock/viewStock/shelf" component={Shelf} />

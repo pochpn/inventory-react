@@ -4,7 +4,7 @@ import Topbar from './Topbar'
 import Hamburger from './Hamburger'
 import Paper from '@material-ui/core/Paper';
 import './Style.css'
-import { search, Waiting, Suc, Reject } from '../pic'
+import { search, Waiting, Suc, Reject, newSrch } from '../pic'
 
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
@@ -83,19 +83,21 @@ class ShippingConfirm extends Component {
                     <div style={{ paddingLeft: 30, paddingTop: 37, display: 'flex', flexDirection: 'column' }}>
                         <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
                     </div>
-                    <img
-                        style={{ width: "10%", paddingTop: 15 }}
-                        src={search}
-                        onClick={this.onSearch}></img>
+                    <div style={{ display: 'flex', flexDirection: 'column' , paddingTop: 15, paddingLeft: 20}}>
+                        <img
+                            style={{ width: "20%" }}
+                            src={newSrch}
+                            onClick={this.onSearch}></img>
+                    </div>
                 </Paper>
                 <Paper className='StatusShip'>
-                    <div style={{ display: 'flex', flexDirection: 'row', paddingTop:"2%",paddingLeft:"2%"}}>
-                        <ImageSuc/>
-                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%",paddingRight:"2%"}}>Success</Font>
+                    <div style={{ display: 'flex', flexDirection: 'row', paddingTop: "2%", paddingLeft: "2%" }}>
+                        <ImageSuc />
+                        <Font style={{ paddingLeft: "2%", paddingTop: "1.7%", paddingRight: "2%" }}>Success</Font>
                         <ImageWait />
-                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%",paddingRight:"2%"}}>Waiting</Font>
+                        <Font style={{ paddingLeft: "2%", paddingTop: "1.7%", paddingRight: "2%" }}>Waiting</Font>
                         <ImageRej />
-                        <Font style={{paddingLeft:"2%",paddingTop:"1.7%"}}>Reject</Font>
+                        <Font style={{ paddingLeft: "2%", paddingTop: "1.7%" }}>Reject</Font>
                     </div>
                 </Paper>
                 <Hamburger page='CONFIRMING SHIPPING' user={this.state.user} />

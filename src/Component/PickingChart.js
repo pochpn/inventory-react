@@ -319,7 +319,7 @@ class PickingChart extends Component {
                                     {this.props.productList.map((item) => {
                                         if (item.productID == this.state.item.productID) {
                                             return (
-                                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%',alignContent:'center',cursor:'pointer'}}>
                                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
                                                         <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.expDate}</p>
@@ -349,7 +349,7 @@ class PickingChart extends Component {
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 10 }}>
+                            <div style={{ display: 'flex', paddingTop: 10,justifyContent:'space-around' }}>
                                 <Font>Product ID</Font>
                                 <Font>Exp.</Font>
                                 <Font>Shelf</Font>

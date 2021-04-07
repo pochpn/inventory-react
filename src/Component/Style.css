@@ -63,7 +63,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* HOME */
@@ -76,7 +76,7 @@ body, html {
     top: 178px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperIv {
@@ -87,7 +87,7 @@ body, html {
     top: 534px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperOd {
@@ -98,7 +98,7 @@ body, html {
     top: 458px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperPk {
@@ -109,7 +109,7 @@ body, html {
     top: 458px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperOc {
@@ -120,7 +120,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperCs {
@@ -131,7 +131,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperHs {
@@ -142,7 +142,7 @@ body, html {
     top: 701px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /* Paper Ordering Chart */
@@ -609,7 +609,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .paperVs:hover {
@@ -779,7 +779,7 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin-left: 2%;
     margin-right: 2%;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .imViewStock {
@@ -1326,13 +1326,25 @@ body, html {
 }
 
 .paperInEOQ {
-    position: absolute;
+    justify-items: center;
+    align-items: center;
     width: 329px;
     height: 279px;
-    left: 615px;
-    top: 238px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+.textInventC {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    color: #6E0D0D;
 }
 
 .paperInOc {
@@ -1365,12 +1377,28 @@ body, html {
     border-radius: 20px;
 }
 
-.picEOQ {
-    position: absolute;
-    width: 214.91px;
-    height: 80.3px;
-    left: 18%;
-    top: 20%;
+.picIn1 {
+    justify-self: center;
+    margin-left: 5%;
+    padding-top: 15%;
+    width: 90%;
+    height: 60%;
+}
+
+.picIn2 {
+    justify-self: center;
+    margin-left: 23%;
+    padding-top: 15%;
+    width: 60%;
+    height: 62%;
+}
+
+.picIn3 {
+    justify-self: center;
+    margin-left: 21%;
+    padding-top: 15%;
+    width: 60%;
+    height: 62%;
 }
 
 .fontEOQ {
@@ -1486,8 +1514,9 @@ body, html {
     background: rgba(255, 255, 255, 0.4)!important;
     margin: 0.5%;
     background-color: #6E0D0D;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 .paperProduct {
     justify-items: center;
     align-items: center;

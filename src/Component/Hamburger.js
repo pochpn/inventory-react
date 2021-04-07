@@ -21,6 +21,8 @@ import { logoTopBar } from '../pic'
 import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success } from '../pic';
+import NotifyMe from 'react-notification-timeline';
+import './NotifyMe.scss';
 
 const ButtonOK = styled.button`
   background: #ef3f3e;
@@ -64,6 +66,17 @@ class Hamburger extends Component {
       sidebar: false,
       user: this.props.user,
       modal1: false,
+      data: [
+        {
+          "update": "70 new employees are shifted",
+          "timestamp": 1596119688264
+        },
+        {
+          "update": "Time to Take a Break, TADA!!!",
+          "timestamp": 1596119686811
+        }
+      ]
+
     };
   }
 
@@ -101,6 +114,18 @@ class Hamburger extends Component {
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
           <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
+          <div><NotifyMe
+            data={this.state.data}
+            storageKey='notific_key'
+            notific_key='timestamp'
+            notific_value='update'
+            heading='Notification Alerts'
+            sortedByKey={false}
+            showDate={true}
+            size={24}
+            color="yellow"
+          />
+          </div>
           <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
             <div hidden={!this.state.modal1}>
 

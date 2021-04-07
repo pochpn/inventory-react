@@ -6,7 +6,7 @@ import './Style.css'
 import { connect } from 'react-redux';
 import { addNotification } from '../actions/notificationAction'
 
-import ComponentToPrint2 from './BillO2.js';
+import BillO2 from './BillO2.js';
 
 
 class BillOHis extends Component {
@@ -23,7 +23,7 @@ class BillOHis extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint2 bill={this.state.bill} />
+                    <BillO2 bill={this.state.bill} />
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/history')
                     }}>

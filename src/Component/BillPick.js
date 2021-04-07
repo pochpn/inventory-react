@@ -51,7 +51,7 @@ class billPick extends Component {
     }
 
     onSend = async () => {
-        const notification = {
+        /*const notification = {
             notificationHead: this.state.notificationHead,
         }
         await firestore.addNotification(notification, this.success, this.reject)
@@ -64,7 +64,8 @@ class billPick extends Component {
             readStatus: false,
             type: 'MR',
         }
-        firestore.addBill(bill, this.addBillSuccess, this.reject)
+        firestore.addBill(bill, this.addBillSuccess, this.reject)*/
+        console.log(this.state.order)
     }
 
 

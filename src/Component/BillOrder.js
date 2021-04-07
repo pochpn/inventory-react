@@ -13,7 +13,7 @@ import firestore from '../firebase/firestore'
 
 import { clearPickOrder } from '../actions/pickOrderAction'
 
-import ComponentToPrint from './BillO.js';
+import BillO from './BillO.js';
 
 import { addBill } from '../actions/billAction'
 
@@ -75,7 +75,7 @@ class billOrder extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint info={this.state.info} order={this.state.order} />
+                    <BillO info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>

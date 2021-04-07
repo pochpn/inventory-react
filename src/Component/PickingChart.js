@@ -107,7 +107,7 @@ class PickingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if (this.state.qty != (null && '')) {
+        if (((this.state.qty != (null && '')) && (this.state.qty <= this.state.product.qty))) {
             const product = this.state.product
             product.qty = this.state.qty
             product.amount = (this.state.product.costPunit * this.state.qty).toString()
@@ -123,6 +123,8 @@ class PickingChart extends Component {
                 modal: false,
                 qty: '',
             });
+        } else {
+            console.log('dfgerkge')
         }
     };
 
@@ -284,16 +286,16 @@ class PickingChart extends Component {
                                     <p className='txtTopPicChart' style={{}}>Product ID</p>
                                     <p className='txtTopPicChart' style={{}}>Product Name</p>
                                     <p className='txtTopPicChart' style={{}}>Type</p>
-                                    <p className='txtTopPicChart2' style={{}}>QTY</p>
+
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                                     <div className='txtTopPicChartDetail'>
-                                        <img src={this.state.pic} style={{ width: '80px', height: '80px' }}></img>
+                                        <img src={this.state.item.pic} style={{ width: '80px', height: '80px' }}></img>
                                     </div>
-                                    <p className='txtTopPicChartDetail' style={{}}>1</p>
-                                    <p className='txtTopPicChartDetail' style={{}}>2</p>
-                                    <p className='txtTopPicChartDetail' style={{}}>3</p>
-                                    <p className='txtTopPicChartDetail' style={{}}>4</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>{this.state.item.productID}</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>{this.state.item.productName}</p>
+                                    <p className='txtTopPicChartDetail' style={{}}>{this.state.item.type}</p>
+
 
                                 </div>
                             </Paper>

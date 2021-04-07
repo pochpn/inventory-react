@@ -105,12 +105,12 @@ class AddMember extends Component {
                         <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>
                 </Paper>
-                <Paper className="paperAddMB" onClick={this.onAdd}>
+                <Paper className="paperAddMB" style={{cursor:'pointer'}} onClick={this.onAdd}>
                     <div >
                         <p className="textAddMB" >Add</p>
                     </div>
                 </Paper>
-                <Paper className="paperCancelMB" onClick={() => history.push('/memberManage')}>
+                <Paper className="paperCancelMB" style={{cursor:'pointer'}} onClick={() => history.push('/memberManage')}>
                     <div>
                         <p className="textCancelMB" >Cancel</p>
                     </div>

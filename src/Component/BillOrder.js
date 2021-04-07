@@ -77,15 +77,15 @@ class billOrder extends Component {
                 <Paper className="printBill">
                     <BillO info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
-                        <p className="txtbtnSend">Send</p>
+                        <p className="txtbtnSend" style={{cursor:'pointer'}}>Send</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => {
+                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
                         this.props.clearPickOrder()
                         history.push('/home')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" onClick={() => history.push({
+                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={() => history.push({
                         pathname: '/Ordering/orderingChart',
                         state: { info: this.state.info },
                     })}>

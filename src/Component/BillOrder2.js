@@ -86,15 +86,15 @@ class billOrder2 extends Component {
             <div>
                 <Paper className="printBill">
                     <BillO2 ref={el => (this.componentRef = el)} bill={this.state.bill} />
-                    <Paper className="btnSend" onClick={this.onAccept}>
+                    <Paper className="btnSend" style={{cursor:'pointer'}} onClick={this.onAccept}>
                         <p className="txtbtnSend">Accept</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => {
+                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
                         history.push('/orderConfirm/receiving')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" onClick={this.onReject}>
+                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={this.onReject}>
                         <p className="txtbtnEdit">Reject</p>
                     </Paper>
                 </Paper>

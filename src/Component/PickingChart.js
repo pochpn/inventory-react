@@ -178,7 +178,7 @@ class PickingChart extends Component {
                             <input type="text" style={{ fontSize: 13 }}></input>
                         </div>
                         <div>
-                            <img img className="imsch" src={search} />
+                            <img img className="imsch" src={search} style={{cursor:'pointer'}}/>
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -223,7 +223,7 @@ class PickingChart extends Component {
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
-                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' }} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> > </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' ,cursor:'pointer'}} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> > </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -245,7 +245,7 @@ class PickingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
                                             <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
                                             <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
-                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none',cursor:'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
                                 );

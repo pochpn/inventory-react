@@ -124,7 +124,7 @@ class MemberManage extends Component {
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.lastnameEN} onChange={txt => this.setState({ lastnameEN: txt.target.value })}></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%", }}
+                        style={{ justifyContent: 'flex-end', width: "10%",cursor:'pointer' }}
                         src={search}
                         onClick={this.onSearch}></img>
                 </Paper>
@@ -135,7 +135,7 @@ class MemberManage extends Component {
 
                         return (
                             <div style={{ marginLeft: '12%' }}>
-                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%', borderRadius: '15px' }}
+                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%', borderRadius: '15px',cursor:'pointer' }}
                                     onClick={() => {
                                         history.push({
                                             pathname: '/memberManage/editMember',

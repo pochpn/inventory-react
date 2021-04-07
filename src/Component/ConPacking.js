@@ -61,7 +61,7 @@ class ConPacking extends Component {
             if (item.managerConfirm && !item.confirm && (item.type === 'MR')) {
               return (
                 <div style={{ paddingTop: 20 }}>
-                  <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,cursor:'pointer'}}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <Font>{item.info.reNum}</Font>
                       <Font>{item.info.date}</Font>

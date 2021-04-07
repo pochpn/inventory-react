@@ -66,6 +66,29 @@ body, html {
     cursor: pointer;
 }
 
+.textOTWeek {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 30px;
+    padding-top: 3px;
+    text-align: left;
+    margin-left: 20px;
+    color: #000000;
+}
+.textOTWeek2 {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 30px;
+    padding-top: 40px;
+    text-align: right;
+    margin-right: 30px;
+    color: #000000;
+}
+
 /* HOME */
 
 .paperSt {

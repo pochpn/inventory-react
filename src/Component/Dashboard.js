@@ -288,7 +288,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal1}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+              <p className='textOTWeek'>Order this week</p>
+              <p className='textOTWeek2'>5</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalAllR}>Receiving</ButtonRecv>
                 </div>
@@ -305,7 +307,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+            <p className='textOTWeek'>Order this week</p>
+            <p className='textOTWeek2'>2</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonAfter style={{ width: 100 }} >Receiving</ButtonAfter>
                 </div>
@@ -322,7 +326,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal3}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+            <p className='textOTWeek'>Order this week</p>
+            <p className='textOTWeek2'>3</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalPickR}>Receiving</ButtonRecv>
                 </div>

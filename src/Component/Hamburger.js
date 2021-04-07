@@ -96,12 +96,12 @@ class Hamburger extends Component {
           <Link to='#' className='menu-bars'>
             <RiMenuUnfoldLine size={40} onClick={this.showSidebar} />
           </Link>
-          <div onClick={() => history.push('/home')}>
+          <div style={{ cursor: 'pointer' }} onClick={() => history.push('/home')}>
             <img className="iconKCN" src={logoTopBar} />
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
           <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
-          <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px' }}></FaBell>
+          <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell>
             <div hidden={!this.state.modal1}>
 
               <div className="modal-tri" style={{ paddingTop: '1%' }}>
@@ -119,8 +119,10 @@ class Hamburger extends Component {
 
             </div>
           </div>
-          <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} onClick={() => history.push('/profile')} /></span>
-          <span style={{ color: '#fff' }} onClick={() => history.push('/profile')}>{this.state.user.firstnameEN}</span>
+          <div style={{ cursor: 'pointer' }} onClick={() => history.push('/profile')}>
+            <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic}/></span>
+            <span style={{ color: '#fff'}}>{this.state.user.firstnameEN}</span>
+          </div>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={this.showSidebar}>

@@ -48,7 +48,7 @@ class BillPick extends Component {
                     console.log(doc.id)
                     const product = doc.data()
                     product.id = doc.id
-                    product.qty -= item.qty
+                    product.qty = (parseInt(product.qty) - parseInt(item.qty)).toString()
                     firestore.updateProductByID(product, this.editSuccess, this.reject)
                     this.props.editProduct(product)
                 }

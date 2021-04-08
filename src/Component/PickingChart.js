@@ -103,6 +103,7 @@ class PickingChart extends Component {
         }
         this.setState({
             modal1: false,
+            qty: '',
         });
     };
 

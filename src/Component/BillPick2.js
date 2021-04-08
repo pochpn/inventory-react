@@ -15,7 +15,7 @@ import BillP2 from './BillP2.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { editBill, deleteBill } from '../actions/billAction'
 
-import { deleteProduct, editProduct } from '../actions/productAction'
+import { addProduct, clearProduct } from '../actions/productAction'
 
 class BillPick extends Component {
     constructor(props) {
@@ -26,6 +26,20 @@ class BillPick extends Component {
             bill: this.props.location.state.bill,
             product: {},
         };
+    }
+
+    getAllProductSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let product = doc.data()
+            product.id = doc.id
+            this.props.addProduct(product)
+        });
+        history.push('/orderConfirm/packing')
+    }
+
+    onGetAll = () => {
+        this.props.clearProduct()
+        firestore.getAllProduct(this.getAllProductSuccess, this.reject)
     }
 
     updateBillSuccess = () => {
@@ -47,12 +61,33 @@ class BillPick extends Component {
     }
 
     deleteBillSuccess = () => {
-        console.log('Delete Success')
+        /*console.log('Delete Success')*/
         this.props.deleteBill(this.state.bill.id)
     }
 
-    getSuccess = () => {
+    editSuccess = () => {
+        console.log('Edit Success')
+    }
 
+    getSuccess = (doc) => {
+        if (doc.data() === undefined) {
+            this.state.bill.order.forEach((item) => {
+                if (doc.id === item.id) {
+                    console.log('Add-' + doc.id)
+                    firestore.addProductByID(item, this.addSuccess, this.addReject)
+                }
+            })
+        } else {
+            this.state.bill.order.forEach((item) => {
+                if (doc.id === item.id) {
+                    console.log('Edit-' + doc.id)
+                    const product = doc.data()
+                    product.id = doc.id
+                    product.qty = (parseInt(product.qty) + parseInt(item.qty)).toString()
+                    firestore.updateProductByID(product, this.editSuccess, this.reject)
+                }
+            })
+        }
     }
 
     getReject = (error) => {
@@ -68,13 +103,13 @@ class BillPick extends Component {
     }
 
     onReject = () => {
-        /*firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)*/
         this.state.bill.order.forEach((item) => {
-            this.setState({product: item})
+            this.setState({ product: item })
             console.log(this.state.product)
-            /*firestore.getProductByID(item.id, this.getSuccess, this.getReject)*/
-            /*firestore.addProductByID(item, this.addSuccess, this.addReject)*/
+            firestore.getProductByID(item.id, this.getSuccess, this.getReject)
         })
+        firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)
+        this.onGetAll()
     }
 
     render() {
@@ -106,10 +141,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clearPickOrder: () => dispatch(clearPickOrder()),
         addNotification: (notification) => dispatch(addNotification(notification)),
-        deleteProduct: (id) => dispatch(deleteProduct(id)),
-        editProduct: (product) => dispatch(editProduct(product)),
         editBill: (bill) => dispatch(editBill(bill)),
         deleteBill: (id) => dispatch(deleteBill(id)),
+        addProduct: (product) => dispatch(addProduct(product)),
+        clearProduct: () => dispatch(clearProduct()),
     };
 };
 

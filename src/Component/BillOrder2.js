@@ -83,7 +83,7 @@ class BillOrder2 extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bg" >
                 <Paper className="printBill">
                     <BillO2  bill={this.state.bill} />
                     <Paper className="btnSend" style={{cursor:'pointer'}} onClick={this.onAccept}>

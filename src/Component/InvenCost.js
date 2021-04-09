@@ -31,6 +31,13 @@ class InvenCost extends Component {
         };
     }
 
+    onKeyPress1(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\./.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
     handleModalClose1 = (e) => {
         this.setState({ modal1: false });
     };
@@ -121,7 +128,7 @@ class InvenCost extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '30%' }}></input>
+                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '30%' }}></input>
                                         <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
                                     </div>
                                 </div>

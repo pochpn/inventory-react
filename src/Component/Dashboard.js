@@ -51,7 +51,18 @@ class Dashboard extends Component {
       typeB: 0,
       typeC: 0,
       inventLv: 0,
-
+      jVal : 0,
+      fVal :0,
+      mVal : 0,
+      aVal : 0,
+      mayVal: 0,
+      junVal : 0,
+      julVal : 0,
+      augVal : 0,
+      sepVal : 0,
+      octVal :0,
+      novVal:0,
+      decVal: 0,
     };
 
     this.props.productList.forEach((item) => {
@@ -64,7 +75,55 @@ class Dashboard extends Component {
       if (item.type === 'C') {
         this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
-      this.setState({ inventLv: this.state.inventLv += parseInt(item.costPunit) })
+      this.setState({ inventLv: this.state.inventLv += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      if(item.recvDate.split("/")[1] ==="1" || item.recvDate.split("/")[1] ==="01"){
+        this.setState({jVal: this.state.jVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+        console.log("from 1")
+      }
+      if(item.recvDate.split("/")[1] ==="2" || item.recvDate.split("/")[1] ==="02"){
+        console.log("from 2")
+        this.setState({fVal: this.state.fVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="3" || item.recvDate.split("/")[1] ==="03"){
+        console.log("from 3")
+        this.setState({mVal: this.state.mVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="4" || item.recvDate.split("/")[1] ==="04"){
+        this.setState({aVal: this.state.aVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+        console.log("from 4")
+      }
+      if(item.recvDate.split("/")[1] ==="5" || item.recvDate.split("/")[1] ==="05"){
+        console.log("from 5")
+        this.setState({mayVal: this.state.mayVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="6"|| item.recvDate.split("/")[1] ==="06"){
+        console.log("from 6")
+        this.setState({junVal: this.state.junVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="7" || item.recvDate.split("/")[1] ==="07"){
+        console.log("from 7")
+        this.setState({julVal: this.state.julVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="8" || item.recvDate.split("/")[1] ==="08"){
+        console.log("from 8")
+        this.setState({augVal: this.state.augVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="9" || item.recvDate.split("/")[1] ==="09"){
+        console.log("from 9")
+        this.setState({sepVal: this.state.sepVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="10"){
+        console.log("from 10")
+        this.setState({octVal: this.state.octVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="11"){
+        console.log("from 11")
+        this.setState({novVal: this.state.novVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
+      if(item.recvDate.split("/")[1] ==="12"){
+        console.log("from 12")
+        this.setState({decVal: this.state.decVal += (parseInt(item.costPunit)*parseInt(item.qty)) })
+      }
     })
   }
 
@@ -161,42 +220,43 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: 4.2, turnover: 2.2,
+        name: 'Jan', value: this.state.jVal, turnover: this.state.jVal/2,
       },
       {
-        name: 'Feb', value: 4.5, turnover: 2.25,
+        name: 'Feb', value: this.state.fVal, turnover: this.state.fVal/2,
       },
       {
-        name: 'Mar', value: 5.1, turnover: 2.55,
+        name: 'Mar', value: this.state.mVal, turnover: this.state.mVal/2,
       },
       {
-        name: 'Apr', value: 6.3, turnover: 3.12,
+        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal/2,
       },
       {
-        name: 'May', value: 6.0, turnover: 3.0,
+        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal/2,
       },
       {
-        name: 'Jun', value: 3.3, turnover: 1.65,
+        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal/2,
       },
       {
-        name: 'Jul', value: 4.3, turnover: 2.15,
+        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal/2,
       },
       {
-        name: 'Aug', value: 5.5, turnover: 2.75,
+        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal/2,
       },
       {
-        name: 'Sep', value: 4.3, turnover: 2.15,
+        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal/2,
       },
       {
-        name: 'Oct', value: 4.3, turnover: 2.15,
+        name: 'Oct', value: this.state.octVal, turnover: this.state.ocyVal/2,
       },
       {
-        name: 'Nov', value: 1.1, turnover: 0.55,
+        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal/2,
       },
       {
-        name: 'Dec', value: 4.5, turnover: 2.25,
+        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal/2,
       },
     ];
+    console.log(this.state.mVal)
     return (
       <div className="bg">
 
@@ -228,7 +288,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal1}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+              <p className='textOTWeek'>Order this week</p>
+              <p className='textOTWeek2'>5</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalAllR}>Receiving</ButtonRecv>
                 </div>
@@ -245,7 +307,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+            <p className='textOTWeek'>Order this week</p>
+            <p className='textOTWeek2'>2</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonAfter style={{ width: 100 }} >Receiving</ButtonAfter>
                 </div>
@@ -262,7 +326,9 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal3}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 190 }}>
+            <p className='textOTWeek'>Order this week</p>
+            <p className='textOTWeek2'>3</p>
+              <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalPickR}>Receiving</ButtonRecv>
                 </div>

@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 
-class BillP extends React.PureComponent {
+class BillP2 extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,9 +36,9 @@ class BillP extends React.PureComponent {
                     <p className="txtsubtp2">ที่อยู่</p>
                     <p className="txtsubtp3">เบอร์ติดต่อ</p>
 
-                    <p className="txtPdataL1">{this.props.info.customerName}</p>
-                    <p className="txtPdataL2">{this.props.info.address}</p>
-                    <p className="txtPdataL3">{this.props.info.telCus}</p>
+                    <p className="txtPdataL1">{this.props.bill.info.customerName}</p>
+                    <p className="txtPdataL2">{this.props.bill.info.address}</p>
+                    <p className="txtPdataL3">{this.props.bill.info.telCus}</p>
                 </Paper>
                 <Paper className="borRight">
                     <p className="txtTopicR1">Date</p>
@@ -50,17 +50,17 @@ class BillP extends React.PureComponent {
                     <p className="txtsubtp5">ผู้เบิกสินค้า</p>
                     <p className="txtsubtp6">เบอร์ติดต่อ</p>
 
-                    <p className="txtPdataR1">{this.props.info.date}</p>
-                    <p className="txtPdataR2">{this.props.info.reqName}</p>
-                    <p className="txtPdataR3">{this.props.info.telReq}</p>
+                    <p className="txtPdataR1">{this.props.bill.info.date}</p>
+                    <p className="txtPdataR2">{this.props.bill.info.reqName}</p>
+                    <p className="txtPdataR3">{this.props.bill.info.telReq}</p>
                 </Paper>
                 <Paper className="dataBill2">
-                    {this.props.pickOrderList.map((item) => {
+                    {this.props.bill.order.map((item) => {
                         this.setState({ total: this.state.total += parseInt(item.amount) })
                         return (
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>
-                                    <p className='billOproduct1 ' style={{}}>{this.props.order.indexOf(item) + 1}</p>
+                                    <p className='billOproduct1 ' style={{}}>{this.props.bill.order.indexOf(item) + 1}</p>
                                     <p className='billOproduct2 ' style={{}}>{item.productID}</p>
                                     <p className='billOproduct3 ' style={{}}>{item.productName}</p>
                                     <p className='billOproduct4 ' style={{}}>{formatMoney(item.costPunit)}</p>
@@ -118,4 +118,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillP);
+export default connect(mapStateToProps, mapDispatchToProps)(BillP2);

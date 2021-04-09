@@ -6,6 +6,7 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import { FaBell } from "react-icons/fa";
 import history from '../history'
+import firestore from "../firebase/firestore"
 
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
@@ -21,6 +22,8 @@ import { logoTopBar } from '../pic'
 import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success } from '../pic';
+import Badge from '@material-ui/core/Badge';
+import { editNotification } from '../actions/notificationAction';
 
 const ButtonOK = styled.button`
   background: #ef3f3e;
@@ -62,9 +65,34 @@ class Hamburger extends Component {
     this.state = {
       modal: false,
       sidebar: false,
-      user: this.props.user,
+      user: this.props.userList[this.props.userList.length - 1],
       modal1: false,
+      count: 0,
+      notification: this.props.notificationList,
+      // data: []
+
     };
+
+
+  }
+
+  countNoti = () => {
+    var count = 0
+    this.props.notificationList.forEach(item => {
+      if (item.notiCount === 1) {
+        count = count + 1;
+        console.log(count)
+      }
+    })
+    this.setState({ count: count });
+  }
+
+  reduceCount = () => {
+    const notification = {
+      notiCount: 0,
+    }
+    firestore.updateNotiByID(notification, this.editSuccess, this.editReject)
+    this.props.editNotification(notification)
   }
 
   handleModalClose = (e) => {
@@ -87,6 +115,24 @@ class Hamburger extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
+  editSuccess = () => {
+    console.log('Edit Success')
+  }
+
+  editReject = (error) => {
+    console.log(error)
+  }
+
+  componentDidMount() {
+    this.countNoti()
+  }
+
+  // clearNoti = () => {
+  //   this.setState({ noti: false });
+  // }
+
+
+
 
 
   render() {
@@ -100,17 +146,22 @@ class Hamburger extends Component {
             <img className="iconKCN" src={logoTopBar} />
             <p className="tectKCN">KLUNG CHANA</p>
           </div>
-          <span className='title' style={{ paddingLeft: '169px' }}>{this.props.page}</span>
-          <div onClick={this.handleModalOpen1}><FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell>
+          <span className='title' style={{ paddingLeft: '169px' }} >{this.props.page}</span>
+
+          <div onClick={this.handleModalOpen1}><Badge badgeContent={this.state.count} color="secondary">
+            <FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell>
+          </Badge>
             <div hidden={!this.state.modal1}>
 
               <div className="modal-tri" style={{ paddingTop: '1%' }}>
                 <Arrow />
                 {this.props.notificationList.map((item) => {
                   return (
-                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <p className='txtPdInOD' style={{}}>{item.notificationHead}</p>
+                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                        <p className='txtPdInOD' style={{}} onClick={() => {
+                          this.reduceCount();
+                        }}>{item.notificationHead}</p>
                       </div>
                     </scroll>
                   );
@@ -119,9 +170,10 @@ class Hamburger extends Component {
 
             </div>
           </div>
+
           <div style={{ cursor: 'pointer' }} onClick={() => history.push('/profile')}>
-            <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic}/></span>
-            <span style={{ color: '#fff'}}>{this.state.user.firstnameEN}</span>
+            <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>
+            <span style={{ color: '#fff' }}>{this.state.user.firstnameEN}</span>
           </div>
         </div>
         <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -192,12 +244,14 @@ const mapDispatchToProps = (dispatch) => {
     clearShelf: () => dispatch(clearShelf()),
     clearPickOrder: () => dispatch(clearPickOrder()),
     clearBill: () => dispatch(clearBill()),
+    editNotification: (notification) => dispatch(editNotification(notification))
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     notificationList: state.notificationReducer.notificationList,
+    userList: state.userReducer.userList,
   };
 };
 

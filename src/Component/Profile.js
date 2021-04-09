@@ -125,7 +125,7 @@ class Profile extends Component {
                     <div><p className="textP1" style={{ width: '75px', height: '39px', left: '49.5%', top: '42%' }}>E-mail</p></div>
                     <div><input placeholder={this.state.user.email} className="inputP3" style={{ top: '47%' }} readOnly></input></div>
                 </Paper>
-                <Paper className="paperChangePass" onClick={this.handleModalOpen} >
+                <Paper className="paperChangePass" onClick={this.handleModalOpen} style={{cursor:'pointer'}}>
                     <div>
                         <p className="textChangePass" >Change Password</p>
                     </div>

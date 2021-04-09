@@ -11,11 +11,13 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
-import ComponentToPrint from './BillP.js';
+import BillP from './BillP.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { addBill } from '../actions/billAction'
 
-class billPick extends Component {
+import { deleteProduct, editProduct } from '../actions/productAction'
+
+class BillPick extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,11 +25,35 @@ class billPick extends Component {
             notificationHead: 'ยืนยันคำร้องการจ่าย',
             info: this.props.location.state.info,
             order: this.props.location.state.order,
+            product: {},
         };
     }
 
-    success = (doc) => {
-        console.log(doc.id)
+    deleteSuccess = () => {
+        console.log('Delete Success')
+    }
+
+    editSuccess = () => {
+        console.log('Edit Success')
+    }
+
+    getSuccess = (doc) => {
+        this.state.order.forEach((item) => {
+            if (item.id == doc.id) {
+                if (item.qty === doc.data().qty) {
+                    console.log(doc.id)
+                    firestore.deleteProduct(doc.id, this.deleteSuccess, this.reject)
+                    this.props.deleteProduct(doc.id)
+                } else {
+                    console.log(doc.id)
+                    const product = doc.data()
+                    product.id = doc.id
+                    product.qty = (parseInt(product.qty) - parseInt(item.qty)).toString()
+                    firestore.updateProductByID(product, this.editSuccess, this.reject)
+                    this.props.editProduct(product)
+                }
+            }
+        })
     }
 
     reject = (error) => {
@@ -35,7 +61,7 @@ class billPick extends Component {
     }
 
     addBillSuccess = (doc) => {
-        console.log(doc.id)
+        /*console.log(doc.id)*/
         let bill = {
             info: this.state.info,
             order: this.state.order,
@@ -47,11 +73,11 @@ class billPick extends Component {
         }
         this.props.addBill(bill)
         this.props.clearPickOrder()
-        history.push('/home')
+        
     }
 
     onSend = async () => {
-        /*const notification = {
+        const notification = {
             notificationHead: this.state.notificationHead,
         }
         await firestore.addNotification(notification, this.success, this.reject)
@@ -64,8 +90,11 @@ class billPick extends Component {
             readStatus: false,
             type: 'MR',
         }
-        firestore.addBill(bill, this.addBillSuccess, this.reject)*/
-        console.log(this.state.order)
+        firestore.addBill(bill, this.addBillSuccess, this.reject)
+        this.state.order.forEach((item) => {
+            firestore.getProductByID(item.id, this.getSuccess, this.reject)
+        })
+        history.push('/home')
     }
 
 
@@ -73,17 +102,17 @@ class billPick extends Component {
         return (
             <div>
                 <Paper className="printBill">
-                    <ComponentToPrint info={this.state.info} order={this.state.order} />
-                    <Paper className="btnSend" onClick={this.onSend}>
+                    <BillP info={this.state.info} order={this.state.order} />
+                    <Paper className="btnSend" style={{cursor:'pointer'}} onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => {
+                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
                         this.props.clearPickOrder()
                         history.push('/home')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" onClick={() => history.push({
+                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={() => history.push({
                         pathname: '/picking/pickingChart',
                         state: { info: this.state.info },
                     })}>
@@ -102,7 +131,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clearPickOrder: () => dispatch(clearPickOrder()),
         addNotification: (notification) => dispatch(addNotification(notification)),
-        addBill: (bill) => dispatch(addBill(bill))
+        addBill: (bill) => dispatch(addBill(bill)),
+        deleteProduct: (id) => dispatch(deleteProduct(id)),
+        editProduct: (product) => dispatch(editProduct(product))
     };
 };
 
@@ -116,4 +147,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(billPick);
+export default connect(mapStateToProps, mapDispatchToProps)(BillPick);

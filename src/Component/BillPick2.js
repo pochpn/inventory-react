@@ -11,21 +11,20 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import { addNotification } from '../actions/notificationAction'
 import firestore from '../firebase/firestore'
 
+import BillP2 from './BillP2.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
-
-import BillO2 from './BillO2.js';
-
 import { editBill, deleteBill } from '../actions/billAction'
+
 import { addProduct, clearProduct } from '../actions/productAction'
 
-class BillOrder2 extends Component {
+class BillPick extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            notificationHead: 'ยืนยันคำร้องการจ่าย',
             bill: this.props.location.state.bill,
-            product: null,
+            product: {},
         };
     }
 
@@ -35,7 +34,7 @@ class BillOrder2 extends Component {
             product.id = doc.id
             this.props.addProduct(product)
         });
-        history.push('/orderConfirm/receiving')
+        history.push('/orderConfirm/packing')
     }
 
     onGetAll = () => {
@@ -43,25 +42,12 @@ class BillOrder2 extends Component {
         firestore.getAllProduct(this.getAllProductSuccess, this.reject)
     }
 
-    addProductSuccess = (doc) => {
-        console.log('Add Success')
-    }
-
     updateBillSuccess = () => {
         let bill = this.state.bill
         bill.confirm = true
         this.props.editBill(bill)
         console.log('Update Success')
-        this.state.bill.order.forEach((item) => {
-            this.setState({ product: item })
-            console.log(this.state.product)
-            firestore.addProduct(item, this.addProductSuccess, this.reject)
-        })
-        this.onGetAll()
-    }
-
-    reject = (error) => {
-        console.log(error)
+        history.push('/orderConfirm/packing')
     }
 
     onAccept = () => {
@@ -70,31 +56,76 @@ class BillOrder2 extends Component {
         firestore.updateBillByID(bill, this.updateBillSuccess, this.reject)
     }
 
+    reject = (error) => {
+        console.log(error)
+    }
+
     deleteBillSuccess = () => {
-        console.log('Delete Success')
+        /*console.log('Delete Success')*/
         this.props.deleteBill(this.state.bill.id)
     }
 
-    onReject = () => {
-        firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)
-        history.push('/orderConfirm/receiving')
+    editSuccess = () => {
+        console.log('Edit Success')
     }
 
+    getSuccess = (doc) => {
+        if (doc.data() === undefined) {
+            this.state.bill.order.forEach((item) => {
+                if (doc.id === item.id) {
+                    console.log('Add-' + doc.id)
+                    firestore.addProductByID(item, this.addSuccess, this.addReject)
+                }
+            })
+        } else {
+            this.state.bill.order.forEach((item) => {
+                if (doc.id === item.id) {
+                    console.log('Edit-' + doc.id)
+                    const product = doc.data()
+                    product.id = doc.id
+                    product.qty = (parseInt(product.qty) + parseInt(item.qty)).toString()
+                    firestore.updateProductByID(product, this.editSuccess, this.reject)
+                }
+            })
+        }
+    }
+
+    getReject = (error) => {
+        console.log(error)
+    }
+
+    addSuccess = (doc) => {
+        console.log('success')
+    }
+
+    addReject = (error) => {
+        console.log(error)
+    }
+
+    onReject = () => {
+        this.state.bill.order.forEach((item) => {
+            this.setState({ product: item })
+            console.log(this.state.product)
+            firestore.getProductByID(item.id, this.getSuccess, this.getReject)
+        })
+        firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)
+        this.onGetAll()
+    }
 
     render() {
         return (
             <div>
                 <Paper className="printBill">
-                    <BillO2  bill={this.state.bill} />
-                    <Paper className="btnSend" style={{cursor:'pointer'}} onClick={this.onAccept}>
+                    <BillP2 bill={this.state.bill} />
+                    <Paper className="btnSend" onClick={this.onAccept}>
                         <p className="txtbtnSend">Accept</p>
                     </Paper>
-                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
-                        history.push('/orderConfirm/receiving')
+                    <Paper className="btnCancel" onClick={() => {
+                        history.push('/orderConfirm/packing')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={this.onReject}>
+                    <Paper className="btnEdit" onClick={this.onReject}>
                         <p className="txtbtnEdit">Reject</p>
                     </Paper>
                 </Paper>
@@ -127,4 +158,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillOrder2);
+export default connect(mapStateToProps, mapDispatchToProps)(BillPick);

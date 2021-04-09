@@ -18,12 +18,13 @@ import BillO from './BillO.js';
 import { addBill } from '../actions/billAction'
 
 
-class billOrder extends Component {
+class BillOrder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            notiCount: 1,
             info: this.props.location.state.info,
             order: this.props.location.state.order,
         };
@@ -56,6 +57,7 @@ class billOrder extends Component {
     onSend = async () => {
         const notification = {
             notificationHead: this.state.notificationHead,
+            notiCount: this.state.notiCount
         }
         await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)
@@ -77,15 +79,15 @@ class billOrder extends Component {
                 <Paper className="printBill">
                     <BillO info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>
-                        <p className="txtbtnSend">Send</p>
+                        <p className="txtbtnSend" style={{cursor:'pointer'}}>Send</p>
                     </Paper>
-                    <Paper className="btnCancel" onClick={() => {
+                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
                         this.props.clearPickOrder()
                         history.push('/home')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" onClick={() => history.push({
+                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={() => history.push({
                         pathname: '/Ordering/orderingChart',
                         state: { info: this.state.info },
                     })}>
@@ -118,4 +120,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(billOrder);
+export default connect(mapStateToProps, mapDispatchToProps)(BillOrder);

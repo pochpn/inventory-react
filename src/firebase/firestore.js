@@ -499,6 +499,46 @@ class Firestore {
                 reject(error);
             });
     };
+     /*------------------Carrying Cost---------------------*/
+     getAllcCost = (success, reject) => {
+        firebase
+            .firestore()
+            .collection('Carry Cost')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+
+    }
+    updatecCost = (cCost, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Carry Cost')
+            .doc("ttL5Kj35fCMrLbFD7c35")
+            .update({
+                Apr: cCost.Apr,
+                Aug: cCost.Aug,
+                Dec: cCost.Dec,
+                Feb: cCost.Feb,
+                Jan: cCost.Jan,
+                Jul: cCost.Jul,
+                Jun: cCost.Jun,
+                Mar: cCost.Mar,
+                May: cCost.May,
+                Nov: cCost.Nov,
+                Oct: cCost.Oct,
+                Sep: cCost.Sep,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 }
 
 const firestore = new Firestore();

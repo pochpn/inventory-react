@@ -41,10 +41,11 @@ class BillPick extends Component {
 
     getAllProductSuccess = (querySnapshot) => {
         querySnapshot.forEach(doc => {
-            let product = doc.data()
+            const product = doc.data()
             product.id = doc.id
             this.props.addProduct(product)
         });
+        history.push('/home')
     }
 
     onGetAll = () => {
@@ -53,7 +54,7 @@ class BillPick extends Component {
     }
 
     getSuccess = (doc) => {
-        this.state.order.forEach((item) => {
+        /*this.state.order.forEach((item) => {
             if (item.id == doc.id) {
                 if (item.qty === doc.data().qty) {
                     console.log(doc.id)
@@ -69,7 +70,19 @@ class BillPick extends Component {
                 }
             }
         })
-        /*this.onGetAll()*/
+        this.props.clearProduct()
+        firestore.getAllProduct(this.getAllProductSuccess, this.reject)
+        this.onGetAll()*/
+        const product = this.state.order.filter((item) => item.id === doc.id)
+        if (parseInt(product[0].qty) === parseInt(doc.data().qty)) {
+            firestore.deleteProduct(doc.id, this.deleteSuccess, this.reject)
+            this.props.deleteProduct(doc.id)
+        } else {
+            const product1 = product[0]
+            product1.qty = (parseInt(doc.data().qty) - parseInt(product[0].qty)).toString()
+            firestore.updateProductByID(product1, this.editSuccess, this.reject)
+            this.props.editProduct(product1)
+        }
     }
 
     reject = (error) => {
@@ -77,7 +90,6 @@ class BillPick extends Component {
     }
 
     addBillSuccess = (doc) => {
-        /*console.log(doc.id)*/
         let bill = {
             info: this.state.info,
             order: this.state.order,
@@ -89,20 +101,19 @@ class BillPick extends Component {
         }
         this.props.addBill(bill)
         this.props.clearPickOrder()
-        
     }
 
     addReject = (error) => {
         console.log(error)
     }
 
-    onSend = async () => {
-        const notification = {
+    onSend = () => {
+        /*const notification = {
             notificationHead: this.state.notificationHead,
             notiCount: this.state.notiCount
-        }
+        }*/
         /*await firestore.addNotification(notification, this.success, this.reject)*/
-        this.props.addNotification(notification)
+        /*this.props.addNotification(notification)*/
         const bill = {
             info: this.state.info,
             order: this.state.order,
@@ -124,16 +135,16 @@ class BillPick extends Component {
             <div>
                 <Paper className="printBill">
                     <BillP info={this.state.info} order={this.state.order} />
-                    <Paper className="btnSend" style={{cursor:'pointer'}} onClick={this.onSend}>
+                    <Paper className="btnSend" style={{ cursor: 'pointer' }} onClick={this.onSend}>
                         <p className="txtbtnSend">Send</p>
                     </Paper>
-                    <Paper className="btnCancel" style={{cursor:'pointer'}} onClick={() => {
+                    <Paper className="btnCancel" style={{ cursor: 'pointer' }} onClick={() => {
                         this.props.clearPickOrder()
                         history.push('/home')
                     }}>
                         <p className="txtbtnCancle">Cancel</p>
                     </Paper>
-                    <Paper className="btnEdit" style={{cursor:'pointer'}} onClick={() => history.push({
+                    <Paper className="btnEdit" style={{ cursor: 'pointer' }} onClick={() => history.push({
                         pathname: '/picking/pickingChart',
                         state: { info: this.state.info },
                     })}>

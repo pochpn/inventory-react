@@ -45,7 +45,7 @@ class Picking extends Component {
             let year = date.getFullYear().toString().substr(2, 3)
             let mount = date.getMonth().toString()
             if (date.getMonth().toString().length === 1) {
-                mount = '0' + date.getMonth().toString()
+                mount = '0' + (date.getMonth() + 1).toString()
             }
             let day = date.getDate().toString()
             if (date.getDate().toString().length === 1) {
@@ -53,15 +53,15 @@ class Picking extends Component {
             }
             let hour = date.getHours().toString()
             if (date.getHours().toString().length === 1) {
-                day = '0' + date.getHours().toString()
+                hour = '0' + date.getHours().toString()
             }
             let min = date.getMinutes().toString()
             if (date.getMinutes().toString().length === 1) {
-                day = '0' + date.getMinutes().toString()
+                min = '0' + date.getMinutes().toString()
             }
             let sec = date.getSeconds().toString()
             if (date.getSeconds().toString().length === 1) {
-                day = '0' + date.getSeconds().toString()
+                sec = '0' + date.getSeconds().toString()
             }
 
             const info = {
@@ -116,7 +116,7 @@ class Picking extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '53.5%',paddingTop: '3%',paddingBottom:'1%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '53.5%', paddingTop: '3%', paddingBottom: '1%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', }}>
                                 <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Customer</p>
                                 <p className="textOr" style={{ paddingRight: '18.2%', paddingLeft: '2%', paddingTop: '1%' }}>Tel.</p>

@@ -117,10 +117,8 @@ class PickingChart extends Component {
 
     handleModalCloseAdd = (e) => {
         if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
-            let product = this.state.product
+            const product = {...this.state.product}
             product.qty = (this.state.qty).toString()
-            product.amount = (this.state.product.costPunit * this.state.qty).toString()
-            console.log(this.state.product.qty)
             this.props.addPickOrder(product)
 
             const currentClass = e.target.className;

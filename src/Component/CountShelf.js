@@ -95,7 +95,7 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>Counting</p>
                 </div>
                 <scroll>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'474px' ,overflow: 'auto' }}>
                         {this.props.productList.map((item) => {
                             item.counting = 'input'
                             if (item.shelf === this.state.shelf) {
@@ -132,7 +132,7 @@ class CountShelf extends Component {
                     </div>
                 </div>
 
-                <div style={{ paddingLeft: 50, paddingTop: 50, alignItems: 'self-end' }}>
+                <div style={{ paddingLeft: '1%', paddingTop: '1%', alignItems: 'self-end' }}>
                     <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => history.push('')}>
                         Report
                     </ButtonReport>

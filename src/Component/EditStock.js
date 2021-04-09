@@ -28,7 +28,7 @@ class EditStock extends Component {
             </div>
           </Paper>
 
-          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock/editproduct')}>
+          <Paper className="paperVs" style={{borderRadius:"10%"}} onClick={() => history.push('/stock/editStock/editproductshelf')}>
             <div style={{alignContent:'center',marginBottom:'100%'}}>
               <img className="imVs" src={editpro} />
               <p className="textSto2">Edit Product</p>

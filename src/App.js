@@ -41,6 +41,8 @@ import BillPick from './Component/BillPick'
 import CountingReport from './Component/CountingReport'
 import BillPick2 from './Component/BillPick2'
 import BillPHis from './Component/BillPHis'
+import EditProductDetail from './Component/EditProductDetail'
+import EditProductShelf from './Component/EditProductShelf'
 
 class App extends Component {
   constructor(props) {
@@ -91,7 +93,9 @@ class App extends Component {
             <Route exact path="/stock/countingStock/countShelf" component={CountShelf}/>
             <Route exact path="/stock/countingStock/countShelf/countReport" component={CountingReport}/>
             <Route exact path="/stock/editStock/editshelf" component={EditShelf} />
-            <Route exact path="/stock/editStock/editproduct" component={EditProduct} />
+            <Route exact path="/stock/editStock/editproductshelf" component={EditProductShelf} />
+            <Route exact path="/stock/editStock/editproductshelf/editproduct" component={EditProduct} />
+            <Route exact path="/stock/editStock/editproductshelf/editproduct/editproductdetail" component={EditProductDetail} />
 
           </Switch>
         </Router>

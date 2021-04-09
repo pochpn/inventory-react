@@ -69,7 +69,7 @@ class BillOrder extends Component {
             readStatus: false,
             type: 'PO',
         }
-        firestore.addBill(bill, this.addBillSuccess, this.reject)
+        await  firestore.addBill(bill, this.addBillSuccess, this.reject)
     }
 
 

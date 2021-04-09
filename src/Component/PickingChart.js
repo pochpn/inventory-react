@@ -86,6 +86,13 @@ class PickingChart extends Component {
         };
     }
 
+    onKeyPress(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
     handleModalClose = (e) => {
         const currentClass = e.target.className;
         if (currentClass == 'modal-cardforget') {
@@ -366,7 +373,7 @@ class PickingChart extends Component {
                                 <Font>{this.state.product.shelf}</Font>
                                 <Font>{this.state.product.level}</Font>
                                 <Font>{this.state.product.costPunit}</Font>
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <input type="number" onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>

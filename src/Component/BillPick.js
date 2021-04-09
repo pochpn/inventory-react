@@ -15,7 +15,8 @@ import BillP from './BillP.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { addBill } from '../actions/billAction'
 
-import { deleteProduct, editProduct } from '../actions/productAction'
+import { clearProduct, deleteProduct, editProduct, addProduct } from '../actions/productAction'
+import { addProductProfile } from '../actions/productProfileAction';
 
 class BillPick extends Component {
     constructor(props) {
@@ -37,6 +38,19 @@ class BillPick extends Component {
         console.log('Edit Success')
     }
 
+    getAllProductSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let product = doc.data()
+            product.id = doc.id
+            this.props.addProduct(product)
+        });
+    }
+
+    onGetAll = () => {
+        this.props.clearProduct()
+        firestore.getAllProduct(this.getAllProductSuccess, this.reject)
+    }
+
     getSuccess = (doc) => {
         this.state.order.forEach((item) => {
             if (item.id == doc.id) {
@@ -54,6 +68,7 @@ class BillPick extends Component {
                 }
             }
         })
+        /*this.onGetAll()*/
     }
 
     reject = (error) => {
@@ -76,11 +91,15 @@ class BillPick extends Component {
         
     }
 
+    addReject = (error) => {
+        console.log(error)
+    }
+
     onSend = async () => {
         const notification = {
             notificationHead: this.state.notificationHead,
         }
-        await firestore.addNotification(notification, this.success, this.reject)
+        /*await firestore.addNotification(notification, this.success, this.reject)*/
         this.props.addNotification(notification)
         const bill = {
             info: this.state.info,
@@ -90,7 +109,7 @@ class BillPick extends Component {
             readStatus: false,
             type: 'MR',
         }
-        firestore.addBill(bill, this.addBillSuccess, this.reject)
+        firestore.addBill(bill, this.addBillSuccess, this.addReject)
         this.state.order.forEach((item) => {
             firestore.getProductByID(item.id, this.getSuccess, this.reject)
         })
@@ -133,7 +152,9 @@ const mapDispatchToProps = (dispatch) => {
         addNotification: (notification) => dispatch(addNotification(notification)),
         addBill: (bill) => dispatch(addBill(bill)),
         deleteProduct: (id) => dispatch(deleteProduct(id)),
-        editProduct: (product) => dispatch(editProduct(product))
+        editProduct: (product) => dispatch(editProduct(product)),
+        addProduct: (product) => dispatch(addProduct(product)),
+        clearProduct: () => dispatch(clearProduct())
     };
 };
 

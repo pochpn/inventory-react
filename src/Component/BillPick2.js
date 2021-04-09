@@ -15,7 +15,7 @@ import BillP2 from './BillP2.js';
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { editBill, deleteBill } from '../actions/billAction'
 
-import { addProduct, clearProduct } from '../actions/productAction'
+import { addProduct, clearProduct, editProduct } from '../actions/productAction'
 
 class BillPick extends Component {
     constructor(props) {
@@ -75,6 +75,7 @@ class BillPick extends Component {
                 if (doc.id === item.id) {
                     console.log('Add-' + doc.id)
                     firestore.addProductByID(item, this.addSuccess, this.addReject)
+                    this.props.addProduct(item)
                 }
             })
         } else {
@@ -85,6 +86,7 @@ class BillPick extends Component {
                     product.id = doc.id
                     product.qty = (parseInt(product.qty) + parseInt(item.qty)).toString()
                     firestore.updateProductByID(product, this.editSuccess, this.reject)
+                    this.props.editProduct(product)
                 }
             })
         }
@@ -109,7 +111,8 @@ class BillPick extends Component {
             firestore.getProductByID(item.id, this.getSuccess, this.getReject)
         })
         firestore.deleteBill(this.state.bill.id, this.deleteBillSuccess, this.reject)
-        this.onGetAll()
+        /*this.onGetAll()*/
+        history.push('/orderConfirm/packing')
     }
 
     render() {
@@ -145,6 +148,7 @@ const mapDispatchToProps = (dispatch) => {
         deleteBill: (id) => dispatch(deleteBill(id)),
         addProduct: (product) => dispatch(addProduct(product)),
         clearProduct: () => dispatch(clearProduct()),
+        editProduct: (product) => dispatch(editProduct(product)),
     };
 };
 

@@ -58,6 +58,18 @@ class InvenCost extends Component {
             decValC: 0,
             extracCost: 0,
             cCost: null,
+            jValT: 0,
+            fValT: 0,
+            mValT: 0,
+            aValT: 0,
+            mayValT: 0,
+            junValT: 0,
+            julValT: 0,
+            augValT: 0,
+            sepValT: 0,
+            octValT: 0,
+            novValT: 0,
+            decValT: 0,
         };
 
     }
@@ -99,6 +111,20 @@ class InvenCost extends Component {
 
     handleModalOpen4 = () => {
         this.setState({ modal4: true });
+        this.setState({
+            jValT: this.state.jVal + this.state.jValC,
+            fValT: this.state.fVal + this.state.fValC,
+            mValT: this.state.mVal + this.state.mValC,
+            aValT: this.state.aVal + this.state.aValC,
+            mayValT: this.state.mayVal + this.state.mayValC,
+            junValT: this.state.junVal + this.state.junValC,
+            julValT: this.state.julVal + this.state.julValC,
+            augValT: this.state.augVal + this.state.augValC,
+            sepValT: this.state.sepVal + this.state.sepValC,
+            octValT: this.state.octVal + this.state.octValC,
+            novValT: this.state.novVal + this.state.novValC,
+            decValT: this.state.novVal + this.state.novValC,
+        })
     };
 
     handleModalClose5 = (e) => {
@@ -193,10 +219,12 @@ class InvenCost extends Component {
                 Oct: 0,
                 Sep: 0,
             }
-            firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
-            firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
+            await firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
+            await firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
             //console.log("new year")
         }
+       
+        
     }
     updateSuccess = () => {
         console.log("Success")
@@ -317,6 +345,8 @@ class InvenCost extends Component {
     getcReject = (e) =>{
         console.log(e)
     }
+    /*-----------------------------End of Carrying Cost------------------------------*/
+
     render() {
 
         let barData1 = [
@@ -393,6 +423,44 @@ class InvenCost extends Component {
             },
             {
                 name: 'Dec', Cost: this.state.decValC,
+            },
+        ];
+        let barData3 = [
+            {
+                name: 'Jan', Cost: this.state.jValT,
+            },
+            {
+                name: 'Feb', Cost: this.state.fValT,
+            },
+            {
+                name: 'Mar', Cost: this.state.mValT,
+            },
+            {
+                name: 'Apr', Cost: this.state.aValT,
+            },
+            {
+                name: 'May', Cost: this.state.mayValT,
+            },
+            {
+                name: 'Jun', Cost: this.state.junValT,
+            },
+            {
+                name: 'Jul', Cost: this.state.julValT,
+            },
+            {
+                name: 'Aug', Cost: this.state.augValT,
+            },
+            {
+                name: 'Sep', Cost: this.state.sepValT,
+            },
+            {
+                name: 'Oct', Cost: this.state.octValT,
+            },
+            {
+                name: 'Nov', Cost: this.state.novValT,
+            },
+            {
+                name: 'Dec', Cost: this.state.decValT,
             },
         ];
         return (
@@ -535,6 +603,23 @@ class InvenCost extends Component {
                         <div className="modal-card">
                             <div style={{ paddingLeft: '95%', cursor: 'pointer' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose4}></IoIosCloseCircle></div>
                             <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={TC}></img>
+                            <div style={{ display: 'flex', flexDirection: 'column', marginTop: "5%" }}>
+                                <ComposedChart
+                                    width={750}
+                                    height={400}
+                                    data={barData3}
+                                    margin={{
+                                        top: 0, right: 0, bottom: 0, left: 0,
+                                    }}
+                                >
+                                    <CartesianGrid stroke="#f5f5f5" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="Cost" barSize={20} fill="#413ea0" />
+                                </ComposedChart>
+                            </div>
                         </div>
                     </div>
                 </div>

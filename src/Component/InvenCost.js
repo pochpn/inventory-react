@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { Input, Paper } from '@material-ui/core';
 import { CC, EOQ, TC, OC } from '../pic'
 import './Modal.css';
-import DatePicker from 'react-datepicker';
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ComposedChart, Line, CartesianGrid } from 'recharts';
 const Font = styled.div`
   && {
@@ -30,7 +29,7 @@ class InvenCost extends Component {
             modal4: false,
             maodal5: false,
             date: new Date(),
-            currentMont: new Date().getMonth(),
+            currentMonth: new Date().getMonth(),
             jVal: 0,
             fVal: 0,
             mVal: 0,
@@ -89,40 +88,40 @@ class InvenCost extends Component {
         this.setState({ modal5: true });
     };
     handleClick = () => {
-        if(this.state.currentMont === 0){
+        if(this.state.currentMonth === 0){
             this.setState({jVal: this.state.jVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 1){
+        if(this.state.currentMonth === 1){
             this.setState({fVal: this.state.fVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 2){
+        if(this.state.currentMonth === 2){
             this.setState({mVal: this.state.mVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 3){
+        if(this.state.currentMonth === 3){
             this.setState({aVal: this.state.aVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 4){
+        if(this.state.currentMonth === 4){
             this.setState({mayVal: this.state.mayVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 5){
+        if(this.state.currentMonth === 5){
             this.setState({junVal: this.state.junVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 6){
+        if(this.state.currentMonth === 6){
             this.setState({julVal: this.state.julVal += parseInt(this.state.extraCost)})
         }
-        if(this.state.currentMont === 7){
+        if(this.state.currentMonth === 7){
             this.setState({augVal: this.state.augVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 8){
+        if(this.state.currentMonth === 8){
             this.setState({sepVal: this.state.sepVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 9){
+        if(this.state.currentMonth === 9){
             this.setState({octVal: this.state.octVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 10){
+        if(this.state.currentMonth === 10){
             this.setState({novVal: this.state.novVal += parseInt(this.state.extraCost) })
         }
-        if(this.state.currentMont === 11){
+        if(this.state.currentMonth === 11){
             this.setState({decVal: this.state.decVal += parseInt(this.state.extraCost) })
         }
         const oCost = {
@@ -138,12 +137,30 @@ class InvenCost extends Component {
             Nov: this.state.novVal,
             Oct: this.state.octVal,
             Sep: this.state.sepVal,
-        } 
+        }
         firestore.updateCost(oCost,this.updateSuccess,this.updateReject)
 
     }
     componentDidMount =  ()=>{
         firestore.getAllCost(this.getSuccess,this.getReject)
+        if((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0 ) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() === 1)){
+            const oCost = {
+               Apr: 0,
+               Aug: 0,
+               Dec: 0,
+               Feb: 0,
+               Jan: 0,
+               Jul: 0,
+               Jun: 0,
+               Mar: 0,
+               May: 0,
+               Nov: 0,
+               Oct: 0,
+               Sep: 0,
+           }
+           firestore.updateCost(oCost,this.updateSuccess,this.updateReject)
+           console.log("new year")
+       }
     }
     updateSuccess = () => {
         console.log("Success")

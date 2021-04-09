@@ -10,7 +10,7 @@ import { Input, Paper } from '@material-ui/core';
 import { CC, EOQ, TC, OC } from '../pic'
 import './Modal.css';
 
-const Font2 = styled.div`
+const Font = styled.div`
   && {
     color: #000000;
     font-size: 16px;
@@ -27,6 +27,7 @@ class InvenCost extends Component {
             modal2: false,
             modal3: false,
             modal4: false,
+            maodal5: false,
         };
     }
 
@@ -59,6 +60,14 @@ class InvenCost extends Component {
 
     handleModalOpen4 = () => {
         this.setState({ modal4: true });
+    };
+
+    handleModalClose5 = (e) => {
+        this.setState({ modal5: false });
+    };
+
+    handleModalOpen5 = () => {
+        this.setState({ modal5: true });
     };
 
     render() {
@@ -106,7 +115,7 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-card" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose1}></IoIosCloseCircle></div>
+                            <div style={{ paddingLeft: '95%' , cursor: 'pointer'}}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose1}></IoIosCloseCircle></div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <img style={{ width: '160px', height: '70px', marginLeft: '5%' }} src={EOQ}></img>
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
@@ -116,14 +125,14 @@ class InvenCost extends Component {
                                         <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
                                     </div>
                                 </div>
-                                <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: 'darkred', borderRadius: '10px' }}>EOQ MANUAL</button>
+                                <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: 'darkred', borderRadius: '10px' }} onClick={this.handleModalOpen5}>EOQ MANUAL</button>
                             </div>
                             <div style={{ paddingTop: '40px' }}><Paper className='eoqTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                    <Font2>Product Name</Font2>
-                                    <Font2>EOQ</Font2>
-                                    <Font2>Number of orders/year</Font2>
-                                    <Font2>Order lead time</Font2>
+                                    <Font>Product Name</Font>
+                                    <Font>EOQ</Font>
+                                    <Font>Number of orders/year</Font>
+                                    <Font>Order lead time</Font>
                                 </div>
                             </Paper></div>
                         </div>
@@ -132,7 +141,7 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal2}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div className="modal-card">
-                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose2}></IoIosCloseCircle></div>
+                            <div style={{ paddingLeft: '95%' , cursor: 'pointer'}}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose2}></IoIosCloseCircle></div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={OC}></img>
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '7%' }}>
@@ -149,7 +158,7 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal3}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div className="modal-card">
-                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose3}></IoIosCloseCircle></div>
+                            <div style={{ paddingLeft: '95%' , cursor: 'pointer'}}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose3}></IoIosCloseCircle></div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={CC}></img>
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '7%' }}>
@@ -166,8 +175,15 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal4}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div className="modal-card">
-                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose4}></IoIosCloseCircle></div>
+                            <div style={{ paddingLeft: '95%' , cursor: 'pointer'}}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose4}></IoIosCloseCircle></div>
                             <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={TC}></img>
+                        </div>
+                    </div>
+                </div>
+                <div hidden={!this.state.modal5}>
+                    <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="modal-card">
+                            <div style={{ paddingLeft: '95%' , cursor: 'pointer'}}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose5}></IoIosCloseCircle></div>
                         </div>
                     </div>
                 </div>

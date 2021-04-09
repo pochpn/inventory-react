@@ -1,5 +1,5 @@
 .topbar {
-    background-color: #6E0D0D;
+    background-color: #ABF2D3;
 }
 
 .bgColor {
@@ -11,7 +11,7 @@ body, html {
 }
 
 .bg {
-    background-image: url("https://sv1.picz.in.th/images/2021/03/04/oFdARk.png");
+    background-image: url("https://sv1.picz.in.th/images/2021/04/09/A4vgvt.jpg");
     min-height: 100%;
     min-width: 1080px;
     width: 100%;
@@ -27,7 +27,7 @@ body, html {
 }
 
 .bgLogin {
-    background-image: url("https://sv1.picz.in.th/images/2021/03/04/oF0Crz.png");
+    background-image: url("https://sv1.picz.in.th/images/2021/04/09/A4MxqZ.png");
     min-height: 100%;
     min-width: 1080px;
     width: 100%;
@@ -77,6 +77,7 @@ body, html {
     margin-left: 20px;
     color: #000000;
 }
+
 .textOTWeek2 {
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -792,6 +793,15 @@ body, html {
 
 /* DASHBOARD */
 
+.topPaper {
+    width: 349px;
+    height: 31px;
+    left: 146px;
+    top: 565px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 15px;
+}
+
 /*ViewStock*/
 
 .paperShelf {
@@ -1349,6 +1359,7 @@ body, html {
 }
 
 /* Inventory Cost */
+
 .paperInEOQ {
     justify-items: center;
     align-items: center;
@@ -1578,7 +1589,6 @@ body, html {
     width: 366px;
     background: #FF9F8C !important;
     margin-top: 0.5%;
-    
 }
 
 .paperNoti:hover {
@@ -1586,7 +1596,6 @@ body, html {
     width: 366px;
     background: #fdafa0 !important;
     margin-top: 0.5%;
-    
 }
 
 .paperSl {

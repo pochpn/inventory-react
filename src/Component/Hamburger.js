@@ -16,6 +16,7 @@ import { clearProductProfile } from '../actions/productProfileAction';
 import { clearShelf } from '../actions/shelfAction'
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { clearBill } from '../actions/billAction'
+import { clearNotification , editNotification} from '../actions/notificationAction'
 
 import { logoTopBar } from '../pic'
 
@@ -23,7 +24,6 @@ import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success } from '../pic';
 import Badge from '@material-ui/core/Badge';
-import { editNotification } from '../actions/notificationAction';
 
 const ButtonOK = styled.button`
   background: #ef3f3e;
@@ -156,7 +156,7 @@ class Hamburger extends Component {
                 <Arrow />
                 {this.props.notificationList.map((item) => {
                   return (
-                    <div>
+                    <div >
                         {item.notiCount === 1 && <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
                           <p className='txtPdInOD' style={{}} onClick={() => {
@@ -202,6 +202,7 @@ class Hamburger extends Component {
                       this.props.clearShelf()
                       this.props.clearPickOrder()
                       this.props.clearBill()
+                      this.props.clearNotification()
                     }
                   }}>
                     {item.icon}
@@ -213,26 +214,6 @@ class Hamburger extends Component {
           </ul>
         </nav>
 
-        <div hidden={!this.state.modal}>
-          <div className="modal-background">
-            <div className="modal-card">
-              <div>
-                <img className="picSuccess" src={Success} />
-              </div>
-              <div>
-                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 130 }} >
-                  <p>Are you sure ?</p>
-                </Font>
-              </div>
-              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                <ButtonOK style={{ fontSize: 20 }} onClick={this.onLogout}>YES</ButtonOK>
-              </div>
-              <div style={{ paddingLeft: 270, paddingTop: 15 }}>
-                <ButtonOK style={{ fontSize: 20 }} onClick={this.handleModalClose}>NO</ButtonOK>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
       </IconContext.Provider>
@@ -250,6 +231,7 @@ const mapDispatchToProps = (dispatch) => {
     clearShelf: () => dispatch(clearShelf()),
     clearPickOrder: () => dispatch(clearPickOrder()),
     clearBill: () => dispatch(clearBill()),
+    clearNotification: () => dispatch(clearNotification()),
     editNotification: (notification) => dispatch(editNotification(notification))
   };
 };

@@ -75,7 +75,7 @@ class BillOrder extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bg" >
                 <Paper className="printBill">
                     <BillO info={this.state.info} order={this.state.order} />
                     <Paper className="btnSend" onClick={this.onSend}>

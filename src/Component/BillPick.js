@@ -23,6 +23,7 @@ class BillPick extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             notificationHead: 'ยืนยันคำร้องการจ่าย',
+            notiCount: 1,
             info: this.props.location.state.info,
             order: this.props.location.state.order,
             product: {},
@@ -79,6 +80,7 @@ class BillPick extends Component {
     onSend = async () => {
         const notification = {
             notificationHead: this.state.notificationHead,
+            notiCount: this.state.notiCount
         }
         await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)

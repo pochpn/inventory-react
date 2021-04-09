@@ -1591,6 +1591,13 @@ body, html {
     margin-top: 0.5%;
 }
 
+.paperRead {
+    height: 10%;
+    width: 366px;
+    background: #9b9b9b !important;
+    margin-top: 0.5%;
+}
+
 .paperNoti:hover {
     height: 10%;
     width: 366px;

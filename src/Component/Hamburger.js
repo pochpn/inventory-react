@@ -87,12 +87,12 @@ class Hamburger extends Component {
     this.setState({ count: count });
   }
 
-  reduceCount = () => {
-    const notification = {
-      notiCount: 0,
-    }
+  reduceCount = (item) => {
+    const notification = item;
+    notification.notiCount = 0;
     firestore.updateNotiByID(notification, this.editSuccess, this.editReject)
     this.props.editNotification(notification)
+    this.countNoti();
   }
 
   handleModalClose = (e) => {
@@ -148,22 +148,28 @@ class Hamburger extends Component {
           </div>
           <span className='title' style={{ paddingLeft: '169px' }} >{this.props.page}</span>
 
-          <div onClick={this.handleModalOpen1}><Badge badgeContent={this.state.count} color="secondary">
-            <FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell>
-          </Badge>
+          <div onClick={this.handleModalOpen1}>
+            <Badge badgeContent={this.state.count} color="secondary"><FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell></Badge>
             <div hidden={!this.state.modal1}>
 
               <div className="modal-tri" style={{ paddingTop: '1%' }}>
                 <Arrow />
                 {this.props.notificationList.map((item) => {
                   return (
-                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
-                        <p className='txtPdInOD' style={{}} onClick={() => {
-                          this.reduceCount();
-                        }}>{item.notificationHead}</p>
-                      </div>
-                    </scroll>
+                    <div>
+                        {item.notiCount === 1 && <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                          <p className='txtPdInOD' style={{}} onClick={() => {
+                            this.reduceCount(item);
+                          }}>{item.notificationHead}</p>
+                        </div>
+                      </scroll>}
+                      {item.notiCount === 0 && <scroll className="paperRead" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                          <p className='txtPdInOD' style={{}} >{item.notificationHead}</p>
+                        </div>
+                      </scroll>}
+                    </div>
                   );
                 })}
               </div>

@@ -83,6 +83,7 @@ class Dashboard extends Component {
       octVal: 0,
       novVal: 0,
       decVal: 0,
+      numberOfItem: 0
     };
 
     this.props.productList.forEach((item) => {
@@ -144,7 +145,9 @@ class Dashboard extends Component {
         console.log("from 12")
         this.setState({ decVal: this.state.decVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
+      this.setState({ numberOfItem: this.state.numberOfItem += parseInt(item.qty) })
     })
+    
   }
 
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
@@ -154,7 +157,7 @@ class Dashboard extends Component {
     if (active) {
       return (
         <div className="custom-tooltip" style={{ backgroundColor: '#ffff', padding: '5px', border: '1px solid #cccc' }}>
-          <label>{`${payload[0].name} : ${payload[0].value}`}</label>
+          <label>{`${payload[0].name} : ${payload[0].value +" ("+((payload[0].value/this.state.numberOfItem)*100).toFixed(2)+"%)"}`}</label>
         </div>
       );
     }

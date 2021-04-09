@@ -38,6 +38,7 @@ import EditShelf from './Component/EditShelf'
 import EditProduct from './Component/EditProduct'
 import BillPick from './Component/BillPick'
 import BillOHis from './Component/BillOHis'
+import CountingReport from './Component/CountingReport'
 
 class App extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class App extends Component {
             <Route exact path="/stock/viewStock/shelf/detail" component={ProductDetail} />
             <Route exact path="/profile" component={Profile}/>
             <Route exact path="/stock/countingStock/countShelf" component={CountShelf}/>
+            <Route exact path="/stock/countingStock/countShelf/countReport" component={CountingReport}/>
             <Route exact path="/stock/editStock/editshelf" component={EditShelf} />
             <Route exact path="/stock/editStock/editproduct" component={EditProduct} />
 

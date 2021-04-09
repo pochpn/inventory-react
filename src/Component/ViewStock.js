@@ -41,7 +41,7 @@ class ViewStock extends Component {
                         <input type="text" style={{ fontSize: 24 }}></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%", }}
+                        style={{ justifyContent: 'flex-end', width: "10%",cursor:'pointer',marginLeft:'15%' }}
                         src={search} />
 
                 </div>

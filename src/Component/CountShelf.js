@@ -16,6 +16,36 @@ const ButtonReport = styled.button`
     border: 2px;
     color: #000000;
 `
+const ButtonInput = styled.button`
+  background: #6E0D0D;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  width:20%
+  padding: 0.5em 1.5em;
+  `
+const ButtonOk = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 125px;
+  height: 52px;
+  border-radius: 12px;
+  margin:5%;
+  
+`
+
+const ButtonCancel = styled.button`
+  background: #929990;
+  border: 2px;
+  color: #ffffff;
+  width: 125px;
+  height: 52px;
+  border-radius: 12px;
+  margin: 5%;
+  
+`
 
 class CountShelf extends Component {
     constructor(props) {
@@ -23,8 +53,25 @@ class CountShelf extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
+            modalCounting: false,
         };
     }
+
+    openModalCounting = () => {
+        this.setState({
+            modalCounting: true,
+        });
+    };
+
+    closeModalCounting = (e) => {
+        const currentClass = e.target.className;
+        if (currentClass == 'modal-cardforget') {
+            return;
+        }
+        this.setState({
+            modalCounting: false,
+        });
+    };
 
     render() {
         return (
@@ -48,11 +95,12 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>Counting</p>
                 </div>
                 <scroll>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
                         {this.props.productList.map((item) => {
+                            item.counting = 'input'
                             if (item.shelf === this.state.shelf) {
                                 return (
-                                    <div  style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
                                         <div className='txtCountShelf'>
                                             <img src={item.pic} style={{ width: '100px', height: '100px' }}></img>
                                         </div>
@@ -61,7 +109,10 @@ class CountShelf extends Component {
                                         <p className='txtCountShelf' style={{}}>{item.type}</p>
                                         <p className='txtCountShelf' style={{}}>{item.qty}</p>
                                         <p className='txtCountShelf' style={{}}>{item.unit}</p>
-                                        <input className='txtCountShelf' style={{}}></input>
+                                        <div className='txtCountShelf' style={{}}>
+                                            <ButtonInput style={{ width: 120, height: 50 }} onClick={this.openModalCounting}>{item.counting}</ButtonInput>
+                                        </div>
+
                                     </div>
                                 );
                             }
@@ -70,8 +121,19 @@ class CountShelf extends Component {
                     </div>
                 </scroll>
 
-                <div style={{ paddingLeft: 50, paddingTop: 50 ,alignItems:'self-end' }}>
-                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52,marginBottom:'2%', marginLeft:'85%'}} onClick={() => history.push('')}>
+                <div hidden={!this.state.modalCounting}>
+                    <div className="modal-background">
+                        <div className="modal-cardforget">
+                            <div style={{ display: 'flex', paddingTop: 35, justifyContent: 'center' }}>
+                                <ButtonCancel style={{ fontSize: 20 }} onClick={this.closeModalCounting}>No</ButtonCancel>
+                                <ButtonOk style={{ fontSize: 20 }} onClick={this.closeModalCounting}>Yes</ButtonOk>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style={{ paddingLeft: 50, paddingTop: 50, alignItems: 'self-end' }}>
+                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => history.push('')}>
                         Report
                     </ButtonReport>
 

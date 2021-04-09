@@ -14,6 +14,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { formatMoney } from '../formatMoney'
+import { FaLessThan } from 'react-icons/fa';
 
 const Font = styled.div`
   && {
@@ -115,11 +116,11 @@ class PickingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if (((this.state.qty != (null && '')) && (this.state.qty <= this.state.product.qty))) {
-            const product = this.state.product
-            product.qty = this.state.qty
+        if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
+            let product = this.state.product
+            product.qty = (this.state.qty).toString()
             product.amount = (this.state.product.costPunit * this.state.qty).toString()
-            console.log(product)
+            console.log(this.state.product.qty)
             this.props.addPickOrder(product)
 
             const currentClass = e.target.className;
@@ -147,6 +148,7 @@ class PickingChart extends Component {
 
     onAddTrue = (item) => {
         this.setState({ product: item })
+        console.log(item.qty)
         this.handleModalOpen1()
     }
 
@@ -327,13 +329,13 @@ class PickingChart extends Component {
                                 style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
                                 
                                     {this.props.productList.map((item) => {
-                                        if (item.productID == this.state.item.productID) {
+                                        if (item.productID === this.state.item.productID) {
                                             return (
                                                 <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%',alignContent:'center',cursor:'pointer'}}>
                                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
                                                         <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.expDate}</p>
-                                                        <p className='txtTBModal2' style={{}}>{item.level}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.shelf}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.level}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>

@@ -126,7 +126,7 @@ class OrderingChart extends Component {
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
-            product.qty = this.state.qty
+            product.qty = (this.state.qty).toString()
             product.recvDate = this.state.info.date
             product.amount = (this.state.costPunit * this.state.qty).toString()
             console.log(product)

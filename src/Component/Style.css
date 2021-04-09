@@ -1591,6 +1591,13 @@ body, html {
     margin-top: 0.5%;
 }
 
+.paperRead {
+    height: 10%;
+    width: 366px;
+    background: #9b9b9b !important;
+    margin-top: 0.5%;
+}
+
 .paperNoti:hover {
     height: 10%;
     width: 366px;
@@ -2453,7 +2460,22 @@ body, html {
     position: absolute;
     width: 50px;
     height: 73px;
-    left: 17%;
+    left: 30%;
+    top: -33%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtbtnExit {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 30%;
     top: -33%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;

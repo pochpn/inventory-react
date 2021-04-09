@@ -92,6 +92,19 @@ class OrderingChart extends Component {
             date: new Date(),
         };
     }
+    onKeyPress(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
+    onKeyPress1(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\./.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
 
     handleModalClose = (e) => {
         const currentClass = e.target.className;
@@ -213,7 +226,7 @@ class OrderingChart extends Component {
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
-                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' ,cursor:'pointer'}} onClick={() => { this.onAdd(item) }}>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none', cursor: 'pointer' }} onClick={() => { this.onAdd(item) }}>
                                                 <p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}>
                                                     >
                                                 </p></Paper>
@@ -238,7 +251,7 @@ class OrderingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
                                             <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
                                             <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
-                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', cursor:'pointer'}} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', cursor: 'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -280,7 +293,7 @@ class OrderingChart extends Component {
                             <input type="text" style={{ fontSize: 13 }}></input>
                         </div>
                         <div>
-                            <img img className="imsch" src={search} style={{cursor:'pointer'}} />
+                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} />
                         </div>
                         <div style={{ paddingLeft: 90, paddingTop: 50 }}>
                             <ButtonAdd style={{ fontSize: 35, width: 50, height: 50 }} onClick={() => history.push({
@@ -323,9 +336,9 @@ class OrderingChart extends Component {
                                 <Font>{this.state.item.productID}</Font>
                                 <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                                 <Font>{this.state.item.shelf}</Font>
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>

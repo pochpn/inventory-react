@@ -6,6 +6,7 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import { FaBell } from "react-icons/fa";
 import history from '../history'
+import firestore from "../firebase/firestore"
 
 import { connect } from 'react-redux';
 import { clearUser } from '../actions/userAction';
@@ -22,6 +23,7 @@ import styled, { css } from 'styled-components'
 import './Modal.css';
 import { Success } from '../pic';
 import Badge from '@material-ui/core/Badge';
+import { editNotification } from '../actions/notificationAction';
 
 const ButtonOK = styled.button`
   background: #ef3f3e;
@@ -63,22 +65,34 @@ class Hamburger extends Component {
     this.state = {
       modal: false,
       sidebar: false,
-      user: this.props.user,
+      user: this.props.userList[this.props.userList.length - 1],
       modal1: false,
-      count:1,
+      count: 0,
+      notification: this.props.notificationList,
       // data: []
 
     };
-    
+
 
   }
 
-  increaseCount = () => {
-    this.setState({count : this.state.count + 1});
+  countNoti = () => {
+    var count = 0
+    this.props.notificationList.forEach(item => {
+      if (item.notiCount === 1) {
+        count = count + 1;
+        console.log(count)
+      }
+    })
+    this.setState({ count: count });
   }
 
   reduceCount = () => {
-    this.setState({count : Math.max(this.state.count - 1, 0)});
+    const notification = {
+      notiCount: 0,
+    }
+    firestore.updateNotiByID(notification, this.editSuccess, this.editReject)
+    this.props.editNotification(notification)
   }
 
   handleModalClose = (e) => {
@@ -101,23 +115,17 @@ class Hamburger extends Component {
     this.setState({ sidebar: !this.state.sidebar });
   }
 
-  // dataNoti = () => {
-  //   var data = []
-  //   this.props.notificationList.forEach(item => {
-  //     const json = [{
-  //       "notificationHead": item.notificationHead
-  //     }]
-  //     // console.log(json)
-  //     data = data.concat(json)
-  //     // console.log(data)
-  //   })
-  //   this.setState({ data: data })
-  //   // console.log(data)
-  // }
+  editSuccess = () => {
+    console.log('Edit Success')
+  }
 
-  // componentDidMount() {
+  editReject = (error) => {
+    console.log(error)
+  }
 
-  // }
+  componentDidMount() {
+    this.countNoti()
+  }
 
   // clearNoti = () => {
   //   this.setState({ noti: false });
@@ -149,8 +157,8 @@ class Hamburger extends Component {
                 <Arrow />
                 {this.props.notificationList.map((item) => {
                   return (
-                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
                         <p className='txtPdInOD' style={{}} onClick={() => {
                           this.reduceCount();
                         }}>{item.notificationHead}</p>
@@ -236,12 +244,14 @@ const mapDispatchToProps = (dispatch) => {
     clearShelf: () => dispatch(clearShelf()),
     clearPickOrder: () => dispatch(clearPickOrder()),
     clearBill: () => dispatch(clearBill()),
+    editNotification: (notification) => dispatch(editNotification(notification))
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     notificationList: state.notificationReducer.notificationList,
+    userList: state.userReducer.userList,
   };
 };
 

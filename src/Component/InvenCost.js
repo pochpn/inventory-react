@@ -3,11 +3,20 @@ import history from '../history'
 import Topbar from './Topbar'
 
 import Hamburger from './Hamburger'
-
+import { IoIosCloseCircle } from "react-icons/io";
+import styled from 'styled-components'
 import { connect } from 'react-redux';
-import { Paper } from '@material-ui/core';
+import { Input, Paper } from '@material-ui/core';
 import { CC, EOQ, TC, OC } from '../pic'
 import './Modal.css';
+
+const Font2 = styled.div`
+  && {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+  }
+`
 
 class InvenCost extends Component {
     constructor(props) {
@@ -56,7 +65,7 @@ class InvenCost extends Component {
         return (
             <div className="bg">
                 <Hamburger page='INVENTORY COST' user={this.state.user} />
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', paddingTop: '7%'}}>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', paddingTop: '7%' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', }}>
                         <div style={{ paddingRight: 70 }}>
                             <Paper className="paperInEOQ" onClick={this.handleModalOpen1}>
@@ -67,7 +76,7 @@ class InvenCost extends Component {
                             </Paper>
                         </div>
 
-                        <div style={{ paddingTop: 70}}>
+                        <div style={{ paddingTop: 70 }}>
                             <Paper className="paperInEOQ" onClick={this.handleModalOpen3}>
                                 <img className="picIn2" src={CC}></img>
                                 <p className="textInventC" style={{ paddingTop: '8%' }}>Carrying
@@ -77,7 +86,7 @@ class InvenCost extends Component {
 
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column',  justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <Paper className="paperInEOQ" onClick={this.handleModalOpen2} >
                             <img className="picIn3" src={OC}></img>
                             <p className="textInventC" style={{ paddingTop: '8%' }}>Ordering
@@ -97,30 +106,68 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-card" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <button style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose1}></button>
-                            <img src="https://greedisgoods.com/wp-content/uploads/2017/12/%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%A3-EOQ-%E0%B8%AB%E0%B8%B2-EOQ-%E0%B8%84%E0%B8%B7%E0%B8%AD-Economic-Order-Quantity.jpg" />
+                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose1}></IoIosCloseCircle></div>
+                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                <img style={{ width: '160px', height: '70px', marginLeft: '5%' }} src={EOQ}></img>
+                                <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
+                                    <p>number of work days in the year</p>
+                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '30%' }}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                    </div>
+                                </div>
+                                <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: 'darkred', borderRadius: '10px' }}>EOQ MANUAL</button>
+                            </div>
+                            <div style={{ paddingTop: '40px' }}><Paper className='eoqTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                    <Font2>Product Name</Font2>
+                                    <Font2>EOQ</Font2>
+                                    <Font2>Number of orders/year</Font2>
+                                    <Font2>Order lead time</Font2>
+                                </div>
+                            </Paper></div>
                         </div>
                     </div>
                 </div>
                 <div hidden={!this.state.modal2}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div className="modal-card2">
-                            <button style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose2}></button>
-                            <p style={{ paddingTop: '25%', paddingLeft: '35%', fontSize: '48px' }}>0 BAHT</p>
+                        <div className="modal-card">
+                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose2}></IoIosCloseCircle></div>
+                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={OC}></img>
+                                <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '7%' }}>
+                                    <p>Insert Ordering Cost</p>
+                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <input style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div hidden={!this.state.modal3}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div className="modal-card3">
-                            <button style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose3}></button>
+                        <div className="modal-card">
+                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose3}></IoIosCloseCircle></div>
+                            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={CC}></img>
+                                <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '7%' }}>
+                                    <p>Insert Carrying Cost</p>
+                                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <input style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div hidden={!this.state.modal4}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div className="modal-card4">
-                            <button style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose4}></button>
+                        <div className="modal-card">
+                            <div style={{ paddingLeft: '95%' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose4}></IoIosCloseCircle></div>
+                            <img style={{ width: '140px', height: '80px', marginLeft: '5%' }} src={TC}></img>
                         </div>
                     </div>
                 </div>

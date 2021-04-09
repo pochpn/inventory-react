@@ -386,6 +386,22 @@ class Firestore {
                 reject(error);
             });
     };
+    updateNotiByID = (notification, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Notification')
+            .doc(notification.id)
+            .update({
+                notificationHead: notification.notificationHead,
+                notiCount: notification.notiCount,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 
     /*------------------Bill---------------------*/
     addBill = (bill, success, reject) => {

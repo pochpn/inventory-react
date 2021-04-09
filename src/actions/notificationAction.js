@@ -10,9 +10,9 @@ export const deleteNotification = (id) => ({
     id: id,
 });
 
-export const editNotification = (notifiction) => ({
+export const editNotification = (notification) => ({
     type: EDIT_NOTIFY,
-    notifiction: notifiction,
+    notification: notification,
 });
 
 export const clearNotification = () => ({

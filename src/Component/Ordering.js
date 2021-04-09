@@ -46,7 +46,7 @@ class Ordering extends Component {
             let year = date.getFullYear().toString().substr(2, 3)
             let mount = date.getMonth().toString()
             if (date.getMonth().toString().length === 1) {
-                mount = '0' + date.getMonth().toString()
+                mount = '0' + (date.getMonth() + 1).toString()
             }
             let day = date.getDate().toString()
             if (date.getDate().toString().length === 1) {
@@ -88,37 +88,37 @@ class Ordering extends Component {
                 <Hamburger page='ORDERING' user={this.state.user} />
                 <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '0.25%', paddingTop: '9%', justifyContent: 'center' }}>
                     <Paper className="paperOrdering">
-                        <div style={{ display: 'flex', flexDirection: 'row' ,paddingLeft:'7%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
-                                <p className="textOr" style={{ paddingRight: '5%',paddingTop:'1%' }}>Supplier</p>
+                                <p className="textOr" style={{ paddingRight: '5%', paddingTop: '1%' }}>Supplier</p>
                                 <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ supplier: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
-                                <p className="textOr" style={{ paddingRight: '57%',paddingTop:'1%' }}>Date</p>
+                                <p className="textOr" style={{ paddingRight: '57%', paddingTop: '1%' }}>Date</p>
                                 <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                             </div>
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'row' ,paddingLeft:'7%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.5%' }}>
-                                <p className="textOr" style={{ paddingRight: '5%' ,paddingTop:'1%'}}>Address</p>
+                                <p className="textOr" style={{ paddingRight: '5%', paddingTop: '1%' }}>Address</p>
                                 <textarea type="text" style={{ fontSize: 24, height: 150, width: 355 }} onChange={txt => this.setState({ address: txt.target.value })}></textarea>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '3%', paddingLeft: '11.4%' }} >
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>
-                                    <p className="textOr" style={{ paddingRight: '0%',paddingTop:'1%' }}>Contact</p>
-                                    <p className="textOr" style={{ paddingRight: '5%',paddingLeft:'2%' ,paddingTop:'1%' }}>Name</p>
+                                    <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Contact</p>
+                                    <p className="textOr" style={{ paddingRight: '5%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
                                     <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ contactName: txt.target.value })} />
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '10%', }}>
-                                    <p className="textOr" style={{ paddingRight: '35.5%' ,paddingTop:'1%'}}>Tel.</p>
+                                    <p className="textOr" style={{ paddingRight: '35.5%', paddingTop: '1%' }}>Tel.</p>
                                     <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCon: txt.target.value })} />
                                 </div>
                             </div>
 
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'row' , paddingLeft:'7%'}}>
+                        <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.5%' }}>
-                                <p className="textOr" style={{ paddingRight: '25%',paddingTop:'1%' }}>Tel.</p>
+                                <p className="textOr" style={{ paddingRight: '25%', paddingTop: '1%' }}>Tel.</p>
                                 <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telSup: txt.target.value })}></input>
                             </div>
 

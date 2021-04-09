@@ -100,6 +100,7 @@
     left: 80%;
     border-radius: 20px;
     background: #FFF4F2;
+    overflow: auto;
   }
 
   .modal-orderChart {

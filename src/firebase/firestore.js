@@ -459,6 +459,46 @@ class Firestore {
                 reject(error);
             });
     };
+    /*------------------Ordering Cost---------------------*/
+    getAllCost = (success, reject) => {
+        firebase
+            .firestore()
+            .collection('Ordering Cost')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+
+    }
+    updateCost = (oCost, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Ordering Cost')
+            .doc("FF60T4mNi2E1Zq3fuC2D")
+            .update({
+                Apr: oCost.Apr,
+                Aug: oCost.Aug,
+                Dec: oCost.Dec,
+                Feb: oCost.Feb,
+                Jan: oCost.Jan,
+                Jul: oCost.Jul,
+                Jun: oCost.Jun,
+                Mar: oCost.Mar,
+                May: oCost.May,
+                Nov: oCost.Nov,
+                Oct: oCost.Oct,
+                Sep: oCost.Sep,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
 }
 
 const firestore = new Firestore();

@@ -10,6 +10,13 @@ import { search, shelf } from '../pic'
 import styled, { css } from 'styled-components'
 import { connect } from 'react-redux';
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
 const ButtonReport = styled.button`
     background: #EF3F3E;
     border-radius: 10px;
@@ -123,10 +130,16 @@ class CountShelf extends Component {
 
                 <div hidden={!this.state.modalCounting}>
                     <div className="modal-background">
-                        <div className="modal-cardforget">
-                            <div style={{ display: 'flex', paddingTop: 35, justifyContent: 'center' }}>
-                                <ButtonCancel style={{ fontSize: 20 }} onClick={this.closeModalCounting}>No</ButtonCancel>
-                                <ButtonOk style={{ fontSize: 20 }} onClick={this.closeModalCounting}>Yes</ButtonOk>
+                        <div className="modal-cardCounting">
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <Font style={{ fontSize: 30, paddingTop: 20 }}>Please input count</Font>
+                            </div>
+                            <div style = {{display: 'flex', justifyContent: 'center', paddingTop: 40}}>
+                                <input type="text" style={{ fontSize: 24 }} ></input>
+                            </div>
+                            <div style={{ display: 'flex', paddingTop: 20, justifyContent: 'space-around' }}>
+                                <ButtonCancel style={{ fontSize: 20 }} onClick={this.closeModalCounting}>Cancel</ButtonCancel>
+                                <ButtonOk style={{ fontSize: 20 }} onClick={this.closeModalCounting}>OK</ButtonOk>
                             </div>
                         </div>
                     </div>

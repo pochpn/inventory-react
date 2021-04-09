@@ -2464,6 +2464,21 @@ body, html {
     color: #000000;
 }
 
+.txtbtnExit {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 30%;
+    top: -33%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
 .btnCancel {
     position: absolute;
     width: 110px;

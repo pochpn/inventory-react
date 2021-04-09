@@ -27,7 +27,7 @@ class BillOHis extends Component {
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/history')
                     }}>
-                        <p className="txtbtnCancle" style={{cursor:'pointer'}}>Exit</p>
+                        <p className="txtbtnExit" style={{cursor:'pointer'}}>Exit</p>
                     </Paper>
                 </Paper>
 

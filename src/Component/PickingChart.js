@@ -14,6 +14,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { formatMoney } from '../formatMoney'
+import { FaLessThan } from 'react-icons/fa';
 
 const Font = styled.div`
   && {
@@ -86,6 +87,13 @@ class PickingChart extends Component {
         };
     }
 
+    onKeyPress(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
     handleModalClose = (e) => {
         const currentClass = e.target.className;
         if (currentClass == 'modal-cardforget') {
@@ -108,11 +116,11 @@ class PickingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if (((this.state.qty != (null && '')) && (this.state.qty <= this.state.product.qty))) {
-            const product = this.state.product
-            product.qty = this.state.qty
+        if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
+            let product = this.state.product
+            product.qty = (this.state.qty).toString()
             product.amount = (this.state.product.costPunit * this.state.qty).toString()
-            console.log(product)
+            console.log(this.state.product.qty)
             this.props.addPickOrder(product)
 
             const currentClass = e.target.className;
@@ -140,6 +148,7 @@ class PickingChart extends Component {
 
     onAddTrue = (item) => {
         this.setState({ product: item })
+        console.log(item.qty)
         this.handleModalOpen1()
     }
 
@@ -320,13 +329,13 @@ class PickingChart extends Component {
                                 style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
                                 
                                     {this.props.productList.map((item) => {
-                                        if (item.productID == this.state.item.productID) {
+                                        if (item.productID === this.state.item.productID) {
                                             return (
                                                 <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%',alignContent:'center',cursor:'pointer'}}>
                                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
                                                         <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.expDate}</p>
-                                                        <p className='txtTBModal2' style={{}}>{item.level}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.shelf}</p>
                                                         <p className='txtTBModal2' style={{}}>{item.level}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>
@@ -366,7 +375,7 @@ class PickingChart extends Component {
                                 <Font>{this.state.product.shelf}</Font>
                                 <Font>{this.state.product.level}</Font>
                                 <Font>{this.state.product.costPunit}</Font>
-                                <input type="type" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <input type="number" onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>

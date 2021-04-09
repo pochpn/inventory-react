@@ -15,7 +15,8 @@ import { addAccount } from '../actions/accountAction'
 import { addProduct } from '../actions/productAction';
 import { addProductProfile } from '../actions/productProfileAction';
 import { addShelf } from '../actions/shelfAction';
-import { addBill } from '../actions/billAction'
+import { addBill } from '../actions/billAction';
+import { addNotification } from '../actions/notificationAction';
 
 import { Error } from '../pic';
 
@@ -101,6 +102,15 @@ class Login extends Component {
         console.log(error)
     }
 
+    getAllNotificationSuccess = (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            let notification = doc.data()
+            notification.id = doc.id
+            this.props.addNotification(notification)
+        });
+        /*console.log(this.props.productList)*/
+    }
+
     getAllProductSuccess = (querySnapshot) => {
         querySnapshot.forEach(doc => {
             let product = doc.data()
@@ -154,6 +164,7 @@ class Login extends Component {
             firestore.getAllProductProfile(this.getAllProductProfileSuccess, this.getAllReject)
             firestore.getAllShelf(this.getAllShelfSuccess, this.getAllReject)
             firestore.getAllBill(this.getAllBillSuccess, this.getAllReject)
+            firestore.getAllNotification(this.getAllNotificationSuccess,this.getAllReject)
             history.push("/home")
             /*window.location.href="/home"*/
         } else {
@@ -264,6 +275,7 @@ const mapDispatchToProps = (dispatch) => {
         addProductProfile: (product) => dispatch(addProductProfile(product)),
         addShelf: (shelf) => dispatch(addShelf(shelf)),
         addBill: (bill) => dispatch(addBill(bill)),
+        addNotification: (notification) => dispatch(addNotification(notification)),
     };
 };
 
@@ -275,6 +287,7 @@ const mapStateToProps = (state) => {
         productProfile: state.productProfileReducer.productProfileList,
         shelfList: state.shelfReducer.shelfList,
         billList: state.billReducer.billList,
+        notificationList: state.notificationReducer.notificationList,
     };
 };
 

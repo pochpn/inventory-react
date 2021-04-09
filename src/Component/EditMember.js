@@ -180,17 +180,17 @@ class EditMember extends Component {
                         <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>
                 </Paper>
-                <Paper className="paperAddMB" onClick={this.onEdit}>
+                <Paper className="paperAddMB" style={{cursor:'pointer'}} onClick={this.onEdit}>
                     <div >
                         <p className="textAddMB" >Edit</p>
                     </div>
                 </Paper>
-                <Paper className="paperCancelMB" onClick={() => history.push('/memberManage')}>
+                <Paper className="paperCancelMB" style={{cursor:'pointer'}} onClick={() => history.push('/memberManage')}>
                     <div>
                         <p className="textCancelMB" >Cancel</p>
                     </div>
                 </Paper>
-                <Paper className="paperDeleteMB" onClick={this.handlemodalDeleteUserOpen}>
+                <Paper className="paperDeleteMB" style={{cursor:'pointer'}} onClick={this.handlemodalDeleteUserOpen}>
                     <div >
                         <p className="textAddMB" >Delete</p>
                     </div>

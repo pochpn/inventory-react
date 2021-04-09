@@ -2325,7 +2325,6 @@ body, html {
     color: 'black';
 }
 
-
 .txtProductDetail {
     font-family: 'Prompt', sans-serif;
     font-size: 36px;
@@ -2357,6 +2356,7 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
 .txtProductDetail3 {
     font-family: 'Prompt', sans-serif;
     font-size: 36px;
@@ -2366,7 +2366,6 @@ body, html {
     text-align: center;
     color: 'black';
 }
-
 
 .paperTopProductDetail {
     justify-items: center;
@@ -2383,8 +2382,14 @@ body, html {
 
 /* Top Item*/
 
+.topItem {
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    border-radius: 12px;
+}
+
 .txtTi {
-    position: absolute;
     width: 182px;
     height: 60px;
     left: 25%;

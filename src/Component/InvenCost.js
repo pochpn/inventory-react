@@ -34,6 +34,7 @@ class InvenCost extends Component {
             eoqM: 0,
             nOrM: 0,
             leadM: 0,
+            workday:0,
             workdM: 365,
             demandM: 0,
             ocM: 0,
@@ -92,6 +93,15 @@ class InvenCost extends Component {
             event.preventDefault();
     }
 
+    setWorkTime = () =>{
+        if(this.state.workday > 0){
+            this.setState({workdM:this.state.workday})
+        }
+        else{
+            this.setState({workdM:this.state.workdM})
+        }
+        
+    }
 
 
     handleModalClose1 = (e) => {
@@ -648,8 +658,8 @@ class InvenCost extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workdM: txt.target.value })}></input>
-                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} >Save</button>
+                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workday: txt.target.value })}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} onClick={this.setWorkTime}>Save</button>
                                     </div>
                                 </div>
                                 <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: '#40BA8E', borderRadius: '10px' }} onClick={this.handleModalClose5}>EOQ</button>

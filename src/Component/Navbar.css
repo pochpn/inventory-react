@@ -58,9 +58,10 @@
 }
 
 .nav-menu {
-  background-color: #ffb3a3;
+  background: rgb(255, 180, 180);
+  background: linear-gradient(0deg, rgba(255, 180, 180, 1) 30%, rgba(140, 222, 192, 1) 100%);
   width: 310px;
-  height: 1080px;
+  height: 100%;
   display: flex;
   justify-content: center;
   position: fixed;

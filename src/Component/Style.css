@@ -1359,6 +1359,13 @@ body, html {
 }
 
 /* Inventory Cost */
+.paperEoq {
+    margin-left:5%;
+    width: 205px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.4)!important;
+    cursor:unset;
+}
 
 .paperInEOQ {
     justify-items: center;

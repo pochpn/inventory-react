@@ -28,6 +28,10 @@ export const findLead = (d,o,c,day) =>
     {
         return 0;
     }
+    else if(day > 366)
+    {
+        return;
+    }
     var sum=0;
     sum = (day/findNY(d,o,c)).toFixed(2)
     return isNaN(sum) ? 0: sum;

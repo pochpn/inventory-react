@@ -55,7 +55,7 @@ class ConPacking extends Component {
     return (
       <div className="bg">
         <Paper className='OrConTopic'>
-          <p className="txtPakTopic">Packing Order</p>
+          <p className="txtPakTopic">Picking Order</p>
         </Paper>
         <Paper className='OrConTable'>
           <p className="txtOrConTable1">MR No.</p>
@@ -64,7 +64,7 @@ class ConPacking extends Component {
           <p className="txtOrConTable4">Tel.</p>
         </Paper>
 
-        <Hamburger page='PACKING ORDER' user={this.state.user} />
+        <Hamburger page='PICKING ORDER' user={this.state.user} />
         <div style={{ paddingTop: 230, paddingLeft: '1%' }}>
           {this.props.billList.map((item) => {
             if (item.managerConfirm && !item.confirm && (item.type === 'MR')) {

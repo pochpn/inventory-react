@@ -522,20 +522,10 @@ class InvenCost extends Component {
                 </div>
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div className="modal-card">
+                        <div className="modal-cardd">
                             <div style={{ paddingLeft: '95%', cursor: 'pointer' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose1}></IoIosCloseCircle></div><div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <img style={{ width: '160px', height: '70px', marginLeft: '5%' }} src={EOQ}></img>
                             </div>
-                            {/* <div style={{ paddingTop: '40px' }}>
-                                <Paper className='eoqTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-around', marginLeft: '1%' }}>
-                                        <Font style={{ marginLeft: '3%' }}>Input</Font>
-                                        <Font style={{ marginLeft: '5%' }}>EOQ</Font>
-                                        <Font>Number of orders/year</Font>
-                                        <Font>Order lead time</Font>
-                                    </div>
-                                </Paper>
-                            </div> */}
                             <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '5%' }}>
                                 <div>
                                     <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '5%', marginTop: '10%' }}>

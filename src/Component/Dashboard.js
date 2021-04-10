@@ -85,7 +85,23 @@ class Dashboard extends Component {
       novVal: 0,
       decVal: 0,
       numberOfItem: 0,
+      jValT: 0,
+      fValT: 0,
+      mValT: 0,
+      aValT: 0,
+      mayValT: 0,
+      junValT: 0,
+      julValT: 0,
+      augValT: 0,
+      sepValT: 0,
+      octValT: 0,
+      novValT: 0,
+      decValT: 0,
       graph: null,
+      TO: null,
+      avIv: 0,
+      costLv: 0,
+
     };
 
     this.props.productList.forEach((item) => {
@@ -99,13 +115,14 @@ class Dashboard extends Component {
         this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
       this.setState({ inventLv: this.state.inventLv += (parseInt(item.costPunit) * parseInt(item.qty)) })
-      if (this.state.dateMonth === 0) {
+      if (this.state.dateMonth === 3) {
         this.setState({ jVal: this.state.jVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
+
       }
-      if (this.state.dateMonth === 1) {
+      if (this.state.dateMonth === 3) {
         this.setState({ fVal: this.state.fVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (this.state.dateMonth === 2) {
+      if (this.state.dateMonth === 3) {
         this.setState({ mVal: this.state.mVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
       if (this.state.dateMonth === 3) {
@@ -150,12 +167,12 @@ class Dashboard extends Component {
       Nov: this.state.novVal,
       Oct: this.state.octVal,
       Sep: this.state.sepVal,
-    }
+    }  
     firestore.updateGraph(graph, this.updateGSuccess, this.updateGReject)
+
   }
   componentDidMount = () => {
     firestore.getAllGraph(this.getGSuccess, this.getGReject)
-    //firestore.getAllcCost(this.getcSuccess, this.getcReject)
   }
   getGSuccess = (querySnapshot) => {
     let graph
@@ -283,43 +300,42 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: this.state.jVal, turnover: this.state.jVal / 2,
+        name: 'Jan', value: 123515, turnover: this.state.jVal/((0 + 123515)/2),
       },
       {
-        name: 'Feb', value: this.state.fVal, turnover: this.state.fVal / 2,
+        name: 'Feb', value: 231515, turnover: this.state.mVal/((123515 + 231515)/2),
       },
       {
-        name: 'Mar', value: this.state.mVal, turnover: this.state.mVal / 2,
+        name: 'Mar', value: 155511, turnover: this.state.mVal/((231515+ 155511)/2),
       },
       {
-        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal / 2,
+        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal/((155511 + this.state.aVal)/2),
       },
       {
-        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal / 2,
+        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal/((this.state.aVal + this.state.mayVal)/2),
       },
       {
-        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal / 2,
+        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal/((this.state.mayVal + this.state.junVal)/2),
       },
       {
-        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal / 2,
+        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal/((this.state.junVal + this.state.julVal)/2) ,
       },
       {
-        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal / 2,
+        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal/((this.state.julVal + this.state.augVal)/2),
       },
       {
-        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal / 2,
+        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal/((this.state.augVal + this.state.sepVal)/2),
       },
       {
-        name: 'Oct', value: this.state.octVal, turnover: this.state.ocyVal / 2,
+        name: 'Oct', value: this.state.octVal, turnover: this.state.octVal/((this.state.sepVal + this.state.octVal)/2),
       },
       {
-        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal / 2,
+        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal/((this.state.octVal + this.state.novVal)/2),
       },
       {
-        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal / 2,
+        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal/((this.state.decVal + this.state.decVal)/2),
       },
     ];
-    console.log(this.state.mVal)
     return (
       <div className="bg">
 

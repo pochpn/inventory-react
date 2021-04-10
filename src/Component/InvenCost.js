@@ -123,6 +123,24 @@ class InvenCost extends Component {
 
     handleModalOpen2 = () => {
         this.setState({ modal2: true });
+        if ((this.state.date.getMonth() === 0) && this.state.decVal > 0) {
+            const oCost = {
+                Apr: 0,
+                Aug: 0,
+                Dec: 0,
+                Feb: 0,
+                Jan: 0,
+                Jul: 0,
+                Jun: 0,
+                Mar: 0,
+                May: 0,
+                Nov: 0,
+                Oct: 0,
+                Sep: 0,
+            }
+            firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
+            //console.log("new year")
+        }
     };
     handleModalClose3 = (e) => {
         this.setState({ modal3: false });
@@ -130,6 +148,24 @@ class InvenCost extends Component {
 
     handleModalOpen3 = () => {
         this.setState({ modal3: true });
+        if((this.state.date.getMonth() === 0) && this.state.decValC > 0) {
+            const cCost = {
+                Apr: 0,
+                Aug: 0,
+                Dec: 0,
+                Feb: 0,
+                Jan: 0,
+                Jul: 0,
+                Jun: 0,
+                Mar: 0,
+                May: 0,
+                Nov: 0,
+                Oct: 0,
+                Sep: 0,
+            }
+            firestore.updatecCost(cCost, this.updatecSuccess, this.updatecReject)
+            //console.log("new year")
+        }
     };
 
     handleModalClose4 = (e) => {
@@ -214,43 +250,9 @@ class InvenCost extends Component {
         }
         firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
     }
-    componentDidMount = async () => {
-        await firestore.getAllCost(this.getSuccess, this.getReject)
-        await firestore.getAllcCost(this.getcSuccess, this.getcReject)
-        if ((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() >= 1)) {
-            const oCost = {
-                Apr: 0,
-                Aug: 0,
-                Dec: 0,
-                Feb: 0,
-                Jan: 0,
-                Jul: 0,
-                Jun: 0,
-                Mar: 0,
-                May: 0,
-                Nov: 0,
-                Oct: 0,
-                Sep: 0,
-            }
-            const cCost = {
-                Apr: 0,
-                Aug: 0,
-                Dec: 0,
-                Feb: 0,
-                Jan: 0,
-                Jul: 0,
-                Jun: 0,
-                Mar: 0,
-                May: 0,
-                Nov: 0,
-                Oct: 0,
-                Sep: 0,
-            }
-            await firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
-            await firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
-            //console.log("new year")
-        }
-
+    componentDidMount = () => {
+        firestore.getAllCost(this.getSuccess, this.getReject)
+        firestore.getAllcCost(this.getcSuccess, this.getcReject)
     }
     updateSuccess = () => {
         console.log("Success")

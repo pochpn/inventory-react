@@ -14,7 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 const Font = styled.div`
   && {
     color: #000000;
-    font-size: 24px;
+    font-size: 30px;
   }
 `
 
@@ -23,7 +23,8 @@ const FontData = styled.div`
     color: #000000;
     font-size: 26px;
     width: 250px;
-    font-weight: lighter;
+    font-weight: normal;
+
   }
 `
 
@@ -105,12 +106,11 @@ class History extends Component {
 
 
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Font>No.</Font>
-            <Font>Date</Font>
-            <Font>Receipt ID</Font>
-            <Font>Description</Font>
-            <Font>OIC</Font>
+          <div style={{ display: 'flex', justifyContent: 'center',width:'97%',marginLeft:'1.5%' }}>
+            <Font style={{width:'25%',textAlign:'center'}}>Date</Font>
+            <Font style={{width:'25%',textAlign:'center'}}>Receipt ID</Font>
+            <Font style={{width:'25%',textAlign:'center'}}>Description</Font>
+            <Font style={{width:'25%',textAlign:'center'}}>OIC</Font>
           </div>
         </Paper>
 
@@ -121,12 +121,11 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
-                      <FontData>{item.info.reNum}</FontData>
-                      <FontData>{item.info.date}</FontData>
-                      <FontData>{item.info.contactName}</FontData>
-                      <FontData></FontData>
-                      <FontData>{item.info.telCon}</FontData>
+                    <div style={{ display: 'flex', justifyContent: 'center', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
+                      <FontData style={{width:'25%',textAlign:'center'}}>{item.info.date}</FontData>
+                      <FontData style={{width:'25%',textAlign:'center'}}>{item.info.reNum}</FontData>
+                      <FontData style={{width:'25%',textAlign:'center'}}>{item.info.contactName}</FontData>
+                      <FontData style={{width:'25%',textAlign:'center'}}>{item.info.telCon}</FontData>
                     </div>
                   </Paper>
                 </div>

@@ -36,7 +36,7 @@ class OrderConfirm extends Component {
             <div style={{ alignContent: 'center', marginBottom: '100%', justifyContent: 'center' }}>
               <img className="imOrRecv" src={packor} />
               <div style={{paddingTop:"5%"}}>
-                <p className="txtOrRecv1">Packing</p>
+                <p className="txtOrRecv1">Picking</p>
                 <p className="txtOrCon2">Order</p>
               </div>
             </div>

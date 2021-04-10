@@ -131,15 +131,15 @@ class BillPick extends Component {
                 <Paper className="printBill">
                     <BillP2 bill={this.state.bill} />
                     <Paper className="btnSend" onClick={this.onAccept}>
-                        <p className="txtbtnSend">Accept</p>
+                        <p className="txtbtnSend2">Accept</p>
                     </Paper>
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/orderConfirm/packing')
                     }}>
-                        <p className="txtbtnCancle">Cancel</p>
+                        <p className="txtbtnCancle2">Cancel</p>
                     </Paper>
                     <Paper className="btnEdit" onClick={this.onReject}>
-                        <p className="txtbtnEdit">Reject</p>
+                        <p className="txtbtnEdit2">Reject</p>
                     </Paper>
                 </Paper>
 

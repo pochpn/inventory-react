@@ -144,7 +144,7 @@ class BillPick extends Component {
                         this.props.clearPickOrder()
                         history.push('/home')
                     }}>
-                        <p className="txtbtnCancle">Cancel</p>
+                        <p className="txtbtnCancle2">Cancel</p>
                     </Paper>
                     <Paper className="btnEdit" style={{ cursor: 'pointer' }} onClick={() => history.push({
                         pathname: '/picking/pickingChart',

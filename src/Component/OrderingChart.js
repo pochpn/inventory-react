@@ -323,9 +323,9 @@ class OrderingChart extends Component {
                                 <Font>{this.state.item.productID}</Font>
                                 <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                                 <Font>{this.state.item.shelf}</Font>
-                                <input type="number" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="number" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="number" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>

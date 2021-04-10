@@ -86,8 +86,8 @@ class BillO2 extends React.PureComponent {
                 <p className="txtTB1">No</p>
                 <p className="txtTB2">Product ID</p>
                 <p className="txtTB3">ProductName</p>
-                <p className="txtTB4">Shelf</p>
-                <p className="txtTB5">Level</p>
+                <p className="txtTB44">Shelf</p>
+                <p className="txtTB55">Level</p>
                 <p className="txtTB6">QTY(ea)</p>
                 <p className="txtPONO">PO No. :</p>
                 <p className="txtPoNoInfo">{this.props.bill.info.reNum}</p>

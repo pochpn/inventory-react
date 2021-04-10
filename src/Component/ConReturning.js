@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 const Font = styled.div`
   && {
     color: #000000;
-    font-size: 36px;
+    font-size: 30px;
     width: 250px;
     font-weight: lighter;
   }

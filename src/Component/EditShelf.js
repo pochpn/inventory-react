@@ -97,7 +97,7 @@ const ButtonCancel = styled.button`
 `
 
 
-class ViewStock extends Component {
+class EditShelf extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -501,4 +501,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewStock);
+export default connect(mapStateToProps, mapDispatchToProps)(EditShelf);

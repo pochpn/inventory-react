@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 import { formatMoney } from '../formatMoney'
 
-class Shelf extends Component {
+class EditProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,7 +44,7 @@ class Shelf extends Component {
     render() {
         return (
             <div className="bg">
-                <Hamburger page={this.state.shelf} user={this.state.user} />
+                <Hamburger page={'EDIT PRODUCT '+this.state.shelf} user={this.state.user} />
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
@@ -127,4 +127,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shelf);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProduct);

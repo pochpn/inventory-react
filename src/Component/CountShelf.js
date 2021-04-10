@@ -61,12 +61,17 @@ class CountShelf extends Component {
             user: this.props.userList[this.props.userList.length - 1],
             shelf: this.props.location.state.shelf,
             modalCounting: false,
+            counting:'',
+            product:{},
+
         };
     }
 
-    openModalCounting = () => {
+    openModalCounting = (item) => {
         this.setState({
             modalCounting: true,
+            product:item,
+            counting:''
         });
     };
 
@@ -75,6 +80,8 @@ class CountShelf extends Component {
         if (currentClass == 'modal-cardforget') {
             return;
         }
+        const product = this.state.product
+        product.counting = this.state.counting
         this.setState({
             modalCounting: false,
         });
@@ -117,7 +124,7 @@ class CountShelf extends Component {
                                         <p className='txtCountShelf' style={{}}>{item.qty}</p>
                                         <p className='txtCountShelf' style={{}}>{item.unit}</p>
                                         <div className='txtCountShelf' style={{}}>
-                                            <ButtonInput style={{ width: 120, height: 50 }} onClick={this.openModalCounting}>{item.counting}</ButtonInput>
+                                            <ButtonInput style={{ width: 120, height: 50 }} onClick={()=>this.openModalCounting(item)}>{item.counting}</ButtonInput>
                                         </div>
 
                                     </div>
@@ -135,7 +142,7 @@ class CountShelf extends Component {
                                 <Font style={{ fontSize: 30, paddingTop: 20 }}>Please input count</Font>
                             </div>
                             <div style = {{display: 'flex', justifyContent: 'center', paddingTop: 40}}>
-                                <input type="text" style={{ fontSize: 24 }} ></input>
+                                <input type="number" style={{ fontSize: 24 ,textAlign:'center'}} value={this.state.counting} onChange={txt => this.setState({ counting: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', paddingTop: 20, justifyContent: 'space-around' }}>
                                 <ButtonCancel style={{ fontSize: 20 }} onClick={this.closeModalCounting}>Cancel</ButtonCancel>
@@ -146,7 +153,7 @@ class CountShelf extends Component {
                 </div>
 
                 <div style={{ paddingLeft: '1%', paddingTop: '1%', alignItems: 'self-end' }}>
-                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => history.push('')}>
+                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => history.push('/stock/countingStock/countShelf/countReport')}>
                         Report
                     </ButtonReport>
 

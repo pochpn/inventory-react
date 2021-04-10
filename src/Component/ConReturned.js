@@ -96,7 +96,7 @@ class ConReturned extends Component {
               <p className='textOr' >Description</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'flex-start', paddingLeft: '34%' }}>
-              <textarea type="text" max="10" style={{ fontSize: 24, paddingBottom: 100, width: 615, }} value={this.state.des} onChange={txt => this.setState({ des: txt.target.value })} />
+              <textarea type="text" max="10" style={{ fontSize: 24, paddingBottom: 100, width: 615,resize:'none' }} value={this.state.des} onChange={txt => this.setState({ des: txt.target.value })} />
             </div>
 
 

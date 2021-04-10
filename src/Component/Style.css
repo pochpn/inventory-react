@@ -3961,10 +3961,13 @@ body, html {
 
 .paperHistory {
     height: 90px;
-    left: 1%;
+    justify-content:center;
     border-radius: 12px;
-    width: 99%;
+    width: 97%;
+    margin-left: 1%;
+    margin-right: 1%;
     background: rgba(245, 245, 245, 0.4)!important;
+
 }
 
 .txtHis {
@@ -4006,4 +4009,8 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
+.datePicker {
+    width: 20%;
+  }
 /*end modal edit product*/

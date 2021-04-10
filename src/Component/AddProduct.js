@@ -19,11 +19,11 @@ class AddProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productID: null,
-            type: null,
-            productName: null,
-            unit: null,
-            shelf: null,
+            productID: '',
+            type: 'Select Type',
+            productName: '',
+            unit: '',
+            shelf: '',
             user: this.props.userList[this.props.userList.length - 1],
             pic: null,
             info: this.props.location.state.info,
@@ -31,11 +31,35 @@ class AddProduct extends Component {
     }
 
     onAdd = () => {
-        if (this.state.pic !== null) {
-            storage.uploadProductPic(this.state.pic, this.state.productID, this.uploadSuccess, this.uploadReject)
+        if ((this.state.productID !== '') && (this.state.type !== 'Select Type') && (this.state.productName !== '') && (this.state.unit !== '') && (this.state.shelf !== '')) {
+            let canAdd = false
+            this.props.shelfList.forEach((item) => {
+                if (item.shelfID === this.state.shelf) {
+                    canAdd = true
+                }
+            })
+            if (!canAdd) {
+                this.setState({ shelf: '' })
+                alert('Shelf is invalid.')
+            }
+            this.props.productProfileList.forEach((item) => {
+                if (item.productID === this.state.productID) {
+                    canAdd = false
+                    this.setState({ productID: '' })
+                    alert('Product ID is invalid.')
+                }
+            })
+            if (canAdd) {
+                if (this.state.pic !== null) {
+                    storage.uploadProductPic(this.state.pic, this.state.productID, this.uploadSuccess, this.uploadReject)
+                } else {
+                    alert("Please select product image.")
+                }
+            }
         } else {
-            alert("Please select a product image")
+            alert('Please input all of data.')
         }
+
     }
 
     addSuccess = (doc) => {
@@ -93,13 +117,23 @@ class AddProduct extends Component {
                         </div>
                     </Paper>
                     <p className="fontAddPD" style={{ top: '20%' }}>Product ID</p>
-                    <input className="inputPD1" style={{ top: '21%' }} onChange={txt => this.setState({ productID: txt.target.value })}></input>
+                    <input className="inputPD1" style={{ top: '21%' }} value={this.state.productID} onChange={txt => this.setState({ productID: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '30%' }}>Type</p>
-                    <input className="inputPD1" style={{ top: '31%' }} onChange={txt => this.setState({ type: txt.target.value })}></input>
+                    {/*<input className="inputPD1" style={{ top: '31%' }} onChange={txt => this.setState({ type: txt.target.value })}></input>*/}
+                    <MDBDropdown dropdown>
+                        <MDBDropdownToggle caret color="light" style={{ width: 246 }}>
+                            {this.state.type}
+                        </MDBDropdownToggle>
+                        <MDBDropdownMenu basic>
+                            <MDBDropdownItem onClick={() => this.setState({ type: 'A' })}>A</MDBDropdownItem>
+                            <MDBDropdownItem onClick={() => this.setState({ type: 'B' })}>B</MDBDropdownItem>
+                            <MDBDropdownItem onClick={() => this.setState({ type: 'C' })}>C</MDBDropdownItem>
+                        </MDBDropdownMenu>
+                    </MDBDropdown>
                     <p className="fontAddPD" style={{ top: '40%' }}>Product Name</p>
                     <input className="inputPD1" style={{ top: '41%' }} onChange={txt => this.setState({ productName: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '50%' }}>Shelf Location</p>
-                    <input className="inputPD1" style={{ top: '51%' }} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
+                    <input className="inputPD1" style={{ top: '51%' }} value={this.state.shelf} onChange={txt => this.setState({ shelf: txt.target.value })}></input>
                     <p className="fontAddPD" style={{ top: '60%' }}>Unit</p>
                     <input className="inputPD3" style={{ top: '61%', left: '60%' }} onChange={txt => this.setState({ unit: txt.target.value })}></input>
                     <button className="btCcAnp" onClick={() => history.push({
@@ -129,7 +163,8 @@ const mapStateToProps = (state) => {
         userList: state.userReducer.userList,
         accountList: state.accountReducer.accountList,
         productList: state.productReducer.productList,
-        productProfile: state.productProfileReducer.productProfile,
+        productProfileList: state.productProfileReducer.productProfileList,
+        shelfList: state.shelfReducer.shelfList,
     };
 };
 

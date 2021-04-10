@@ -93,6 +93,20 @@ class OrderingChart extends Component {
         };
     }
 
+    onKeyPress(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
+    onKeyPress1(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue) || /\./.test(keyValue))
+            event.preventDefault();
+    }
+
     handleModalClose = (e) => {
         const currentClass = e.target.className;
         if (currentClass == 'modal-cardforget') {
@@ -109,7 +123,7 @@ class OrderingChart extends Component {
 
     handleModalCloseAdd = (e) => {
         if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
-            const product = this.state.item
+            const product = {...this.state.item}
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
@@ -237,7 +251,7 @@ class OrderingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
                                             <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
-                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
+                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                             <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', cursor: 'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
@@ -290,8 +304,6 @@ class OrderingChart extends Component {
                                 +
                             </ButtonAdd>
                         </div>
-
-
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -305,27 +317,26 @@ class OrderingChart extends Component {
                             <p className="txtProNm">Product Name</p>
                         </div>
                     </div>
-
                 </Paper>
 
                 <div hidden={!this.state.modal}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 10 }}>
-                                <Font>Product ID</Font>
-                                <Font>Exp.</Font>
-                                <Font>Shelf</Font>
-                                <Font>Level</Font>
-                                <Font>Cost/Unit</Font>
-                                <Font>QTY</Font>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 10 }}>
+                                <Font style={{width:'20%',textAlign:'center'}}>Product ID</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Exp.</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Shelf</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Level</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Cost/Unit</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>{'QTY('+this.state.item.unit+')'}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font>{this.state.item.productID}</Font>
-                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                                <Font>{this.state.item.shelf}</Font>
-                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="number" min = '0' style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.productID}</Font>
+                                <DatePicker className="datePicker" selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.shelf}</Font>
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
@@ -334,12 +345,8 @@ class OrderingChart extends Component {
                         </div>
                     </div>
                 </div>
-
                 <Hamburger page='ORDERING' user={this.state.user} />
-
-
             </div>
-
         )
     }
 }

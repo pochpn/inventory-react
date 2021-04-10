@@ -209,7 +209,7 @@ class EditProductDetail extends Component {
                     <p className='txtProTopShelf' style={{}}></p>
                 </div>
 
-                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '520px', overflow: 'auto' }}>
+                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '690px', overflow: 'auto' }}>
                     {this.props.productList.map((item) => {
                         if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
                             return (

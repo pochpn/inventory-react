@@ -128,7 +128,7 @@ class EditProductDetail extends Component {
 
     handleModalCloseAdd = (e) => {
         if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
-            const product = {...this.state.product}
+            const product = { ...this.state.product }
             product.qty = (this.state.qty).toString()
             this.props.addPickOrder(product)
 
@@ -149,7 +149,7 @@ class EditProductDetail extends Component {
 
         return (
             <div className="bg">
-                <Hamburger page={'EDIT PRODUCT '+this.state.shelf} user={this.state.user} />
+                <Hamburger page={'EDIT PRODUCT ' + this.state.shelf} user={this.state.user} />
                 <div className="paperProductDetail" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center', height: '145.5px' }}>
                         <p className='txtProductDetail' style={{}}>Product Picture</p>
@@ -174,7 +174,7 @@ class EditProductDetail extends Component {
                         <p className='txtTopProductDetail' style={{}}>{this.state.product.unit}</p>
                         <p className='txtTopProductDetail' style={{}}>{this.state.qty}</p>
                         <div className='txtTopProductDetail'>
-                            <ButtonDelete style={{ width: 140, height: 50 ,}} onClick={this.handleModalSureOpen}>DELETE</ButtonDelete>
+                            <ButtonDelete style={{ width: 140, height: 50, }} onClick={this.handleModalSureOpen}>DELETE</ButtonDelete>
                         </div>
                     </div>
                 </div>
@@ -209,7 +209,7 @@ class EditProductDetail extends Component {
                     <p className='txtProTopShelf' style={{}}></p>
                 </div>
 
-                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'520px' ,overflow: 'auto'}}>
+                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '520px', overflow: 'auto' }}>
                     {this.props.productList.map((item) => {
                         if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
                             return (
@@ -229,27 +229,26 @@ class EditProductDetail extends Component {
                         }
                     })}
                 </scroll>
-                
+
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', paddingTop: 10,justifyContent:'space-around' }}>
-                                <Font>Product ID</Font>
-                                <Font>Exp.</Font>
-                                <Font>Shelf</Font>
-                                <Font>Level</Font>
-                                <Font>Cost/Unit</Font>
-                                <Font>QTY</Font>
+                            <div style={{ display: 'flex', paddingTop: 10, justifyContent: 'space-around' }}>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Product ID</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Shelf</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Level</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Cost/Unit</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>QTY</p>
+                                
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font>{this.state.product.productID}</Font>
-                                <Font>{this.state.product.expDate}</Font>
-                                <Font>{this.state.product.shelf}</Font>
-                                <Font>{this.state.product.level}</Font>
-                                <Font>{this.state.product.costPunit}</Font>
-                                <input type="number" style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop:'2%', justifyItems: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>{this.state.product.productID}</p>
+                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }}>{this.state.product.shelf}</p>
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}} />
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2%' }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
                                 <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
                             </div>

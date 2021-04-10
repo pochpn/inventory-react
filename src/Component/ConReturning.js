@@ -55,7 +55,7 @@ class ConReturning extends Component {
     return (
       <div className="bg">
         <Paper className='OrConTopic'>
-          <p className="txtPakTopic">Packing Order</p>
+          <p className="txtPakTopic">Returning Order</p>
         </Paper>
         <Paper className='OrConTable'>
           <p className="txtOrConTable1">RE No.</p>
@@ -64,7 +64,7 @@ class ConReturning extends Component {
           <p className="txtOrConTable4">Tel.</p>
         </Paper>
 
-        <Hamburger page='PACKING ORDER' user={this.state.user} />
+        <Hamburger page='RETURNING ORDER' user={this.state.user} />
         <div style={{ paddingTop: 230, paddingLeft: '1%' }}>
           {this.props.billList.map((item) => {
             if (item.managerConfirm && !item.confirm && (item.type === 'RE')) {

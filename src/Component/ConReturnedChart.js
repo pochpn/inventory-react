@@ -102,7 +102,7 @@ class ConReturnedChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
+        if ((this.state.level !== '') && (this.state.costPunit !== '') && (this.state.qty !== '')) {
             const product = this.state.item
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
@@ -164,10 +164,10 @@ class ConReturnedChart extends Component {
         // }
         // firestore.addNotification(notification, this.success, this.reject)
         // this.props.addNotification(notification)
-        this.props.clearPickOrder()
+        /*this.props.clearPickOrder()*/
         // history.push('/home')
         history.push({
-            pathname: 'returned/returnedChart/billReturn',
+            pathname: '/returned/returnedChart/billReturn',
             state: {
                 info: this.state.info,
                 order: this.props.pickOrderList,
@@ -265,7 +265,10 @@ class ConReturnedChart extends Component {
                 <Paper className="buttonPickk">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/returned/')}>
+                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => {
+                                this.props.clearPickOrder()
+                                history.push('/returned')
+                            }}>
                                 Cancel
                             </ButtonCancel>
                         </div>

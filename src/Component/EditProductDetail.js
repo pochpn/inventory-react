@@ -7,9 +7,16 @@ import { search, shelf } from '../pic'
 
 import { addAccount, clearAccount } from '../actions/accountAction'
 import { connect } from 'react-redux';
-
+import { Success, DG, shelf2 } from '../pic';
 import { formatMoney } from '../formatMoney'
 import styled, { css } from 'styled-components'
+
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
 const ButtonEdit = styled.button`
   background: #40BA8E;
   border-radius: 10px;
@@ -20,7 +27,56 @@ const ButtonEdit = styled.button`
   padding: 0.5em 1.5em;
 `
 
-class ProductDetail extends Component {
+const ButtonDelete = styled.button`
+  background: #881313;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  width:20%
+  padding: 0.5em 1.5em;
+`
+const ButtonYes = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+
+const ButtonNo = styled.button`
+  background: #929990;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 12px;
+  margin: 0 1em;
+  padding: 0.5em 1.75em;
+`
+const ButtonCancel1 = styled.button`
+  background: #868181;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+  `
+const ButtonAdd1 = styled.button`
+  background: #ef3f3e;
+  border: 2px;
+  color: #ffffff;
+  width: 121px;
+  height: 48px;
+  border-radius: 10px;
+  margin: 0 1em;
+  padding: 0.5em 1.5em;
+`
+
+class EditProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,11 +97,59 @@ class ProductDetail extends Component {
         this.setState({ qty: qty })
     }
 
+    handleModalSureClose = (e) => {
+        this.setState({
+            modalSure: false,
+            modalQues: false,
+            shelfSelect: {},
+            shelfID: '',
+            level: '',
+            width: '',
+            length: '',
+            height: '',
+            maxWeight: '',
+        });
+    };
+
+    handleModalSureOpen = () => {
+        this.setState({ modalSure: true });
+    };
+
+    ///////////////////////////
+    handleModalOpen1 = () => {
+        this.setState({ modal1: true });
+    };
+
+    onAddTrue = (item) => {
+        this.setState({ product: item })
+        console.log(item.qty)
+        this.handleModalOpen1()
+    }
+
+    handleModalCloseAdd = (e) => {
+        if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
+            const product = { ...this.state.product }
+            product.qty = (this.state.qty).toString()
+            this.props.addPickOrder(product)
+
+            const currentClass = e.target.className;
+            if (currentClass == 'modal-cardforget') {
+                return;
+            }
+            this.setState({
+                modal1: false,
+                qty: '',
+            });
+        } else {
+            alert('QTY is invalid.')
+        }
+    };
+    /////////////////////////////////////////////
     render() {
 
         return (
             <div className="bg">
-                <Hamburger page={this.state.shelf} user={this.state.user} />
+                <Hamburger page={'EDIT PRODUCT ' + this.state.shelf} user={this.state.user} />
                 <div className="paperProductDetail" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', width: '97%', justifyContent: 'center', alignItems: 'center', height: '145.5px' }}>
                         <p className='txtProductDetail' style={{}}>Product Picture</p>
@@ -70,12 +174,30 @@ class ProductDetail extends Component {
                         <p className='txtTopProductDetail' style={{}}>{this.state.product.unit}</p>
                         <p className='txtTopProductDetail' style={{}}>{this.state.qty}</p>
                         <div className='txtTopProductDetail'>
-                            <ButtonEdit style={{ width: 120, height: 50 }} >EDIT</ButtonEdit>
+                            <ButtonDelete style={{ width: 140, height: 50, }} onClick={this.handleModalSureOpen}>DELETE</ButtonDelete>
                         </div>
                     </div>
-
-
                 </div>
+
+                <div hidden={!this.state.modalSure}>
+                    <div className="modal-background">
+                        <div className="modal-cardforget">
+                            <div style={{ paddingTop: 20 }}>
+                                <img className="picWarning" src={DG} />
+                            </div>
+                            <div>
+                                <Font style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', paddingTop: 30 }} >
+                                    <p>Are you sure ?</p>
+                                </Font>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 35 }}>
+                                <ButtonYes style={{ fontSize: 20 }} onClick={this.handleModalSureClose}>Yes</ButtonYes>
+                                <ButtonNo style={{ fontSize: 20 }} onClick={this.handleModalSureClose}>No</ButtonNo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="paperTopProductDetail" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '9%', borderRadius: '25px', marginTop: '1%' }}>
                     <p className='txtProTopShelf' style={{}}>Received Date</p>
                     <p className='txtProTopShelf' style={{}}>Exp.</p>
@@ -87,7 +209,7 @@ class ProductDetail extends Component {
                     <p className='txtProTopShelf' style={{}}></p>
                 </div>
 
-                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'520px' ,overflow: 'auto'}}>
+                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '520px', overflow: 'auto' }}>
                     {this.props.productList.map((item) => {
                         if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
                             return (
@@ -100,13 +222,39 @@ class ProductDetail extends Component {
                                     <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
                                     <p className='txtProShelf' style={{}}>{formatMoney(item.amount)}</p>
                                     <div className='txtProShelf'>
-                                        <ButtonEdit style={{ width: 120, height: 50 }} >EDIT</ButtonEdit>
+                                        <ButtonEdit style={{ width: 120, height: 50 }} onClick={() => this.onAddTrue(item)}>EDIT</ButtonEdit>
                                     </div>
                                 </div>
                             );
                         }
                     })}
                 </scroll>
+
+                <div hidden={!this.state.modal1}>
+                    <div className="modal-background">
+                        <div className="modal-orderChart">
+                            <div style={{ display: 'flex', paddingTop: 10, justifyContent: 'space-around' }}>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Product ID</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Shelf</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Level</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Cost/Unit</p>
+                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>QTY</p>
+                                
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop:'2%', justifyItems: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>{this.state.product.productID}</p>
+                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }}>{this.state.product.shelf}</p>
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}} />
+                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2%' }}>
+                                <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
+                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         )
@@ -129,4 +277,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProductDetail);

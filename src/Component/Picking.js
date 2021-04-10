@@ -71,7 +71,7 @@ class Picking extends Component {
                 address: this.state.address,
                 telCus: this.state.telCus,
                 date: (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString(),
-                reNum: 'MA' + year + mount + day + hour + min + sec,
+                reNum: 'MR' + year + mount + day + hour + min + sec,
             }
             history.push({
                 pathname: '/picking/pickingChart',

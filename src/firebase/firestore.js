@@ -322,7 +322,6 @@ class Firestore {
                 height: shelf.height,
                 length: shelf.length,
                 level: shelf.level,
-                maxWeight: shelf.maxWeight,
                 shelfID: shelf.shelfID,
                 width: shelf.width,
             })

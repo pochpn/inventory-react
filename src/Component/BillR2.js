@@ -11,54 +11,40 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 
-class BillO2 extends React.PureComponent {
+class BillR2 extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-
+            total: 0,
         };
     }
 
     render() {
-
         return (
             <Paper className='bill'>
                 <Paper className="blackTopic">
-                    <p className="txtPurc">Purchase Order</p>
-                    <p className="txtsubPurc">ใบสั่งซื้อ</p>
+                    <p className="txtMR">Returned Request</p>
+                    <p className="txtsubMR">ใบขอคืนสินค้า</p>
                 </Paper>
                 <Paper className="borLeft">
-                    <p className="txtTopicL1">Supplier :</p>
-                    <p className="txtTopicL2">Address :</p>
+                    <p className="txtTopicL1">Date :</p>
+                    <p className="txtTopicL2">Returned Name</p>
+                    <p className="colonPAddr">:</p>
                     <p className="txtTopicL3">Tel.</p>
-                    <p className="colonTel1">:</p>
-                    <p className="txtsubtp1">ผู้ขาย</p>
-                    <p className="txtsubtp2">ที่อยู่</p>
+                    <p className="colonPTel">:</p>
+                    <p className="txtsubtp1">วันที่</p>
+                    <p className="txtsubtp2">ผู้คืนสินค้า</p>
                     <p className="txtsubtp3">เบอร์ติดต่อ</p>
 
-                    <p className="txtdataL1">{this.props.bill.info.supplier}</p>
-                    <p className="txtdataL2">{this.props.bill.info.address}</p>
-                    <p className="txtdataL3">{this.props.bill.info.telSup}</p>
+                    <p className="txtPdataL1">{this.props.bill.info.date}</p>
+                    <p className="txtPdataL2">{this.props.bill.info.reName}</p>
+                    <p className="txtPdataL3">{this.props.bill.info.tel}</p>
                 </Paper>
-                <Paper className="borRight">
-                    <p className="txtTopicR1">Date</p>
-                    <p className="colonDate">:</p>
-                    <p className="txtTopicR2">Contact Name :</p>
-                    <p className="txtTopicR3">Tel.</p>
-                    <p className="colonTel2">:</p>
-                    <p className="txtsubtp4">วันที่สั่งซื้อ</p>
-                    <p className="txtsubtp5">ผู้ติดต่อ</p>
-                    <p className="txtsubtp6">เบอร์ติดต่อ</p>
 
-                    <p className="txtdataR1">{this.props.bill.info.date}</p>
-                    <p className="txtdataR2">{this.props.bill.info.contactName}</p>
-                    <p className="txtdataR3">{this.props.bill.info.telCon}</p>
-                </Paper>
                 <Paper className="dataBill2">
                     {this.props.bill.order.map((item) => {
-                        
+                        this.setState({ total: this.state.total += parseInt(item.qty * item.costPunit) })
                         return (
-
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '1711px', marginTop: '2%' }}>
                                     <p className='billOproduct1 ' style={{}}>{this.props.bill.order.indexOf(item) + 1}</p>
@@ -67,14 +53,16 @@ class BillO2 extends React.PureComponent {
                                     <p className='billOproduct4 ' style={{}}>{item.shelf}</p>
                                     <p className='billOproduct4' style={{}}>{item.level}</p>
                                     <p className='billOproduct5' style={{}}>{formatMoney(item.qty)}</p>
-
                                 </div>
                             </scroll>
-
                         );
                     })}
                 </Paper>
                 <Paper className="topBill">
+
+                </Paper>
+                <Paper className="totalBox">
+                    <p className="txtTotaldata">{formatMoney(this.state.total)}</p>
 
                 </Paper>
                 
@@ -86,17 +74,19 @@ class BillO2 extends React.PureComponent {
                 <p className="txtTB1">No</p>
                 <p className="txtTB2">Product ID</p>
                 <p className="txtTB3">ProductName</p>
-                <p className="txtTB44">Shelf</p>
-                <p className="txtTB55">Level</p>
+                <p className="txtTB4">Shelf</p>
+                <p className="txtTB5">Level</p>
                 <p className="txtTB6">QTY(ea)</p>
-                <p className="txtPONO">PO No. :</p>
+                <p className="txtPONO">RE No. :</p>
                 <p className="txtPoNoInfo">{this.props.bill.info.reNum}</p>
                 <img img className="linee0" src={line} />
                 <img img className="linee1" src={line} />
                 <img img className="linee2" src={line} />
                 <img img className="linee3" src={line} />
                 <img img className="linee4" src={line} />
-
+                <p className="txtTotal">Total</p>
+                <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
+                
             </Paper>
         );
     }
@@ -117,4 +107,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillO2);
+export default connect(mapStateToProps, mapDispatchToProps)(BillR2);

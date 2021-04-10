@@ -9,7 +9,7 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 import { search, shelf } from '../pic'
 import Paper from '@material-ui/core/Paper';
 
-class ViewStock extends Component {
+class EditProductShelf extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewStock);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProductShelf);

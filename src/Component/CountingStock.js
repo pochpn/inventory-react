@@ -12,7 +12,6 @@ class CountingStock extends Component {
     super(props);
     this.state = {
       user: this.props.userList[this.props.userList.length - 1],
-      list: ['S1-01', 'S1-02'],
     };
   }
 

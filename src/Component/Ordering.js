@@ -91,7 +91,7 @@ class Ordering extends Component {
                                 <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ supplier: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
-                                <p className="textOr" style={{ paddingRight: '57%', paddingTop: '1%' }}>Date</p>
+                                <p className="textOr" style={{ paddingRight: '42%', paddingTop: '1%' }}>Date</p>
                                 <input type="text" style={{ fontSize: 24, }} value={this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()} readOnly/>
                             </div>
                         </div>

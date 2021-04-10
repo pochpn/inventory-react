@@ -153,7 +153,11 @@ class CountShelf extends Component {
                 </div>
 
                 <div style={{ paddingLeft: '1%', paddingTop: '1%', alignItems: 'self-end' }}>
-                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => history.push('/stock/countingStock/countShelf/countReport')}>
+                    <ButtonReport style={{ fontSize: 25, width: 184, height: 52, marginBottom: '2%', marginLeft: '85%' }} onClick={() => {
+                        
+                        history.push({
+                            pathname: '/stock/countingStock/countShelf/countReport',
+                            state: { shelf: this.state.shelf },})}}>
                         Report
                     </ButtonReport>
 

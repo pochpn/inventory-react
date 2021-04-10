@@ -113,7 +113,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         };
     }
 
@@ -134,7 +133,6 @@ class EditShelf extends Component {
             width: item.width,
             length: item.length,
             height: item.height,
-            maxWeight: item.maxWeight,
         });
     };
     ////////////////////////////////////////////////////////
@@ -149,7 +147,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     };
 
@@ -166,7 +163,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     };
 
@@ -187,7 +183,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     };
     ////////////////////////////////////////////////////////
@@ -202,7 +197,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     };
 
@@ -223,7 +217,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     };
 
@@ -243,7 +236,6 @@ class EditShelf extends Component {
             shelfID: this.state.shelfID,
             level: this.state.level,
             length: this.state.length,
-            maxWeight: this.state.maxWeight,
             width: this.state.width,
             height: this.state.height,
             id: this.state.shelfSelect.id,
@@ -259,7 +251,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     }
 
@@ -269,7 +260,6 @@ class EditShelf extends Component {
             shelfID: this.state.shelfID,
             level: this.state.level,
             length: this.state.length,
-            maxWeight: this.state.maxWeight,
             width: this.state.width,
             height: this.state.height,
             id: doc.id
@@ -283,7 +273,6 @@ class EditShelf extends Component {
             width: '',
             length: '',
             height: '',
-            maxWeight: '',
         });
     }
 
@@ -297,7 +286,6 @@ class EditShelf extends Component {
             shelfID: this.state.shelfID,
             level: this.state.level,
             length: this.state.length,
-            maxWeight: this.state.maxWeight,
             width: this.state.width,
             height: this.state.height,
         }
@@ -422,12 +410,6 @@ class EditShelf extends Component {
                                     <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
                                 </div>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', paddingTop: 30, paddingLeft: 50 }}>
-                                <Font>Maximum weight</Font>
-                                <div style={{ paddingTop: 10 }}>
-                                    <input type="type" style={{ width: 230, height: 39, fontSize: 24 }} value={this.state.maxWeight} onChange={txt => this.setState({ maxWeight: txt.target.value })} />
-                                </div>
-                            </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
                                 <ButtonSave style={{ fontSize: 24 }} onClick={this.onSaveEdit}>Save</ButtonSave>
                                 <ButtonCancel style={{ fontSize: 24 }} onClick={this.handleModalEditClose}>Cancel</ButtonCancel>
@@ -464,12 +446,6 @@ class EditShelf extends Component {
                                 </div>
                                 <div style={{ paddingLeft: 45 }}>
                                     <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
-                                </div>
-                            </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', paddingTop: 30, paddingLeft: 50 }}>
-                                <Font>Maximum weight</Font>
-                                <div style={{ paddingTop: 10 }}>
-                                    <input type="type" style={{ width: 230, height: 39, fontSize: 24 }} value={this.state.maxWeight} onChange={txt => this.setState({ maxWeight: txt.target.value })} />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>

@@ -3985,3 +3985,18 @@ body, html {
 }
 
 /* End Recieving Order */
+
+/*start modal edit product*/
+.txtEditProduct {
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    width: 18%;
+    margin-left: 1%;
+    margin-right: 1%;
+    line-height: 35px;
+    text-align: center;
+    color: 'black';
+}
+/*end modal edit product*/

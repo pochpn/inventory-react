@@ -36,7 +36,7 @@ class BillPHis extends Component {
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/history')
                     }}>
-                        <p className="txtbtnCancle">Cancel</p>
+                        <p className="txtbtnCancle">Exit</p>
                     </Paper>
                 </Paper>
 

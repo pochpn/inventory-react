@@ -2481,6 +2481,21 @@ body, html {
     color: #000000;
 }
 
+.txtbtnSend2 {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 18%;
+    top: -33%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
 .btnSend {
     position: absolute;
     width: 110px;
@@ -2552,6 +2567,21 @@ body, html {
     width: 50px;
     height: 73px;
     left: 33%;
+    top: -33%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.txtbtnEdit2 {
+    position: absolute;
+    width: 50px;
+    height: 73px;
+    left: 22%;
     top: -33%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -2874,11 +2904,41 @@ body, html {
     color: #FFFFFF;
 }
 
+.txtTB44 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 56%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
 .txtTB5 {
     position: absolute;
     width: 400px;
     height: 73px;
     left: 69%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.txtTB55 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 70.8%;
     top: 26%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3629,6 +3689,21 @@ body, html {
     color: #FFFFFF;
 }
 
+.txtPTB44 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 54%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
 .txtPTB5 {
     position: absolute;
     width: 400px;
@@ -3644,11 +3719,41 @@ body, html {
     color: #FFFFFF;
 }
 
+.txtPTB55 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 70%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
 .txtPTB6 {
     position: absolute;
     width: 400px;
     height: 73px;
     left: 86%;
+    top: 26%;
+    font-family: 'Prompt', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 73px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.txtPTB66 {
+    position: absolute;
+    width: 400px;
+    height: 73px;
+    left: 85.5%;
     top: 26%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;

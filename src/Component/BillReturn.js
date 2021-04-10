@@ -23,7 +23,7 @@ class BillReturn extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            notificationHead: 'ยืนยันคำร้องการจ่าย',
+            notificationHead: 'ยืนยันคำร้องการส่งคืนสินค้า',
             notiCount: 1,
             info: this.props.location.state.info,
             order: this.props.location.state.order,

@@ -363,23 +363,23 @@ class PickingChart extends Component {
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', paddingTop: 10, justifyContent: 'space-around' }}>
-                                <Font>Product ID</Font>
-                                <Font>Exp.</Font>
-                                <Font>Shelf</Font>
-                                <Font>Level</Font>
-                                <Font>Cost/Unit</Font>
-                                <Font>QTY</Font>
+                            <div style={{ display: 'flex', paddingTop: 10 }}>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Product ID</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Exp.</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Shelf</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Level</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Cost/Unit</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>QTY</Font>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font>{this.state.product.productID}</Font>
-                                <Font>{this.state.product.expDate}</Font>
-                                <Font>{this.state.product.shelf}</Font>
-                                <Font>{this.state.product.level}</Font>
-                                <Font>{this.state.product.costPunit}</Font>
-                                <input type="number" min='0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                            <div style={{ display: 'flex', paddingTop: '2%' }}>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.productID}</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.expDate}</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.shelf}</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.level}</Font>
+                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.costPunit}</Font>
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width:'20%', height: 35, fontSize: 24 ,margin:'0.5%',textAlign:'center'}} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2.5%' }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
                                 <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
                             </div>

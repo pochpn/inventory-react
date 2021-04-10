@@ -80,7 +80,7 @@ class ConReturned extends Component {
         <Hamburger page='RETURN ORDER' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '0.25%', paddingTop: '9%', justifyContent: 'center' }}>
           <Paper className='paperOrdering' >
-            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3.5%', paddingLeft: '34%' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '2.8%', paddingLeft: '34%' }}>
               <p className='textOr' style={{ paddingRight: '3%', }}>Date</p>
               <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
             </div>
@@ -96,19 +96,19 @@ class ConReturned extends Component {
               <p className='textOr' >Description</p>
             </div>
             <div style={{ display: 'flex', flexDirection: 'flex-start', paddingLeft: '34%' }}>
-              <textarea type="text" max="10" style={{ fontSize: 24, paddingBottom: 100, width: 615,resize:'none' }} value={this.state.des} onChange={txt => this.setState({ des: txt.target.value })} />
+              <textarea type="text" max="10" style={{ fontSize: 24, paddingBottom: 100, width: 615, resize: 'none' }} value={this.state.des} onChange={txt => this.setState({ des: txt.target.value })} />
             </div>
 
 
 
 
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-              <div style={{ paddingLeft: 1500, paddingTop: 160 }}>
+              <div style={{ paddingLeft: 755, paddingTop: 20 }}>
                 <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
                   Cancel
             </ButtonCancel>
               </div>
-              <div style={{ paddingLeft: 10, paddingTop: 160 }}>
+              <div style={{ paddingLeft: 10, paddingTop: 20 }}>
                 <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
                   Next
             </ButtonNext>

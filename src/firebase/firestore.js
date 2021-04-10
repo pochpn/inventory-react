@@ -539,7 +539,47 @@ class Firestore {
                 reject(error);
             });
     };
+    /*--------------------turnover graph-----------------------*/
+    getAllGraph = (success, reject) => {
+        firebase
+            .firestore()
+            .collection('Graph')
+            .get()
+            .then(function (querySnapshot) {
+                success(querySnapshot);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    
+    }
+    updateGraph = (graph, success, reject) => {
+        firebase
+            .firestore()
+            .collection('Graph')
+            .doc("ZJICOP6AvttiabS4az0j")
+            .update({
+                Apr: graph.Apr,
+                Aug: graph.Aug,
+                Dec: graph.Dec,
+                Feb: graph.Feb,
+                Jan: graph.Jan,
+                Jul: graph.Jul,
+                Jun: graph.Jun,
+                Mar: graph.Mar,
+                May: graph.May,
+                Nov: graph.Nov,
+                Oct: graph.Oct,
+                Sep: graph.Sep,
+            })
+            .then(function () {
+                success(null);
+            })
+            .catch(function (error) {
+                reject(error);
+            });
+    };
+    
 }
-
 const firestore = new Firestore();
 export default firestore;

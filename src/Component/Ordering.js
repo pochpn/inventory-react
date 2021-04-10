@@ -98,7 +98,7 @@ class Ordering extends Component {
                         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.5%' }}>
                                 <p className="textOr" style={{ paddingRight: '5%', paddingTop: '1%' }}>Address</p>
-                                <textarea type="text" style={{ fontSize: 24, height: 150, width: 355 }} onChange={txt => this.setState({ address: txt.target.value })}></textarea>
+                                <textarea type="text" style={{ fontSize: 24, height: 150, width: 355,resize:'none' }} onChange={txt => this.setState({ address: txt.target.value })}></textarea>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', paddingTop: '3%', paddingLeft: '11.4%' }} >
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>

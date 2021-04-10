@@ -550,7 +550,7 @@ class InvenCost extends Component {
                                     height={400}
                                     data={barData1}
                                     margin={{
-                                        top: 0, right: 0, bottom: 0, left: 0,
+                                        top: 0, right: 0, bottom: 0, left: 50,
                                     }}
                                 >
                                     <CartesianGrid stroke="#f5f5f5" />
@@ -584,7 +584,7 @@ class InvenCost extends Component {
                                     height={400}
                                     data={barData2}
                                     margin={{
-                                        top: 0, right: 0, bottom: 0, left: 0,
+                                        top: 0, right: 0, bottom: 0, left: 50,
                                     }}
                                 >
                                     <CartesianGrid stroke="#f5f5f5" />
@@ -609,7 +609,7 @@ class InvenCost extends Component {
                                     height={400}
                                     data={barData3}
                                     margin={{
-                                        top: 0, right: 0, bottom: 0, left: 0,
+                                        top: 0, right: 0, bottom: 0, left:50,
                                     }}
                                 >
                                     <CartesianGrid stroke="#f5f5f5" />

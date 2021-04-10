@@ -659,7 +659,7 @@ class InvenCost extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workday: txt.target.value })}></input>
+                                        <input type="number" min="0" max="366" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workday: txt.target.value })}></input>
                                         <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} onClick={this.setWorkTime}>Save</button>
                                     </div>
                                 </div>
@@ -689,19 +689,19 @@ class InvenCost extends Component {
 
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ demandM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ demandM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
                                 <p>Order cost</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ ocM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ ocM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
                                 <p>Carrying costs</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ crM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ crM: txt.target.value })}></input>
                             </div>
                         </div>
                     </div>

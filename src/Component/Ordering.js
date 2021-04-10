@@ -30,18 +30,15 @@ class Ordering extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
-            supplier: null,
-            address: null,
-            telSup: null,
+            supplier: '',
+            address: '',
+            telSup: '',
             date: new Date(),
-            contactName: null,
-            telCon: null,
-            reNum: null,
         };
     }
 
     onNext = () => {
-        if ((this.state.supplier != (null && '')) && (this.state.address != (null && '')) && (this.state.telCon != (null && '')) && (this.state.telSup != (null && '')) && (this.state.contactName != (null && ''))) {
+        if ((this.state.supplier !== '') && (this.state.address !== '') && (this.state.telSup !== '')) {
             let date = this.state.date
             let year = date.getFullYear().toString().substr(2, 3)
             let mount = date.getMonth().toString()
@@ -70,8 +67,8 @@ class Ordering extends Component {
                 address: this.state.address,
                 telSup: this.state.telSup,
                 date: (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString(),
-                contactName: this.state.contactName,
-                telCon: this.state.telCon,
+                contactName: this.state.user.firstnameTH+' '+this.state.user.lastnameTH,
+                telCon: this.state.user.tel,
                 reNum: 'PO' + year + mount + day + hour + min + sec,
             }
             history.push({
@@ -95,7 +92,7 @@ class Ordering extends Component {
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '12.5%' }}>
                                 <p className="textOr" style={{ paddingRight: '57%', paddingTop: '1%' }}>Date</p>
-                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <input type="text" style={{ fontSize: 24, }} value={this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()} readOnly/>
                             </div>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
@@ -107,11 +104,11 @@ class Ordering extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>
                                     <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Contact</p>
                                     <p className="textOr" style={{ paddingRight: '5%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
-                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ contactName: txt.target.value })} />
+                                    <input type="text" style={{ fontSize: 24, }} value={this.state.user.firstnameTH+' '+this.state.user.lastnameTH} readOnly/>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '10%', }}>
                                     <p className="textOr" style={{ paddingRight: '35.5%', paddingTop: '1%' }}>Tel.</p>
-                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telCon: txt.target.value })} />
+                                    <input type="text" style={{ fontSize: 24, }} value={this.state.user.tel} readOnly/>
                                 </div>
                             </div>
 

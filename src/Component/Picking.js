@@ -112,7 +112,7 @@ class Picking extends Component {
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.7%' }}>
                                 <p className="textOr" style={{ paddingRight: '37.1%' }}>Address</p>
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>
-                                    <textarea type="text" style={{ fontSize: 24, height: 150, width: 335 }} onChange={txt => this.setState({ address: txt.target.value })} />
+                                    <textarea type="text" style={{ fontSize: 24, height: 150, width: 335,resize:'none' }} onChange={txt => this.setState({ address: txt.target.value })} />
                                 </div>
                             </div>
                         </div>

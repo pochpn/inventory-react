@@ -75,7 +75,7 @@ class Home extends Component {
                 <Paper className="paperCs" onClick={() => history.push('/returned')} >
                     <div>
                         <img className="imCs" src={returnor} />
-                        <p className="textCf">NEW RETURN</p>
+                        <p className="textCf">RETURN</p>
                         <p className="textSh">ORDER</p>
                     </div>
                 </Paper>

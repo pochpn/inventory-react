@@ -102,6 +102,16 @@ class Hamburger extends Component {
     this.countNoti();
   }
 
+   dataNoti = () => {
+    var data = [];
+    this.props.notificationList.forEach(item => {
+      data.push(item)
+    })
+    data = data.reverse()
+    this.setState({ Notification: data })
+    // console.log(data)
+  }
+
   handleModalClose = (e) => {
     this.setState({ modal: false });
   };
@@ -132,6 +142,7 @@ class Hamburger extends Component {
 
   componentDidMount() {
     this.countNoti()
+    this.dataNoti()
   }
 
   onCheck = (item) => {

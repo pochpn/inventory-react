@@ -77,7 +77,7 @@ class ConReturned extends Component {
   render() {
     return (
       <div className="bg">
-        <Hamburger page='RETURNED ORDER' user={this.state.user} />
+        <Hamburger page='RETURN ORDER' user={this.state.user} />
         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '0.25%', paddingTop: '9%', justifyContent: 'center' }}>
           <Paper className='paperOrdering' >
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3.5%', paddingLeft: '34%' }}>

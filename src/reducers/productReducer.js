@@ -26,6 +26,8 @@ const productReducer = (state = initialState, action) => {
                         ? {
                             ...item,
                             oty: action.product.oty,
+                            level: action.product.level,
+                            costPunit: action.product.costPunit,
                         }
                         : item
                 )

@@ -11,6 +11,10 @@ import { Success, DG, shelf2 } from '../pic';
 import { formatMoney } from '../formatMoney'
 import styled, { css } from 'styled-components'
 
+import { editProduct, deleteProduct } from '../actions/productAction'
+import { RiTShirtAirFill } from 'react-icons/ri'
+import { FaThinkPeaks } from 'react-icons/fa'
+
 const Font = styled.div`
   && {
     color: #000000;
@@ -84,6 +88,11 @@ class EditProductDetail extends Component {
             product: this.props.location.state.product,
             shelf: this.props.location.state.shelf,
             qty: 0,
+            modal1: false,
+            modalSure: false,
+            level: null,
+            costPunit: null,
+            qty2: null,
         };
     }
 
@@ -98,17 +107,7 @@ class EditProductDetail extends Component {
     }
 
     handleModalSureClose = (e) => {
-        this.setState({
-            modalSure: false,
-            modalQues: false,
-            shelfSelect: {},
-            shelfID: '',
-            level: '',
-            width: '',
-            length: '',
-            height: '',
-            maxWeight: '',
-        });
+        this.setState({ modalSure: false });
     };
 
     handleModalSureOpen = () => {
@@ -120,30 +119,37 @@ class EditProductDetail extends Component {
         this.setState({ modal1: true });
     };
 
-    onAddTrue = (item) => {
-        this.setState({ product: item })
-        console.log(item.qty)
+    onAdd = (item) => {
+        this.setState({
+            product: item,
+            level: item.level,
+            costPunit: item.costPunit,
+            qty2: item.qty
+        })
         this.handleModalOpen1()
     }
 
-    handleModalCloseAdd = (e) => {
-        if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
-            const product = { ...this.state.product }
-            product.qty = (this.state.qty).toString()
-            this.props.addPickOrder(product)
+    updateSuccess = () => {
+        console.log('Edit Success')
+    }
 
-            const currentClass = e.target.className;
-            if (currentClass == 'modal-cardforget') {
-                return;
-            }
-            this.setState({
-                modal1: false,
-                qty: '',
-            });
-        } else {
-            alert('QTY is invalid.')
-        }
+    reject = (error) => {
+        console.log(error)
+    }
+
+    handleModalCloseAdd = (e) => {
+        const product = { ...this.state.product }
+        product.level = this.state.level
+        product.costPunit = this.state.costPunit
+        product.qty = this.state.qty2
+        firestore.updateProductByID(product, this.updateSuccess, this.reject)
+        this.props.editProduct(product)
+        this.setState({ modal1: false })
     };
+
+    handleModalClose1 = () => {
+        this.setState({ modal1: false })
+    }
     /////////////////////////////////////////////
     render() {
 
@@ -220,9 +226,9 @@ class EditProductDetail extends Component {
                                     <p className='txtProShelf' style={{}}>{item.level}</p>
                                     <p className='txtProShelf' style={{}}>{formatMoney(item.costPunit)}</p>
                                     <p className='txtProShelf' style={{}}>{formatMoney(item.qty)}</p>
-                                    <p className='txtProShelf' style={{}}>{formatMoney(item.amount)}</p>
+                                    <p className='txtProShelf' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                     <div className='txtProShelf'>
-                                        <ButtonEdit style={{ width: 120, height: 50 }} onClick={() => this.onAddTrue(item)}>EDIT</ButtonEdit>
+                                        <ButtonEdit style={{ width: 120, height: 50 }} onClick={() => this.onAdd(item)}>EDIT</ButtonEdit>
                                     </div>
                                 </div>
                             );
@@ -234,23 +240,23 @@ class EditProductDetail extends Component {
                     <div className="modal-background">
                         <div className="modal-orderChart">
                             <div style={{ display: 'flex', paddingTop: 10, justifyContent: 'space-around' }}>
-                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Product ID</p>
-                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Shelf</p>
-                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Level</p>
-                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>Cost/Unit</p>
-                            <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>QTY</p>
-                                
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>Product ID</p>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>Shelf</p>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>Level</p>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>Cost/Unit</p>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>QTY</p>
+
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', marginTop:'2%', justifyItems: 'center', alignContent: 'center', alignItems: 'center' }}>
-                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}}>{this.state.product.productID}</p>
-                                <p style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }}>{this.state.product.shelf}</p>
-                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
-                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%' ,textAlign:'center'}} />
-                                <input type="number" style={{  height: 35, fontSize: 24,width:'20%',marginRight:'1%',marginLeft:'1%',textAlign:'center' }} />
+                            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2%', justifyItems: 'center', alignContent: 'center', alignItems: 'center' }}>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>{this.state.product.recvDate}</p>
+                                <p style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }}>{this.state.product.expDate}</p>
+                                <input type="number" style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" style={{ height: 35, fontSize: 24, width: '20%', marginRight: '1%', marginLeft: '1%', textAlign: 'center' }} value={this.state.qty2} onChange={txt => this.setState({ qty2: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2%' }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
-                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
+                                <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Edit</ButtonAdd1>
                             </div>
                         </div>
                     </div>
@@ -265,6 +271,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addAccount: (account) => dispatch(addAccount(account)),
         clearAccount: () => dispatch(clearAccount()),
+        editProduct: (product) => dispatch(editProduct(product)),
+        deleteProduct: (id) => dispatch(deleteProduct(id)),
     };
 };
 

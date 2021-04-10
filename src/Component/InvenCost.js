@@ -7,7 +7,10 @@ import { IoIosCloseCircle } from "react-icons/io";
 import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { Input, Paper } from '@material-ui/core';
-import { CC, EOQ, TC, OC } from '../pic'
+import { CC, EOQ, TC, OC } from '../pic';
+import { findEOQ,findNY,findLead } from '../EOQ';
+import { formatMoney } from '../formatMoney'
+import { convert } from '../convert'
 import './Modal.css';
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ComposedChart, Line, CartesianGrid } from 'recharts';
 const Font = styled.div`
@@ -27,7 +30,14 @@ class InvenCost extends Component {
             modal2: false,
             modal3: false,
             modal4: false,
-            maodal5: false,
+            modal5: false,
+            eoqM: 0,
+            nOrM: 0,
+            leadM: 0,
+            workdM: 365,
+            demandM: 0,
+            ocM: 0,
+            crM: 0,
             date: new Date(),
             currentMonth: new Date().getMonth(),
             jVal: 0,
@@ -82,8 +92,15 @@ class InvenCost extends Component {
             event.preventDefault();
     }
 
+
+
     handleModalClose1 = (e) => {
         this.setState({ modal1: false });
+    };
+
+    handleModalClose15 = (e) => {
+        this.setState({ modal1: false });
+        this.setState({ modal5: false });
     };
 
     handleModalOpen1 = () => {
@@ -187,7 +204,7 @@ class InvenCost extends Component {
         }
         firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
     }
-    componentDidMount = async() => {
+    componentDidMount = async () => {
         await firestore.getAllCost(this.getSuccess, this.getReject)
         await firestore.getAllcCost(this.getcSuccess, this.getcReject)
         if ((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() === 1)) {
@@ -223,8 +240,8 @@ class InvenCost extends Component {
             await firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
             //console.log("new year")
         }
-       
-        
+
+
     }
     updateSuccess = () => {
         console.log("Success")
@@ -316,10 +333,10 @@ class InvenCost extends Component {
     updatecSuccess = () => {
         console.log("Success")
     }
-    updatecReject = (e) =>{
+    updatecReject = (e) => {
         console.log(e)
     }
-    getcSuccess = (querySnapshot)=>{
+    getcSuccess = (querySnapshot) => {
         let cCost
         querySnapshot.forEach(doc => {
             cCost = doc.data()
@@ -327,22 +344,22 @@ class InvenCost extends Component {
             this.setState({ cCost: cCost })
         });
         this.setState(
-        {
-            jValC: cCost.Jan,
-            fValC: cCost.Feb,
-            mValC: cCost.Mar,
-            aValC: cCost.Apr,
-            mayValC: cCost.May,
-            junValC: cCost.Jun,
-            julValC: cCost.Jul,
-            augValC: cCost.Aug,
-            sepValC: cCost.Sep,
-            octValC: cCost.Oct,
-            novValC: cCost.Nov,
-            decValC: cCost.Dec,
-        })
+            {
+                jValC: cCost.Jan,
+                fValC: cCost.Feb,
+                mValC: cCost.Mar,
+                aValC: cCost.Apr,
+                mayValC: cCost.May,
+                junValC: cCost.Jun,
+                julValC: cCost.Jul,
+                augValC: cCost.Aug,
+                sepValC: cCost.Sep,
+                octValC: cCost.Oct,
+                novValC: cCost.Nov,
+                decValC: cCost.Dec,
+            })
     }
-    getcReject = (e) =>{
+    getcReject = (e) => {
         console.log(e)
     }
     /*-----------------------------End of Carrying Cost------------------------------*/
@@ -513,7 +530,7 @@ class InvenCost extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '30%' }}></input>
+                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }}></input>
                                         <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
                                     </div>
                                 </div>
@@ -626,44 +643,54 @@ class InvenCost extends Component {
                 <div hidden={!this.state.modal5}>
                     <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
                         <div className="modal-card">
-                            <div style={{ paddingLeft: '95%', cursor: 'pointer' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose5}></IoIosCloseCircle></div><div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <div style={{ paddingLeft: '95%', cursor: 'pointer' }}><IoIosCloseCircle style={{ width: '40px', height: '40px' }} onClick={this.handleModalClose15}></IoIosCloseCircle></div><div style={{ display: 'flex', flexDirection: 'row' }}>
                                 <img style={{ width: '160px', height: '70px', marginLeft: '5%' }} src={EOQ}></img>
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '30%' }}></input>
-                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workdM: txt.target.value })}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} >Save</button>
                                     </div>
                                 </div>
+                                <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: '#40BA8E', borderRadius: '10px' }} onClick={this.handleModalClose5}>EOQ</button>
                             </div>
-                            <div style={{ paddingTop: '40px' }}><Paper className='eoqTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-around', marginLeft: '1%' }}>
-                                    <Font style={{ marginLeft: '3%' }}>Input</Font>
-                                    <Font style={{ marginLeft: '5%' }}>EOQ</Font>
-                                    <Font>Number of orders/year</Font>
-                                    <Font>Order lead time</Font>
+                            <div style={{ paddingTop: '40px' }}>
+                                <Paper className='eoqTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-around', marginLeft: '1%' }}>
+                                        <Font style={{ marginLeft: '3%' }}>Input</Font>
+                                        <Font style={{ marginLeft: '5%' }}>EOQ</Font>
+                                        <Font>Number of orders/year</Font>
+                                        <Font>Order lead time</Font>
+                                    </div>
+                                </Paper>
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'row', marginLeft: '5%', marginTop: '1%' }}>
+                                <p>Demand / year</p>
+                                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%',paddingLeft:'3%'}}>
+
+                                    <Paper className='eoqMn' style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                        <Font style={{ display: 'flex', justifyContent: 'center', }}>{formatMoney(findEOQ(this.state.demandM, this.state.ocM, this.state.crM))}</Font>
+                                        <Font style={{ display: 'flex', justifyContent: 'center',marginRight:'5%' }}>{formatMoney(findNY(this.state.demandM, this.state.ocM, this.state.crM))}</Font>
+                                        <Font style={{ display: 'flex', justifyContent: 'center', }}>{formatMoney(findLead(this.state.demandM, this.state.ocM, this.state.crM,this.state.workdM))}</Font>
+                                    </Paper>
+
                                 </div>
-                            </Paper></div>
-                            <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
-                                <p>Demand in units</p>
+
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }}></input>
-                                <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ demandM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
                                 <p>Order cost</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }}></input>
-                                <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ ocM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
-                                <p>Holding costs</p>
+                                <p>Carrying costs</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input style={{ width: '45px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }}></input>
-                                <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }}>Save</button>
+                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ crM: txt.target.value })}></input>
                             </div>
                         </div>
                     </div>

@@ -110,7 +110,8 @@ class BillPick extends Component {
     onSend = async() => {
         const notification = {
             notificationHead: this.state.notificationHead,
-            notiCount: this.state.notiCount
+            notiCount: this.state.notiCount,
+            notiNum:this.state.info,
         }
         await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)

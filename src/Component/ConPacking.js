@@ -74,8 +74,8 @@ class ConPacking extends Component {
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <Font>{item.info.reNum}</Font>
                       <Font>{item.info.date}</Font>
-                      <Font>{item.info.contactName}</Font>
-                      <Font>{item.info.telCon}</Font>
+                      <Font>{item.info.customerName}</Font>
+                      <Font>{item.info.telCus}</Font>
                     </div>
                   </Paper>
                 </div>

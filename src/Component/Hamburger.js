@@ -16,7 +16,7 @@ import { clearProductProfile } from '../actions/productProfileAction';
 import { clearShelf } from '../actions/shelfAction'
 import { clearPickOrder } from '../actions/pickOrderAction'
 import { clearBill } from '../actions/billAction'
-import { clearNotification , editNotification} from '../actions/notificationAction'
+import { clearNotification, editNotification } from '../actions/notificationAction'
 
 import { logoTopBar } from '../pic'
 
@@ -88,8 +88,15 @@ class Hamburger extends Component {
   }
 
   reduceCount = (item) => {
+    var notiNum = '';
     const notification = item;
     notification.notiCount = 0;
+    notiNum = notification.notiNum.reNum;
+    this.props.billList.forEach(b => {
+      if (b.info.reNum === notiNum) {
+        this.onCheck(b);
+      }
+    })
     firestore.updateNotiByID(notification, this.editSuccess, this.editReject)
     this.props.editNotification(notification)
     this.countNoti();
@@ -127,6 +134,26 @@ class Hamburger extends Component {
     this.countNoti()
   }
 
+  onCheck = (item) => {
+    if (item.type === "PO") {
+      history.push({
+        pathname: '/orderConfirm/receiving/billOrder2',
+        state: {
+          bill: item,
+        },
+      })
+    }
+    else if(item.type === "MR"){
+      history.push({
+        pathname: '/orderConfirm/packing/billPick2',
+        state: {
+            bill: item,
+        },
+    })
+    }
+
+  }
+
   // clearNoti = () => {
   //   this.setState({ noti: false });
   // }
@@ -157,7 +184,7 @@ class Hamburger extends Component {
                 {this.props.notificationList.map((item) => {
                   return (
                     <div >
-                        {item.notiCount === 1 && <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
+                      {item.notiCount === 1 && <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
                           <p className='txtPdInOD' style={{}} onClick={() => {
                             this.reduceCount(item);
@@ -240,6 +267,7 @@ const mapStateToProps = (state) => {
   return {
     notificationList: state.notificationReducer.notificationList,
     userList: state.userReducer.userList,
+    billList: state.billReducer.billList,
   };
 };
 

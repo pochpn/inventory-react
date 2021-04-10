@@ -1458,6 +1458,13 @@ body, html {
     border-radius: 12px;
 }
 
+.eoqMn {
+    border-radius: 12px;
+    width: 98%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.4)!important;
+}
+
 .picOc {
     position: absolute;
     width: 150.78px;

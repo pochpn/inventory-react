@@ -394,6 +394,7 @@ class Firestore {
             .update({
                 notificationHead: notification.notificationHead,
                 notiCount: notification.notiCount,
+                notiNum: notification.notiNum,
             })
             .then(function () {
                 success(null);

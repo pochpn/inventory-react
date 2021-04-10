@@ -17,7 +17,7 @@ import { addBill } from '../actions/billAction'
 
 import { deleteProduct, editProduct } from '../actions/productAction'
 
-class BillPick extends Component {
+class BillPHis extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,4 +67,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillPick);
+export default connect(mapStateToProps, mapDispatchToProps)(BillPHis);

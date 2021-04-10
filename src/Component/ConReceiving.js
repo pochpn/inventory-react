@@ -13,7 +13,7 @@ const Font = styled.div`
   && {
     color: #000000;
     font-size: 30px;
-    width: 250px;
+    width: 310px;
     font-weight: lighter;
   }
 `
@@ -69,24 +69,26 @@ class ConReceiving extends Component {
                     </div>
                 </Paper>
 
-                <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                    <p className="txtOrConTable1" style={{ width: '25%', textAlign: 'center' }}>PO No.</p>
-                    <p className="txtOrConTable1" style={{ width: '25%', textAlign: 'center' }}>Date</p>
-                    <p className="txtOrConTable1" style={{ width: '25%', textAlign: 'center' }}>Officer In Charge</p>
-                    <p className="txtOrConTable1" style={{ width: '25%', textAlign: 'center' }}>Contact Number</p>
+                <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                        <Font2>PO No.</Font2>
+                        <Font2>Date</Font2>
+                        <Font2>Contact Name</Font2>
+                        <Font2>Tel.</Font2>
+                    </div>
                 </Paper>
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
-                <div style={{ paddingTop: 230, paddingLeft: '1%' }}>
+                <div style={{ paddingTop: 230 ,paddingLeft:'1%'}}>
                     {this.props.billList.map((item) => {
                         if (item.managerConfirm && !item.confirm && (item.type === 'PO')) {
                             return (
-                                <div style={{ paddingTop: 20 }} onClick={() => this.onCheck(item)}>
-                                    <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', cursor: 'pointer' }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                            <Font style={{ width: '25%', textAlign: 'center' }}>{item.info.reNum}</Font>
-                                            <Font style={{ width: '25%', textAlign: 'center' }}>{item.info.date}</Font>
-                                            <Font style={{ width: '25%', textAlign: 'center' }}>{item.info.contactName}</Font>
-                                            <Font style={{ width: '25%', textAlign: 'center' }}>{item.info.telCon}</Font>
+                                <div style={{paddingTop: 20}} onClick={() => this.onCheck(item)}>
+                                    <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,cursor:'pointer'}}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-around'}}>
+                                            <Font>{item.info.reNum}</Font>
+                                            <Fontt>{item.info.date}</Fontt>
+                                            <Font>{item.info.contactName}</Font>
+                                            <Fontt>{item.info.telCon}</Fontt>
                                         </div>
                                     </Paper>
                                 </div>
@@ -95,7 +97,7 @@ class ConReceiving extends Component {
                     })}
                 </div>
 
-
+                
             </div>
 
         )

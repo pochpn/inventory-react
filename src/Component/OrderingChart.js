@@ -121,11 +121,16 @@ class OrderingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
+<<<<<<< HEAD
         if ((this.state.level === '0') && (this.state.costPunit === '0') && (this.state.qty === '0')){
             alert('Infomation is invalid.')
         }
         else if ((this.state.level !== '') && (this.state.costPunit !== '') && (this.state.qty !== '')) {
             const product = { ...this.state.item }
+=======
+        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
+            const product = {...this.state.item}
+>>>>>>> parent of 99385fb (Merge branch 'main' of https://github.com/pochpn/inventory-react into main)
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
@@ -192,9 +197,7 @@ class OrderingChart extends Component {
     }
 
     render() {
-       
         return (
-            
             <div className="bg">
 
                 <Paper className='topOrdering'>
@@ -321,24 +324,20 @@ class OrderingChart extends Component {
                     <div className="modal-background">
                         <div className="modal-orderChart">
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 10 }}>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>Product ID</Font>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>Exp.</Font>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>Shelf</Font>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>Level</Font>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>Cost/Unit</Font>
-                                <Font style={{ width: '20%', textAlign: 'center' }}>{'QTY(' + this.state.item.unit + ')'}</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Product ID</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Exp.</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Shelf</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Level</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>Cost/Unit</Font>
+                                <Font style={{width:'20%',textAlign:'center'}}>{'QTY('+this.state.item.unit+')'}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font style={{ width: '20%', textAlign: 'center', margin: '1%' }}>{this.state.item.productID}</Font>
-                                <div style={{marginTop:'1.4%',width: '20%'}}>
-                                
-                                    <DatePicker selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                                    
-                                </div>
-                                <Font style={{ width: '20%', textAlign: 'center', margin: '1%' }}>{this.state.item.shelf}</Font>
-                                <input type="number" min='0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '20%', height: 35, fontSize: 24, textAlign: 'center', margin: '1%' }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="number" min='0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24, textAlign: 'center', margin: '1%' }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="number" min='0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24, textAlign: 'center', margin: '1%' }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.productID}</Font>
+                                <DatePicker className="datePicker" selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.shelf}</Font>
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>

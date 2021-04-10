@@ -57,11 +57,11 @@ class ConPacking extends Component {
         <Paper className='OrConTopic'>
           <p className="txtPakTopic">Picking Order</p>
         </Paper>
-        <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-          <p className="txtOrConTable1" style={{width:'25%',textAlign:'center'}}>MR No.</p>
-          <p className="txtOrConTable1" style={{width:'25%',textAlign:'center'}}>Date</p>
-          <p className="txtOrConTable1" style={{width:'25%',textAlign:'center'}}>Officer In Charge</p>
-          <p className="txtOrConTable1" style={{width:'25%',textAlign:'center'}}>Contact Number</p>
+        <Paper className='OrConTable'>
+          <p className="txtOrConTable1">MR No.</p>
+          <p className="txtOrConTable2">Date</p>
+          <p className="txtOrConTable3">Contact Name</p>
+          <p className="txtOrConTable4">Tel.</p>
         </Paper>
 
         <Hamburger page='PICKING ORDER' user={this.state.user} />
@@ -72,10 +72,10 @@ class ConPacking extends Component {
                 <div style={{ paddingTop: 20 }} onClick={() => this.onCheck(item)}>
                   <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                      <Font style={{width:'25%',textAlign:'center'}}>{item.info.reNum}</Font>
-                      <Font style={{width:'25%',textAlign:'center'}}>{item.info.date}</Font>
-                      <Font style={{width:'25%',textAlign:'center'}}>{item.info.customerName}</Font>
-                      <Font style={{width:'25%',textAlign:'center'}}>{item.info.telCus}</Font>
+                      <Font>{item.info.reNum}</Font>
+                      <Font>{item.info.date}</Font>
+                      <Font>{item.info.customerName}</Font>
+                      <Font>{item.info.telCus}</Font>
                     </div>
                   </Paper>
                 </div>

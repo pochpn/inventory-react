@@ -109,8 +109,8 @@ class History extends Component {
           <div style={{ display: 'flex', justifyContent: 'center',width:'97%',marginLeft:'1.5%' }}>
             <Font style={{width:'25%',textAlign:'center'}}>Date</Font>
             <Font style={{width:'25%',textAlign:'center'}}>Receipt ID</Font>
-            <Font style={{width:'25%',textAlign:'center'}}>Officer In Charge</Font>
-            <Font style={{width:'25%',textAlign:'center'}}>Contact Number</Font>
+            <Font style={{width:'25%',textAlign:'center'}}>Description</Font>
+            <Font style={{width:'25%',textAlign:'center'}}>OIC</Font>
           </div>
         </Paper>
 

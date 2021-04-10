@@ -122,7 +122,7 @@ class Dashboard extends Component {
       if (this.state.dateMonth === 1) {
         this.setState({ fVal: this.state.fVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (this.state.dateMonth === 2) {
+      if (this.state.dateMonth === 2 ) {
         this.setState({ mVal: this.state.mVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
       if (this.state.dateMonth === 3) {

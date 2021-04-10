@@ -115,11 +115,11 @@ class Dashboard extends Component {
         this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
       this.setState({ inventLv: this.state.inventLv += (parseInt(item.costPunit) * parseInt(item.qty)) })
-      if (this.state.dateMonth === 3) {
+      if (this.state.dateMonth === 0) {
         this.setState({ jVal: this.state.jVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
 
       }
-      if (this.state.dateMonth === 3) {
+      if (this.state.dateMonth === 1) {
         this.setState({ fVal: this.state.fVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
       if (this.state.dateMonth === 2 ) {

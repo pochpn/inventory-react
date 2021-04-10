@@ -244,6 +244,8 @@ class ForgetPassword extends Component {
 
   onResend = (e) =>{
     this.onSend(e)
+    this.handleModal3Close()
+    this.handleModal4Close()
   }
 
   render() {
@@ -364,7 +366,7 @@ class ForgetPassword extends Component {
                 </Countdown>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div style={{ paddingTop: 50 }}>
+                <div style={{ paddingTop: 45 }}>
                   <ButtonOK style={{ fontSize: 17 }} onClick={this.onCheckP}>Submit</ButtonOK>
                 </div>
               </div>

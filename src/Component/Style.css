@@ -1834,19 +1834,15 @@ body, html {
 .OrConTable {
     position: absolute;
     width: 98%;
-    left: 1%;
+    margin-left: 1%;
     height: 74px;
     top: 217px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 12px;
+    
 }
 
 .txtOrConTable1 {
-    position: absolute;
-    width: 200px;
-    height: 73px;
-    left: 8%;
-    top: 5%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1856,50 +1852,6 @@ body, html {
     color: #000000;
 }
 
-.txtOrConTable2 {
-    position: absolute;
-    width: 200px;
-    height: 73px;
-    left: 30%;
-    top: 5%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
-
-.txtOrConTable3 {
-    position: absolute;
-    width: 400px;
-    height: 73px;
-    left: 50%;
-    top: 5%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
-
-.txtOrConTable4 {
-    position: absolute;
-    width: 200px;
-    height: 73px;
-    left: 85%;
-    top: 5%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
 
 /* Order Confirm Returned */
 

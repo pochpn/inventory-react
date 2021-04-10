@@ -252,7 +252,7 @@ class PickingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '30px' }}>{item.level}</p>
                                             <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
                                             <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
-                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.amount)}</p>
+                                            <p className='txtPdInSl ' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                             <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none',cursor:'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
@@ -337,7 +337,7 @@ class PickingChart extends Component {
                                                         <p className='txtTBModal2' style={{}}>{item.level}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
                                                         <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>
-                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.amount)}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
                                                     </div>
                                                 </scroll>
                                             );

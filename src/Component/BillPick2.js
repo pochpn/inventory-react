@@ -90,14 +90,14 @@ class BillPick extends Component {
                 }
             })
         }*/
-        const product = this.state.bill.order.filter((item) => item.id === doc.id)
+        const product = {...this.state.bill.order.filter((item) => item.id === doc.id)[0]}
         if (doc.data() === undefined) {
-            firestore.addProductByID(product[0], this.addSuccess, this.addReject)
-            this.props.addProduct(product[0])
+            firestore.addProductByID(product, this.addSuccess, this.addReject)
+            this.props.addProduct(product)
         } else {
             const product2 = doc.data()
             product2.id = doc.id
-            product2.qty = (parseInt(product2.qty) + parseInt(product[0].qty)).toString()
+            product2.qty = (parseInt(product2.qty) + parseInt(product.qty)).toString()
             console.log(product2.qty)
             this.props.editProduct(product2)
             firestore.updateProductByID(product2, this.editSuccess, this.reject) 

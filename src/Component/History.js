@@ -50,12 +50,21 @@ class History extends Component {
   }
 
   onCheck = (item) => {
-    history.push({
-      pathname: '/history/billOHis',
-      state: {
-        bill: item,
-      },
-    })
+    if (item.type === 'PO'){
+      history.push({
+        pathname: '/history/billOHis',
+        state: {
+          bill: item,
+        },
+      })
+    } else {
+      history.push({
+        pathname: '/history/billPHis',
+        state: {
+          bill: item,
+        },
+      })
+    }
   }
 
   render() {
@@ -120,7 +129,7 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }} onClick={() => this.onCheck(item)}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' ,cursor:'pointer' }} onClick={() => this.onCheck(item)}>
                       <FontData>{item.info.reNum}</FontData>
                       <FontData>{item.info.date}</FontData>
                       <FontData>{item.info.reqName}</FontData>

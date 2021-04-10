@@ -127,7 +127,8 @@ class BillPick extends Component {
         this.state.order.forEach((item) => {
             firestore.getProductByID(item.id, this.getSuccess, this.reject)
         })
-        history.push('/home')
+        this.onGetAll()
+        /*history.push('/home')*/
     }
 
 

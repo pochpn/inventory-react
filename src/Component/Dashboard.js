@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import history from '../history'
 import Topbar from './Topbar'
 import './Style.css'
-
+import firestore from "../firebase/firestore"
 import Paper from '@material-ui/core/Paper';
 import Hamburger from './Hamburger'
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ComposedChart, Line, CartesianGrid } from 'recharts';
@@ -67,6 +67,7 @@ class Dashboard extends Component {
       modal1: true,
       modal2: false,
       modal3: false,
+      dateMonth: new Date().getMonth(),
       typeA: 0,
       typeB: 0,
       typeC: 0,
@@ -83,7 +84,8 @@ class Dashboard extends Component {
       octVal: 0,
       novVal: 0,
       decVal: 0,
-      numberOfItem: 0
+      numberOfItem: 0,
+      graph: null,
     };
 
     this.props.productList.forEach((item) => {
@@ -97,57 +99,95 @@ class Dashboard extends Component {
         this.setState({ typeC: this.state.typeC += parseInt(item.qty) })
       }
       this.setState({ inventLv: this.state.inventLv += (parseInt(item.costPunit) * parseInt(item.qty)) })
-      if (item.recvDate.split("/")[1] === "1" || item.recvDate.split("/")[1] === "01") {
+      if (this.state.dateMonth === 0) {
         this.setState({ jVal: this.state.jVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
-        console.log("from 1")
       }
-      if (item.recvDate.split("/")[1] === "2" || item.recvDate.split("/")[1] === "02") {
-        console.log("from 2")
+      if (this.state.dateMonth === 1) {
         this.setState({ fVal: this.state.fVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "3" || item.recvDate.split("/")[1] === "03") {
-        console.log("from 3")
+      if (this.state.dateMonth === 2) {
         this.setState({ mVal: this.state.mVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "4" || item.recvDate.split("/")[1] === "04") {
+      if (this.state.dateMonth === 3) {
         this.setState({ aVal: this.state.aVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
-        console.log("from 4")
       }
-      if (item.recvDate.split("/")[1] === "5" || item.recvDate.split("/")[1] === "05") {
-        console.log("from 5")
+      if (this.state.dateMonth === 4) {
         this.setState({ mayVal: this.state.mayVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "6" || item.recvDate.split("/")[1] === "06") {
-        console.log("from 6")
+      if (this.state.dateMonth === 5) {
         this.setState({ junVal: this.state.junVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "7" || item.recvDate.split("/")[1] === "07") {
-        console.log("from 7")
+      if (this.state.dateMonth === 6) {
         this.setState({ julVal: this.state.julVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "8" || item.recvDate.split("/")[1] === "08") {
-        console.log("from 8")
+      if (this.state.dateMonth === 7) {
         this.setState({ augVal: this.state.augVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "9" || item.recvDate.split("/")[1] === "09") {
-        console.log("from 9")
+      if (this.state.dateMonth === 8) {
         this.setState({ sepVal: this.state.sepVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "10") {
-        console.log("from 10")
+      if (this.state.dateMonth === 9) {
         this.setState({ octVal: this.state.octVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "11") {
-        console.log("from 11")
+      if (this.state.dateMonth === 10) {
         this.setState({ novVal: this.state.novVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (item.recvDate.split("/")[1] === "12") {
-        console.log("from 12")
+      if (this.state.dateMonth === 11) {
         this.setState({ decVal: this.state.decVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
       this.setState({ numberOfItem: this.state.numberOfItem += parseInt(item.qty) })
     })
-    
+    const graph = {
+      Apr: this.state.aVal,
+      Aug: this.state.augVal,
+      Dec: this.state.decVal,
+      Feb: this.state.fVal,
+      Jan: this.state.jVal,
+      Jul: this.state.julVal,
+      Jun: this.state.junVal,
+      Mar: this.state.mVal,
+      May: this.state.mayVal,
+      Nov: this.state.novVal,
+      Oct: this.state.octVal,
+      Sep: this.state.sepVal,
+    }
+    firestore.updateGraph(graph, this.updateGSuccess, this.updateGReject)
+  }
+  componentDidMount = () => {
+    firestore.getAllGraph(this.getGSuccess, this.getGReject)
+    //firestore.getAllcCost(this.getcSuccess, this.getcReject)
+  }
+  getGSuccess = (querySnapshot) => {
+    let graph
+    querySnapshot.forEach(doc => {
+      graph = doc.data()
+      graph.id = doc.id
+      this.setState({ graph: graph })
+    });
+    this.setState(
+      {
+        jVal: graph.Jan,
+        fVal: graph.Feb,
+        mVal: graph.Mar,
+        aVal: graph.Apr,
+        mayVal: graph.May,
+        junVal: graph.Jun,
+        julVal: graph.Jul,
+        augVal: graph.Aug,
+        sepVal: graph.Sep,
+        octVal: graph.Oct,
+        novVal: graph.Nov,
+        decVal: graph.Dec,
+      })
+  }
+  getGReject = (e) => {
+    console.log(e)
+  }
+  updateGSuccess = () => {
+    console.log("Success")
+  }
+  updateGReject = (e) => {
+    console.log(e)
   }
 
   COLORS = ['#0088FE', '#00C49F', '#FFBB28',];
@@ -157,7 +197,7 @@ class Dashboard extends Component {
     if (active) {
       return (
         <div className="custom-tooltip" style={{ backgroundColor: '#ffff', padding: '5px', border: '1px solid #cccc' }}>
-          <label>{`${payload[0].name} : ${formatMoney(convert(payload[0].value)) +" ("+((payload[0].value/this.state.numberOfItem)*100).toFixed(2)+"%)"}`}</label>
+          <label>{`${payload[0].name} : ${formatMoney(convert(payload[0].value)) + " (" + ((payload[0].value / this.state.numberOfItem) * 100).toFixed(2) + "%)"}`}</label>
         </div>
       );
     }
@@ -286,8 +326,8 @@ class Dashboard extends Component {
 
         <Paper className="paperTI" >
           <div style={{ paddingTop: '5%' }}>
-            <Font2 style={{marginLeft:'25%'}}>TOP ITEM</Font2>
-            <Paper className='topItem' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,marginTop:'2%'}}>
+            <Font2 style={{ marginLeft: '25%' }}>TOP ITEM</Font2>
+            <Paper className='topItem' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '2%' }}>
               <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                 <Font>Product</Font>
                 <Font>Product Name</Font>

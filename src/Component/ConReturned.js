@@ -68,7 +68,7 @@ class ConReturned extends Component {
         reNum: 'RE' + year + mount + day + hour + min + sec,
       }
       history.push({
-        pathname: '/orderConfirm/returned/returnedChart',
+        pathname: '/returned/returnedChart',
         state: { info: info },
       })
     }
@@ -104,7 +104,7 @@ class ConReturned extends Component {
 
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ paddingLeft: 1500, paddingTop: 160 }}>
-                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/orderConfirm')}>
+                <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/home')}>
                   Cancel
             </ButtonCancel>
               </div>

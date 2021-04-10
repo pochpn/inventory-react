@@ -74,14 +74,16 @@ class ConReturnedChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.userList[this.props.userList.length - 1],
-            item: {},
-            qty: '',
-            notificationHead: 'ยืนยันคำร้องการจ่าย',
             modal: false,
-            modal1: false,
-            product: {},
+            user: this.props.userList[this.props.userList.length - 1],
             info: this.props.location.state.info,
+            item: {},
+            expDate: '',
+            level: '',
+            costPunit: '',
+            qty: '',
+            notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
+            date: new Date(),
         };
     }
 
@@ -165,7 +167,7 @@ class ConReturnedChart extends Component {
         this.props.clearPickOrder()
         // history.push('/home')
         history.push({
-            pathname: '/ordering/orderingChart/billOrder',
+            pathname: 'returned/returnedChart/billReturn',
             state: {
                 info: this.state.info,
                 order: this.props.pickOrderList,
@@ -263,17 +265,17 @@ class ConReturnedChart extends Component {
                 <Paper className="buttonPickk">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/orderConfirm/returned/')}>
+                            <ButtonCancel style={{ fontSize: 25, width: 184, height: 52 }} onClick={() => history.push('/returned/')}>
                                 Cancel
                             </ButtonCancel>
                         </div>
                         <div style={{ paddingLeft: 690, paddingTop: 122 }}>
-                            <ButtonClear style={{ fontSize: 25, width: 184, height: 52 }} >
+                            <ButtonClear style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onClear}>
                                 Clear
                             </ButtonClear>
                         </div>
                         <div style={{ paddingLeft: 10, paddingTop: 122 }}>
-                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }}>
+                            <ButtonNext style={{ fontSize: 25, width: 184, height: 52 }} onClick={this.onNext}>
                                 Next
                             </ButtonNext>
                         </div>

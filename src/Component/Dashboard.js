@@ -167,7 +167,7 @@ class Dashboard extends Component {
       Nov: this.state.novVal,
       Oct: this.state.octVal,
       Sep: this.state.sepVal,
-    }  
+    }
     firestore.updateGraph(graph, this.updateGSuccess, this.updateGReject)
 
   }
@@ -300,40 +300,40 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: 123515, turnover: this.state.jVal/((0 + 123515)/2),
+        name: 'Jan', value: 123515, turnover: this.state.jVal / ((0 + 123515) / 2),
       },
       {
-        name: 'Feb', value: 231515, turnover: this.state.mVal/((123515 + 231515)/2),
+        name: 'Feb', value: 231515, turnover: this.state.mVal / ((123515 + 231515) / 2),
       },
       {
-        name: 'Mar', value: 155511, turnover: this.state.mVal/((231515+ 155511)/2),
+        name: 'Mar', value: 155511, turnover: this.state.mVal / ((231515 + 155511) / 2),
       },
       {
-        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal/((155511 + this.state.aVal)/2),
+        name: 'Apr', value: this.state.aVal, turnover: this.state.aVal / ((155511 + this.state.aVal) / 2),
       },
       {
-        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal/((this.state.aVal + this.state.mayVal)/2),
+        name: 'May', value: this.state.mayVal, turnover: this.state.mayVal / ((this.state.aVal + this.state.mayVal) / 2),
       },
       {
-        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal/((this.state.mayVal + this.state.junVal)/2),
+        name: 'Jun', value: this.state.junVal, turnover: this.state.junVal / ((this.state.mayVal + this.state.junVal) / 2),
       },
       {
-        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal/((this.state.junVal + this.state.julVal)/2) ,
+        name: 'Jul', value: this.state.julVal, turnover: this.state.julVal / ((this.state.junVal + this.state.julVal) / 2),
       },
       {
-        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal/((this.state.julVal + this.state.augVal)/2),
+        name: 'Aug', value: this.state.augVal, turnover: this.state.augVal / ((this.state.julVal + this.state.augVal) / 2),
       },
       {
-        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal/((this.state.augVal + this.state.sepVal)/2),
+        name: 'Sep', value: this.state.sepVal, turnover: this.state.sepVal / ((this.state.augVal + this.state.sepVal) / 2),
       },
       {
-        name: 'Oct', value: this.state.octVal, turnover: this.state.octVal/((this.state.sepVal + this.state.octVal)/2),
+        name: 'Oct', value: this.state.octVal, turnover: this.state.octVal / ((this.state.sepVal + this.state.octVal) / 2),
       },
       {
-        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal/((this.state.octVal + this.state.novVal)/2),
+        name: 'Nov', value: this.state.novVal, turnover: this.state.novVal / ((this.state.octVal + this.state.novVal) / 2),
       },
       {
-        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal/((this.state.decVal + this.state.decVal)/2),
+        name: 'Dec', value: this.state.decVal, turnover: this.state.decVal / ((this.state.decVal + this.state.decVal) / 2),
       },
     ];
     return (
@@ -443,13 +443,14 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTT" >
           <div>
+            <p className='textOTWeek' style={{fontWeight:'bold',textAlign:'center'}}>Inventories per month</p>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingRight: 50 }}>
               <ComposedChart
                 width={750}
                 height={420}
                 data={barData}
                 margin={{
-                  top: 50, right: 0, bottom: 100, left: 50,
+                  top: 10, right: 0, bottom: 150, left: 50,
                 }}
               >
                 <CartesianGrid stroke="#f5f5f5" />

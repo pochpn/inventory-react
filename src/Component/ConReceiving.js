@@ -12,8 +12,16 @@ import { connect } from 'react-redux';
 const Font = styled.div`
   && {
     color: #000000;
-    font-size: 36px;
-    width: 250px;
+    font-size: 30px;
+    width: 310px;
+    font-weight: lighter;
+  }
+`
+const Fontt = styled.div`
+  && {
+    color: #000000;
+    font-size: 30px;
+    width: 200px;
     font-weight: lighter;
   }
 `
@@ -76,11 +84,11 @@ class ConReceiving extends Component {
                             return (
                                 <div style={{paddingTop: 20}} onClick={() => this.onCheck(item)}>
                                     <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,cursor:'pointer'}}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-around'}}>
                                             <Font>{item.info.reNum}</Font>
-                                            <Font>{item.info.date}</Font>
+                                            <Fontt>{item.info.date}</Fontt>
                                             <Font>{item.info.contactName}</Font>
-                                            <Font>{item.info.telCon}</Font>
+                                            <Fontt>{item.info.telCon}</Fontt>
                                         </div>
                                     </Paper>
                                 </div>

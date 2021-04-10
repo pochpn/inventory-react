@@ -127,7 +127,7 @@ class BillPick extends Component {
 
     render() {
         return (
-            <div>
+            <div className="bg" >
                 <Paper className="printBill">
                     <BillP2 bill={this.state.bill} />
                     <Paper className="btnSend" onClick={this.onAccept}>

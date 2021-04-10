@@ -26,7 +26,8 @@ const notificationReducer = (state = initialState, action) => {
                         ? {
                             ...item,
                             notificationHead: action.notification.notificationHead,
-                            notiCount: action.notification.notiCount
+                            notiCount: action.notification.notiCount,
+                            notiNum: action.notification.notiNum,
                         }
                         : item
                 )

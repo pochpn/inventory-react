@@ -57,7 +57,8 @@ class BillOrder extends Component {
     onSend = async () => {
         const notification = {
             notificationHead: this.state.notificationHead,
-            notiCount: this.state.notiCount
+            notiCount: this.state.notiCount,
+            notiNum:this.state.info,
         }
         await firestore.addNotification(notification, this.success, this.reject)
         this.props.addNotification(notification)
@@ -69,7 +70,7 @@ class BillOrder extends Component {
             readStatus: false,
             type: 'PO',
         }
-        firestore.addBill(bill, this.addBillSuccess, this.reject)
+        await  firestore.addBill(bill, this.addBillSuccess, this.reject)
     }
 
 

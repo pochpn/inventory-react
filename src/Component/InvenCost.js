@@ -34,6 +34,7 @@ class InvenCost extends Component {
             eoqM: 0,
             nOrM: 0,
             leadM: 0,
+            workday:0,
             workdM: 365,
             demandM: 0,
             ocM: 0,
@@ -92,6 +93,15 @@ class InvenCost extends Component {
             event.preventDefault();
     }
 
+    setWorkTime = () =>{
+        if(this.state.workday > 0){
+            this.setState({workdM:this.state.workday})
+        }
+        else{
+            this.setState({workdM:this.state.workdM})
+        }
+        
+    }
 
 
     handleModalClose1 = (e) => {
@@ -113,6 +123,24 @@ class InvenCost extends Component {
 
     handleModalOpen2 = () => {
         this.setState({ modal2: true });
+        if ((this.state.date.getMonth() === 0) && this.state.decVal > 0) {
+            const oCost = {
+                Apr: 0,
+                Aug: 0,
+                Dec: 0,
+                Feb: 0,
+                Jan: 0,
+                Jul: 0,
+                Jun: 0,
+                Mar: 0,
+                May: 0,
+                Nov: 0,
+                Oct: 0,
+                Sep: 0,
+            }
+            firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
+            //console.log("new year")
+        }
     };
     handleModalClose3 = (e) => {
         this.setState({ modal3: false });
@@ -120,6 +148,24 @@ class InvenCost extends Component {
 
     handleModalOpen3 = () => {
         this.setState({ modal3: true });
+        if((this.state.date.getMonth() === 0) && this.state.decValC > 0) {
+            const cCost = {
+                Apr: 0,
+                Aug: 0,
+                Dec: 0,
+                Feb: 0,
+                Jan: 0,
+                Jul: 0,
+                Jun: 0,
+                Mar: 0,
+                May: 0,
+                Nov: 0,
+                Oct: 0,
+                Sep: 0,
+            }
+            firestore.updatecCost(cCost, this.updatecSuccess, this.updatecReject)
+            //console.log("new year")
+        }
     };
 
     handleModalClose4 = (e) => {
@@ -204,43 +250,9 @@ class InvenCost extends Component {
         }
         firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
     }
-    componentDidMount = async () => {
-        await firestore.getAllCost(this.getSuccess, this.getReject)
-        await firestore.getAllcCost(this.getcSuccess, this.getcReject)
-        if ((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() >= 1)) {
-            const oCost = {
-                Apr: 0,
-                Aug: 0,
-                Dec: 0,
-                Feb: 0,
-                Jan: 0,
-                Jul: 0,
-                Jun: 0,
-                Mar: 0,
-                May: 0,
-                Nov: 0,
-                Oct: 0,
-                Sep: 0,
-            }
-            const cCost = {
-                Apr: 0,
-                Aug: 0,
-                Dec: 0,
-                Feb: 0,
-                Jan: 0,
-                Jul: 0,
-                Jun: 0,
-                Mar: 0,
-                May: 0,
-                Nov: 0,
-                Oct: 0,
-                Sep: 0,
-            }
-            await firestore.updateCost(oCost, this.updateSuccess, this.updateReject)
-            await firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
-            //console.log("new year")
-        }
-
+    componentDidMount = () => {
+        firestore.getAllCost(this.getSuccess, this.getReject)
+        firestore.getAllcCost(this.getcSuccess, this.getcReject)
     }
     updateSuccess = () => {
         console.log("Success")
@@ -647,8 +659,8 @@ class InvenCost extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%' }}>
                                     <p>number of work days in the year</p>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workdM: txt.target.value })}></input>
-                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} >Save</button>
+                                        <input type="number" min="0" max="366" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '57px', borderWidth: '0', paddingLeft: '7px', marginLeft: '30%' }} onChange={txt => this.setState({ workday: txt.target.value })}></input>
+                                        <button style={{ width: '60px', borderWidth: '0', marginLeft: '2%', backgroundColor: 'salmon', borderRadius: '15px', fontSize: '12px' }} onClick={this.setWorkTime}>Save</button>
                                     </div>
                                 </div>
                                 <button style={{ fontWeight: 'lighter', color: 'white', height: '70px', width: '120px', borderWidth: '0', marginLeft: '10%', backgroundColor: '#40BA8E', borderRadius: '10px' }} onClick={this.handleModalClose5}>EOQ</button>
@@ -677,19 +689,19 @@ class InvenCost extends Component {
 
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ demandM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ demandM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
                                 <p>Order cost</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ ocM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ ocM: txt.target.value })}></input>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5%', marginTop: '1%' }}>
                                 <p>Carrying costs</p>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                <input type="number" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ crM: txt.target.value })}></input>
+                                <input type="number" min="0" onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '100px', borderWidth: '0', paddingLeft: '9px', marginLeft: '5%' }} onChange={txt => this.setState({ crM: txt.target.value })}></input>
                             </div>
                         </div>
                     </div>

@@ -6,10 +6,10 @@ import './Style.css'
 import { connect } from 'react-redux';
 import { addNotification } from '../actions/notificationAction'
 
-import BillO2 from './BillO2.js';
+import BillR2 from './BillR2.js';
 
 
-class BillOHis extends Component {
+class BillRHis extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ class BillOHis extends Component {
         return (
             <div className="bg" >
                 <Paper className="printBill">
-                    <BillO2 bill={this.state.bill} />
+                    <BillR2 bill={this.state.bill} />
                     <Paper className="btnCancel" onClick={() => {
                         history.push('/history')
                     }}>
@@ -50,4 +50,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillOHis);
+export default connect(mapStateToProps, mapDispatchToProps)(BillRHis);

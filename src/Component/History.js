@@ -50,18 +50,34 @@ class History extends Component {
   }
 
   onCheck = (item) => {
-    history.push({
-      pathname: '/history/billOHis',
-      state: {
-        bill: item,
-      },
-    })
+    if (item.type === 'PO') {
+      history.push({
+        pathname: '/history/billOHis',
+        state: {
+          bill: item,
+        },
+      })
+    } if (item.type === 'MR') {
+      history.push({
+        pathname: '/history/billPHis',
+        state: {
+          bill: item,
+        },
+      })
+    } if (item.type === 'RE') {
+      history.push({
+        pathname: '/history/billRHis',
+        state: {
+          bill: item,
+        },
+      })
+    }
   }
 
   render() {
     return (
       <div className="bg">
-      
+
         <Paper className="paperSearchMB" style={{ display: 'flex', justifyContent: 'center' }} >
           <div style={{ paddingLeft: 50, display: 'flex', flexDirection: 'column' }}>
             <a1 style={{ fontSize: 26, fontWeight: 'lighter' }}>Types</a1>
@@ -86,7 +102,7 @@ class History extends Component {
             src={search}
             onClick={this.onSearch}></img>
         </Paper>
-        
+
 
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -105,7 +121,7 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around',cursor:'pointer' }} onClick={() => this.onCheck(item)}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
                       <FontData>{item.info.reNum}</FontData>
                       <FontData>{item.info.date}</FontData>
                       <FontData>{item.info.contactName}</FontData>
@@ -120,7 +136,7 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }} onClick={() => this.onCheck(item)}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
                       <FontData>{item.info.reNum}</FontData>
                       <FontData>{item.info.date}</FontData>
                       <FontData>{item.info.reqName}</FontData>
@@ -131,9 +147,24 @@ class History extends Component {
                 </div>
               )
             }
+            if (item.confirm && (item.type === 'RE')) {
+              return (
+                <div style={{ paddingTop: 10 }}>
+                  <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
+                      <FontData>{item.info.reNum}</FontData>
+                      <FontData>{item.info.date}</FontData>
+                      <FontData>{item.info.reName}</FontData>
+                      <FontData></FontData>
+                      <FontData>{item.info.tel}</FontData>
+                    </div>
+                  </Paper>
+                </div>
+              )
+            }
           })}
         </div>
-        
+
       </div>
 
     )

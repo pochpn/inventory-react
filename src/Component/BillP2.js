@@ -90,6 +90,8 @@ class BillP2 extends React.PureComponent {
                 <p className="txtPTB4">Cost/Unit</p>
                 <p className="txtPTB5">QTY(ea)</p>
                 <p className="txtPTB6">Amount</p>
+                <p className="txtPONO">MR No. :</p>
+                <p className="txtPoNoInfo">{this.props.bill.info.reNum}</p>
                 <img img className="linee0" src={line} />
                 <img img className="linee1" src={line} />
                 <img img className="linee2" src={line} />

@@ -25,6 +25,7 @@ import PickingChart from './Component/PickingChart'
 import EditMember from './Component/EditMember'
 import ConReceiving from './Component/ConReceiving'
 import ConPacking from './Component/ConPacking'
+import ConReturning from './Component/ConReturning'
 import ConReturned from './Component/ConReturned'
 import AddProduct from './Component/AddProduct'
 import ConReturnedChart from './Component/ConReturnedChart'
@@ -43,6 +44,9 @@ import BillPick2 from './Component/BillPick2'
 import BillPHis from './Component/BillPHis'
 import EditProductDetail from './Component/EditProductDetail'
 import EditProductShelf from './Component/EditProductShelf'
+import BillReturn from './Component/BillReturn'
+import BillReturn2 from './Component/BillReturn2'
+import BillRHis from './Component/BillRHis'
 
 class App extends Component {
   constructor(props) {
@@ -79,14 +83,18 @@ class App extends Component {
             <Route exact path="/history" component={History} />
             <Route exact path="/history/billOHis" component={BillOHis} />
             <Route exact path="/history/billPHis" component={BillPHis} />
+            <Route exact path="/history/billRHis" component={BillRHis} />
             <Route exact path="/confirmShipping" component={ConfirmShipping} />
             <Route exact path="/orderConfirm" component={OrderConfirm} />
             <Route exact path="/orderConfirm/receiving" component={ConReceiving} />
             <Route exact path="/orderConfirm/receiving/billOrder2" component={BillOrder2} />
             <Route exact path="/orderConfirm/packing" component={ConPacking} />
             <Route exact path="/orderConfirm/packing/billPick2" component={BillPick2} />
-            <Route exact path="/orderConfirm/returned" component={ConReturned} />
-            <Route exact path="/orderConfirm/returned/returnedChart" component={ConReturnedChart} />
+            <Route exact path="/orderConfirm/returning" component={ConReturning} />
+            <Route exact path="/orderConfirm/returning/billReturn2" component={BillReturn2} />
+            <Route exact path="/returned" component={ConReturned} />
+            <Route exact path="/returned/returnedChart" component={ConReturnedChart} />
+            <Route exact path="/returned/returnedChart/billReturn" component={BillReturn} />
             <Route exact path="/stock/viewStock/shelf" component={Shelf} />
             <Route exact path="/stock/viewStock/shelf/detail" component={ProductDetail} />
             <Route exact path="/profile" component={Profile}/>

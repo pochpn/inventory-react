@@ -41,16 +41,15 @@ class OrderConfirm extends Component {
               </div>
             </div>
           </Paper>
-          <Paper className='paperVs' style={{ borderRadius: "10%" }} onClick={() => history.push('/orderConfirm/returned')}>
+          <Paper className='paperVs' style={{ borderRadius: "10%" }} onClick={() => history.push('/orderConfirm/returning')}>
             <div style={{ alignContent: 'center', marginBottom: '100%', justifyContent: 'center' }}>
               <img className="imOrRecv" src={returnor} />
               <div style={{paddingTop:"5%"}}>
-                <p className="txtOrRecv1">Returned</p>
+                <p className="txtOrRecv1">Returning</p>
                 <p className="txtOrCon2">Order</p>
               </div>
             </div>
           </Paper>
-
         </div>
       </div>
 

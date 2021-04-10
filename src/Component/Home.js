@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { addUser, clearUser } from '../actions/userAction';
 import { clearAccount } from '../actions/accountAction'
 
-import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, xxx } from '../pic'
+import { cost, dashboard, historyPic, orderconfirm, ordering, packing, standcount, confirmship, returnor } from '../pic'
 
 
 class Home extends Component {
@@ -72,11 +72,11 @@ class Home extends Component {
                         <p className="textS">CONFIRMATION</p>
                     </div>
                 </Paper>
-                <Paper className="paperCs" onClick={() => history.push('/confirmShipping')} >
+                <Paper className="paperCs" onClick={() => history.push('/returned')} >
                     <div>
-                        <img className="imCs" src={confirmship} />
-                        <p className="textCf">CONFIRMING</p>
-                        <p className="textSh">SHIPPING</p>
+                        <img className="imCs" src={returnor} />
+                        <p className="textCf">NEW RETURN</p>
+                        <p className="textSh">ORDER</p>
                     </div>
                 </Paper>
                 <Paper className="paperHs" onClick={() => history.push('/history')} >

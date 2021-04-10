@@ -71,15 +71,14 @@ class BillPick extends Component {
             }
         })
         this.props.clearProduct()
-        firestore.getAllProduct(this.getAllProductSuccess, this.reject)
-        this.onGetAll()*/
-        const product = this.state.order.filter((item) => item.id === doc.id)
-        if (parseInt(product[0].qty) === parseInt(doc.data().qty)) {
+        firestore.getAllProduct(this.getAllProductSuccess, this.reject)*/
+        const product = {...this.state.order.filter((item) => item.id === doc.id)[0]}
+        if (parseInt(product.qty) === parseInt(doc.data().qty)) {
             firestore.deleteProduct(doc.id, this.deleteSuccess, this.reject)
             this.props.deleteProduct(doc.id)
         } else {
-            const product1 = product[0]
-            product1.qty = (parseInt(doc.data().qty) - parseInt(product[0].qty)).toString()
+            const product1 = product
+            product1.qty = (parseInt(doc.data().qty) - parseInt(product.qty)).toString()
             firestore.updateProductByID(product1, this.editSuccess, this.reject)
             this.props.editProduct(product1)
         }
@@ -126,7 +125,8 @@ class BillPick extends Component {
         this.state.order.forEach((item) => {
             firestore.getProductByID(item.id, this.getSuccess, this.reject)
         })
-        history.push('/home')
+        this.onGetAll()
+        /*history.push('/home')*/
     }
 
 

@@ -55,7 +55,7 @@ class BillO extends React.PureComponent {
                 </Paper>
                 <Paper className="dataBill2">
                     {this.props.order.map((item) => {
-                        this.setState({ total: this.state.total += parseInt(item.amount) })
+                        this.setState({ total: this.state.total += parseInt(item.costPunit * item.qty) })
                         return (
 
                             <scroll style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', }}>

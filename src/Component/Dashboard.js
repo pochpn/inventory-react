@@ -353,11 +353,9 @@ class Dashboard extends Component {
           </div>
         </Paper>
         <Paper className="paperIL" >
-          <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
-          </div>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' ,textAlign:'right',paddingRight:32}}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right' }}> ฿</p>
         </Paper>
         <Paper className="paperDam" >
           <div>
@@ -374,7 +372,7 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal1}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <p className='textOTWeek'>Order this week</p>
+              <p className='textOTWeek'>Order this month</p>
               <p className='textOTWeek2'>5</p>
               <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>

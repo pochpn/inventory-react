@@ -107,9 +107,10 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>Last Check</p>
                     <p className='txtProTopShelf' style={{}}>QTY</p>
                     <p className='txtProTopShelf' style={{}}>Counting</p>
+                    <p className='txtProTopShelf' style={{}}></p>
                 </div>
                 <scroll>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'474px' ,overflow: 'auto' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'650px' ,overflow: 'auto' }}>
                         {this.props.productList.map((item) => {
                             item.counting = 'input'
                             if (item.shelf === this.state.shelf) {
@@ -123,6 +124,7 @@ class CountShelf extends Component {
                                         <p className='txtCountShelf' style={{}}>{item.type}</p>
                                         <p className='txtCountShelf' style={{}}>{item.qty}</p>
                                         <p className='txtCountShelf' style={{}}>{item.unit}</p>
+                                        <p className='txtCountShelf' style={{}}>-</p>
                                         <div className='txtCountShelf' style={{}}>
                                             <ButtonInput style={{ width: 120, height: 50 }} onClick={()=>this.openModalCounting(item)}>{item.counting}</ButtonInput>
                                         </div>

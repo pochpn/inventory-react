@@ -10,8 +10,17 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 import styled, { css } from 'styled-components'
-const ButtonEdit = styled.button`
-  background: #40BA8E;
+const ButtonReport = styled.button`
+  background: #EF3F3E;
+  border-radius: 10px;
+  border: 2px;
+  color: #ffffff;
+  margin: 0 1em;
+  width:20%
+  padding: 0.5em 1.5em;
+`
+const ButtonCancel = styled.button`
+  background: #666666;
   border-radius: 10px;
   border: 2px;
   color: #ffffff;
@@ -124,20 +133,26 @@ class CountingReport extends Component {
                 </div>
                 <div className="paper" style={{
                     display: 'flex', flexDirection: 'row', justifyContent: 'center',
-                    alignItems: 'center', height: '345px', margin: '1%', borderRadius: '15px'
+                    alignItems: 'center', height: '525px', margin: '1%', borderRadius: '15px'
                 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>Shelf</a1>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>{this.state.shelf}</a1>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                        <a1 className='txtTopCountShelf' style={{ fontSize: 36, fontWeight: 'bold' }}>Description</a1>
+                        <textarea type="text" style={{ fontSize: 24, height: 150, width: 355 }} ></textarea>
                     </div>
                 </div>
                 <div className="paper" style={{
                     display: 'flex', flexDirection: 'row', justifyContent: 'center',
                     alignItems: 'center', height: '205px', margin: '1%', borderRadius: '15px'
                 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>Shelf</a1>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 48, fontWeight: 'bold' }}>{this.state.shelf}</a1>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                        <a1 className='txtTopCountShelf' style={{ fontSize: 36, fontWeight: 'bold', marginRight: '2%' }}>Description</a1>
+                        <textarea type="text" style={{ fontSize: 24, height: 180, width: '900px' }} ></textarea>
+                    </div>
+                    <div style={{ width: '25%', display: 'flex', alignItems: 'flex-end', justifyItems: 'right' }}>
+                        <div style={{ display: 'flex', marginLeft: '30%',flexDirection:'column' }}>
+                            <ButtonReport style={{ width: 200, height: 60,margin:'2%' ,fontSize:'36px'}} >Report</ButtonReport>
+                            <ButtonCancel style={{ width: 200, height: 60,margin:'2%',fontSize:'36px'}} >Cancel</ButtonCancel>
+                        </div>
                     </div>
                 </div>
 

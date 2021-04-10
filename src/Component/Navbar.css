@@ -97,7 +97,7 @@
 }
 
 .nav-text a:hover {
-  background-color: #eedadabd;
+  background-color: rgba(255, 255, 255, 0.4)!important;
 }
 
 .nav-menu-items {

@@ -47,7 +47,7 @@ const Arrow = styled.div`
   right: 165px;
   transform: translate(-50%, -100%);
   clip: rect(0px, 18px, 14px, -4px);
-  position: absolute;
+  position:fixed;
   ::after {
     content: "";
     display: block;
@@ -55,7 +55,7 @@ const Arrow = styled.div`
     height: 14px;
     transform: rotate(45deg) translate(6px, 6px);
     box-shadow: rgba(0, 0, 0, 0.44) -1px -1px 1px -1px;
-    background: rgb(255, 255, 255);
+    background: #FFF4F2;
   }
 `
 
@@ -102,14 +102,14 @@ class Hamburger extends Component {
     this.countNoti();
   }
 
-   dataNoti = () => {
+  dataNoti = () => {
     var data = [];
     this.props.notificationList.forEach(item => {
       data.push(item)
     })
-    data = data.reverse()
-    this.setState({ Notification: data })
-    // console.log(data)
+    data.reverse()
+    this.setState({ notification: data })
+    //console.log(data)
   }
 
   handleModalClose = (e) => {
@@ -126,6 +126,7 @@ class Hamburger extends Component {
 
   handleModalOpen1 = () => {
     this.setState({ modal1: !this.state.modal1 });
+    this.dataNoti()
   };
 
   showSidebar = () => {
@@ -154,13 +155,13 @@ class Hamburger extends Component {
         },
       })
     }
-    else if(item.type === "MR"){
+    else if (item.type === "MR") {
       history.push({
         pathname: '/orderConfirm/packing/billPick2',
         state: {
-            bill: item,
+          bill: item,
         },
-    })
+      })
     }
 
   }
@@ -186,13 +187,11 @@ class Hamburger extends Component {
           </div>
           <span className='title' style={{ paddingLeft: '169px' }} >{this.props.page}</span>
 
-          <div onClick={this.handleModalOpen1}>
-            <Badge badgeContent={this.state.count} color="secondary"><FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }}></FaBell></Badge>
+            <Badge badgeContent={this.state.count} color="secondary"><FaBell style={{ color: 'yellow', width: '35px', height: '35px', cursor: 'pointer' }} onClick={this.handleModalOpen1}></FaBell></Badge>
             <div hidden={!this.state.modal1}>
-
               <div className="modal-tri" style={{ paddingTop: '1%' }}>
                 <Arrow />
-                {this.props.notificationList.map((item) => {
+                {this.state.notification.map((item) => {
                   return (
                     <div >
                       {item.notiCount === 1 && <scroll className="paperNoti" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer' }}>
@@ -210,10 +209,10 @@ class Hamburger extends Component {
                     </div>
                   );
                 })}
-              </div>
 
+              </div>
             </div>
-          </div>
+        
 
           <div style={{ cursor: 'pointer' }} onClick={() => history.push('/profile')}>
             <span><img style={{ width: '40px', height: '40px', borderRadius: '60%' }} src={this.state.user.pic} /></span>

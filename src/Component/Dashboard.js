@@ -157,7 +157,7 @@ class Dashboard extends Component {
     if (active) {
       return (
         <div className="custom-tooltip" style={{ backgroundColor: '#ffff', padding: '5px', border: '1px solid #cccc' }}>
-          <label>{`${payload[0].name} : ${payload[0].value +" ("+((payload[0].value/this.state.numberOfItem)*100).toFixed(2)+"%)"}`}</label>
+          <label>{`${payload[0].name} : ${formatMoney(convert(payload[0].value)) +" ("+((payload[0].value/this.state.numberOfItem)*100).toFixed(2)+"%)"}`}</label>
         </div>
       );
     }
@@ -389,11 +389,11 @@ class Dashboard extends Component {
           <div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingRight: 50 }}>
               <ComposedChart
-                width={700}
+                width={750}
                 height={420}
                 data={barData}
                 margin={{
-                  top: 50, right: 0, bottom: 100, left: 0,
+                  top: 50, right: 0, bottom: 100, left: 50,
                 }}
               >
                 <CartesianGrid stroke="#f5f5f5" />

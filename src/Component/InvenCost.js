@@ -152,40 +152,40 @@ class InvenCost extends Component {
         this.setState({ modal5: true });
     };
     handleClick1 = () => {
-        if (this.state.currentMonth === 0) {
+        if (this.state.currentMonth === 0 && this.state.extraCost !== "") {
             this.setState({ jVal: this.state.jVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 1) {
+        else if (this.state.currentMonth === 1 && this.state.extraCost !== "") {
             this.setState({ fVal: this.state.fVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 2) {
+        else if (this.state.currentMonth === 2 && this.state.extraCost !== "") {
             this.setState({ mVal: this.state.mVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 3) {
+        else if (this.state.currentMonth === 3 && this.state.extraCost !== "") {
             this.setState({ aVal: this.state.aVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 4) {
+        else if (this.state.currentMonth === 4 && this.state.extraCost !== "") {
             this.setState({ mayVal: this.state.mayVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 5) {
+        else if (this.state.currentMonth === 5 && this.state.extraCost !== "") {
             this.setState({ junVal: this.state.junVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 6) {
+        else if (this.state.currentMonth === 6 && this.state.extraCost !== "") {
             this.setState({ julVal: this.state.julVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 7) {
+        else if (this.state.currentMonth === 7 && this.state.extraCost !== "") {
             this.setState({ augVal: this.state.augVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 8) {
+        else if (this.state.currentMonth === 8 && this.state.extraCost !== "") {
             this.setState({ sepVal: this.state.sepVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 9) {
+        else if (this.state.currentMonth === 9 && this.state.extraCost !== "") {
             this.setState({ octVal: this.state.octVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 10) {
+        else if (this.state.currentMonth === 10 && this.state.extraCost !== "") {
             this.setState({ novVal: this.state.novVal += parseInt(this.state.extraCost) })
         }
-        if (this.state.currentMonth === 11) {
+        else if (this.state.currentMonth === 11 && this.state.extraCost !== "") {
             this.setState({ decVal: this.state.decVal += parseInt(this.state.extraCost) })
         }
         const oCost = {
@@ -207,7 +207,7 @@ class InvenCost extends Component {
     componentDidMount = async () => {
         await firestore.getAllCost(this.getSuccess, this.getReject)
         await firestore.getAllcCost(this.getcSuccess, this.getcReject)
-        if ((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() === 1)) {
+        if ((this.state.date.getDate() === 1) && (this.state.date.getMonth() === 0) && (this.state.date.getHours() === 0) && (this.state.date.getMinutes() === 0) && (this.state.date.getSeconds() >= 1)) {
             const oCost = {
                 Apr: 0,
                 Aug: 0,
@@ -240,7 +240,6 @@ class InvenCost extends Component {
             await firestore.updateCost(cCost, this.updatecSuccess, this.updatecReject)
             //console.log("new year")
         }
-
 
     }
     updateSuccess = () => {
@@ -278,40 +277,40 @@ class InvenCost extends Component {
     /*-----------------------------End of Ordering Cost------------------------------*/
     /*----------------------------- Carrying Cost -------------------------------*/
     handleClick2 = () => {
-        if (this.state.currentMonth === 0) {
+        if (this.state.currentMonth === 0 && this.state.extracCost !== "") {
             this.setState({ jValC: this.state.jValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 1) {
+        if (this.state.currentMonth === 1 && this.state.extracCost !== "") {
             this.setState({ fValC: this.state.fValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 2) {
+        if (this.state.currentMonth === 2 && this.state.extracCost !== "") {
             this.setState({ mValC: this.state.mValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 3) {
+        if (this.state.currentMonth === 3 && this.state.extracCost !== "") {
             this.setState({ aValC: this.state.aValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 4) {
+        if (this.state.currentMonth === 4 && this.state.extracCost !== "") {
             this.setState({ mayValC: this.state.mayValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 5) {
+        if (this.state.currentMonth === 5 && this.state.extracCost !== "") {
             this.setState({ junValC: this.state.junValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 6) {
+        if (this.state.currentMonth === 6 && this.state.extracCost !== "") {
             this.setState({ julValC: this.state.julValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 7) {
+        if (this.state.currentMonth === 7 && this.state.extracCost !== "") {
             this.setState({ augValC: this.state.augValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 8) {
+        if (this.state.currentMonth === 8 && this.state.extracCost !== "") {
             this.setState({ sepValC: this.state.sepValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 9) {
+        if (this.state.currentMonth === 9 && this.state.extracCost !== "") {
             this.setState({ octValC: this.state.octValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 10) {
+        if (this.state.currentMonth === 10 && this.state.extracCost !== "") {
             this.setState({ novValC: this.state.novValC += parseInt(this.state.extracCost) })
         }
-        if (this.state.currentMonth === 11) {
+        if (this.state.currentMonth === 11 && this.state.extracCost !== "") {
             this.setState({ decValC: this.state.decValC += parseInt(this.state.extracCost) })
         }
         const cCost = {

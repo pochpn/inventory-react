@@ -88,6 +88,9 @@ class OrderingChart extends Component {
             qty: '',
             notificationHead: 'ยืนยันคำร้องการสั่งซื้อ',
             date: new Date(),
+            productID: '',
+            productName: '',
+            productProfileList: this.props.productProfileList,
         };
     }
 
@@ -145,6 +148,23 @@ class OrderingChart extends Component {
             });
         }
     };
+
+    onSearch = () => {
+        if (this.state.productID === '' && this.state.productName === '' ) {
+            this.setState({ productProfileList: this.props.productProfileList })
+        } else {
+            this.setState({
+                productProfileList: this.props.productProfileList.filter(
+                    (item) => ((item.productID === this.state.productID) ||
+                        (item.productName === this.state.productName))
+                )
+            })
+        }
+        this.setState({
+            productID: '',
+            productName: '',
+        })
+    }
 
     handleModalOpen = () => {
         this.setState({ modal: !this.state.modal });
@@ -211,7 +231,7 @@ class OrderingChart extends Component {
                 <Paper className='dataLeft'>
                     <div style={{ paddingLeft: '1%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                            {this.props.productProfileList.map((item) => {
+                            {this.state.productProfileList.map((item) => {
                                 return (
                                     <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', paddingLeft: '7%' }}>
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
@@ -279,13 +299,13 @@ class OrderingChart extends Component {
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 70, paddingLeft: 30 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
+                            <input type="text" style={{ fontSize: 13 }} value={this.state.productID} onChange={txt => this.setState({ productID: txt.target.value })}></input>
                         </div>
                         <div style={{ paddingTop: 70, paddingLeft: 68 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
+                            <input type="text" style={{ fontSize: 13 }} value={this.state.productName} onChange={txt => this.setState({ productName: txt.target.value })}></input>
                         </div>
                         <div>
-                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} />
+                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} onClick={this.onSearch} />
                         </div>
                         <div style={{ paddingLeft: 90, paddingTop: 50 }}>
                             <ButtonAdd style={{ fontSize: 35, width: 50, height: 50 }} onClick={() => history.push({

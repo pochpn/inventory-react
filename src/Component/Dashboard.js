@@ -312,6 +312,12 @@ class Dashboard extends Component {
     this.setState({ countAll: countA });
     this.setState({ countPick: countP });
     this.setState({ countRcv: countR });
+    let d = new Date()
+    if(d.getDay === 1){
+      this.setState({ countAll: 0 });
+    this.setState({ countPick: 0 });
+    this.setState({ countRcv: 0 });
+    }
   }
 
   // componentDidMount(){

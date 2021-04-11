@@ -37,12 +37,26 @@ class AddMember extends Component {
     }
 
     onAdd = () => {
-        if ((this.state.employeeID !== '') && (this.state.department !== 'Select Department')/* && (this.state.)*/) {
-            if (this.state.pic !== null) {
-                storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+        let canAdd = true
+        if ((this.state.employeeID !== '') && (this.state.department !== 'Select Department') && (this.state.firstnameTH !== '') && (this.state.lastnameTH !== '') && (this.state.firstnameEN !== '') && (this.state.lastnameEN !== '') && (this.state.idCard !== '') && (this.state.birthDate !== '') && (this.state.tel !== '') && (this.state.email !== '') && (this.state.address !== '')) {
+            this.props.accountList.forEach((item) => {
+                if (item.employeeID === this.state.employeeID) {
+                    canAdd = false
+                }
+            })
+            if (!canAdd) {
+                this.setState({ employeeID: '' })
+                alert('Employee ID is already have.')
             } else {
-                alert("Please select a profile image")
+                if (this.state.pic !== null) {
+                    storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+                } else {
+                    alert("Please select a profile image")
+                }
             }
+
+        } else {
+            alert('Please complete all infomations.')
         }
 
     }
@@ -120,7 +134,7 @@ class AddMember extends Component {
                 </Paper>
                 <Paper className="paperDetail" >
                     <div><p className="textP1" style={{ width: '156px', height: '39px', left: '7%', top: '2%' }} >Employee ID</p></div>
-                    <div><input className="editP1" style={{ top: '7%' }} onChange={txt => this.setState({ employeeID: txt.target.value })}></input></div>
+                    <div><input className="editP1" style={{ top: '7%' }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{ width: '171px', height: '39px', left: '7%', top: '12%' }}>Firstname(TH)</p></div>
                     <div><input className="editP1" style={{ top: '17%' }} onChange={txt => this.setState({ firstnameTH: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{ width: '171px', height: '39px', left: '7%', top: '22%' }}>Firstname(EN)</p></div>

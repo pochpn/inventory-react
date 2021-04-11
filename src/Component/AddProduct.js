@@ -57,7 +57,7 @@ class AddProduct extends Component {
                 }
             }
         } else {
-            alert('Please complete all infomations.')
+            alert('Please input all of data.')
         }
 
     }

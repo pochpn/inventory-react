@@ -579,47 +579,7 @@ class Firestore {
                 reject(error);
             });
     };
-    /*------------------------turnOver--------------------------*/
-    getAllTO = (success, reject) => {
-        firebase
-            .firestore()
-            .collection('turnOver')
-            .get()
-            .then(function (querySnapshot) {
-                success(querySnapshot);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
     
-    }
-    updateTO = (TO, success, reject) => {
-        firebase
-            .firestore()
-            .collection('turnOver')
-            .doc("DP3zQW9NLvZJNFxjamjH")
-            .update({
-                Apr: TO.Apr,
-                Aug: TO.Aug,
-                Dec: TO.Dec,
-                Feb: TO.Feb,
-                Jan: TO.Jan,
-                Jul: TO.Jul,
-                Jun: TO.Jun,
-                Mar: TO.Mar,
-                May: TO.May,
-                Nov: TO.Nov,
-                Oct: TO.Oct,
-                Sep: TO.Sep,
-            })
-            .then(function () {
-                success(null);
-            })
-            .catch(function (error) {
-                reject(error);
-            });
-    };
-
 }
 const firestore = new Firestore();
 export default firestore;

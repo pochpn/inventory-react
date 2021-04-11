@@ -116,8 +116,8 @@ class PickingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if ((this.state.qty !== '') && (this.state.qty !== '0') && (parseInt(this.state.qty) <= parseInt(this.state.product.qty))) {
-            const product = { ...this.state.product }
+        if (((this.state.qty != (null && '')) && (parseInt(this.state.qty) <= parseInt(this.state.product.qty)))) {
+            const product = {...this.state.product}
             product.qty = (this.state.qty).toString()
             this.props.addPickOrder(product)
 
@@ -131,7 +131,7 @@ class PickingChart extends Component {
                 qty: '',
             });
         } else {
-            alert('Quantity is invalid.')
+            alert('QTY is invalid.')
         }
     };
 
@@ -165,17 +165,13 @@ class PickingChart extends Component {
     };
 
     onNext = () => {
-        if (this.props.pickOrderList.length !== 0) {
-            history.push({
-                pathname: '/picking/pickingChart/billPick',
-                state: {
-                    info: this.state.info,
-                    order: this.props.pickOrderList,
-                },
-            })
-        } else {
-            alert('No item in list.')
-        }
+        history.push({
+            pathname: '/picking/pickingChart/billPick',
+            state: {
+                info: this.state.info,
+                order: this.props.pickOrderList,
+            },
+        })
     }
 
     render() {
@@ -190,7 +186,7 @@ class PickingChart extends Component {
                             <input type="text" style={{ fontSize: 13 }}></input>
                         </div>
                         <div>
-                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} />
+                            <img img className="imsch" src={search} style={{cursor:'pointer'}}/>
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -235,7 +231,7 @@ class PickingChart extends Component {
                                             <img src={item.pic} style={{ width: '40px', height: '40px' }}></img>
                                             <p className='txtPdInOD ' style={{ paddingLeft: '8%' }}>{item.productID}</p>
                                             <p className='txtPdInOD ' style={{}}>{item.productName}</p>
-                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none', cursor: 'pointer' }} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> {'>'} </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '22px', marginRight: '3.7%', boxShadow: 'none' ,cursor:'pointer'}} onClick={() => { this.onAdd(item) }}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '80%' }}> {'>'} </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -257,7 +253,7 @@ class PickingChart extends Component {
                                             <p className='txtPdInSl ' style={{ paddingLeft: '60px' }}>{formatMoney(item.costPunit)}</p>
                                             <p className='txtPdInSl ' style={{ marginLeft: '75px' }}>{formatMoney(item.qty)}</p>
                                             <p className='txtPdInSl ' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
-                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none', cursor: 'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
+                                            <Paper className="paperSl" style={{ width: '31px', marginLeft: '3.8%', boxShadow: 'none',cursor:'pointer' }} onClick={() => this.onDelete(item.id)}><p style={{ fontWeight: 'lighter', color: 'black', textAlign: 'center', paddingTop: '100%' }}> X </p></Paper>
                                         </div>
                                     </scroll>
                                 );
@@ -329,25 +325,25 @@ class PickingChart extends Component {
 
                             <Paper className='TBPickModal'
                                 style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
-
-                                {this.props.productList.map((item) => {
-                                    if (item.productID === this.state.item.productID) {
-                                        return (
-                                            <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', alignContent: 'center', cursor: 'pointer' }}>
-                                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
-                                                    <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
-                                                    <p className='txtTBModal2' style={{}}>{item.expDate}</p>
-                                                    <p className='txtTBModal2' style={{}}>{item.shelf}</p>
-                                                    <p className='txtTBModal2' style={{}}>{item.level}</p>
-                                                    <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
-                                                    <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>
-                                                    <p className='txtTBModal2' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
-                                                </div>
-                                            </scroll>
-                                        );
-                                    }
-                                })}
-
+                                
+                                    {this.props.productList.map((item) => {
+                                        if (item.productID === this.state.item.productID) {
+                                            return (
+                                                <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%',alignContent:'center',cursor:'pointer'}}>
+                                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >
+                                                        <p className='txtTBModal2' style={{}}>{item.recvDate}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.expDate}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.shelf}</p>
+                                                        <p className='txtTBModal2' style={{}}>{item.level}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.costPunit)}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.qty)}</p>
+                                                        <p className='txtTBModal2' style={{}}>{formatMoney(item.qty * item.costPunit)}</p>
+                                                    </div>
+                                                </scroll>
+                                            );
+                                        }
+                                    })}
+                                
 
 
                             </Paper>
@@ -363,23 +359,23 @@ class PickingChart extends Component {
                 <div hidden={!this.state.modal1}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', paddingTop: 10 }}>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Product ID</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Exp.</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Shelf</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Level</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>Cost/Unit</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>QTY</Font>
+                            <div style={{ display: 'flex', paddingTop: 10,justifyContent:'space-around' }}>
+                                <Font>Product ID</Font>
+                                <Font>Exp.</Font>
+                                <Font>Shelf</Font>
+                                <Font>Level</Font>
+                                <Font>Cost/Unit</Font>
+                                <Font>QTY</Font>
                             </div>
-                            <div style={{ display: 'flex', paddingTop: '2%' }}>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.productID}</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.expDate}</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.shelf}</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.level}</Font>
-                                <Font style={{width:'20%',margin:'0.5%',textAlign:'center'}}>{this.state.product.costPunit}</Font>
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width:'20%', height: 35, fontSize: 24 ,margin:'0.5%',textAlign:'center'}} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
+                                <Font>{this.state.product.productID}</Font>
+                                <Font>{this.state.product.expDate}</Font>
+                                <Font>{this.state.product.shelf}</Font>
+                                <Font>{this.state.product.level}</Font>
+                                <Font>{this.state.product.costPunit}</Font>
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '2.5%' }}>
+                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose1}>Cancel</ButtonCancel1>
                                 <ButtonAdd1 style={{ width: 100, height: 50 }} onClick={this.handleModalCloseAdd}>Add</ButtonAdd1>
                             </div>

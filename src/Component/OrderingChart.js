@@ -114,6 +114,7 @@ class OrderingChart extends Component {
         }
         this.setState({
             modal: !this.state.modal,
+            expDate: '',
             level: '',
             costPunit: '',
             qty: '',
@@ -121,21 +122,14 @@ class OrderingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-<<<<<<< HEAD
-        if ((this.state.level === '0') && (this.state.costPunit === '0') && (this.state.qty === '0')){
-            alert('Infomation is invalid.')
-        }
-        else if ((this.state.level !== '') && (this.state.costPunit !== '') && (this.state.qty !== '')) {
-            const product = { ...this.state.item }
-=======
         if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
             const product = {...this.state.item}
->>>>>>> parent of 99385fb (Merge branch 'main' of https://github.com/pochpn/inventory-react into main)
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
             product.qty = (this.state.qty).toString()
             product.recvDate = this.state.info.date
+            product.amount = (this.state.costPunit * this.state.qty).toString()
             console.log(product)
             this.props.addPickOrder(product)
 
@@ -145,13 +139,12 @@ class OrderingChart extends Component {
             }
             this.setState({
                 modal: !this.state.modal,
+                expDate: '',
                 level: '',
                 costPunit: '',
                 qty: '',
                 date: new Date(),
             });
-        } else {
-            alert('Please complete all infomations.')
         }
     };
 
@@ -182,18 +175,24 @@ class OrderingChart extends Component {
     }
 
     onNext = () => {
-        if (this.props.pickOrderList.length !== 0) {
-            history.push({
-                pathname: '/ordering/orderingChart/billOrder',
-                state: {
-                    info: this.state.info,
-                    order: this.props.pickOrderList,
-                },
-            })
-        } else {
-            alert('No item in list.')
-        }
-
+        /*this.props.pickOrderList.forEach(product => {
+            firestore.addProduct(product, this.success, this.reject)
+            this.props.addProduct(product)
+        })*/
+        // const notification = {
+        //     notificationHead: this.state.notificationHead,
+        // }
+        // firestore.addNotification(notification, this.success, this.reject)
+        // this.props.addNotification(notification)
+        this.props.clearPickOrder()
+        // history.push('/home')
+        history.push({
+            pathname: '/ordering/orderingChart/billOrder',
+            state: {
+                info: this.state.info,
+                order: this.props.pickOrderList,
+            },
+        })
     }
 
     render() {
@@ -305,6 +304,8 @@ class OrderingChart extends Component {
                                 +
                             </ButtonAdd>
                         </div>
+
+
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -318,26 +319,27 @@ class OrderingChart extends Component {
                             <p className="txtProNm">Product Name</p>
                         </div>
                     </div>
+
                 </Paper>
 
                 <div hidden={!this.state.modal}>
                     <div className="modal-background">
                         <div className="modal-orderChart">
-                            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 10 }}>
-                                <Font style={{width:'20%',textAlign:'center'}}>Product ID</Font>
-                                <Font style={{width:'20%',textAlign:'center'}}>Exp.</Font>
-                                <Font style={{width:'20%',textAlign:'center'}}>Shelf</Font>
-                                <Font style={{width:'20%',textAlign:'center'}}>Level</Font>
-                                <Font style={{width:'20%',textAlign:'center'}}>Cost/Unit</Font>
-                                <Font style={{width:'20%',textAlign:'center'}}>{'QTY('+this.state.item.unit+')'}</Font>
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 10 }}>
+                                <Font>Product ID</Font>
+                                <Font>Exp.</Font>
+                                <Font>Shelf</Font>
+                                <Font>Level</Font>
+                                <Font>Cost/Unit</Font>
+                                <Font>{'QTY('+this.state.item.unit+')'}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
-                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.productID}</Font>
-                                <DatePicker className="datePicker" selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
-                                <Font style={{width:'20%',textAlign:'center',margin:'1%'}}>{this.state.item.shelf}</Font>
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: '20%', height: 35, fontSize: 24 ,textAlign:'center',margin:'1%'}} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <Font>{this.state.item.productID}</Font>
+                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <Font>{this.state.item.shelf}</Font>
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>
@@ -346,8 +348,12 @@ class OrderingChart extends Component {
                         </div>
                     </div>
                 </div>
+
                 <Hamburger page='ORDERING' user={this.state.user} />
+
+
             </div>
+
         )
     }
 }

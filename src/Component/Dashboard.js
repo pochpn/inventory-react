@@ -67,6 +67,9 @@ class Dashboard extends Component {
       modal1: true,
       modal2: false,
       modal3: false,
+      countAll: 0,
+      countPick: 0,
+      countRcv: 0,
       dateMonth: new Date().getMonth(),
       typeA: 0,
       typeB: 0,
@@ -282,6 +285,30 @@ class Dashboard extends Component {
     this.setState({ modal2: !this.state.modal2 });
   }
 
+  countOrder = () => {
+    var countA = 0
+    var countP = 0
+    var countR = 0
+    this.props.billList.forEach(item => {
+      if (parseInt(item.info.date.split('/')[1]) === this.state.getMonth() + 1) {
+        if (item.confirm === "true") {
+          countA = countA + 1;
+          if(item.Type === 'PO'){
+            countR = countR + 1;
+          }
+          else if(item.Type === 'MR'){
+            countP = countP + 1;
+          }
+        }
+      }
+    })
+    this.setState({ countAll: countA });
+    this.setState({ countPick: countP });
+    this.setState({ countRcv: countR });
+  }
+
+
+
   render() {
     let pieData = [
       {
@@ -355,8 +382,8 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right',paddingRight:32 }}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{paddingTop: '25%', fontSize: '50px',textAlign:'right' }}> ฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >
@@ -374,8 +401,8 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal1}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <p className='textOTWeek'>Order this week</p>
-              <p className='textOTWeek2'>5</p>
+              <p className='textOTWeek'>Order this month</p>
+              <p className='textOTWeek2'>{this.state.countAll}</p>
               <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalAllR}>Receiving</ButtonRecv>
@@ -393,8 +420,8 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal2}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <p className='textOTWeek'>Order this week</p>
-              <p className='textOTWeek2'>2</p>
+              <p className='textOTWeek'>Order this month</p>
+              <p className='textOTWeek2'>{this.state.countRcv}</p>
               <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonAfter style={{ width: 100 }} >Receiving</ButtonAfter>
@@ -412,8 +439,8 @@ class Dashboard extends Component {
         <div hidden={!this.state.modal3}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="modal-cardDashOTW">
-              <p className='textOTWeek'>Order this week</p>
-              <p className='textOTWeek2'>3</p>
+              <p className='textOTWeek'>Order this month</p>
+              <p className='textOTWeek2'>{this.state.countPick}</p>
               <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 50 }}>
                 <div style={{ paddingLeft: 12 }}>
                   <ButtonRecv style={{ width: 100 }} onClick={this.handleModalPickR}>Receiving</ButtonRecv>
@@ -483,6 +510,7 @@ const mapStateToProps = (state) => {
     userList: state.userReducer.userList,
     accountList: state.accountReducer.accountList,
     productList: state.productReducer.productList,
+    billList: state.billReducer.billList,
   };
 };
 

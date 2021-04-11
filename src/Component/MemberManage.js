@@ -84,10 +84,14 @@ class MemberManage extends Component {
     }
 
     onMember = (item) => {
-        history.push({
-            pathname: '/memberManage/editMember',
-            state: { member: item },
-        })
+        if (this.state.user.departmentID >= 6) {
+            history.push({
+                pathname: '/memberManage/editMember',
+                state: { member: item },
+            })
+        } else {
+            alert('Access deny.')
+        }
     }
 
     render() {
@@ -99,7 +103,14 @@ class MemberManage extends Component {
                         <a1 style={{ fontSize: 24, fontWeight: 'lighter' }}>Employee ID</a1>
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input>
                         <div style={{ paddingTop: 10 }}>
-                            <button className="buttonAddMB" style={{ fontSize: 20, justifyContent: 'center' }} onClick={() => history.push('/memberManage/addMember')}> <AiOutlineUserAdd size={40} /> Add Member</button>
+                            <button className="buttonAddMB" style={{ fontSize: 20, justifyContent: 'center' }} onClick={() => {
+                                if (this.state.user.departmentID >= 6) {
+                                    history.push('/memberManage/addMember')
+                                } else {
+                                    alert('Access deny.')
+                                }
+                            }
+                            }> <AiOutlineUserAdd size={40} /> Add Member</button>
                         </div>
                     </div>
                     <div style={{ display: 'flex', margin: "0.5%", paddingTop: "1%", justifyContent: 'center' }}>
@@ -124,7 +135,7 @@ class MemberManage extends Component {
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.lastnameEN} onChange={txt => this.setState({ lastnameEN: txt.target.value })}></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%",cursor:'pointer' }}
+                        style={{ justifyContent: 'flex-end', width: "10%", cursor: 'pointer' }}
                         src={search}
                         onClick={this.onSearch}></img>
                 </Paper>
@@ -135,13 +146,8 @@ class MemberManage extends Component {
 
                         return (
                             <div style={{ marginLeft: '12%' }}>
-                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%', borderRadius: '15px',cursor:'pointer' }}
-                                    onClick={() => {
-                                        history.push({
-                                            pathname: '/memberManage/editMember',
-                                            state: { member: item },
-                                        })
-                                    }} >
+                                <Paper className="paper" style={{ display: 'flex', flexDirection: 'row', height: '250px', margin: '1%', width: '86%', borderRadius: '15px', cursor: 'pointer' }}
+                                    onClick={() => this.onMember(item)} >
                                     <img style={{ width: '170px', height: '170px', alignSelf: 'center', borderRadius: '50%', marginLeft: '10%' }} src={item.pic} />
                                     <div style={{ marginLeft: '10%', alignSelf: 'center' }}>
                                         <p style={{ fontSize: '24px', fontWeight: 'normal' }}>Employee ID : {item.employeeID}</p>

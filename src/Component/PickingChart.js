@@ -332,7 +332,7 @@ class PickingChart extends Component {
                                 style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
 
                                 {this.props.productList.map((item) => {
-                                    if (item.productID === this.state.item.productID) {
+                                    if (item.productID === this.state.item.productID && (item.qty > 0)) {
                                         return (
                                             <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', alignContent: 'center', cursor: 'pointer' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >

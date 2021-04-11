@@ -106,7 +106,12 @@ class EditProductDetail extends Component {
         this.setState({ qty: qty })
     }
 
-    handleModalSureClose = (e) => {
+    handleModalSureCloseYes = () => {
+        console.log(this.state.product)
+        this.setState({ modalSure: false });
+    }
+
+    handleModalSureClose = () => {
         this.setState({ modalSure: false });
     };
 
@@ -197,7 +202,7 @@ class EditProductDetail extends Component {
                                 </Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 35 }}>
-                                <ButtonYes style={{ fontSize: 20 }} onClick={this.handleModalSureClose}>Yes</ButtonYes>
+                                <ButtonYes style={{ fontSize: 20 }} onClick={this.handleModalSureCloseYes}>Yes</ButtonYes>
                                 <ButtonNo style={{ fontSize: 20 }} onClick={this.handleModalSureClose}>No</ButtonNo>
                             </div>
                         </div>
@@ -217,7 +222,7 @@ class EditProductDetail extends Component {
 
                 <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '690px', overflow: 'auto' }}>
                     {this.props.productList.map((item) => {
-                        if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
+                        if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf) && (item.qty > 0)) {
                             return (
                                 <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
                                     <p className='txtProShelf' style={{}}>{item.recvDate}</p>

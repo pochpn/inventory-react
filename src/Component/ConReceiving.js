@@ -13,10 +13,11 @@ const Font = styled.div`
   && {
     color: #000000;
     font-size: 30px;
-    width: 310px;
+    width: 250px;
     font-weight: lighter;
   }
 `
+
 const Fontt = styled.div`
   && {
     color: #000000;
@@ -69,13 +70,14 @@ class ConReceiving extends Component {
                     </div>
                 </Paper>
 
-                <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                        <Font2>PO No.</Font2>
-                        <Font2>Date</Font2>
-                        <Font2>Contact Name</Font2>
-                        <Font2>Tel.</Font2>
-                    </div>
+                
+                <Paper className='OrConTable' style={{display:'flex',flexDirection:'row'}}>
+                    <p className="txtOrConTable1" style={{textAlign:'center'}}>PO No.</p>
+                    <p className="txtOrConTable1" style={{textAlign:'center'}}>Date</p>
+                    <p className="txtOrConTable1" style={{textAlign:'center'}}>Officer In Charge</p>
+                    <p className="txtOrConTable1" style={{textAlign:'center'}}>Contact Number</p>
+                    
+                    
                 </Paper>
                 <Hamburger page='RECEIVING ORDER' user={this.state.user} />
                 <div style={{ paddingTop: 230 ,paddingLeft:'1%'}}>
@@ -85,10 +87,10 @@ class ConReceiving extends Component {
                                 <div style={{paddingTop: 20}} onClick={() => this.onCheck(item)}>
                                     <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,cursor:'pointer'}}>
                                         <div style={{ display: 'flex', justifyContent: 'space-around'}}>
-                                            <Font>{item.info.reNum}</Font>
-                                            <Fontt>{item.info.date}</Fontt>
-                                            <Font>{item.info.contactName}</Font>
-                                            <Fontt>{item.info.telCon}</Fontt>
+                                            <Font style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</Font>
+                                            <Font style={{textAlign:'center',width:'25%'}}>{item.info.date}</Font>
+                                            <Font style={{textAlign:'center',width:'25%'}}>{item.info.contactName}</Font>
+                                            <Font style={{textAlign:'center',width:'25%'}}>{item.info.telCon}</Font>
                                         </div>
                                     </Paper>
                                 </div>

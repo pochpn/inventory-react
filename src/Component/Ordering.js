@@ -75,6 +75,8 @@ class Ordering extends Component {
                 pathname: '/Ordering/orderingChart',
                 state: { info: info },
             })
+        } else {
+            alert('Please complete all infomations.')
         }
     }
 

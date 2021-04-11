@@ -30,14 +30,12 @@ class ConReturned extends Component {
     this.state = {
       date: new Date(),
       user: this.props.userList[this.props.userList.length - 1],
-      reName: '',
-      tel: '',
       des: '',
     };
   }
 
   onNext = () => {
-    if ((this.state.reName !== '') && (this.state.tel !== '') && (this.state.des !== '')) {
+    if ((this.state.des !== '')) {
       let date = this.state.date
       let year = date.getFullYear().toString().substr(2, 3)
       let mount = date.getMonth().toString()
@@ -61,8 +59,8 @@ class ConReturned extends Component {
         sec = '0' + date.getSeconds().toString()
       }
       const info = {
-        reName: this.state.reName,
-        tel: this.state.tel,
+        reName: this.state.user.firstnameTH+' '+this.state.user.lastnameTH,
+        tel: this.state.user.tel,
         des: this.state.des,
         date: (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString(),
         reNum: 'RE' + year + mount + day + hour + min + sec,
@@ -71,6 +69,8 @@ class ConReturned extends Component {
         pathname: '/returned/returnedChart',
         state: { info: info },
       })
+    } else {
+      alert('Please complete all infomations.')
     }
   }
 
@@ -82,15 +82,15 @@ class ConReturned extends Component {
           <Paper className='paperOrdering' >
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3.5%', paddingLeft: '34%' }}>
               <p className='textOr' style={{ paddingRight: '3%', }}>Date</p>
-              <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+              <input type="text" style={{ fontSize: 24, }} value={this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()} readOnly />
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '2%', paddingLeft: '34%' }}>
               <p className='textOr' style={{ paddingRight: '3%', paddingTop: '1%' }}>Returned Name</p>
-              <input type="text" style={{ fontSize: 24, width: 351 }} value={this.state.reName} onChange={txt => this.setState({ reName: txt.target.value })} />
+              <input type="text" style={{ fontSize: 24, }} value={this.state.user.firstnameTH+' '+this.state.user.lastnameTH} readOnly />
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '2%', paddingLeft: '34%' }}>
               <p className='textOr' style={{ paddingRight: '3%', paddingTop: '1%' }}>Tel.</p>
-              <input type="text" style={{ fontSize: 24, width: 533 }} value={this.state.tel} onChange={txt => this.setState({ tel: txt.target.value })} />
+              <input type="text" style={{ fontSize: 24, }} value={this.state.user.tel} readOnly />
             </div>
             <div style={{ display: 'flex', flexDirection: 'flex-start', paddingTop: '2%', paddingLeft: '34%' }}>
               <p className='textOr' >Description</p>

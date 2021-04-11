@@ -67,7 +67,7 @@ class MemberManage extends Component {
             this.setState({ accounts: this.props.accountList })
         } else {
             this.setState({
-                accounts: this.props.accounts.filter(
+                accounts: this.state.accounts.filter(
                     (item) => ((item.employeeID === this.state.employeeID) ||
                         (item.firstnameEN === this.state.firstnameEN) ||
                         (item.idCard === this.state.idCard) ||

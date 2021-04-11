@@ -136,25 +136,23 @@ class CountingReport extends Component {
                     alignItems: 'center', height: '525px', margin: '1%', borderRadius: '15px'
                 }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 36, fontWeight: 'bold' }}>Description</a1>
-                        <textarea type="text" style={{ fontSize: 24, height: 150, width: 355 }} ></textarea>
+                        <a1 className='txtTopCountShelf' style={{ fontSize: 36, fontWeight: 'bold', marginRight: '2%' }}>Description</a1>
+                        <textarea type="text" style={{ fontSize: 24, height: '300px', width: '900px' }} ></textarea>
                     </div>
                 </div>
                 <div className="paper" style={{
                     display: 'flex', flexDirection: 'row', justifyContent: 'center',
                     alignItems: 'center', height: '205px', margin: '1%', borderRadius: '15px'
                 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                        <a1 className='txtTopCountShelf' style={{ fontSize: 36, fontWeight: 'bold', marginRight: '2%' }}>Description</a1>
-                        <textarea type="text" style={{ fontSize: 24, height: 180, width: '900px' }} ></textarea>
-                    </div>
-                    <div style={{ width: '25%', display: 'flex', alignItems: 'flex-end', justifyItems: 'right' }}>
-                        <div style={{ display: 'flex', marginLeft: '30%',flexDirection:'column' }}>
+                    
+                    <div style={{ width: '100%', display: 'flex', alignItems: 'flex-end', justifyItems: 'right' }}>
+                        <div style={{ display: 'flex', marginLeft: '80%',flexDirection:'column' }}>
                             <ButtonReport style={{ width: 200, height: 60,margin:'2%' ,fontSize:'36px'}} >Report</ButtonReport>
                             <ButtonCancel style={{ width: 200, height: 60,margin:'2%',fontSize:'36px'}} >Cancel</ButtonCancel>
                         </div>
                     </div>
-                </div>
+                    </div>
+                
 
 
 

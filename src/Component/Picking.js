@@ -31,16 +31,14 @@ class Picking extends Component {
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
             date: new Date(),
-            reqName: null,
-            telReq: null,
-            customerName: null,
-            address: null,
-            telCus: null,
+            customerName: '',
+            address: '',
+            telCus: '',
         };
     }
 
     onNext = () => {
-        if ((this.state.reqName != (null && '')) && (this.state.telReq != (null && '')) && (this.state.customerName != (null && '')) && (this.state.address != (null && '')) && (this.state.telCus != (null && ''))) {
+        if ((this.state.customerName !== '') && (this.state.address !== '') && (this.state.telCus !== '')) {
             let date = this.state.date
             let year = date.getFullYear().toString().substr(2, 3)
             let mount = date.getMonth().toString()
@@ -65,8 +63,8 @@ class Picking extends Component {
             }
 
             const info = {
-                reqName: this.state.reqName,
-                telReq: this.state.telReq,
+                reqName: this.state.user.firstnameTH+' '+this.state.user.lastnameTH,
+                telReq: this.state.user.tel,
                 customerName: this.state.customerName,
                 address: this.state.address,
                 telCus: this.state.telCus,
@@ -77,6 +75,8 @@ class Picking extends Component {
                 pathname: '/picking/pickingChart',
                 state: { info: info },
             })
+        } else {
+            alert('Please complete imfomations.')
         }
     }
 
@@ -89,7 +89,7 @@ class Picking extends Component {
                         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '7%' }}>
                                 <p className="textOr" style={{ paddingRight: '68%' }}>Date</p>
-                                <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
+                                <input type="text" style={{ fontSize: 24, }} value={this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()} readOnly />
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '26.5%' }}>
                                 <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Customer</p>
@@ -102,11 +102,11 @@ class Picking extends Component {
                                 <div style={{ display: 'flex', flexDirection: 'row', }}>
                                     <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Request</p>
                                     <p className="textOr" style={{ paddingRight: '10%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
-                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ reqName: txt.target.value })} />
+                                    <input type="text" style={{ fontSize: 24, }} value={this.state.user.firstnameTH+' '+this.state.user.lastnameTH} readOnly />
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '10%', }}>
                                     <p className="textOr" style={{ paddingRight: '41%' }}>Tel.</p>
-                                    <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ telReq: txt.target.value })} />
+                                    <input type="text" style={{ fontSize: 24, }} value={this.state.user.tel} readOnly />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '3%', paddingLeft: '12.7%' }}>

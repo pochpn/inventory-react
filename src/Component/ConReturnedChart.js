@@ -155,24 +155,17 @@ class ConReturnedChart extends Component {
     }
 
     onNext = () => {
-        /*this.props.pickOrderList.forEach(product => {
-            firestore.addProduct(product, this.success, this.reject)
-            this.props.addProduct(product)
-        })*/
-        // const notification = {
-        //     notificationHead: this.state.notificationHead,
-        // }
-        // firestore.addNotification(notification, this.success, this.reject)
-        // this.props.addNotification(notification)
-        /*this.props.clearPickOrder()*/
-        // history.push('/home')
-        history.push({
-            pathname: '/returned/returnedChart/billReturn',
-            state: {
-                info: this.state.info,
-                order: this.props.pickOrderList,
-            },
-        })
+        if (this.props.pickOrderList.length > 0) {
+            history.push({
+                pathname: '/returned/returnedChart/billReturn',
+                state: {
+                    info: this.state.info,
+                    order: this.props.pickOrderList,
+                },
+            })
+        } else {
+            alert('No item in list.')
+        }
     }
 
     render() {

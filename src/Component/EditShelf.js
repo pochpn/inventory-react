@@ -116,6 +116,13 @@ class EditShelf extends Component {
         };
     }
 
+    onKeyPress(event) {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        if (/\+|-/.test(keyValue) || /\e/.test(keyValue))
+            event.preventDefault();
+    }
+
 
     ////////////////////////////////////////////////////////
     handleModalQuesClose = (e) => {
@@ -281,16 +288,29 @@ class EditShelf extends Component {
     }
 
     onSaveAdd = () => {
-        console.log('ADD')
-        const shelf = {
-            shelfID: this.state.shelfID,
-            level: this.state.level,
-            length: this.state.length,
-            width: this.state.width,
-            height: this.state.height,
+        let canAdd = true
+        if ((this.state.shelfID !== '') && (this.state.level !== '') && (this.state.width !== '') && (this.state.height !== '') && (this.state.length !== '')) {
+            this.props.shelfList.forEach((item) => {
+                if (item.shelfID === this.state.shelfID) {
+                    canAdd = false
+                    this.setState({ shelfID: '' })
+                    alert('Shelf ID is already have.')
+                }
+            })
+            if (canAdd) {
+                const shelf = {
+                    shelfID: this.state.shelfID,
+                    level: this.state.level,
+                    length: this.state.length,
+                    width: this.state.width,
+                    height: this.state.height,
+                }
+                firestore.addShelf(shelf, this.addSuccess, this.reject)
+            }
+        } else {
+            alert('Please complete all infomations.')
         }
-        console.log(shelf)
-        firestore.addShelf(shelf, this.addSuccess, this.reject)
+
     }
 
 
@@ -317,7 +337,7 @@ class EditShelf extends Component {
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {this.props.shelfList.map((item) => {
                         return (
-                            <Paper className="paperShelf" style={{ borderRadius: "10%", margin: '1.5%'}} onClick={() => { this.handleModalQuesOpen(item) }}>
+                            <Paper className="paperShelf" style={{ borderRadius: "10%", margin: '1.5%' }} onClick={() => { this.handleModalQuesOpen(item) }}>
                                 <div style={{ alignItems: 'center', justifyItems: 'center' }}>
                                     <img className="imViewStock" src={shelf} />
                                     <p className="textEditShelf">{item.shelfID}</p>
@@ -334,7 +354,7 @@ class EditShelf extends Component {
                 </div>
 
                 <div hidden={!this.state.modalQues}>
-                    <div className="modal-background" onClick = {this.handleModalQuesClose}>
+                    <div className="modal-background" onClick={this.handleModalQuesClose}>
                         <div className="modal-editstock-deloredit">
                             <div style={{ display: 'flex', justifyContent: 'center' }}>
                                 <Font style={{ fontSize: 30, paddingTop: 15 }}>{this.state.shelfSelect.shelfID}</Font>
@@ -388,7 +408,7 @@ class EditShelf extends Component {
                                     <div><Font style={{ paddingTop: 45 }}>Shelf ID</Font></div>
                                     <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.shelfID} readOnly /></div>
                                     <div><Font style={{ paddingTop: 20 }}>Level</Font></div>
-                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
+                                    <div style={{ paddingTop: 10 }}><input type="number" style={{ width: 449, height: 39, fontSize: 24 }} min='0' onKeyPress={this.onKeyPress.bind(this)} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
                                 </div>
 
                                 <img className="picShelfEdit" src={shelf2} style={{ paddingTop: 60 }} />
@@ -401,13 +421,13 @@ class EditShelf extends Component {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 10, paddingLeft: 50 }}>
                                 <div>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} onChange={txt => this.setState({ width: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ width: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 30 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} onChange={txt => this.setState({ length: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ length: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 45 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ height: txt.target.value })} />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>
@@ -426,7 +446,7 @@ class EditShelf extends Component {
                                     <div><Font style={{ paddingTop: 45 }}>Shelf ID</Font></div>
                                     <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.shelfID} onChange={txt => this.setState({ shelfID: txt.target.value })} /></div>
                                     <div><Font style={{ paddingTop: 20 }}>Level</Font></div>
-                                    <div style={{ paddingTop: 10 }}><input type="type" style={{ width: 449, height: 39, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
+                                    <div style={{ paddingTop: 10 }}><input type="number" style={{ width: 449, height: 39, fontSize: 24 }} min='0' onKeyPress={this.onKeyPress.bind(this)} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} /></div>
                                 </div>
 
                                 <img className="picShelfEdit" src={shelf2} style={{ paddingTop: 60 }} />
@@ -439,13 +459,13 @@ class EditShelf extends Component {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'flex-start', paddingTop: 10, paddingLeft: 50 }}>
                                 <div>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} onChange={txt => this.setState({ width: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.width} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ width: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 30 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} onChange={txt => this.setState({ length: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.length} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ length: txt.target.value })} />
                                 </div>
                                 <div style={{ paddingLeft: 45 }}>
-                                    <input type="type" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} onChange={txt => this.setState({ height: txt.target.value })} />
+                                    <input type="number" style={{ width: 196, height: 39, fontSize: 24 }} value={this.state.height} min='0' onKeyPress={this.onKeyPress.bind(this)} onChange={txt => this.setState({ height: txt.target.value })} />
                                 </div>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 50 }}>

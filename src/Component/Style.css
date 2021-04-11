@@ -2632,9 +2632,9 @@ body, html {
 .noteBill {
     position: absolute;
     width: 1071px;
-    height: 250px;
+    height: 200px;
     left: 26px;
-    top: 1160px;
+    top: 1140px;
     background: #FFFDFD;
     border: 1px solid #000000;
     box-sizing: border-box;
@@ -2645,7 +2645,7 @@ body, html {
     width: 100px;
     height: 73px;
     left: 2.5%;
-    top: 69.5%;
+    top: 68%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;

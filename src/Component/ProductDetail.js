@@ -74,7 +74,7 @@ class ProductDetail extends Component {
 
                 <scroll style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     {this.props.productList.map((item) => {
-                        if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf)) {
+                        if ((item.productID == this.state.product.productID) && (item.shelf == this.state.shelf) && (item.qty > 0)){
                             return (
                                 <div className="paperProduct" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
                                     <p className='txtProShelf' style={{}}>{item.recvDate}</p>

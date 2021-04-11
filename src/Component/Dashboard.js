@@ -385,7 +385,7 @@ class Dashboard extends Component {
       <div className="bg">
 
 
-        <Paper className="paperTI" >
+        {/* <Paper className="paperTI" >
           <div style={{ paddingTop: '5%' }}>
             <Font2 style={{ marginLeft: '25%' }}>TOP ITEM</Font2>
             <Paper className='topItem' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '2%' }}>
@@ -396,25 +396,25 @@ class Dashboard extends Component {
               </div>
             </Paper>
           </div>
-        </Paper>
+        </Paper> */}
         <Paper className="paperIL" >
           <div>
-            <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px', textAlign: 'right', paddingRight: 32 }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px', textAlign: 'right' }}> ฿</p>
+            <p className="txtIl" >Inventory Levels</p>
+            <p className="txtIl" style={{ paddingTop: '15%', fontSize: '50px', textAlign: 'right', paddingRight: 70,fontSize:'60px' }}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{ paddingTop: '15%', fontSize: '50px', textAlign: 'right',fontSize:'60px' }}> ฿</p>
           </div>
         </Paper>
-        <Paper className="paperDam" >
+        {/* <Paper className="paperDam" >
           <div>
             <p className="txtDam">Damage value this month</p>
             <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}>฿</p>
           </div>
-        </Paper>
-        <Paper className="paperTO" >
+        </Paper> */}
+        {/* <Paper className="paperTO" >
           <div>
             <p className="txtTo">Total Orders this month</p>
           </div>
-        </Paper>
+        </Paper> */}
 
         <div hidden={!this.state.modal1}>
           <div className="modal-backgroundForDash" style={{ display: 'flex', flexDirection: 'column' }}>
@@ -502,7 +502,7 @@ class Dashboard extends Component {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Legend />
+                {/* <Legend /> */}
                 <Bar dataKey="value" barSize={20} fill="#413ea0" />
                 <Line type="monotone" dataKey="turnover" stroke="#ff7300" />
               </ComposedChart>

@@ -872,9 +872,9 @@ body, html {
 
 .paperIL {
     position: absolute;
-    width: 365px;
+    width: 760px;
     height: 228px;
-    left: 777px;
+    left: 383px;
     top: 498px;
     background: rgba(255, 255, 255, 0.4)!important;
     border-radius: 15px;
@@ -2369,14 +2369,13 @@ body, html {
 }
 
 .txtIl {
-    position: absolute;
-    width: 300px;
+    width: 650px;
     height: 36px;
     left: 10%;
     font-family: Prompt;
     font-style: normal;
     font-weight: lighter;
-    font-size: 24px;
+    font-size: 40px;
     line-height: 36px;
     color: #000000;
 }

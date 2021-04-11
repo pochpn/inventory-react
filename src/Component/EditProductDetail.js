@@ -106,8 +106,21 @@ class EditProductDetail extends Component {
         this.setState({ qty: qty })
     }
 
+    deleteSuccess = () => {
+        console.log('Delete Success')
+    }
+
+    reject = (error) => {
+        console.log(error)
+    }
+
     handleModalSureCloseYes = () => {
-        console.log(this.state.product)
+        this.props.productList.forEach((item) => {
+            if(item.productID === this.state.product.productID){
+                firestore.deleteProduct(item.id, this.deleteSuccess, this.reject)
+                this.props.deleteProduct(item.id)
+            }
+        })
         this.setState({ modalSure: false });
     }
 

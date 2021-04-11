@@ -88,10 +88,10 @@ class Picking extends Component {
                     <Paper className="paperOrdering">
                         <div style={{ display: 'flex', flexDirection: 'row', paddingLeft: '7%' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '7%' }}>
-                                <p className="textOr" style={{ paddingRight: '68%' }}>Date</p>
+                                <p className="textOr" style={{ paddingRight: '49%' }}>Date</p>
                                 <input type="text" style={{ fontSize: 24, }} value={this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()} readOnly />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '26.5%' }}>
+                            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '6.2%', paddingLeft: '20.2%' }}>
                                 <p className="textOr" style={{ paddingRight: '0%', paddingTop: '1%' }}>Customer</p>
                                 <p className="textOr" style={{ paddingRight: '10%', paddingLeft: '2%', paddingTop: '1%' }}>Name</p>
                                 <input type="text" style={{ fontSize: 24, }} onChange={txt => this.setState({ customerName: txt.target.value })} />

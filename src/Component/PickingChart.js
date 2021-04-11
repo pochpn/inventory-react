@@ -84,6 +84,9 @@ class PickingChart extends Component {
             modal1: false,
             product: {},
             info: this.props.location.state.info,
+            productID: '',
+            productName: '',
+            productProfileList: this.props.productProfileList,
         };
     }
 
@@ -135,6 +138,23 @@ class PickingChart extends Component {
         }
     };
 
+    onSearch = () => {
+        if (this.state.productID === '' && this.state.productName === '' ) {
+            this.setState({ productProfileList: this.props.productProfileList })
+        } else {
+            this.setState({
+                productProfileList: this.props.productProfileList.filter(
+                    (item) => ((item.productID === this.state.productID) ||
+                        (item.productName === this.state.productName))
+                )
+            })
+        }
+        this.setState({
+            productID: '',
+            productName: '',
+        })
+    }
+
     onClear = () => {
         this.props.clearPickOrder()
     }
@@ -185,13 +205,13 @@ class PickingChart extends Component {
                 <Paper className='schOrder'>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <div style={{ paddingTop: 70, paddingLeft: 30 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
+                            <input type="text" style={{ fontSize: 13 }} value={this.state.productID} onChange={txt => this.setState({ productID: txt.target.value })}></input>
                         </div>
                         <div style={{ paddingTop: 70, paddingLeft: 68 }}>
-                            <input type="text" style={{ fontSize: 13 }}></input>
+                            <input type="text" style={{ fontSize: 13 }} value={this.state.productName} onChange={txt => this.setState({ productName: txt.target.value })}></input>
                         </div>
                         <div>
-                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} />
+                            <img img className="imsch" src={search} style={{ cursor: 'pointer' }} onClick={this.onSearch} />
                         </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -229,7 +249,7 @@ class PickingChart extends Component {
                 <Paper className='dataLeft'>
                     <div style={{ paddingLeft: '1%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
-                            {this.props.productProfileList.map((item) => {
+                            {this.state.productProfileList.map((item) => {
                                 return (
                                     <scroll className="paperPdInOD" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', borderRadius: '10px', paddingLeft: '7%' }}>
                                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }} >
@@ -332,7 +352,7 @@ class PickingChart extends Component {
                                 style={{ display: 'flex', flexDirection: 'column', width: '100%', borderRadius: '15px' }}>
 
                                 {this.props.productList.map((item) => {
-                                    if (item.productID === this.state.item.productID) {
+                                    if (item.productID === this.state.item.productID && (item.qty > 0)) {
                                         return (
                                             <scroll style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', alignContent: 'center', cursor: 'pointer' }}>
                                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '1%', marginBottom: '1%' }} onClick={() => this.onAddTrue(item)} >

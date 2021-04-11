@@ -67,7 +67,7 @@ class MemberManage extends Component {
             this.setState({ accounts: this.props.accountList })
         } else {
             this.setState({
-                accounts: this.state.accounts.filter(
+                accounts: this.props.accounts.filter(
                     (item) => ((item.employeeID === this.state.employeeID) ||
                         (item.firstnameEN === this.state.firstnameEN) ||
                         (item.idCard === this.state.idCard) ||
@@ -104,7 +104,7 @@ class MemberManage extends Component {
                         <input type="text" style={{ fontSize: 24, borderWidth: 0 }} value={this.state.employeeID} onChange={txt => this.setState({ employeeID: txt.target.value })}></input>
                         <div style={{ paddingTop: 10 }}>
                             <button className="buttonAddMB" style={{ fontSize: 20, justifyContent: 'center' }} onClick={() => {
-                                if (this.state.departmentID >= 6) {
+                                if (this.state.user.departmentID >= 6) {
                                     history.push('/memberManage/addMember')
                                 } else {
                                     alert('Access deny.')

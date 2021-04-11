@@ -14,7 +14,13 @@ class ViewStock extends Component {
         super(props);
         this.state = {
             user: this.props.userList[this.props.userList.length - 1],
+            shelfList: this.props.shelfList,
+            shelf: '',
         };
+    }
+
+    onSearch = () => {
+        
     }
 
     render() {
@@ -24,31 +30,17 @@ class ViewStock extends Component {
                 <div className="paper" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '15%' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Shelf ID</a1>
-                        <input type="text" style={{ fontSize: 24 }}></input>
-                    </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
-                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product ID</a1>
-                        <input type="text" style={{ fontSize: 24 }}></input>
-                    </div>
-                    <div style={{ display: 'flex', margin: "0.5%", paddingTop: "2%", justifyContent: 'center' }}>
-                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>or</a1>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <a1 style={{ fontSize: 24, fontWeight: 'bold' }}>Product Name</a1>
-                        <input type="text" style={{ fontSize: 24 }}></input>
+                        <input type="text" style={{ fontSize: 24 }} value={this.state.shelf} onChange={txt => this.setState({ shelf: txt.target.value })} ></input>
                     </div>
                     <img
-                        style={{ justifyContent: 'flex-end', width: "10%",cursor:'pointer',marginLeft:'15%' }}
+                        style={{ justifyContent: 'flex-end', width: "10%", cursor: 'pointer', marginLeft: '15%' }}
                         src={search} />
 
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%',  }}>
+                <div style={{ display: 'flex', alignItems: 'center', height: "15%", marginTop: '2%', marginBottom: '2%', }}>
                     <a1 style={{ fontSize: 36, fontWeight: 'bold', marginLeft: "5%" }}>Please select Shelf</a1>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap'}}>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {this.props.shelfList.map((item) => {
                         return (
                             <Paper className="paperShelf" style={{ borderRadius: "10%", margin: '1.5%' }} onClick={() => history.push({

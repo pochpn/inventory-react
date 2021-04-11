@@ -34,6 +34,8 @@ class Home extends Component {
                 <Paper className="paperDash" onClick={() => {
                     if (this.state.user.departmentID >= 1) {
                         history.push('/dashboard')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -45,6 +47,8 @@ class Home extends Component {
                 <Paper className="paperSt" onClick={() => {
                     if (this.state.user.departmentID >= 5) {
                         history.push('/stock')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -57,6 +61,8 @@ class Home extends Component {
                 <Paper className="paperIv" onClick={() => {
                     if (this.state.user.departmentID >= 6) {
                         history.push('/inventoryCost')
+                    } else {
+                        alert('Access deny.')
                     }
                 }} >
                     <div>
@@ -68,6 +74,8 @@ class Home extends Component {
                 <Paper className="paperOd" onClick={() => {
                     if ((this.state.user.departmentID == 4) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
                         history.push('/ordering')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -78,6 +86,8 @@ class Home extends Component {
                 <Paper className="paperPk" onClick={() => {
                     if ((this.state.user.departmentID == 3) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
                         history.push('/picking')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -88,6 +98,8 @@ class Home extends Component {
                 <Paper className="paperOc" onClick={() => {
                     if ((this.state.user.departmentID == 2) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
                         history.push('/orderConfirm')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -99,6 +111,8 @@ class Home extends Component {
                 <Paper className="paperCs" onClick={() => {
                     if ((this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
                         history.push('/returned')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>
@@ -110,6 +124,8 @@ class Home extends Component {
                 <Paper className="paperHs" onClick={() => {
                     if (this.state.user.departmentID >= 1) {
                         history.push('/history')
+                    } else {
+                        alert('Access deny.')
                     }
                 }}>
                     <div>

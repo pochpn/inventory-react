@@ -40,13 +40,12 @@ class AddMember extends Component {
         let canAdd = true
         if ((this.state.employeeID !== '') && (this.state.department !== 'Select Department') && (this.state.firstnameTH !== '') && (this.state.lastnameTH !== '') && (this.state.firstnameEN !== '') && (this.state.lastnameEN !== '') && (this.state.idCard !== '') && (this.state.birthDate !== '') && (this.state.tel !== '') && (this.state.email !== '') && (this.state.address !== '')) {
             this.props.accountList.forEach((item) => {
-                if (item.employeeID === this.state.employeeID) {
+                if ((item.employeeID === this.state.employeeID) || (item.email === this.state.email)) {
                     canAdd = false
                 }
             })
             if (!canAdd) {
-                this.setState({ employeeID: '' })
-                alert('Employee ID is already have.')
+                alert('Employee ID or email is already have.')
             } else {
                 if (this.state.pic !== null) {
                     storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
@@ -176,10 +175,6 @@ class AddMember extends Component {
                                     department: 'OrderConfirm',
                                     departmentID: 2
                                 })}>OrderConfirm</MDBDropdownItem>
-                                <MDBDropdownItem onClick={() => this.setState({
-                                    department: 'ConfirmShipping',
-                                    departmentID: 1
-                                })}>ConfirmShipping</MDBDropdownItem>
                             </MDBDropdownMenu>
                         </MDBDropdown>
                     </div>

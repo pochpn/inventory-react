@@ -76,7 +76,7 @@ class Picking extends Component {
                 state: { info: info },
             })
         } else {
-            alert('Please complete imfomations.')
+            alert('Please complete all infomations.')
         }
     }
 

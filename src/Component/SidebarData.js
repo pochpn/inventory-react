@@ -54,8 +54,8 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'CONFIRMATION SHIPPING',
-    path: '/confirmShipping',
+    title: 'RETURN ORDER',
+    path: '/returned',
     icon: <ImTruck color = 'black' />,
     cName: 'nav-text'
   },

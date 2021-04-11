@@ -11,6 +11,13 @@ import { connect } from 'react-redux';
 
 import { formatMoney } from '../formatMoney'
 
+const Font = styled.div`
+  && {
+    color: #000000;
+    font-size: 24px;
+  }
+`
+
 class BillR2 extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -41,7 +48,7 @@ class BillR2 extends React.PureComponent {
                     <p className="txtPdataL3">{this.props.bill.info.tel}</p>
                 </Paper>
 
-                <Paper className="dataBill2">
+                <Paper className="dataBill">
                     {this.props.bill.order.map((item) => {
                         this.setState({ total: this.state.total += parseInt(item.qty * item.costPunit) })
                         return (
@@ -61,13 +68,16 @@ class BillR2 extends React.PureComponent {
                 <Paper className="topBill">
 
                 </Paper>
+                <Paper className='noteBill'>
+                    <Font style={{paddingLeft:10}}>{this.props.bill.info.des}</Font>
+                </Paper>
                 <Paper className="totalBox">
                     <p className="txtTotaldata">{formatMoney(this.state.total)}</p>
 
                 </Paper>
-                
+
                 <img img className="imLogo" src={logoTop} />
-                <img img className="imPump2" src={logoPump} />
+                <img img className="imPump" src={logoPump} />
                 <p className="txtB1">บริษัท คลังชนะ จำกัด มหาชน</p>
                 <p className="txtB2">126 หมู่ 8 ตำบลทุ่งสุขลา อำเภอศรีราชา</p>
                 <p className="txtB3">จังหวัดชลบุรี 20230</p>
@@ -79,14 +89,14 @@ class BillR2 extends React.PureComponent {
                 <p className="txtTB6">QTY(ea)</p>
                 <p className="txtPONO">RE No. :</p>
                 <p className="txtPoNoInfo">{this.props.bill.info.reNum}</p>
-                <img img className="linee0" src={line} />
-                <img img className="linee1" src={line} />
-                <img img className="linee2" src={line} />
-                <img img className="linee3" src={line} />
-                <img img className="linee4" src={line} />
+                <img img className="line0" src={line} />
+                <img img className="line1" src={line} />
+                <img img className="line2" src={line} />
+                <img img className="line3" src={line} />
+                <img img className="line4" src={line} />
                 <p className="txtTotal">Total</p>
                 <p className="txtsTotal">จำนวนเงินรวมทั้งสิ้น</p>
-                
+                <p className='txtNote'>Note</p>
             </Paper>
         );
     }

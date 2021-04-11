@@ -489,7 +489,7 @@ class Dashboard extends Component {
                 height={420}
                 data={barData}
                 margin={{
-                  top: 10, right: 0, bottom: 150, left: 50,
+                  top: 10, right: 0, bottom: 160, left: 50,
                 }}
               >
                 <CartesianGrid stroke="#f5f5f5" />

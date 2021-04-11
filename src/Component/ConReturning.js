@@ -71,7 +71,7 @@ class ConReturning extends Component {
             if (item.managerConfirm && !item.confirm && (item.type === 'RE')) {
               return (
                 <div style={{ paddingTop: 20 }} onClick={() => this.onCheck(item)}>
-                  <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' ,cursor:'pointer'}}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <Font style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</Font>
                       <Font style={{textAlign:'center',width:'25%'}}>{item.info.date}</Font>

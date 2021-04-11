@@ -105,7 +105,7 @@ class History extends Component {
             <DatePicker style={{ width: "100%" }} selected={this.state.Enddate} onChange={this.onChangeEnd} dateFormat='dd/MM/yyy' />
           </div>
           <img
-            style={{ width: "10%", paddingTop: 15 }}
+            style={{ width: "10%", paddingTop: 15, cursor:'pointer' }}
             src={search}
             onClick={this.onSearch}></img>
         </Paper>

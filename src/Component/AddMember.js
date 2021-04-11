@@ -19,29 +19,32 @@ class AddMember extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            employeeID: null,
+            employeeID: '',
             department: 'Select Department',
-            departmentID: null,
-            firstnameTH: null,
-            lastnameTH: null,
-            firstnameEN: null,
-            lastnameEN: null,
-            idCard: null,
-            birthDate: null,
-            tel: null,
-            email: null,
-            address: null,
+            departmentID: '',
+            firstnameTH: '',
+            lastnameTH: '',
+            firstnameEN: '',
+            lastnameEN: '',
+            idCard: '',
+            birthDate: '',
+            tel: '',
+            email: '',
+            address: '',
             user: this.props.userList[this.props.userList.length - 1],
             pic: null,
         };
     }
 
     onAdd = () => {
-        if (this.state.pic !== null) {
-            storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
-        } else {
-            alert("Please select a profile image")
+        if ((this.state.employeeID !== '') && (this.state.department !== 'Select Department')/* && (this.state.)*/) {
+            if (this.state.pic !== null) {
+                storage.uploadProfilePic(this.state.pic, this.state.email, this.uploadSuccess, this.uploadReject)
+            } else {
+                alert("Please select a profile image")
+            }
         }
+
     }
 
     addSuccess = (doc) => {
@@ -105,12 +108,12 @@ class AddMember extends Component {
                         <input type="file" onChange={this.onImageChange} style={{ width: '105px', alignSelf: 'center' }} />
                     </div>
                 </Paper>
-                <Paper className="paperAddMB" style={{cursor:'pointer'}} onClick={this.onAdd}>
+                <Paper className="paperAddMB" style={{ cursor: 'pointer' }} onClick={this.onAdd}>
                     <div >
                         <p className="textAddMB" >Add</p>
                     </div>
                 </Paper>
-                <Paper className="paperCancelMB" style={{cursor:'pointer'}} onClick={() => history.push('/memberManage')}>
+                <Paper className="paperCancelMB" style={{ cursor: 'pointer' }} onClick={() => history.push('/memberManage')}>
                     <div>
                         <p className="textCancelMB" >Cancel</p>
                     </div>
@@ -131,7 +134,7 @@ class AddMember extends Component {
                     <div><p className="textP1" style={{ width: '150px', height: '39px', left: '49.5%', top: '2%' }}>Department</p></div>
                     <div style={{ paddingTop: '8%' }} className="inputP4">
                         <MDBDropdown dropdown>
-                            <MDBDropdownToggle caret color="light" style={{width:246}}>
+                            <MDBDropdownToggle caret color="light" style={{ width: 246 }}>
                                 {this.state.department}
                             </MDBDropdownToggle>
                             <MDBDropdownMenu basic>

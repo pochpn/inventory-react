@@ -31,7 +31,11 @@ class Home extends Component {
     render() {
         return (
             <div className="bg" >
-                <Paper className="paperDash" onClick={() => history.push('/dashboard')}>
+                <Paper className="paperDash" onClick={() => {
+                    if (this.state.user.departmentID >= 6) {
+                        history.push('/dashboard')
+                    }
+                }}>
                     <div>
                         <img className="imDash" src={dashboard} />
                         <p className="textDb">DASHBOARD</p>

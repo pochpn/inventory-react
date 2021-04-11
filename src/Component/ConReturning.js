@@ -57,11 +57,12 @@ class ConReturning extends Component {
         <Paper className='OrConTopic'>
           <p className="txtPakTopic">Returning Order</p>
         </Paper>
-        <Paper className='OrConTable'>
-          <p className="txtOrConTable1">RE No.</p>
-          <p className="txtOrConTable2">Date</p>
-          <p className="txtOrConTable3">Contact Name</p>
-          <p className="txtOrConTable4">Tel.</p>
+
+        <Paper className='OrConTable' style={{ display: 'flex', flexDirection: 'row' }}>
+          <p className="txtOrConTable1" style={{ textAlign: 'center' }}>RE No.</p>
+          <p className="txtOrConTable1" style={{ textAlign: 'center' }}>Date</p>
+          <p className="txtOrConTable1" style={{ textAlign: 'center' }}>Officer In Charge</p>
+          <p className="txtOrConTable1" style={{ textAlign: 'center' }}>Contact Number</p>
         </Paper>
 
         <Hamburger page='RETURNING ORDER' user={this.state.user} />
@@ -72,10 +73,10 @@ class ConReturning extends Component {
                 <div style={{ paddingTop: 20 }} onClick={() => this.onCheck(item)}>
                   <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                      <Font>{item.info.reNum}</Font>
-                      <Font>{item.info.date}</Font>
-                      <Font>{item.info.reName}</Font>
-                      <Font>{item.info.tel}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.date}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.reName}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.tel}</Font>
                     </div>
                   </Paper>
                 </div>

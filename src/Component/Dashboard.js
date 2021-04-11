@@ -125,7 +125,7 @@ class Dashboard extends Component {
       if (this.state.dateMonth === 1) {
         this.setState({ fVal: this.state.fVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
-      if (this.state.dateMonth === 2 ) {
+      if (this.state.dateMonth === 2) {
         this.setState({ mVal: this.state.mVal += (parseInt(item.costPunit) * parseInt(item.qty)) })
       }
       if (this.state.dateMonth === 3) {
@@ -175,6 +175,11 @@ class Dashboard extends Component {
 
   }
   componentDidMount = () => {
+    this.countOrder()
+    console.log("coungting is running in comp")
+    console.log(this.state.countAll)
+    console.log(this.state.countPick)
+    console.log(this.state.countRcv)
     firestore.getAllGraph(this.getGSuccess, this.getGReject)
   }
   getGSuccess = (querySnapshot) => {
@@ -290,14 +295,16 @@ class Dashboard extends Component {
     var countP = 0
     var countR = 0
     this.props.billList.forEach(item => {
-      if (parseInt(item.info.date.split('/')[1]) === this.state.getMonth() + 1) {
-        if (item.confirm === "true") {
-          countA = countA + 1;
-          if(item.Type === 'PO'){
+      if (parseInt(item.info.date.split('/')[1]) === this.state.dateMonth + 1) {
+        console.log("coungting is running")
+        if (item.confirm === true) {
+          if (item.type === 'PO') {
             countR = countR + 1;
+            countA = countA + 1;
           }
-          else if(item.Type === 'MR'){
+          else if (item.type === 'MR') {
             countP = countP + 1;
+            countA = countA + 1;
           }
         }
       }
@@ -305,7 +312,18 @@ class Dashboard extends Component {
     this.setState({ countAll: countA });
     this.setState({ countPick: countP });
     this.setState({ countRcv: countR });
+    let d = new Date()
+    if(d.getDay === 1){
+      this.setState({ countAll: 0 });
+    this.setState({ countPick: 0 });
+    this.setState({ countRcv: 0 });
+    }
   }
+
+  // componentDidMount(){
+  //   this.countOrder()
+  //   console.log("coungting is running in comp")
+  // }
 
 
 
@@ -327,13 +345,13 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: 123515, turnover: this.state.jVal / ((0 + 123515) / 2),
+        name: 'Jan', value: 123515, turnover: 123515/ ((0 + 123515) / 2),
       },
       {
-        name: 'Feb', value: 231515, turnover: this.state.mVal / ((123515 + 231515) / 2),
+        name: 'Feb', value: 231515, turnover: 231515 / ((123515 + 231515) / 2),
       },
       {
-        name: 'Mar', value: 155511, turnover: this.state.mVal / ((231515 + 155511) / 2),
+        name: 'Mar', value: 155511, turnover: 155511/ ((231515 + 155511) / 2),
       },
       {
         name: 'Apr', value: this.state.aVal, turnover: this.state.aVal / ((155511 + this.state.aVal) / 2),
@@ -382,8 +400,8 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right',paddingRight:32 }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{paddingTop: '25%', fontSize: '50px',textAlign:'right' }}> ฿</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px', textAlign: 'right', paddingRight: 32 }}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px', textAlign: 'right' }}> ฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >
@@ -470,14 +488,14 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTT" >
           <div>
-            <p className='textOTWeek' style={{fontWeight:'bold',textAlign:'center'}}>Inventories per month</p>
+            <p className='textOTWeek' style={{ fontWeight: 'bold', textAlign: 'center' }}>Inventories per month</p>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingRight: 50 }}>
               <ComposedChart
                 width={750}
                 height={420}
                 data={barData}
                 margin={{
-                  top: 10, right: 0, bottom: 150, left: 50,
+                  top: 10, right: 0, bottom: 160, left: 50,
                 }}
               >
                 <CartesianGrid stroke="#f5f5f5" />

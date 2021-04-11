@@ -57,13 +57,14 @@ class ConPacking extends Component {
         <Paper className='OrConTopic'>
           <p className="txtPakTopic">Picking Order</p>
         </Paper>
-        <Paper className='OrConTable'>
-          <p className="txtOrConTable1">MR No.</p>
-          <p className="txtOrConTable2">Date</p>
-          <p className="txtOrConTable3">Contact Name</p>
-          <p className="txtOrConTable4">Tel.</p>
+        <Paper className='OrConTable' style={{display:'flex',flexDirection:'row'}}>
+          <p className="txtOrConTable1" style={{textAlign:'center'}}>MR No.</p>
+          <p className="txtOrConTable1" style={{textAlign:'center'}}>Date</p>
+          <p className="txtOrConTable1" style={{textAlign:'center'}}>Officer In Charge</p>
+          <p className="txtOrConTable1" style={{textAlign:'center'}}>Contact Number</p>
         </Paper>
 
+        
         <Hamburger page='PICKING ORDER' user={this.state.user} />
         <div style={{ paddingTop: 230, paddingLeft: '1%' }}>
           {this.props.billList.map((item) => {
@@ -72,10 +73,10 @@ class ConPacking extends Component {
                 <div style={{ paddingTop: 20 }} onClick={() => this.onCheck(item)}>
                   <Paper className='paperRcvOd' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                      <Font>{item.info.reNum}</Font>
-                      <Font>{item.info.date}</Font>
-                      <Font>{item.info.customerName}</Font>
-                      <Font>{item.info.telCus}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.date}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.customerName}</Font>
+                      <Font style={{textAlign:'center',width:'25%'}}>{item.info.telCus}</Font>
                     </div>
                   </Paper>
                 </div>

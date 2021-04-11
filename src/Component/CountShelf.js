@@ -104,15 +104,12 @@ class CountShelf extends Component {
                     <p className='txtProTopShelf' style={{}}>Product ID</p>
                     <p className='txtProTopShelf' style={{}}>Product Name</p>
                     <p className='txtProTopShelf' style={{}}>Type</p>
-                    <p className='txtProTopShelf' style={{}}>Last Check</p>
                     <p className='txtProTopShelf' style={{}}>QTY</p>
-                    <p className='txtProTopShelf' style={{}}>Counting</p>
-                    <p className='txtProTopShelf' style={{}}></p>
+                    <p className='txtProTopShelf' style={{}}>Unit</p>
                 </div>
                 <scroll>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',height:'650px' ,overflow: 'auto' }}>
                         {this.props.productList.map((item) => {
-                            item.counting = 'input'
                             if (item.shelf === this.state.shelf) {
                                 return (
                                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', borderRadius: '30px', width: '97%' }}>
@@ -124,10 +121,6 @@ class CountShelf extends Component {
                                         <p className='txtCountShelf' style={{}}>{item.type}</p>
                                         <p className='txtCountShelf' style={{}}>{item.qty}</p>
                                         <p className='txtCountShelf' style={{}}>{item.unit}</p>
-                                        <p className='txtCountShelf' style={{}}>-</p>
-                                        <div className='txtCountShelf' style={{}}>
-                                            <ButtonInput style={{ width: 120, height: 50 }} onClick={()=>this.openModalCounting(item)}>{item.counting}</ButtonInput>
-                                        </div>
 
                                     </div>
                                 );

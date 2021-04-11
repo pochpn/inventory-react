@@ -1842,11 +1842,8 @@ body, html {
 }
 
 .txtOrConTable1 {
-    position: absolute;
-    width: 200px;
+    width: 25%;
     height: 73px;
-    left: 8%;
-    top: 5%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -2203,7 +2200,8 @@ body, html {
     height: 79px;
     top: 262px;
     border-radius: 12px;
-    width: 100%;
+    width: 97%;
+    margin-left: 1.5%;
     background: rgba(255, 255, 255, 0.4)!important;
 }
 
@@ -2212,51 +2210,6 @@ body, html {
     width: 400px;
     height: 50px;
     left: 6%;
-    top: 15%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
-
-.txtTableHis2 {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 19%;
-    top: 15%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
-
-.txtTableHis3 {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 35%;
-    top: 15%;
-    font-family: 'Prompt', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 73px;
-    /* identical to box height */
-    color: #000000;
-}
-
-.txtTableHis4 {
-    position: absolute;
-    width: 400px;
-    height: 50px;
-    left: 62%;
     top: 15%;
     font-family: 'Prompt', sans-serif;
     font-style: normal;
@@ -3961,10 +3914,12 @@ body, html {
 
 .paperHistory {
     height: 90px;
-    left: 1%;
+    justify-content:center;
     border-radius: 12px;
-    width: 99%;
+    width: 97%;
+    margin-left: 1.5%;
     background: rgba(245, 245, 245, 0.4)!important;
+
 }
 
 .txtHis {
@@ -4006,4 +3961,8 @@ body, html {
     text-align: center;
     color: 'black';
 }
+
+.datePicker {
+    width: 20%;
+  }
 /*end modal edit product*/

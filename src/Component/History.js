@@ -17,7 +17,14 @@ const Font = styled.div`
     font-size: 24px;
   }
 `
-
+const Fontt = styled.div`
+  && {
+    color: #000000;
+    font-size: 30px;
+    width: 250px;
+    font-weight: border;
+  }
+`
 const FontData = styled.div`
   && {
     color: #000000;
@@ -105,28 +112,26 @@ class History extends Component {
 
 
         <Paper className='tableHis' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-            <Font>No.</Font>
-            <Font>Date</Font>
-            <Font>Receipt ID</Font>
-            <Font>Description</Font>
-            <Font>OIC</Font>
+          <div style={{ display: 'flex' }}>
+            <Fontt style={{textAlign:'center',width:'25%'}}>Receipt ID</Fontt>
+            <Fontt style={{textAlign:'center',width:'25%'}}>Date</Fontt>
+            <Fontt style={{textAlign:'center',width:'25%'}}>Officer In Charge</Fontt>
+            <Fontt style={{textAlign:'center',width:'25%'}}>Contact Number</Fontt>
           </div>
         </Paper>
 
         <Hamburger page='HISTORY' user={this.state.user} />
-        <div style={{ paddingTop: 290, paddingLeft: "1%" }}>
+        <div style={{ paddingTop: 290,flexDirection: 'column', justifyContent: 'center'}}>
           {this.props.billList.map((item) => {
             if (item.confirm && (item.type === 'PO')) {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
-                      <FontData>{item.info.reNum}</FontData>
-                      <FontData>{item.info.date}</FontData>
-                      <FontData>{item.info.contactName}</FontData>
-                      <FontData></FontData>
-                      <FontData>{item.info.telCon}</FontData>
+                    <div style={{ display: 'flex', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.date}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.contactName}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.telCon}</FontData>
                     </div>
                   </Paper>
                 </div>
@@ -136,12 +141,11 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
-                      <FontData>{item.info.reNum}</FontData>
-                      <FontData>{item.info.date}</FontData>
-                      <FontData>{item.info.reqName}</FontData>
-                      <FontData></FontData>
-                      <FontData>{item.info.telReq}</FontData>
+                    <div style={{ display: 'flex', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.date}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.reqName}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.telReq}</FontData>
                     </div>
                   </Paper>
                 </div>
@@ -151,12 +155,11 @@ class History extends Component {
               return (
                 <div style={{ paddingTop: 10 }}>
                   <Paper className='paperHistory' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
-                      <FontData>{item.info.reNum}</FontData>
-                      <FontData>{item.info.date}</FontData>
-                      <FontData>{item.info.reName}</FontData>
-                      <FontData></FontData>
-                      <FontData>{item.info.tel}</FontData>
+                    <div style={{ display: 'flex', cursor: 'pointer' }} onClick={() => this.onCheck(item)}>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.reNum}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.date}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.reName}</FontData>
+                      <FontData style={{textAlign:'center',width:'25%'}}>{item.info.tel}</FontData>
                     </div>
                   </Paper>
                 </div>

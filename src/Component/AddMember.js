@@ -38,12 +38,17 @@ class AddMember extends Component {
 
     onAdd = () => {
         let canAdd = true
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        
         if ((this.state.employeeID !== '') && (this.state.department !== 'Select Department') && (this.state.firstnameTH !== '') && (this.state.lastnameTH !== '') && (this.state.firstnameEN !== '') && (this.state.lastnameEN !== '') && (this.state.idCard !== '') && (this.state.birthDate !== '') && (this.state.tel !== '') && (this.state.email !== '') && (this.state.address !== '')) {
             this.props.accountList.forEach((item) => {
                 if ((item.employeeID === this.state.employeeID) || (item.email === this.state.email)) {
                     canAdd = false
                 }
             })
+            if(re.test(this.state.email)===false){
+                alert("Invalid Email")
+            }
             if (!canAdd) {
                 alert('Employee ID or email is already have.')
             } else {
@@ -54,7 +59,7 @@ class AddMember extends Component {
                 }
             }
 
-        } else {
+        }else {
             alert('Please complete all infomations.')
         }
 

@@ -32,7 +32,7 @@ class Home extends Component {
         return (
             <div className="bg" >
                 <Paper className="paperDash" onClick={() => {
-                    if (this.state.user.departmentID >= 6) {
+                    if (this.state.user.departmentID >= 1) {
                         history.push('/dashboard')
                     }
                 }}>
@@ -42,7 +42,11 @@ class Home extends Component {
                     </div>
 
                 </Paper>
-                <Paper className="paperSt" onClick={() => history.push('/stock')}>
+                <Paper className="paperSt" onClick={() => {
+                    if (this.state.user.departmentID >= 5) {
+                        history.push('/stock')
+                    }
+                }}>
                     <div>
                         <img className="imSt" src={standcount} />
                         <p className="textSt" >
@@ -50,40 +54,64 @@ class Home extends Component {
                         </p>
                     </div>
                 </Paper>
-                <Paper className="paperIv" onClick={() => history.push('/inventoryCost')} >
+                <Paper className="paperIv" onClick={() => {
+                    if (this.state.user.departmentID >= 6) {
+                        history.push('/inventoryCost')
+                    }
+                }} >
                     <div>
                         <img className="imIc" src={cost} />
                         <p className="textIc">INVENTORY
                         COST</p>
                     </div>
                 </Paper>
-                <Paper className="paperOd" onClick={() => history.push('/ordering')} >
+                <Paper className="paperOd" onClick={() => {
+                    if ((this.state.user.departmentID == 4) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
+                        history.push('/ordering')
+                    }
+                }}>
                     <div>
                         <img className="imOd" src={ordering} />
                         <p className="textOd">ORDERING</p>
                     </div>
                 </Paper>
-                <Paper className="paperPk" onClick={() => history.push('/picking')} >
+                <Paper className="paperPk" onClick={() => {
+                    if ((this.state.user.departmentID == 3) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
+                        history.push('/picking')
+                    }
+                }}>
                     <div>
                         <img className="imPk" src={packing} />
                         <p className="textOd">PICKING</p>
                     </div>
                 </Paper>
-                <Paper className="paperOc" onClick={() => history.push('/orderConfirm')} >
+                <Paper className="paperOc" onClick={() => {
+                    if ((this.state.user.departmentID == 2) || (this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
+                        history.push('/orderConfirm')
+                    }
+                }}>
                     <div>
                         <img className="imOc" src={orderconfirm} />
                         <p className="textO">ORDER</p>
                         <p className="textS">CONFIRMATION</p>
                     </div>
                 </Paper>
-                <Paper className="paperCs" onClick={() => history.push('/returned')} >
+                <Paper className="paperCs" onClick={() => {
+                    if ((this.state.user.departmentID == 6)|| (this.state.user.departmentID == 7)) {
+                        history.push('/returned')
+                    }
+                }}>
                     <div>
                         <img className="imCs" src={returnor} />
                         <p className="textCf">RETURN</p>
                         <p className="textSh">ORDER</p>
                     </div>
                 </Paper>
-                <Paper className="paperHs" onClick={() => history.push('/history')} >
+                <Paper className="paperHs" onClick={() => {
+                    if (this.state.user.departmentID >= 1) {
+                        history.push('/history')
+                    }
+                }}>
                     <div>
                         <img className="imHs" src={historyPic} />
                         <p className="textHs">HISTORY</p>

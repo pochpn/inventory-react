@@ -355,8 +355,8 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right',paddingRight:32 }}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{paddingTop: '25%', fontSize: '50px',textAlign:'right' }}> ฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >

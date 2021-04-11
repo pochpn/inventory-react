@@ -147,8 +147,8 @@ class CountingReport extends Component {
                     
                     <div style={{ width: '100%', display: 'flex', alignItems: 'flex-end', justifyItems: 'right' }}>
                         <div style={{ display: 'flex', marginLeft: '80%',flexDirection:'column' }}>
-                            <ButtonReport style={{ width: 200, height: 60,margin:'2%' ,fontSize:'36px'}} onClick={()=>{'/home'}} >Report</ButtonReport>
-                            <ButtonCancel style={{ width: 200, height: 60,margin:'2%',fontSize:'36px'}} onClick={()=>{'/home'}}>Cancel</ButtonCancel>
+                            <ButtonReport style={{ width: 200, height: 60,margin:'2%' ,fontSize:'36px'}} onClick={()=>{history.push('/home')}} >Report</ButtonReport>
+                            <ButtonCancel style={{ width: 200, height: 60,margin:'2%',fontSize:'36px'}} onClick={()=>{history.push('/home')}}>Cancel</ButtonCancel>
                         </div>
                     </div>
                     </div>

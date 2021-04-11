@@ -339,13 +339,13 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: 123515, turnover: this.state.jVal / ((0 + 123515) / 2),
+        name: 'Jan', value: 123515, turnover: 123515/ ((0 + 123515) / 2),
       },
       {
-        name: 'Feb', value: 231515, turnover: this.state.mVal / ((123515 + 231515) / 2),
+        name: 'Feb', value: 231515, turnover: 231515 / ((123515 + 231515) / 2),
       },
       {
-        name: 'Mar', value: 155511, turnover: this.state.mVal / ((231515 + 155511) / 2),
+        name: 'Mar', value: 155511, turnover: 155511/ ((231515 + 155511) / 2),
       },
       {
         name: 'Apr', value: this.state.aVal, turnover: this.state.aVal / ((155511 + this.state.aVal) / 2),

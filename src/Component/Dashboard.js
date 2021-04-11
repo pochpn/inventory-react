@@ -339,8 +339,8 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl">Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px' }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingLeft: '75%', paddingTop: '25%', fontSize: '50px' }}> ฿</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right',paddingRight:32 }}>{formatMoney(convert(this.state.inventLv))}</p>
+            <p className="txtIl" style={{ paddingTop: '25%', fontSize: '50px',textAlign:'right' }}> ฿</p>
           </div>
         </Paper>
         <Paper className="paperDam" >
@@ -427,13 +427,14 @@ class Dashboard extends Component {
         </Paper>
         <Paper className="paperTT" >
           <div>
+          <p className='textOTWeek' style={{textAlign:'center',fontWeight:'bold'}}>Inventories per month</p>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingRight: 50 }}>
               <ComposedChart
                 width={750}
                 height={420}
                 data={barData}
                 margin={{
-                  top: 50, right: 0, bottom: 100, left: 50,
+                  top: 10, right: 0, bottom: 150, left: 50,
                 }}
               >
                 <CartesianGrid stroke="#f5f5f5" />

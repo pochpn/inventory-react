@@ -74,8 +74,6 @@ const ButtonAdd1 = styled.button`
   padding: 0.5em 1.5em;
 `
 
-
-
 class OrderingChart extends Component {
     constructor(props) {
         super(props);
@@ -122,8 +120,8 @@ class OrderingChart extends Component {
     };
 
     handleModalCloseAdd = (e) => {
-        if ((this.state.expDate != (null && '')) && (this.state.level != (null && '')) && (this.state.costPunit != (null && '')) && (this.state.qty != (null && ''))) {
-            const product = {...this.state.item}
+        if ((this.state.level !== '') && (this.state.costPunit !== '') && (this.state.qty !== '')) {
+            const product = { ...this.state.item }
             product.expDate = (this.state.date.getDate() + '/' + (this.state.date.getMonth() + 1) + '/' + this.state.date.getFullYear()).toString()
             product.level = this.state.level
             product.costPunit = this.state.costPunit
@@ -175,24 +173,17 @@ class OrderingChart extends Component {
     }
 
     onNext = () => {
-        /*this.props.pickOrderList.forEach(product => {
-            firestore.addProduct(product, this.success, this.reject)
-            this.props.addProduct(product)
-        })*/
-        // const notification = {
-        //     notificationHead: this.state.notificationHead,
-        // }
-        // firestore.addNotification(notification, this.success, this.reject)
-        // this.props.addNotification(notification)
-        this.props.clearPickOrder()
-        // history.push('/home')
-        history.push({
-            pathname: '/ordering/orderingChart/billOrder',
-            state: {
-                info: this.state.info,
-                order: this.props.pickOrderList,
-            },
-        })
+        if (this.props.pickOrderList.length > 0) {
+            history.push({
+                pathname: '/ordering/orderingChart/billOrder',
+                state: {
+                    info: this.state.info,
+                    order: this.props.pickOrderList,
+                },
+            })
+        } else {
+            alert('No item in list.')
+        }
     }
 
     render() {
@@ -331,15 +322,15 @@ class OrderingChart extends Component {
                                 <Font>Shelf</Font>
                                 <Font>Level</Font>
                                 <Font>Cost/Unit</Font>
-                                <Font>{'QTY('+this.state.item.unit+')'}</Font>
+                                <Font>{'QTY(' + this.state.item.unit + ')'}</Font>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: 30 }}>
                                 <Font>{this.state.item.productID}</Font>
                                 <DatePicker style={{ width: 300 }} selected={this.state.date} onChange={date => this.setState({ date: date })} dateFormat='dd/MM/yyy' />
                                 <Font>{this.state.item.shelf}</Font>
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
-                                <input type="number" min = '0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
+                                <input type="number" min='0' onKeyPress={this.onKeyPress1.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.level} onChange={txt => this.setState({ level: txt.target.value })} />
+                                <input type="number" min='0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.costPunit} onChange={txt => this.setState({ costPunit: txt.target.value })} />
+                                <input type="number" min='0' onKeyPress={this.onKeyPress.bind(this)} style={{ width: 150, height: 35, fontSize: 24 }} value={this.state.qty} onChange={txt => this.setState({ qty: txt.target.value })} />
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 40 }}>
                                 <ButtonCancel1 style={{ width: 100, height: 50 }} onClick={this.handleModalClose}>Cancel</ButtonCancel1>

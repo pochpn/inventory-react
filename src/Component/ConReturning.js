@@ -74,7 +74,7 @@ class ConReturning extends Component {
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <Font>{item.info.reNum}</Font>
                       <Font>{item.info.date}</Font>
-                      <Font>{item.info.ReName}</Font>
+                      <Font>{item.info.reName}</Font>
                       <Font>{item.info.tel}</Font>
                     </div>
                   </Paper>

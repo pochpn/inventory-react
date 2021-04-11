@@ -144,7 +144,7 @@ class AddMember extends Component {
                     <div><p className="textP1" style={{ width: '39px', height: '39px', left: '7%', top: '42%' }}>Tel.</p></div>
                     <div><input className="editP1" style={{ top: '47%' }} onChange={txt => this.setState({ tel: txt.target.value })}></input></div>
                     <div><p className="textP1" style={{ width: '207px', height: '39px', left: '7%', top: '52%' }}>Current Address</p></div>
-                    <div><input className="editP2" style={{ top: '57%' }} onChange={txt => this.setState({ address: txt.target.value })}></input></div>
+                    <div><textarea className="editP2" style={{ top: '57%' ,resize:'none'}} onChange={txt => this.setState({ address: txt.target.value })}></textarea></div>
                     <div><p className="textP1" style={{ width: '150px', height: '39px', left: '49.5%', top: '2%' }}>Department</p></div>
                     <div style={{ paddingTop: '8%' }} className="inputP4">
                         <MDBDropdown dropdown>

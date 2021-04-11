@@ -313,10 +313,10 @@ class Dashboard extends Component {
     this.setState({ countPick: countP });
     this.setState({ countRcv: countR });
     let d = new Date()
-    if(d.getDay === 1){
+    if (d.getDay === 1) {
       this.setState({ countAll: 0 });
-    this.setState({ countPick: 0 });
-    this.setState({ countRcv: 0 });
+      this.setState({ countPick: 0 });
+      this.setState({ countRcv: 0 });
     }
   }
 
@@ -345,13 +345,13 @@ class Dashboard extends Component {
     console.log(pieData[0].value)
     let barData = [
       {
-        name: 'Jan', value: 123515, turnover: 123515/ ((0 + 123515) / 2),
+        name: 'Jan', value: 123515, turnover: 123515 / ((0 + 123515) / 2),
       },
       {
         name: 'Feb', value: 231515, turnover: 231515 / ((123515 + 231515) / 2),
       },
       {
-        name: 'Mar', value: 155511, turnover: 155511/ ((231515 + 155511) / 2),
+        name: 'Mar', value: 155511, turnover: 155511 / ((231515 + 155511) / 2),
       },
       {
         name: 'Apr', value: this.state.aVal, turnover: this.state.aVal / ((155511 + this.state.aVal) / 2),
@@ -400,8 +400,10 @@ class Dashboard extends Component {
         <Paper className="paperIL" >
           <div>
             <p className="txtIl" >Inventory Levels</p>
-            <p className="txtIl" style={{ paddingTop: '15%', fontSize: '50px', textAlign: 'right', paddingRight: 70,fontSize:'60px' }}>{formatMoney(convert(this.state.inventLv))}</p>
-            <p className="txtIl" style={{ paddingTop: '15%', fontSize: '50px', textAlign: 'right',fontSize:'60px' }}> ฿</p>
+            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: '15%',  }}>
+              <p className="txtIl" style={{fontSize: '50px', textAlign: 'right', fontSize: '60px' }}>{formatMoney(convert(this.state.inventLv))}</p>
+              <p className="txtIl" style={{  fontSize: '50px', textAlign: 'right', fontSize: '60px',width:50 }}> ฿</p>
+            </div>
           </div>
         </Paper>
         {/* <Paper className="paperDam" >
